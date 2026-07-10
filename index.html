@@ -28,7 +28,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { background-color: var(--bg); scroll-behavior: smooth; }
 
 body {
   background: radial-gradient(1200px 800px at 50% -10%, #181826 0%, var(--bg) 55%) fixed;
@@ -964,7 +964,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let y=2025; y>=1920; y--) opts += `<option value="${y}">${y}</option>`;
       }
       const cap = part.charAt(0).toUpperCase() + part.slice(1);
-      html += `<select id="${prefix}${cap}" class="dob-sel" aria-label="${aria[part]}"></select>`;
+      html += `<select id="${prefix}${cap}" class="dob-sel" aria-label="${aria[part]}">${opts}</select>`;
     }
     $(containerId).innerHTML = html;
   }
