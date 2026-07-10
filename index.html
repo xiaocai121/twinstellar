@@ -544,18 +544,14 @@ header, section, footer { position: relative; z-index: 1; }
     <h1 class="hero-title" id="heroTitle">Two Beads.<br /><span class="gold">One Universe.</span></h1>
     <p class="hero-sub" data-i18n="hero_sub">Every soul is born with a twin star. One speaks the language of the cosmos — your Zodiac. The other whispers the ancient wisdom of the Five Elements. Together they form your sacred bracelet.</p>
     <a href="#reveal" class="btn-primary" data-i18n="hero_cta">◇ Reveal My Universe ◇</a>
-    <p class="hero-foot" data-i18n="hero_foot">No sign-up. Just your name and the day you arrived.</p>
+    <p class="hero-foot" data-i18n="hero_foot">No sign-up. Just your birthday — the day you arrived.</p>
   </section>
 
   <!-- ============ REVEAL / INPUT ============ -->
   <section id="reveal" class="reveal">
     <h2 class="section-title" data-i18n="reveal_title">The universe has been waiting for you</h2>
-    <p class="section-sub" data-i18n="reveal_sub">Enter your name and birthday. We will read the day the stars aligned for you.</p>
+    <p class="section-sub" data-i18n="reveal_sub">Enter your birthday. We will read the day the stars aligned for you.</p>
     <form id="revealForm" class="reveal-form" novalidate>
-      <label class="field">
-        <span data-i18n="lbl_name">Your name</span>
-        <input id="nameInput" type="text" placeholder="e.g. Sarah" autocomplete="given-name" />
-      </label>
       <label class="field">
         <span data-i18n="lbl_birthday">Your birthday</span>
         <div class="dob" id="revealDob">
@@ -565,7 +561,7 @@ header, section, footer { position: relative; z-index: 1; }
         </div>
       </label>
       <button type="submit" class="btn-primary" data-i18n="btn_weave">◇ Weave My Bracelet ◇</button>
-      <p id="formError" class="form-error" hidden data-i18n="err_form">Please enter your name and a valid birthday.</p>
+      <p id="formError" class="form-error" hidden data-i18n="err_form">Please enter a valid birthday.</p>
     </form>
   </section>
 
@@ -726,13 +722,12 @@ const I18N = {
     hero_title:'Two Beads.<br><span class="gold">One Universe.</span>',
     hero_sub:'Every soul is born with a twin star. One speaks the language of the cosmos — your Zodiac. The other whispers the ancient wisdom of the Five Elements. Together they form your sacred bracelet.',
     hero_cta:'◇ Reveal My Universe ◇',
-    lbl_name:'Your name', lbl_birthday:'Birthday',
     btn_weave:'◇ Weave My Bracelet ◇',
-    err_form:'Please enter your name and a valid birthday.',
-    hero_foot:'No sign-up. Just your name and the day you arrived.',
+    err_form:'Please enter a valid birthday.',
+    hero_foot:'No sign-up. Just your birthday — the day you arrived.',
     reveal_title:'The universe has been waiting for you',
-    reveal_sub:'Enter your name and birthday. We will read the day the stars aligned for you.',
-    loading_text:'The universe is weaving your bracelet…',
+    reveal_sub:'Enter your birthday. We will read the day the stars aligned for you.',
+    loading_text:'Reading the stars for you…',
     lbl_element:'YOUR ELEMENT', lbl_stars:'YOUR STARS',
     lbl_mantra:'Your Mantra', lbl_stones:'Your Power Stones',
     lbl_claim:'Bring it close',
@@ -751,13 +746,12 @@ const I18N = {
     hero_title:'双珠·<span class="gold">宇宙</span>',
     hero_sub:'每个灵魂降生时都伴着一颗双生星。一颗说宇宙的语言——你的星座；另一颗低语五行的古老智慧——金木水火土，塑造我们内在的小宇宙。它们共同织成你专属的神圣手链。',
     hero_cta:'◇ 揭晓我的宇宙 ◇',
-    lbl_name:'你的名字', lbl_birthday:'生日',
     btn_weave:'◇ 编织我的手链 ◇',
-    err_form:'请填写你的名字和有效的生日。',
-    hero_foot:'无需注册。只需你的名字，与来到世间的那一天。',
+    err_form:'请填写有效的生日。',
+    hero_foot:'无需注册。只需你的生日，来到世间的那一天。',
     reveal_title:'宇宙一直在等你',
-    reveal_sub:'输入你的名字与生日，我们将解读星辰为你校准的那一天。',
-    loading_text:'宇宙正在为你编织手链……',
+    reveal_sub:'输入你的生日，我们将解读星辰为你校准的那一天。',
+    loading_text:'宇宙正在为你读取星图……',
     lbl_element:'你的元素', lbl_stars:'你的星座',
     lbl_mantra:'你的真言', lbl_stones:'你的能量石',
     lbl_claim:'让它贴近你',
@@ -796,14 +790,12 @@ function findCombo(element, zodiac) {
 // ---------- rendering ----------
 const $ = (id) => document.getElementById(id);
 
-function renderResult(name, combo) {
+function renderResult(combo) {
   const el = ELEMENTS[combo.element.toLowerCase()];
   const zx = ZODIAC[combo.zodiac.toLowerCase()];
   const zh = LANG === 'zh';
 
-  $('resultName').textContent = name
-    ? (zh ? `${name}，这就是你。` : `${name}, this is you.`)
-    : I18N[LANG].result_name;
+  $('resultName').textContent = I18N[LANG].result_name;
 
   // element
   $('elementCard').style.setProperty('--el-color', el.color);
@@ -847,7 +839,7 @@ function renderResult(name, combo) {
   }).join('');
 
   // wire share + restart
-  $('copyLinkBtn').onclick = () => copyLink(name, combo);
+  $('copyLinkBtn').onclick = () => copyLink(combo);
   $('restartBtn').onclick = () => { location.hash = '#reveal'; location.reload(); };
 
   // pre-order capture (when no checkout link configured)
@@ -855,35 +847,35 @@ function renderResult(name, combo) {
     a.addEventListener('click', (e) => {
       if (!CHECKOUT_BASE && a.getAttribute('href').startsWith('#claim')) {
         e.preventDefault();
-        preorderCapture(name, combo, a.dataset.tier);
+        preorderCapture(combo, a.dataset.tier);
       }
     });
   });
 
-  lastResult = { name, combo };
+  lastResult = { combo };
 }
 
-function copyLink(name, combo) {
-  const url = `${location.origin}${location.pathname}?n=${encodeURIComponent(name || '')}&e=${combo.element}&z=${combo.zodiac}`;
+function copyLink(combo) {
+  const url = `${location.origin}${location.pathname}?e=${combo.element}&z=${combo.zodiac}`;
   navigator.clipboard?.writeText(url).then(() => {
     $('copyLinkBtn').textContent = LANG === 'zh' ? '链接已复制 ✓' : 'Link copied ✓';
     setTimeout(() => ($('copyLinkBtn').textContent = I18N[LANG].btn_copy), 2000);
   });
 }
 
-function preorderCapture(name, combo, tierId) {
+function preorderCapture(combo, tierId) {
   const tier = TIERS.find(t => t.id === tierId);
   const zh = LANG === 'zh';
   const title = zh ? combo.title_cn : combo.title_en;
   const mat = zh ? (tier.name_cn || tier.name) : tier.name;
   const subject = zh ? `认领 ${title}（${mat}）` : `Claim ${combo.title_en} (${tier.name})`;
   const body = zh
-    ? `你好 Twinstellar：%0D%0A%0D%0A我想认领属于自己的神圣手链：%0D%0A姓名：${encodeURIComponent(name || '—')}%0D%0A组合：${title}（${combo.element} + ${combo.zodiac}）%0D%0A材质：${mat}%0D%0A%0D%0A谢谢！`
-    : `Hi Twinstellar,%0D%0A%0D%0AI'd like to claim my sacred bracelet:%0D%0AName: ${encodeURIComponent(name || '—')}%0D%0ACombination: ${combo.title_en} (${combo.element} + ${combo.zodiac})%0D%0AMaterial: ${tier.name}%0D%0A%0D%0AThank you!`;
+    ? `你好 Twinstellar：%0D%0A%0D%0A我想把属于自己的神圣手链请进生活：%0D%0A组合：${title}（${combo.element} + ${combo.zodiac}）%0D%0A材质：${mat}%0D%0A%0D%0A谢谢！`
+    : `Hi Twinstellar,%0D%0A%0D%0AI'd like to bring my sacred bracelet into my life:%0D%0ACombination: ${combo.title_en} (${combo.element} + ${combo.zodiac})%0D%0AMaterial: ${tier.name}%0D%0A%0D%0AThank you!`;
   // store intent locally (for later automation / retargeting)
   try {
     const leads = JSON.parse(localStorage.getItem('twin_leads') || '[]');
-    leads.push({ name, element: combo.element, zodiac: combo.zodiac, tier: tierId, ts: Date.now() });
+    leads.push({ element: combo.element, zodiac: combo.zodiac, tier: tierId, ts: Date.now() });
     localStorage.setItem('twin_leads', JSON.stringify(leads));
   } catch (_) {}
   window.location.href = `mailto:hello@twinstellar.com?subject=${encodeURIComponent(subject)}&body=${body}`;
@@ -917,7 +909,7 @@ function show(view) {
   if (overlap) setTimeout(reveal, 400); else reveal();
 }
 
-function runReveal(name, dateStr) {
+function runReveal(dateStr) {
   const date = new Date(dateStr + 'T00:00:00');
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -930,14 +922,12 @@ function runReveal(name, dateStr) {
   show('loading');
   window.scrollTo({ top: 0, behavior: 'smooth' });
   const ln = $('loadingName');
-  if (ln) ln.textContent = name
-    ? (LANG === 'zh' ? `${name}，宇宙正在读取你的星图…` : `Reading the stars for ${name}…`)
-    : '';
+  if (ln) ln.textContent = '';
   setTimeout(() => {
-    renderResult(name, combo);
+    renderResult(combo);
     show('result');
     // deep link support
-    history.replaceState(null, '', `?n=${encodeURIComponent(name)}&e=${element}&z=${zodiac}`);
+    history.replaceState(null, '', `?e=${element}&z=${zodiac}`);
   }, 3200);
 }
 
@@ -970,15 +960,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!m || !d || !y) { $(errorId).hidden = false; return null; }
     return `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
   }
-  function bindForm(formId, nameId, prefix, errorId) {
+  function bindForm(formId, prefix, errorId) {
     $(formId).addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = $(nameId).value.trim();
-      if (!name) { $(errorId).hidden = false; return; }
       const dateStr = readDob(prefix, errorId);
       if (!dateStr) return;
       $(errorId).hidden = true;
-      runReveal(name, dateStr);
+      runReveal(dateStr);
     });
   }
   function applyLang(lang) {
@@ -993,7 +981,7 @@ document.addEventListener('DOMContentLoaded', () => {
     populateDob('revealDob', 'r', lang);
     const sw = document.getElementById('langSwitch');
     if (sw) sw.textContent = lang === 'zh' ? 'EN' : '中文';
-    if (lastResult) renderResult(lastResult.name, lastResult.combo);
+    if (lastResult) renderResult(lastResult.combo);
     try { localStorage.setItem('twin_lang', lang); } catch (_) {}
   }
 
@@ -1004,7 +992,7 @@ document.addEventListener('DOMContentLoaded', () => {
   LANG = saved || (navLang.startsWith('zh') ? 'zh' : 'en');
   applyLang(LANG);
 
-  bindForm('revealForm', 'nameInput', 'r', 'formError');
+  bindForm('revealForm', 'r', 'formError');
   document.getElementById('langSwitch').addEventListener('click', () => {
     applyLang(LANG === 'zh' ? 'en' : 'zh');
   });
@@ -1017,12 +1005,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // deep-link: ?n=&e=&z= → show result directly
+  // deep-link: ?e=&z= → show result directly
   const params = new URLSearchParams(location.search);
-  const e = params.get('e'), z = params.get('z'), n = params.get('n');
+  const e = params.get('e'), z = params.get('z');
   if (e && z) {
     const combo = findCombo(e, z);
-    if (combo) { renderResult(n || '', combo); show('result'); return; }
+    if (combo) { renderResult(combo); show('result'); return; }
   }
   show('home');
 });
