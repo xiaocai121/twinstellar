@@ -271,13 +271,7 @@ header, section, footer { position: relative; z-index: 1; }
 /* ---------- loading ---------- */
 .loading { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .loading-text { color: var(--gold-soft); letter-spacing: 0.1em; margin-top: 28px; font-style: italic; }
-.born .bead { width: 60px; height: 60px; }
-.born .bead-link { width: 70px; }
-.spin { animation: spin 2.4s linear infinite; }
-.spin-rev { animation: spin 2.4s linear infinite reverse; }
-.grow { animation: pulse 1.8s ease-in-out infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
-@keyframes pulse { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
 
 /* ---------- result ---------- */
 .result-eyebrow {
@@ -422,11 +416,102 @@ header, section, footer { position: relative; z-index: 1; }
   .tier { width: 100%; max-width: 280px; }
 }
 
+/* ============ cosmic depth & cinematic transitions ============ */
+.nebula {
+  position: fixed; inset: -25%; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(38% 28% at 22% 32%, rgba(79,134,198,.12), transparent 62%),
+    radial-gradient(34% 26% at 78% 68%, rgba(201,169,98,.12), transparent 62%),
+    radial-gradient(30% 24% at 60% 18%, rgba(120,90,180,.08), transparent 60%);
+  filter: blur(22px);
+  animation: nebulaDrift 28s ease-in-out infinite alternate;
+}
+@keyframes nebulaDrift {
+  from { transform: translate3d(-3%, -2%, 0) scale(1); }
+  to   { transform: translate3d(3%, 2%, 0) scale(1.08); }
+}
+
+/* view dissolve */
+#home, #reveal, #loading, #result, #story {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+#home.view-in, #reveal.view-in, #loading.view-in, #result.view-in, #story.view-in {
+  opacity: 1; transform: none;
+}
+.view-out { opacity: 0 !important; transform: translateY(-10px) !important; transition: opacity .4s ease, transform .4s ease; }
+
+/* hero intro — gentle rise */
+#home.view-in .beads      { animation: fadeUp .8s .05s both; }
+#home.view-in .eyebrow    { animation: fadeUp .8s .15s both; }
+#home.view-in .hero-title { animation: fadeUp .95s .3s both; }
+#home.view-in .hero-sub   { animation: fadeUp .95s .5s both; }
+#home.view-in .hero-form  { animation: fadeUp .95s .7s both; }
+#home.view-in .hero-foot  { animation: fadeUp .8s .9s both; }
+
+/* loading — two beads converging into one star */
+.loading { min-height: 72vh; }
+.cosmos { position: relative; width: 220px; height: 220px; margin: 0 auto; }
+.cosmos-core {
+  position: absolute; left: 50%; top: 50%; width: 14px; height: 14px; margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #fff, var(--gold) 55%, #8a6f2e);
+  box-shadow: 0 0 42px 14px rgba(201,169,98,.45);
+  animation: corePulse 2.6s ease-in-out infinite;
+}
+@keyframes corePulse { 0%,100% { transform: scale(.7); opacity: .7; } 50% { transform: scale(1.18); opacity: 1; } }
+.cosmos .bead { position: absolute; top: 50%; margin-top: -23px; }
+.cosmos .bead-a { left: 50%; margin-left: -120px; animation: convergeA 2.8s ease-in-out infinite alternate; }
+.cosmos .bead-b { left: 50%; margin-left: 74px; animation: convergeB 2.8s ease-in-out infinite alternate; }
+@keyframes convergeA { from { transform: translateX(0); } to { transform: translateX(96px); } }
+@keyframes convergeB { from { transform: translateX(0); } to { transform: translateX(-96px); } }
+.orbit { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
+.orbit-1 { animation: spin 7s linear infinite; }
+.orbit-2 { animation: spin 10s linear infinite reverse; }
+.orbit-3 { animation: spin 13s linear infinite; }
+.orbit .spark { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: var(--gold-soft); box-shadow: 0 0 10px var(--gold); }
+.orbit-1 .spark { top: -92px; left: -3px; }
+.orbit-2 .spark { top: -58px; left: -3px; opacity: .8; }
+.orbit-3 .spark { top: -124px; left: -3px; opacity: .6; }
+.loading-name {
+  margin-top: 38px; min-height: 24px;
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px;
+  color: var(--gold-soft); letter-spacing: .04em;
+}
+
+/* result — staged discovery, leading the eye */
+#result.view-in .result-eyebrow { animation: fadeUp .7s .10s both; }
+#result.view-in .element-card   { animation: fromLeft .8s .40s both; }
+#result.view-in .dual-plus      { animation: popIn .5s .80s both; }
+#result.view-in .zodiac-card    { animation: fromRight .8s .40s both; }
+#result.view-in .title-block    { animation: fadeUp .9s 1.00s both; }
+#result.view-in .fusion         { animation: fadeUp .9s 1.30s both; }
+#result.view-in .mantra-block   { animation: fadeUp .9s 1.60s both; }
+#result.view-in .stones-block   { animation: fadeUp .9s 1.90s both; }
+#result.view-in .product-block  { animation: fadeUp .9s 2.20s both; }
+#result.view-in .share-block    { animation: fadeUp .8s 2.50s both; }
+#result.view-in .stones .stone:nth-child(1) { animation: popIn .5s 1.95s both; }
+#result.view-in .stones .stone:nth-child(2) { animation: popIn .5s 2.10s both; }
+#result.view-in .stones .stone:nth-child(3) { animation: popIn .5s 2.25s both; }
+#result.view-in .product-label  { animation: glowPulse 2s 2.40s ease-out 1; }
+
+@keyframes fadeUp   { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes fromLeft { from { opacity: 0; transform: translateX(-34px); } to { opacity: 1; transform: none; } }
+@keyframes fromRight{ from { opacity: 0; transform: translateX(34px); } to { opacity: 1; transform: none; } }
+@keyframes popIn    { from { opacity: 0; transform: scale(.82); } to { opacity: 1; transform: scale(1); } }
+@keyframes glowPulse { 0% { text-shadow: none; } 40% { text-shadow: 0 0 18px rgba(201,169,98,.7); } 100% { text-shadow: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  #home, #reveal, #loading, #result, #story { transition: none; }
+  .nebula, .cosmos-core, .cosmos .bead, .orbit, #home.view-in *, #result.view-in * { animation: none !important; }
+}
+
 </style>
 </head>
 <body>
   <!-- starfield -->
   <canvas id="stars"></canvas>
+  <div class="nebula" aria-hidden="true"></div>
 
   <header class="topbar">
     <div class="brand">TWINSTELLAR</div>
@@ -490,13 +575,17 @@ header, section, footer { position: relative; z-index: 1; }
     </form>
   </section>
 
-  <!-- ============ LOADING (two beads born) ============ -->
+  <!-- ============ LOADING (two beads forming one star) ============ -->
   <section id="loading" class="loading" hidden>
-    <div class="born">
-      <span class="bead bead-a spin"></span>
-      <span class="bead-link grow"></span>
-      <span class="bead bead-b spin-rev"></span>
+    <div class="cosmos" aria-hidden="true">
+      <span class="bead bead-a"></span>
+      <span class="bead bead-b"></span>
+      <div class="cosmos-core"></div>
+      <div class="orbit orbit-1"><i class="spark"></i></div>
+      <div class="orbit orbit-2"><i class="spark"></i></div>
+      <div class="orbit orbit-3"><i class="spark"></i></div>
     </div>
+    <p class="loading-name" id="loadingName"></p>
     <p class="loading-text" data-i18n="loading_text">The universe is weaving your bracelet…</p>
   </section>
 
@@ -805,11 +894,30 @@ function preorderCapture(name, combo, tierId) {
 
 // ---------- flow ----------
 function show(view) {
-  ['home', 'reveal', 'loading', 'result', 'story'].forEach(id => {
+  const VIEWS = ['home', 'reveal', 'loading', 'result', 'story'];
+  const incoming = $(view);
+  let overlap = false;
+  VIEWS.forEach(id => {
     const el = $(id);
-    if (el) el.hidden = (id !== view);
+    if (!el || id === view) return;
+    if (!el.hidden) {
+      overlap = true;
+      el.classList.remove('view-in');
+      el.classList.add('view-out');
+      setTimeout(() => {
+        if (!el.classList.contains('view-in')) { el.hidden = true; el.classList.remove('view-out'); }
+      }, 400);
+    } else {
+      el.classList.remove('view-in', 'view-out');
+    }
   });
-  if (view !== 'result') window.scrollTo({ top: 0, behavior: 'smooth' });
+  const reveal = () => {
+    incoming.hidden = false;
+    void incoming.offsetWidth; // force reflow so the fade-in transition runs
+    incoming.classList.add('view-in');
+    if (view !== 'result') window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  if (overlap) setTimeout(reveal, 400); else reveal();
 }
 
 function runReveal(name, dateStr) {
@@ -824,12 +932,16 @@ function runReveal(name, dateStr) {
 
   show('loading');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  const ln = $('loadingName');
+  if (ln) ln.textContent = name
+    ? (LANG === 'zh' ? `${name}，宇宙正在读取你的星图…` : `Reading the stars for ${name}…`)
+    : '';
   setTimeout(() => {
     renderResult(name, combo);
     show('result');
     // deep link support
     history.replaceState(null, '', `?n=${encodeURIComponent(name)}&e=${element}&z=${zodiac}`);
-  }, 2600);
+  }, 3200);
 }
 
 // ---------- init ----------
@@ -902,6 +1014,14 @@ document.addEventListener('DOMContentLoaded', () => {
     applyLang(LANG === 'zh' ? 'en' : 'zh');
   });
 
+  // smooth in-page navigation through show() (anchors alone point at hidden sections)
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href').slice(1);
+      if ($(id)) { e.preventDefault(); show(id); }
+    });
+  });
+
   // deep-link: ?n=&e=&z= → show result directly
   const params = new URLSearchParams(location.search);
   const e = params.get('e'), z = params.get('z'), n = params.get('n');
@@ -920,16 +1040,24 @@ function initStars() {
   function resize() {
     w = c.width = window.innerWidth;
     h = c.height = window.innerHeight;
-    const n = Math.min(160, Math.floor(w * h / 9000));
-    stars = Array.from({ length: n }, () => ({
-      x: Math.random() * w, y: Math.random() * h,
-      r: Math.random() * 1.3 + 0.2, a: Math.random(), s: Math.random() * 0.02 + 0.004,
-    }));
+    const n = Math.min(170, Math.floor(w * h / 9000));
+    stars = Array.from({ length: n }, () => {
+      const big = Math.random() < 0.12;
+      return {
+        x: Math.random() * w, y: Math.random() * h,
+        r: big ? Math.random() * 1.2 + 1.4 : Math.random() * 1.0 + 0.2,
+        a: Math.random(), s: Math.random() * 0.02 + 0.004,
+        vx: (Math.random() - 0.5) * 0.05, vy: (Math.random() - 0.5) * 0.05,
+      };
+    });
   }
   function tick() {
     ctx.clearRect(0, 0, w, h);
     for (const st of stars) {
       st.a += st.s;
+      st.x += st.vx; st.y += st.vy;
+      if (st.x < 0) st.x += w; else if (st.x > w) st.x -= w;
+      if (st.y < 0) st.y += h; else if (st.y > h) st.y -= h;
       const tw = 0.5 + 0.5 * Math.sin(st.a);
       ctx.beginPath();
       ctx.arc(st.x, st.y, st.r, 0, Math.PI * 2);
