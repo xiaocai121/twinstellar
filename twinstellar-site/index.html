@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Twinstellar — Two Beads. One Universe.</title>
+  <meta name="description" content="Enter your name and birthday. The universe reveals your sacred bracelet — your Five Element fused with your Zodiac. Twinstellar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --bg: #0D0D0F;
+  --bg-2: #14141a;
+  --panel: #1F1F25;
+  --gold: #C9A962;
+  --gold-soft: #e7cd95;
+  --ink: #EDEDF0;
+  --ink-dim: #9a9aa6;
+  --line: rgba(201, 169, 98, 0.28);
+  --fire: #E8663B;
+  --earth: #C9A24B;
+  --water: #4F86C6;
+  --metal: #C7CBD1;
+  --wood: #5DA271;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: radial-gradient(1200px 800px at 50% -10%, #181826 0%, var(--bg) 55%) fixed;
+  color: var(--ink);
+  font-family: 'Inter', system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+header, section, footer { position: relative; z-index: 1; }
+
+/* ---------- top bar ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.brand {
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.42em;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--gold);
+}
+.brand.small { font-size: 16px; }
+.topbar nav a {
+  color: var(--ink-dim);
+  text-decoration: none;
+  margin-left: 22px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  transition: color .25s;
+}
+.topbar nav a:hover { color: var(--gold); }
+
+/* ---------- hero ---------- */
+.hero {
+  min-height: 86vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px 60px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.eyebrow {
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(44px, 9vw, 86px);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+}
+.gold { color: var(--gold); }
+.hero-sub {
+  margin: 26px auto 34px;
+  max-width: 540px;
+  color: var(--ink-dim);
+  font-weight: 300;
+  font-size: 16px;
+}
+.hero-foot {
+  margin-top: 22px;
+  font-size: 12px;
+  color: #6c6c78;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- two beads visual ---------- */
+.beads, .born {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 30px;
+}
+.bead {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 26px rgba(201,169,98,0.45), inset 0 0 12px rgba(255,255,255,0.25);
+}
+.bead-a { background: radial-gradient(circle at 35% 30%, #fff, var(--gold) 60%, #8a6f2e); }
+.bead-b { background: radial-gradient(circle at 35% 30%, #fff, #6b7fb0 55%, #2c3a63); }
+.bead-link {
+  width: 56px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), #6b7fb0);
+  opacity: 0.8;
+}
+
+/* ---------- buttons ---------- */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), #b08d3f);
+  color: #1a1408;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-size: 14px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 10px 30px rgba(201,169,98,0.28);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(201,169,98,0.4); }
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--gold-soft);
+  padding: 11px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  transition: border-color .25s, color .25s;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ---------- reveal form ---------- */
+.reveal, .result, .story, .loading {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 70px 24px;
+  text-align: center;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(28px, 5vw, 42px);
+  margin-bottom: 12px;
+}
+.section-sub { color: var(--ink-dim); font-weight: 300; margin-bottom: 36px; }
+.reveal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 380px;
+  margin: 0 auto;
+  text-align: left;
+}
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field span {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.field input {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: var(--ink);
+  font-size: 16px;
+  font-family: inherit;
+  transition: border-color .2s, box-shadow .2s;
+}
+.field input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,169,98,0.15);
+}
+.field input::-webkit-calendar-picker-indicator { filter: invert(0.7) sepia(1) saturate(3) hue-rotate(5deg); }
+.reveal-form .btn-primary { margin-top: 8px; text-align: center; }
+.form-error { color: #e0795f; font-size: 13px; margin-top: 4px; }
+
+/* ---------- loading ---------- */
+.loading { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.loading-text { color: var(--gold-soft); letter-spacing: 0.1em; margin-top: 28px; font-style: italic; }
+.born .bead { width: 60px; height: 60px; }
+.born .bead-link { width: 70px; }
+.spin { animation: spin 2.4s linear infinite; }
+.spin-rev { animation: spin 2.4s linear infinite reverse; }
+.grow { animation: pulse 1.8s ease-in-out infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
+
+/* ---------- result ---------- */
+.result-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--gold-soft);
+  margin-bottom: 30px;
+}
+.dual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 38px;
+}
+.dual-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 26px 30px;
+  min-width: 180px;
+  transition: border-color .3s;
+}
+.dual-card.element-card { box-shadow: 0 0 30px -8px var(--el-color, var(--gold)); border-color: var(--el-color, var(--line)); }
+.dual-card.zodiac-card { box-shadow: 0 0 30px -8px var(--zx-color, var(--gold)); border-color: var(--zx-color, var(--line)); }
+.dual-symbol { font-size: 40px; line-height: 1; margin-bottom: 12px; }
+.dual-label { letter-spacing: 0.24em; font-size: 11px; color: var(--ink-dim); }
+.dual-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; margin: 6px 0; }
+.dual-key { font-size: 12px; color: var(--gold-soft); letter-spacing: 0.04em; }
+.dual-plus { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--ink-dim); }
+
+.title-block { margin: 10px 0 30px; }
+.title-rule {
+  height: 1px;
+  width: 70%;
+  margin: 18px auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.sacred-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(32px, 7vw, 56px);
+  color: var(--gold);
+  letter-spacing: 0.01em;
+}
+.sacred-title-cn { font-size: 18px; color: var(--ink-dim); letter-spacing: 0.3em; margin-top: 6px; }
+.fusion {
+  max-width: 560px;
+  margin: 0 auto 34px;
+  color: var(--ink-dim);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.mantra-block { margin: 0 auto 34px; }
+.mantra-label, .stones-label, .product-label {
+  letter-spacing: 0.22em; text-transform: uppercase; font-size: 11px; color: var(--gold); margin-bottom: 12px;
+}
+.mantra {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 24px;
+  color: var(--ink);
+}
+
+.stones { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 6px; }
+.stone {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: var(--gold-soft);
+}
+
+.product-block { margin: 46px auto 30px; }
+.product-sub { color: #6c6c78; font-size: 12px; margin: 10px 0 26px; }
+.tiers { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.tier {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 22px 18px;
+  width: 168px;
+  cursor: pointer;
+  transition: transform .2s, border-color .2s, background .2s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.tier:hover { transform: translateY(-4px); border-color: var(--gold); }
+.tier .tier-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; }
+.tier .tier-desc { font-size: 11px; color: var(--ink-dim); margin: 6px 0 14px; min-height: 28px; }
+.tier .tier-price { color: var(--gold); font-size: 22px; font-weight: 600; letter-spacing: 0.02em; }
+.tier .tier-cta { margin-top: 12px; font-size: 12px; letter-spacing: 0.1em; color: var(--gold-soft); }
+
+.share-block { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+
+/* ---------- story ---------- */
+.story-text { color: var(--ink-dim); font-weight: 300; max-width: 600px; margin: 0 auto 20px; }
+.story-foot { color: var(--gold-soft); font-style: italic; max-width: 520px; margin: 0 auto; }
+
+/* ---------- footer ---------- */
+.footer {
+  text-align: center;
+  padding: 50px 24px 60px;
+  color: #6c6c78;
+  font-size: 12px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: 40px;
+}
+.footer .brand { margin-bottom: 12px; }
+
+@media (max-width: 520px) {
+  .dual { gap: 10px; }
+  .dual-card { min-width: 140px; padding: 20px; }
+  .tier { width: 100%; max-width: 280px; }
+}
+
+</style>
+</head>
+<body>
+  <!-- starfield -->
+  <canvas id="stars"></canvas>
+
+  <header class="topbar">
+    <div class="brand">TWINSTELLAR</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#reveal">Reveal</a>
+      <a href="#story">Story</a>
+    </nav>
+  </header>
+
+  <!-- ============ HOME / HERO ============ -->
+  <section id="home" class="hero">
+    <div class="beads" aria-hidden="true">
+      <span class="bead bead-a"></span>
+      <span class="bead-link"></span>
+      <span class="bead bead-b"></span>
+    </div>
+    <p class="eyebrow">Five Elements × Zodiac</p>
+    <h1 class="hero-title">Two Beads.<br /><span class="gold">One Universe.</span></h1>
+    <p class="hero-sub">Every soul is born with a twin star. One speaks the language of the cosmos — your Zodiac. The other whispers the ancient wisdom of the Five Elements. Together they form your sacred bracelet.</p>
+    <a href="#reveal" class="btn-primary">◇ Reveal My Universe ◇</a>
+    <p class="hero-foot">No sign-up. Just your name and the day you arrived.</p>
+  </section>
+
+  <!-- ============ REVEAL / INPUT ============ -->
+  <section id="reveal" class="reveal">
+    <h2 class="section-title">The universe has been waiting for you</h2>
+    <p class="section-sub">Enter your name and birthday. We will read the day the stars aligned for you.</p>
+    <form id="revealForm" class="reveal-form" novalidate>
+      <label class="field">
+        <span>Your name</span>
+        <input id="nameInput" type="text" placeholder="e.g. Sarah" autocomplete="given-name" />
+      </label>
+      <label class="field">
+        <span>Your birthday</span>
+        <input id="birthInput" type="date" max="2025-12-31" min="1900-01-01" />
+      </label>
+      <button type="submit" class="btn-primary">◇ Weave My Bracelet ◇</button>
+      <p id="formError" class="form-error" hidden>Please enter your name and a valid birthday.</p>
+    </form>
+  </section>
+
+  <!-- ============ LOADING (two beads born) ============ -->
+  <section id="loading" class="loading" hidden>
+    <div class="born">
+      <span class="bead bead-a spin"></span>
+      <span class="bead-link grow"></span>
+      <span class="bead bead-b spin-rev"></span>
+    </div>
+    <p class="loading-text">The universe is weaving your bracelet…</p>
+  </section>
+
+  <!-- ============ RESULT ============ -->
+  <section id="result" class="result" hidden>
+    <p class="result-eyebrow" id="resultName">This is you.</p>
+
+    <div class="dual">
+      <div class="dual-card element-card" id="elementCard">
+        <div class="dual-symbol" id="elementSymbol">🔥</div>
+        <div class="dual-label">YOUR ELEMENT</div>
+        <div class="dual-name" id="elementName">FIRE</div>
+        <div class="dual-key" id="elementKey">Will · Courage · Initiation</div>
+      </div>
+      <div class="dual-plus">+</div>
+      <div class="dual-card zodiac-card" id="zodiacCard">
+        <div class="dual-symbol" id="zodiacSymbol">♈</div>
+        <div class="dual-label">YOUR STARS</div>
+        <div class="dual-name" id="zodiacName">ARIES</div>
+        <div class="dual-key" id="zodiacKey">THE PIONEER</div>
+      </div>
+    </div>
+
+    <div class="title-block">
+      <div class="title-rule"></div>
+      <h2 class="sacred-title" id="sacredTitleEn">Blazing Vanguard</h2>
+      <p class="sacred-title-cn" id="sacredTitleCn">炽焰先锋</p>
+      <div class="title-rule"></div>
+    </div>
+
+    <p class="fusion" id="fusionText"></p>
+
+    <div class="mantra-block">
+      <p class="mantra-label">Your Mantra</p>
+      <p class="mantra" id="mantraText">"I ignite the path forward."</p>
+    </div>
+
+    <div class="stones-block">
+      <p class="stones-label">Your Power Stones</p>
+      <div class="stones" id="stonesWrap"></div>
+    </div>
+
+    <div class="product-block">
+      <p class="product-label">Claim your sacred bracelet</p>
+      <p class="product-sub">Handcrafted with intention · Made to order in 3–5 days · Sensitive-skin friendly</p>
+      <div class="tiers" id="tiersWrap"></div>
+    </div>
+
+    <div class="share-block">
+      <button class="btn-ghost" id="copyLinkBtn">Copy my universe link</button>
+      <button class="btn-ghost" id="restartBtn">↺ Begin again</button>
+    </div>
+  </section>
+
+  <!-- ============ STORY ============ -->
+  <section id="story" class="story">
+    <h2 class="section-title">The Twinstellar Story</h2>
+    <p class="story-text">Every soul is born with a twin star watching over them. One speaks the language of the cosmos — the zodiac constellations that have guided humanity for millennia. The other whispers the ancient wisdom of the Five Elements — metal, wood, water, fire, earth — that shape our inner universe. <strong>Two Beads. One Universe.</strong></p>
+    <p class="story-foot">Twinstellar is a sanctuary of intention. You do not buy a bracelet. The universe prepared one for you.</p>
+  </section>
+
+  <footer class="footer">
+    <div class="brand small">TWINSTELLAR</div>
+    <p>Two Beads. One Universe. · For entertainment & intention only.</p>
+  </footer>
+
+  <script>
+// Auto-generated from 五行星座罗盘系统-完整释义版.md
+// 60 sacred combinations (5 elements x 12 zodiac)
+window.TWIN_COMBOS = [{"element": "Fire", "zodiac": "Aries", "symbol": "♈", "title_cn": "炽焰先锋", "title_en": "Blazing Vanguard", "source_numbers": "1, 6", "mantra_en": "I ignite the path forward.", "stones": ["Ruby", "Red Jasper"], "fusion": "**Blazing Vanguard** fuses the primal spark of Fire with Aries' pioneering spirit. Your willpower ignites new beginnings with unstoppable force. Like a vanguard leading the charge, you illuminate paths that others follow."}, {"element": "Fire", "zodiac": "Taurus", "symbol": "♉", "title_cn": "烈焰筑梦者", "title_en": "Blazing Architect", "source_numbers": "1, 6", "mantra_en": "I forge enduring legacies.", "stones": ["Garnet", "Fire Opal"], "fusion": "**Blazing Architect** combines Fire's transformative power with Taurus' grounded stability. You channel passion into lasting creation. Your determination builds not just dreams, but empires that stand the test of time."}, {"element": "Fire", "zodiac": "Gemini", "symbol": "♊", "title_cn": "野火信使", "title_en": "Wildfire Messenger", "source_numbers": "1, 6", "mantra_en": "My words spark revolutions.", "stones": ["Carnelian", "Fire Agate"], "fusion": "**Wildfire Messenger** merges Fire's intensity with Gemini's communicative gift. Your words carry sparks that ignite minds and spread ideas like wildfire. Communication becomes your most powerful tool for transformation."}, {"element": "Fire", "zodiac": "Cancer", "symbol": "♋", "title_cn": "灰烬守护者", "title_en": "Ember Guardian", "source_numbers": "1, 6", "mantra_en": "I protect with fierce love.", "stones": ["Carnelian", "Red Jasper"], "fusion": "**Ember Guardian** unites Fire's protective warmth with Cancer's nurturing instincts. Beneath your tough exterior burns a fierce love. You protect what matters most with the strength of burning devotion."}, {"element": "Fire", "zodiac": "Leo", "symbol": "♌", "title_cn": "烈阳君王", "title_en": "Solar Sovereign", "source_numbers": "1, 6", "mantra_en": "I radiate divine authority.", "stones": ["Sunstone", "Golden Beryl"], "fusion": "**Solar Sovereign** is the ultimate fire-fire fusion. Pure radiance meets absolute charisma. You are a living sun, drawing all eyes and warming all hearts. Leadership flows through you as naturally as sunlight."}, {"element": "Fire", "zodiac": "Virgo", "symbol": "♍", "title_cn": "圣火净化者", "title_en": "Sacred Flame Purifier", "source_numbers": "1, 6", "mantra_en": "I burn away the false.", "stones": ["Citrine", "Amber"], "fusion": "**Sacred Flame Purifier** combines Fire's transformative burning with Virgo's perfection-seeking. You burn away all that is false to reveal the gold within. Healing happens through your fierce yet compassionate illumination."}, {"element": "Fire", "zodiac": "Libra", "symbol": "♎", "title_cn": "均衡烈焰", "title_en": "Balanced Blaze", "source_numbers": "1, 6", "mantra_en": "I illuminate through balance.", "stones": ["Fire Citrine", "Orange Sapphire"], "fusion": "**Balanced Blaze** merges Fire's dynamic energy with Libra's love of harmony. You create beauty through passionate expression while maintaining perfect equilibrium. Art and aesthetics become your spiritual practice."}, {"element": "Fire", "zodiac": "Scorpio", "symbol": "♏", "title_cn": "不灭凤焰", "title_en": "Eternal Phoenix Flame", "source_numbers": "1, 6", "mantra_en": "From ashes, I rise eternal.", "stones": ["Phoenix Opal", "Ruby"], "fusion": "**Eternal Phoenix Flame** is the most powerful fire combination. Like the phoenix, death cannot destroy you—only makes you stronger. You rise from every ashes, transformed and renewed. This is the energy of ultimate rebirth."}, {"element": "Fire", "zodiac": "Sagittarius", "symbol": "♐", "title_cn": "彗星骑士", "title_en": "Comet Rider", "source_numbers": "1, 6", "mantra_en": "I shoot for the infinite.", "stones": ["Fire Citrine", "Orange Sapphire"], "fusion": "**Comet Rider** combines Fire's upward thrust with Sagittarius' quest for truth. You are a shooting star, blazing across the sky of existence, seeking and illuminating truth wherever you roam."}, {"element": "Fire", "zodiac": "Capricorn", "symbol": "♑", "title_cn": "火山筑者", "title_en": "Volcanic Architect", "source_numbers": "1, 6", "mantra_en": "I shape mountains with vision.", "stones": ["Red Tiger's Eye", "Ruby in Matrix"], "fusion": "**Volcanic Architect** unites Fire's explosive power with Capricorn's master-building skills. Like a volcano building mountains, your ambition shapes reality. You create monuments that mark your vision."}, {"element": "Fire", "zodiac": "Aquarius", "symbol": "♒", "title_cn": "宇宙闪电", "title_en": "Cosmic Lightning", "source_numbers": "1, 6", "mantra_en": "I strike with electric truth.", "stones": ["Fire Citrine", "Sunstone"], "fusion": "**Cosmic Lightning** merges Fire's revolutionary spark with Aquarius' visionary innovation. You strike humanity with truths that electrify and transform. Revolutionary change is your birthright."}, {"element": "Fire", "zodiac": "Pisces", "symbol": "♓", "title_cn": "梦焰占卜者", "title_en": "Dreaming Flame Oracle", "source_numbers": "1, 6", "mantra_en": "I dream in sacred fire.", "stones": ["Fire Opal", "Mystic Quartz"], "fusion": "**Dreaming Flame Oracle** combines Fire's visionary power with Pisces' psychic depth. Your dreams don't just inspire—they burn with prophetic truth. You see futures through flames of intuition."}, {"element": "Earth", "zodiac": "Aries", "symbol": "♈", "title_cn": "铁血先驱", "title_en": "Iron Pioneer", "source_numbers": "2, 7", "mantra_en": "I forge paths through stone.", "stones": ["Hematite", "Black Tourmaline"], "fusion": "**Iron Pioneer** fuses Earth's grounded strength with Aries' pioneering drive. You lead not with empty words, but with unstoppable action. Your feet are planted firmly as you forge new paths forward."}, {"element": "Earth", "zodiac": "Taurus", "symbol": "♉", "title_cn": "大地智者", "title_en": "Earth Sage", "source_numbers": "2, 7", "mantra_en": "I am rooted in eternal truth.", "stones": ["Jade", "Green Tourmaline"], "fusion": "**Earth Sage** is the ultimate earth-earth combination. Unshakeable stability meets profound wisdom. Like ancient mountains, you embody truths that have stood since the beginning of time."}, {"element": "Earth", "zodiac": "Gemini", "symbol": "♊", "title_cn": "石语预言者", "title_en": "Stone Oracle", "source_numbers": "2, 7", "mantra_en": "I speak earth's ancient wisdom.", "stones": ["Green Agate", "Moss Agate"], "fusion": "**Stone Oracle** combines Earth's ancient wisdom with Gemini's communicative gift. Your words carry the weight of millennia. You speak truths that ground and stabilize all who hear them."}, {"element": "Earth", "zodiac": "Cancer", "symbol": "♋", "title_cn": "永恒港湾", "title_en": "Eternal Sanctuary", "source_numbers": "2, 7", "mantra_en": "I am the eternal sanctuary.", "stones": ["Yellow Jasper", "Tiger Eye"], "fusion": "**Eternal Sanctuary** unites Earth's nurturing power with Cancer's protective instincts. You are the ultimate safe haven, a place where all souls can rest, heal, and find home."}, {"element": "Earth", "zodiac": "Leo", "symbol": "♌", "title_cn": "金土君王", "title_en": "Golden Monarch", "source_numbers": "2, 7", "mantra_en": "I rule with golden wisdom.", "stones": ["Tiger Eye", "Yellow Jasper"], "fusion": "**Golden Monarch** merges Earth's wealth with Leo's royal energy. You build kingdoms of beauty and prosperity. Ruling comes naturally to you, grounded in practical wisdom and golden generosity."}, {"element": "Earth", "zodiac": "Virgo", "symbol": "♍", "title_cn": "水晶园丁", "title_en": "Crystal Gardener", "source_numbers": "2, 7", "mantra_en": "I cultivate divine order.", "stones": ["Clear Quartz", "Green Jade"], "fusion": "**Crystal Gardener** combines Earth's productive nature with Virgo's perfectionism. You cultivate order from chaos, transforming anything messy into crystalline perfection. Service becomes your sacred art."}, {"element": "Earth", "zodiac": "Libra", "symbol": "♎", "title_cn": "圣园和谐者", "title_en": "Sacred Grove Harmonizer", "source_numbers": "2, 7", "mantra_en": "I weave beauty into earth.", "stones": ["Pink Tourmaline", "Rose Quartz"], "fusion": "**Sacred Grove Harmonizer** unites Earth's natural beauty with Libra's aesthetic sense. You create spaces of perfect balance and harmony. Nature itself flows through your creative vision."}, {"element": "Earth", "zodiac": "Scorpio", "symbol": "♏", "title_cn": "黑曜深渊", "title_en": "Obsidian Depths", "source_numbers": "2, 7", "mantra_en": "I descend to rise.", "stones": ["Obsidian", "Black Onyx"], "fusion": "**Obsidian Depths** merges Earth's grounding power with Scorpio's transformative intensity. You descend into the darkest depths and emerge transformed. Power flows from your willingness to face the shadows."}, {"element": "Earth", "zodiac": "Sagittarius", "symbol": "♐", "title_cn": "大地漫游者", "title_en": "Earth Wanderer", "source_numbers": "2, 7", "mantra_en": "I seek truth beneath my feet.", "stones": ["Jasper", "Bronzite"], "fusion": "**Earth Wanderer** combines Earth's stability with Sagittarius' love of adventure. You seek truth through physical experience, walking the earth with purpose and philosophical wisdom."}, {"element": "Earth", "zodiac": "Capricorn", "symbol": "♑", "title_cn": "永恒基石", "title_en": "Eternal Foundation", "source_numbers": "2, 7", "mantra_en": "I build monuments to time.", "stones": ["Granite", "Petrified Wood"], "fusion": "**Eternal Foundation** is the master builder's ultimate combination. Mountains are stepping stones for you. You create monuments that will endure for ages, legacies carved in stone."}, {"element": "Earth", "zodiac": "Aquarius", "symbol": "♒", "title_cn": "智慧脉络", "title_en": "Living Circuit", "source_numbers": "2, 7", "mantra_en": "I ground heaven to earth.", "stones": ["Ajoite Quartz", "Eudialyte"], "fusion": "**Living Circuit** unites Earth's grounding wisdom with Aquarius' innovative energy. Your revolutionary ideas are firmly rooted in ancient truth. Innovation meets wisdom in perfect harmony."}, {"element": "Earth", "zodiac": "Pisces", "symbol": "♓", "title_cn": "沉睡灵石", "title_en": "Sleeping Stone", "source_numbers": "2, 7", "mantra_en": "I dream the earth's dreams.", "stones": ["Septarian", "Pietersite"], "fusion": "**Sleeping Stone** merges Earth's ancient stability with Pisces' dreamy wisdom. You channel collective dreams through your grounded vessel. Ancient wisdom flows through you to the modern world."}, {"element": "Water", "zodiac": "Aries", "symbol": "♈", "title_cn": "暴风指挥官", "title_en": "Storm Commander", "source_numbers": "3, 8", "mantra_en": "I command the storm within.", "stones": ["Aquamarine", "Blue Agate"], "fusion": "**Storm Commander** fuses Water's emotional depth with Aries' fearless action. You navigate life's storms with bold intensity. Emotional courage meets unstoppable drive in you."}, {"element": "Water", "zodiac": "Taurus", "symbol": "♉", "title_cn": "深海之根", "title_en": "Deep Sea Root", "source_numbers": "3, 8", "mantra_en": "I grow from emotional truth.", "stones": ["Blue Agate", "Sapphire"], "fusion": "**Deep Sea Root** combines Water's emotional wisdom with Taurus' practical nature. You build dreams from the wellspring of your soul. Creation flows from deep emotional truth."}, {"element": "Water", "zodiac": "Gemini", "symbol": "♊", "title_cn": "银色溪流", "title_en": "Silver Current", "source_numbers": "3, 8", "mantra_en": "I flow through all voices.", "stones": ["Blue Lace Agate", "Apophyllite"], "fusion": "**Silver Current** merges Water's flowing nature with Gemini's adaptive communication. You flow through life's currents with graceful adaptability. Words become streams of emotional intelligence."}, {"element": "Water", "zodiac": "Cancer", "symbol": "♋", "title_cn": "海洋之心", "title_en": "Ocean Heart", "source_numbers": "3, 8", "mantra_en": "I am the tide that nurtures.", "stones": ["Pearl", "Blue Moonstone"], "fusion": "**Ocean Heart** is the ultimate water-water combination. You are the tide that nurtures all of humanity. Deep emotional currents flow through you to touch every heart."}, {"element": "Water", "zodiac": "Leo", "symbol": "♌", "title_cn": "黄金潮汐", "title_en": "Golden Tide", "source_numbers": "3, 8", "mantra_en": "I rule from the heart ocean.", "stones": ["Aqua Aura", "Blue Moonstone"], "fusion": "**Golden Tide** unites Water's depth with Leo's radiant creativity. You lead from the heart ocean, guiding others with emotional intelligence that shines like gold."}, {"element": "Water", "zodiac": "Virgo", "symbol": "♍", "title_cn": "圣泉净化者", "title_en": "Sacred Spring Purifier", "source_numbers": "3, 8", "mantra_en": "I cleanse with sacred waters.", "stones": ["Selenite", "Apophyllite"], "fusion": "**Sacred Spring Purifier** combines Water's healing flow with Virgo's perfectionism. You wash away pain with compassionate waters. Emotional healing is your sacred gift."}, {"element": "Water", "zodiac": "Libra", "symbol": "♎", "title_cn": "月光天秤", "title_en": "Moonlight Scale", "source_numbers": "3, 8", "mantra_en": "I balance with lunar wisdom.", "stones": ["Kyanite", "Angelite"], "fusion": "**Moonlight Scale** merges Water's intuitive wisdom with Libra's balanced judgment. You create harmony by understanding the depths of all hearts. Balance emerges from emotional understanding."}, {"element": "Water", "zodiac": "Scorpio", "symbol": "♏", "title_cn": "深渊先知", "title_en": "Abyssal Oracle", "source_numbers": "3, 8", "mantra_en": "I dive into the forbidden depths.", "stones": ["Larimar", "Kyanite"], "fusion": "**Abyssal Oracle** is the most emotionally intense combination. You swim in the deepest waters and emerge with forbidden wisdom. Secrets that others fear, you transform into power."}, {"element": "Water", "zodiac": "Sagittarius", "symbol": "♐", "title_cn": "漂流星辰", "title_en": "Drifting Star", "source_numbers": "3, 8", "mantra_en": "I navigate by inner stars.", "stones": ["Blue Tourmaline", "Aqua Aura Quartz"], "fusion": "**Drifting Star** combines Water's emotional depth with Sagittarius' questing spirit. You navigate by inner stars, seeking truth across emotional seas. The dreamer-seeker lives within you."}, {"element": "Water", "zodiac": "Capricorn", "symbol": "♑", "title_cn": "冰川丰碑", "title_en": "Glacial Monument", "source_numbers": "3, 8", "mantra_en": "I build from frozen wisdom.", "stones": ["Dumortierite", "Sodalite"], "fusion": "**Glacial Monument** unites Water's patient flow with Capricorn's achievement drive. You build empires through deep emotional power and disciplined patience. Legacy flows from frozen wisdom."}, {"element": "Water", "zodiac": "Aquarius", "symbol": "♒", "title_cn": "电光潮汐", "title_en": "Electric Tide", "source_numbers": "3, 8", "mantra_en": "I electrify emotional evolution.", "stones": ["Aqua Aura", "Blue Sapphire"], "fusion": "**Electric Tide** merges Water's emotional current with Aquarius' revolutionary vision. You electrify emotional evolution, changing the world through progressive feelings."}, {"element": "Water", "zodiac": "Pisces", "symbol": "♓", "title_cn": "宇宙汪洋", "title_en": "Cosmic Ocean", "source_numbers": "3, 8", "mantra_en": "I am the ocean of all dreams.", "stones": ["Moonstone", "Spirit Quartz"], "fusion": "**Cosmic Ocean** is the ultimate psychic water combination. You are the ocean that contains all consciousness. Dreams flow through you as the universal current of all existence."}, {"element": "Metal", "zodiac": "Aries", "symbol": "♈", "title_cn": "泰坦白羊", "title_en": "Titan Ram", "source_numbers": "4, 9", "mantra_en": "I am forged for conquest.", "stones": ["Diamond", "White Gold"], "fusion": "**Titan Ram** fuses Metal's unbreakable strength with Aries' pioneering courage. You are the blade that cuts through all obstacles. Conquest is your nature, forged in fire and tempered to perfection."}, {"element": "Metal", "zodiac": "Taurus", "symbol": "♉", "title_cn": "镀金大地", "title_en": "Gilded Earth", "source_numbers": "4, 9", "mantra_en": "I manifest golden prosperity.", "stones": ["Imperial Topaz", "White Sapphire"], "fusion": "**Gilded Earth** combines Metal's refined precision with Taurus' appreciation of beauty. You create wealth—material and spiritual—with exacting mastery. Luxury meets lasting value in all you do."}, {"element": "Metal", "zodiac": "Gemini", "symbol": "♊", "title_cn": "水银信使", "title_en": "Mercury Messenger", "source_numbers": "4, 9", "mantra_en": "I speak with polished precision.", "stones": ["Mercury Silver", "Platinum"], "fusion": "**Mercury Messenger** merges Metal's precision with Gemini's quick wit. Your words are tools crafted to exact perfection. Communication becomes a precision instrument in your hands."}, {"element": "Metal", "zodiac": "Cancer", "symbol": "♋", "title_cn": "钢铸堡垒", "title_en": "Steel Fortress", "source_numbers": "4, 9", "mantra_en": "I protect with unbreakable will.", "stones": ["Steel", "Silver"], "fusion": "**Steel Fortress** unites Metal's protective strength with Cancer's nurturing heart. You are unbreakable defense wrapped around tender devotion. Nothing penetrates your protective shell."}, {"element": "Metal", "zodiac": "Leo", "symbol": "♌", "title_cn": "璀璨王冠", "title_en": "Radiant Crown", "source_numbers": "4, 9", "mantra_en": "I reign with sovereign light.", "stones": ["Diamond", "Platinum"], "fusion": "**Radiant Crown** combines Metal's precious nature with Leo's royal presence. You reign with sovereign authority, forged in pure precious energy. Crown and kingdom are yours by right."}, {"element": "Metal", "zodiac": "Virgo", "symbol": "♍", "title_cn": "圣器锻造者", "title_en": "Sacred Forge Master", "source_numbers": "4, 9", "mantra_en": "I refine until I gleam.", "stones": ["Platinum", "White Topaz"], "fusion": "**Sacred Forge Master** merges Metal's refinement with Virgo's perfectionism. Every detail is refined until it gleams with divine perfection. Precision is your spiritual practice."}, {"element": "Metal", "zodiac": "Libra", "symbol": "♎", "title_cn": "均衡天秤", "title_en": "Balanced Scale", "source_numbers": "4, 9", "mantra_en": "I weigh with perfect measure.", "stones": ["Diamond", "White Sapphire"], "fusion": "**Balanced Scale** unites Metal's precision with Libra's love of equilibrium. You weigh all things with perfect measure. Justice and harmony emerge from your elegant precision."}, {"element": "Metal", "zodiac": "Scorpio", "symbol": "♏", "title_cn": "大马士革重生", "title_en": "Damascus Rebirth", "source_numbers": "4, 9", "mantra_en": "I am tempered by trials.", "stones": ["Damascus Steel", "Rainbow Moonstone"], "fusion": "**Damascus Rebirth** combines Metal's transformative forging with Scorpio's regenerative power. Stronger with every death, tempered by every trial. The warrior's power increases through transformation."}, {"element": "Metal", "zodiac": "Sagittarius", "symbol": "♐", "title_cn": "弓手之荣", "title_en": "Archer's Honor", "source_numbers": "4, 9", "mantra_en": "I forge truth from experience.", "stones": ["Yellow Sapphire", "Imperial Topaz"], "fusion": "**Archer's Honor** merges Metal's truth-seeking with Sagittarius' philosophical wisdom. Truth is refined to pure gold in your philosophical forge. The warrior-philosopher seeks pure wisdom."}, {"element": "Metal", "zodiac": "Capricorn", "symbol": "♑", "title_cn": "大师锻造师", "title_en": "Master Smith", "source_numbers": "4, 9", "mantra_en": "I shape worlds with mastery.", "stones": ["Titanium", "Black Diamond"], "fusion": "**Master Smith** is the ultimate manifestation combination. You shape reality with master craftsmanship. World-building is your art, executed with metal precision."}, {"element": "Metal", "zodiac": "Aquarius", "symbol": "♒", "title_cn": "铂金未来", "title_en": "Platinum Future", "source_numbers": "4, 9", "mantra_en": "I forge tomorrow's vision.", "stones": ["Platinum", "White Diamond"], "fusion": "**Platinum Future** combines Metal's precious nature with Aquarius' visionary innovation. Your ideas are refined to their purest, most valuable form. Tomorrow is forged in your platinum vision."}, {"element": "Metal", "zodiac": "Pisces", "symbol": "♓", "title_cn": "水晶先知", "title_en": "Crystal Oracle", "source_numbers": "4, 9", "mantra_en": "I crystalize the dream realm.", "stones": ["Crystal Quartz", "Herkimer Diamond"], "fusion": "**Crystal Oracle** merges Metal's clarity with Pisces' psychic depth. You see through illusions to crystal truth beneath dreams. Psychic power crystallizes into pure clarity in you."}, {"element": "Wood", "zodiac": "Aries", "symbol": "♈", "title_cn": "狂野先驱", "title_en": "Wild Pioneer", "source_numbers": "5", "mantra_en": "I grow beyond all limits.", "stones": ["Green Tourmaline", "Moss Agate"], "fusion": "**Wild Pioneer** fuses Wood's explosive growth with Aries' pioneering spirit. You break through all barriers with living force. Growth is your nature, unstoppable and expanding."}, {"element": "Wood", "zodiac": "Taurus", "symbol": "♉", "title_cn": "古老橡树", "title_en": "Ancient Oak", "source_numbers": "5", "mantra_en": "I root deep to grow high.", "stones": ["Tree Agate", "Jade"], "fusion": "**Ancient Oak** combines Wood's deep roots with Taurus' lasting stability. Your projects grow from fertile determination. Like the oak, you grow slowly but reach to the sky."}, {"element": "Wood", "zodiac": "Gemini", "symbol": "♊", "title_cn": "风中舞苇", "title_en": "Dancing Reed", "source_numbers": "5", "mantra_en": "I bend without breaking.", "stones": ["Chrysoprase", "Peach Moonstone"], "fusion": "**Dancing Reed** merges Wood's flexibility with Gemini's adaptive nature. You bend without breaking, swaying gracefully through all challenges. Communication flows like wind through reeds."}, {"element": "Wood", "zodiac": "Cancer", "symbol": "♋", "title_cn": "治愈林", "title_en": "Healing Grove", "source_numbers": "5", "mantra_en": "I grow nurturing gardens.", "stones": ["Emerald", "Green Jade"], "fusion": "**Healing Grove** unites Wood's nurturing growth with Cancer's protective instincts. You are a sanctuary of living growth, nurturing all who rest beneath your branches."}, {"element": "Wood", "zodiac": "Leo", "symbol": "♌", "title_cn": "阳光华盖", "title_en": "Solar Canopy", "source_numbers": "5", "mantra_en": "I shade those who rest beneath.", "stones": ["Peridot", "Green Aventurine"], "fusion": "**Solar Canopy** combines Wood's generous shade with Leo's royal presence. You shade and protect all beneath you. Leadership is natural shade—nurturing those who follow."}, {"element": "Wood", "zodiac": "Virgo", "symbol": "♍", "title_cn": "翠绿炼金师", "title_en": "Verdant Alchemist", "source_numbers": "5", "mantra_en": "I heal through growth.", "stones": ["Green Calcite", "Unakite"], "fusion": "**Verdant Alchemist** merges Wood's transformative growth with Virgo's perfecting nature. You heal through growth, transforming through nurturing change. Growth becomes purification."}, {"element": "Wood", "zodiac": "Libra", "symbol": "♎", "title_cn": "禅意花园", "title_en": "Zen Garden", "source_numbers": "5", "mantra_en": "I cultivate perfect harmony.", "stones": ["Rose Quartz", "Green Tourmaline"], "fusion": "**Zen Garden** unites Wood's natural beauty with Libra's aesthetic harmony. You create living art, cultivating perfect balance through living design. Harmony grows naturally through you."}, {"element": "Wood", "zodiac": "Scorpio", "symbol": "♏", "title_cn": "再生之林", "title_en": "Regenerating Forest", "source_numbers": "5", "mantra_en": "I grow from my own ashes.", "stones": ["Seraphinite", "Mangano Calcite"], "fusion": "**Regenerating Forest** combines Wood's renewal with Scorpio's transformative power. Death becomes fertilizer for new life. Devastation transforms into seeds of new growth through you."}, {"element": "Wood", "zodiac": "Sagittarius", "symbol": "♐", "title_cn": "蜿蜒藤蔓", "title_en": "Winding Vine", "source_numbers": "5", "mantra_en": "I wind toward truth naturally.", "stones": ["Green Tourmaline", "Moss Agate"], "fusion": "**Winding Vine** merges Wood's organic growth with Sagittarius' questing spirit. Your quest grows like a vine, finding paths through any terrain. Exploration is your natural growth pattern."}, {"element": "Wood", "zodiac": "Capricorn", "symbol": "♑", "title_cn": "活的丰碑", "title_en": "Living Monument", "source_numbers": "5", "mantra_en": "I build living legacies.", "stones": ["Bumblebee Jasper", "Picture Jasper"], "fusion": "**Living Monument** unites Wood's dynamic growth with Capricorn's achievement drive. You build living legacies, empires that are alive and ever-expanding. Achievement grows organically through you."}, {"element": "Wood", "zodiac": "Aquarius", "symbol": "♒", "title_cn": "奇异新芽", "title_en": "Strange Sprout", "source_numbers": "5", "mantra_en": "I grow in strange ways.", "stones": ["Grandidierite", "Seraphinite"], "fusion": "**Strange Sprout** combines Wood's unconventional growth with Aquarius' revolutionary spirit. Your innovations grow in unexpected ways, changing everything through strange flourishing."}, {"element": "Wood", "zodiac": "Pisces", "symbol": "♓", "title_cn": "梦幻森林", "title_en": "Dreaming Forest", "source_numbers": "5", "mantra_en": "I dream in living green.", "stones": ["Green Fluorite", "Amazonite"], "fusion": "**Dreaming Forest** merges Wood's living growth with Pisces' psychic depth. Intuition manifests as a living garden of wisdom. Dreams grow within you like a forest of infinite possibility."}];
+
+</script>
+  <script>
+/* =========================================================
+   Twinstellar — MVP engine
+   - 五行 from birth-year heavenly stem
+   - 星座 from birth month/day
+   - lookup one of 60 sacred combinations
+   Fully client-side. No backend required.
+   ========================================================= */
+
+// ---- Element config (五行) ----
+const ELEMENTS = {
+  wood:  { name: 'WOOD',  cn: '木', symbol: '🌳', color: '#5DA271', key: 'Expansion · Renewal · Creativity' },
+  fire:  { name: 'FIRE',  cn: '火', symbol: '🔥', color: '#E8663B', key: 'Will · Courage · Initiation' },
+  earth: { name: 'EARTH', cn: '土', symbol: '🌍', color: '#C9A24B', key: 'Grounding · Patience · Creation' },
+  metal: { name: 'METAL', cn: '金', symbol: '⚪', color: '#C7CBD1', key: 'Structure · Mastery · Refinement' },
+  water: { name: 'WATER', cn: '水', symbol: '💧', color: '#4F86C6', key: 'Depth · Sensitivity · Dreams' },
+};
+
+// ---- Zodiac config (星座) ----
+const ZODIAC = {
+  aries:      { name: 'ARIES',      cn: '白羊座', symbol: '♈', arche: 'THE PIONEER' },
+  taurus:     { name: 'TAURUS',     cn: '金牛座', symbol: '♉', arche: 'THE BUILDER' },
+  gemini:     { name: 'GEMINI',     cn: '双子座', symbol: '♊', arche: 'THE MESSENGER' },
+  cancer:     { name: 'CANCER',     cn: '巨蟹座', symbol: '♋', arche: 'THE GUARDIAN' },
+  leo:        { name: 'LEO',        cn: '狮子座', symbol: '♌', arche: 'THE SOVEREIGN' },
+  virgo:      { name: 'VIRGO',      cn: '处女座', symbol: '♍', arche: 'THE PURIFIER' },
+  libra:      { name: 'LIBRA',      cn: '天秤座', symbol: '♎', arche: 'THE HARMONIZER' },
+  scorpio:    { name: 'SCORPIO',    cn: '天蝎座', symbol: '♏', arche: 'THE PHOENIX' },
+  sagittarius:{ name: 'SAGITTARIUS',cn: '射手座', symbol: '♐', arche: 'THE SEEKER' },
+  capricorn:  { name: 'CAPRICORN',  cn: '摩羯座', symbol: '♑', arche: 'THE ARCHITECT' },
+  aquarius:   { name: 'AQUARIUS',   cn: '水瓶座', symbol: '♒', arche: 'THE VISIONARY' },
+  pisces:     { name: 'PISCES',     cn: '双鱼座', symbol: '♓', arche: 'THE MYSTIC' },
+};
+
+// ---- Zodiac boundaries (month, day) — checked from late to early ----
+const BOUNDARIES = [
+  { m: 1,  d: 20, z: 'aquarius' },
+  { m: 2,  d: 19, z: 'pisces' },
+  { m: 3,  d: 21, z: 'aries' },
+  { m: 4,  d: 20, z: 'taurus' },
+  { m: 5,  d: 21, z: 'gemini' },
+  { m: 6,  d: 21, z: 'cancer' },
+  { m: 7,  d: 23, z: 'leo' },
+  { m: 8,  d: 23, z: 'virgo' },
+  { m: 9,  d: 23, z: 'libra' },
+  { m: 10, d: 23, z: 'scorpio' },
+  { m: 11, d: 22, z: 'sagittarius' },
+  { m: 12, d: 22, z: 'capricorn' },
+];
+
+// ---- Material tiers (configurable prices) ----
+const TIERS = [
+  { id: 'steel',  name: 'Surgical Steel', desc: 'Everyday · Hypoallergenic', price: 88 },
+  { id: 'silver', name: 'Sterling Silver', desc: 'Classic · Hand-finished',  price: 128 },
+  { id: 'gold',   name: '18K Gold Finish', desc: 'Premium · Limited',         price: 168 },
+];
+
+// ---- CHECKOUT: drop in your Stripe / Shopify / checkout link here ----
+// Leave as '' to use the built-in pre-order email capture.
+const CHECKOUT_BASE = '';
+
+// ---------- calculations ----------
+function calculateElement(year) {
+  const stem = (year - 4) % 10;
+  const order = ['wood', 'fire', 'earth', 'metal', 'water'];
+  return order[Math.floor(stem / 2)];
+}
+
+function calculateZodiac(month, day) {
+  for (const b of BOUNDARIES.slice().reverse()) {
+    if (month > b.m || (month === b.m && day >= b.day)) return b.z;
+  }
+  return 'capricorn';
+}
+
+function findCombo(element, zodiac) {
+  const list = window.TWIN_COMBOS || [];
+  return list.find(c => c.element.toLowerCase() === element && c.zodiac.toLowerCase() === zodiac) || null;
+}
+
+// ---------- rendering ----------
+const $ = (id) => document.getElementById(id);
+
+function renderResult(name, combo) {
+  const el = ELEMENTS[combo.element.toLowerCase()];
+  const zx = ZODIAC[combo.zodiac.toLowerCase()];
+
+  $('resultName').textContent = name ? `${name}, this is you.` : 'This is you.';
+
+  // element
+  $('elementCard').style.setProperty('--el-color', el.color);
+  $('elementSymbol').textContent = el.symbol;
+  $('elementName').textContent = el.name;
+  $('elementKey').textContent = el.key;
+
+  // zodiac
+  $('zodiacCard').style.setProperty('--zx-color', zx ? '#C9A962' : 'var(--gold)');
+  $('zodiacSymbol').textContent = zx.symbol;
+  $('zodiacName').textContent = zx.name;
+  $('zodiacKey').textContent = zx.arche;
+
+  // title + fusion + mantra
+  $('sacredTitleEn').textContent = combo.title_en;
+  $('sacredTitleCn').textContent = combo.title_cn;
+  $('fusionText').textContent = (combo.fusion || '').replace(/\*\*/g, '');
+  $('mantraText').textContent = `“${combo.mantra_en}”`;
+
+  // stones
+  $('stonesWrap').innerHTML = (combo.stones || [])
+    .map(s => `<span class="stone">${s}</span>`).join('');
+
+  // tiers
+  $('tiersWrap').innerHTML = TIERS.map(t => {
+    const href = CHECKOUT_BASE
+      ? `${CHECKOUT_BASE}?element=${combo.element}&zodiac=${combo.zodiac}&tier=${t.id}`
+      : `#claim:${combo.element}-${combo.zodiac}-${t.id}`;
+    return `<a class="tier" href="${href}" data-tier="${t.id}">
+      <div class="tier-name">${t.name}</div>
+      <div class="tier-desc">${t.desc}</div>
+      <div class="tier-price">$${t.price}</div>
+      <div class="tier-cta">◇ Claim ◇</div>
+    </a>`;
+  }).join('');
+
+  // wire share + restart
+  $('copyLinkBtn').onclick = () => copyLink(name, combo);
+  $('restartBtn').onclick = () => { location.hash = '#reveal'; location.reload(); };
+
+  // pre-order capture (when no checkout link configured)
+  document.querySelectorAll('.tier').forEach(a => {
+    a.addEventListener('click', (e) => {
+      if (!CHECKOUT_BASE && a.getAttribute('href').startsWith('#claim')) {
+        e.preventDefault();
+        preorderCapture(name, combo, a.dataset.tier);
+      }
+    });
+  });
+}
+
+function copyLink(name, combo) {
+  const url = `${location.origin}${location.pathname}?n=${encodeURIComponent(name || '')}&e=${combo.element}&z=${combo.zodiac}`;
+  navigator.clipboard?.writeText(url).then(() => {
+    $('copyLinkBtn').textContent = 'Link copied ✓';
+    setTimeout(() => ($('copyLinkBtn').textContent = 'Copy my universe link'), 2000);
+  });
+}
+
+function preorderCapture(name, combo, tierId) {
+  const tier = TIERS.find(t => t.id === tierId);
+  const subject = `Claim ${combo.title_en} (${tier.name})`;
+  const body = `Hi Twinstellar,%0D%0A%0D%0AI'd like to claim my sacred bracelet:%0D%0AName: ${encodeURIComponent(name || '—')}%0D%0ACombination: ${combo.title_en} (${combo.element} + ${combo.zodiac})%0D%0AMaterial: ${tier.name}%0D%0A%0D%0AThank you!`;
+  // store intent locally (for later automation / retargeting)
+  try {
+    const leads = JSON.parse(localStorage.getItem('twin_leads') || '[]');
+    leads.push({ name, element: combo.element, zodiac: combo.zodiac, tier: tierId, ts: Date.now() });
+    localStorage.setItem('twin_leads', JSON.stringify(leads));
+  } catch (_) {}
+  window.location.href = `mailto:hello@twinstellar.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+}
+
+// ---------- flow ----------
+function show(view) {
+  ['home', 'reveal', 'loading', 'result', 'story'].forEach(id => {
+    const el = $(id);
+    if (el) el.hidden = (id !== view);
+  });
+  if (view !== 'result') window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function runReveal(name, dateStr) {
+  const date = new Date(dateStr + 'T00:00:00');
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const element = calculateElement(year);
+  const zodiac = calculateZodiac(month, day);
+  const combo = findCombo(element, zodiac);
+  if (!combo) { alert('Something went wrong reading the stars. Please try again.'); return; }
+
+  show('loading');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(() => {
+    renderResult(name, combo);
+    show('result');
+    // deep link support
+    history.replaceState(null, '', `?n=${encodeURIComponent(name)}&e=${element}&z=${zodiac}`);
+  }, 2600);
+}
+
+// ---------- init ----------
+document.addEventListener('DOMContentLoaded', () => {
+  // starfield
+  initStars();
+
+  $('revealForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = $('nameInput').value.trim();
+    const birth = $('birthInput').value;
+    if (!name || !birth) {
+      $('formError').hidden = false;
+      return;
+    }
+    $('formError').hidden = true;
+    runReveal(name, birth);
+  });
+
+  // deep-link: ?n=&e=&z= → show result directly
+  const params = new URLSearchParams(location.search);
+  const e = params.get('e'), z = params.get('z'), n = params.get('n');
+  if (e && z) {
+    const combo = findCombo(e, z);
+    if (combo) { renderResult(n || '', combo); show('result'); return; }
+  }
+  show('home');
+});
+
+// ---------- starfield (lightweight canvas) ----------
+function initStars() {
+  const c = $('stars');
+  const ctx = c.getContext('2d');
+  let w, h, stars;
+  function resize() {
+    w = c.width = window.innerWidth;
+    h = c.height = window.innerHeight;
+    const n = Math.min(160, Math.floor(w * h / 9000));
+    stars = Array.from({ length: n }, () => ({
+      x: Math.random() * w, y: Math.random() * h,
+      r: Math.random() * 1.3 + 0.2, a: Math.random(), s: Math.random() * 0.02 + 0.004,
+    }));
+  }
+  function tick() {
+    ctx.clearRect(0, 0, w, h);
+    for (const st of stars) {
+      st.a += st.s;
+      const tw = 0.5 + 0.5 * Math.sin(st.a);
+      ctx.beginPath();
+      ctx.arc(st.x, st.y, st.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(231,205,149,${tw * 0.8})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  tick();
+}
+
+</script>
+</body>
+</html>
