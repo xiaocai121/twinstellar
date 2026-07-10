@@ -244,42 +244,6 @@ header, section, footer { position: relative; z-index: 1; }
 .reveal-form .btn-primary { margin-top: 8px; text-align: center; }
 .form-error { color: #e0795f; font-size: 13px; margin-top: 4px; }
 
-/* ---------- hero form ---------- */
-.hero-form {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 12px;
-  max-width: 600px;
-  margin: 28px auto 0;
-  padding: 20px;
-  border: 1px solid var(--line-soft);
-  border-radius: 20px;
-  background: rgba(20,20,26,0.45);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 20px 50px -20px rgba(0,0,0,0.6);
-}
-.hero-form .field {
-  flex: 1 1 150px;
-  text-align: left;
-  margin: 0;
-}
-.hero-form .field input {
-  padding: 12px 14px;
-  font-size: 15px;
-}
-.hero-form .btn-primary {
-  flex: 0 0 auto;
-  padding: 12px 22px;
-  margin: 0;
-  font-size: 13px;
-}
-.hero-form .form-error {
-  width: 100%;
-  text-align: center;
-  margin-top: 8px;
-}
 .dob { display: flex; flex-wrap: wrap; gap: 8px; }
 .dob-sel {
   flex: 1 1 80px;
@@ -425,8 +389,9 @@ header, section, footer { position: relative; z-index: 1; }
 .share-block { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
 
 /* ---------- story ---------- */
-.story-text { color: var(--ink-dim); font-weight: 300; max-width: 600px; margin: 0 auto 20px; }
-.story-foot { color: var(--gold-soft); font-style: italic; max-width: 520px; margin: 0 auto; }
+.story-text { color: #C9C7D2; font-weight: 300; font-size: 17px; line-height: 1.95; max-width: 660px; margin: 0 auto 26px; }
+.story-text strong { color: var(--gold-soft); font-weight: 500; letter-spacing: 0.02em; }
+.story-foot { color: var(--gold-soft); font-style: italic; font-size: 15px; max-width: 540px; margin: 0 auto; }
 
 /* ---------- footer ---------- */
 .footer {
@@ -490,7 +455,6 @@ header, section, footer { position: relative; z-index: 1; }
 #home.view-in .eyebrow    { animation: fadeUp .8s .15s both; }
 #home.view-in .hero-title { animation: fadeUp .95s .3s both; }
 #home.view-in .hero-sub   { animation: fadeUp .95s .5s both; }
-#home.view-in .hero-form  { animation: fadeUp .95s .7s both; }
 #home.view-in .hero-foot  { animation: fadeUp .8s .9s both; }
 
 /* loading — two beads converging into one star */
@@ -578,22 +542,6 @@ header, section, footer { position: relative; z-index: 1; }
     <h1 class="hero-title" id="heroTitle">Two Beads.<br /><span class="gold">One Universe.</span></h1>
     <p class="hero-sub" data-i18n="hero_sub">Every soul is born with a twin star. One speaks the language of the cosmos — your Zodiac. The other whispers the ancient wisdom of the Five Elements. Together they form your sacred bracelet.</p>
     <a href="#reveal" class="btn-primary" data-i18n="hero_cta">◇ Reveal My Universe ◇</a>
-    <form id="heroRevealForm" class="hero-form" novalidate>
-      <label class="field">
-        <span data-i18n="lbl_name">Your name</span>
-        <input id="heroNameInput" type="text" placeholder="e.g. Sarah" autocomplete="given-name" />
-      </label>
-      <label class="field">
-        <span data-i18n="lbl_birthday">Birthday</span>
-        <div class="dob" id="heroDob">
-          <select id="hMonth" class="dob-sel" aria-label="Month"></select>
-          <select id="hDay" class="dob-sel" aria-label="Day"></select>
-          <select id="hYear" class="dob-sel" aria-label="Year"></select>
-        </div>
-      </label>
-      <button type="submit" class="btn-primary" data-i18n="btn_weave">◇ Weave My Bracelet ◇</button>
-      <p id="heroFormError" class="form-error" hidden data-i18n="err_form">Please enter your name and a valid birthday.</p>
-    </form>
     <p class="hero-foot" data-i18n="hero_foot">No sign-up. Just your name and the day you arrived.</p>
   </section>
 
@@ -686,8 +634,9 @@ header, section, footer { position: relative; z-index: 1; }
 
   <!-- ============ STORY ============ -->
   <section id="story" class="story">
+    <p class="eyebrow" data-i18n="story_eyebrow">Our Philosophy</p>
     <h2 class="section-title" data-i18n="story_title">The Twinstellar Story</h2>
-    <p class="story-text" data-i18n="story_text">Every soul is born with a twin star watching over them. One speaks the language of the cosmos — the zodiac constellations that have guided humanity for millennia. The other whispers the ancient wisdom of the Five Elements — metal, wood, water, fire, earth — that shape our inner universe. <strong>Two Beads. One Universe.</strong></p>
+    <p class="story-text" data-i18n="story_text">Every soul is born beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements — metal, wood, water, fire, earth — shaping the universe within. Twinstellar reads the day you arrived and fuses these two voices into one of sixty sacred combinations, each with its own name, mantra, and power stones. You do not choose the bracelet. The universe prepared it for you — handcrafted with intention, made to order in three to five days, and yours alone. <strong>Two Beads. One Universe.</strong></p>
     <p class="story-foot" data-i18n="story_foot">Twinstellar is a sanctuary of intention. You do not buy a bracelet. The universe prepared one for you.</p>
   </section>
 
@@ -788,7 +737,8 @@ const I18N = {
     product_sub:'Handcrafted with intention · Made to order in 3–5 days · Sensitive-skin friendly',
     btn_copy:'Copy my universe link', btn_restart:'↺ Begin again', btn_claim:'Claim',
     story_title:'The Twinstellar Story',
-    story_text:'Every soul is born with a twin star watching over them. One speaks the language of the cosmos — the zodiac constellations that have guided humanity for millennia. The other whispers the ancient wisdom of the Five Elements — metal, wood, water, fire, earth — that shape our inner universe. <strong>Two Beads. One Universe.</strong>',
+    story_eyebrow:'Our Philosophy',
+    story_text:'Every soul is born beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements — metal, wood, water, fire, earth — shaping the universe within. Twinstellar reads the day you arrived and fuses these two voices into one of sixty sacred combinations, each with its own name, mantra, and power stones. You do not choose the bracelet. The universe prepared it for you — handcrafted with intention, made to order in three to five days, and yours alone. <strong>Two Beads. One Universe.</strong>',
     story_foot:'Twinstellar is a sanctuary of intention. You do not buy a bracelet. The universe prepared one for you.',
     footer_text:'Two Beads. One Universe. · For entertainment & intention only.',
     result_name:'This is you.',
@@ -812,7 +762,8 @@ const I18N = {
     product_sub:'用心手作 · 接单后 3–5 天制作 · 亲肤不过敏',
     btn_copy:'复制我的宇宙链接', btn_restart:'↺ 重新开始', btn_claim:'认领',
     story_title:'Twinstellar 的故事',
-    story_text:'每个灵魂降生时都伴着一颗双生星守护。一颗说宇宙的语言——千万年来指引人类的黄道星座；另一颗低语五行的古老智慧——金木水火土，塑造我们内在的小宇宙。<strong>双珠，一个宇宙</strong>',
+    story_eyebrow:'品牌哲思',
+    story_text:'每个灵魂降生时，都伴着一颗双生星——一颗说宇宙的语言，那是为你而亮的星座；另一颗低语五行的古老智慧，金木水火土，塑造你内在的小宇宙。Twinstellar 读取你来到世间的那一天，把这两种声音，熔铸成六十种神圣组合之一：每一种都有专属称号、真言与能量石。你不必挑选手链——是宇宙早已为你备好：用心手作，按单定制，独属于你。<strong>双珠，一个宇宙</strong>',
     story_foot:'Twinstellar 是一处心愿的圣所。你不是在购买一条手链，是宇宙早已为你备好了一条。',
     footer_text:'双珠 · 一个宇宙 · 仅作娱乐与心愿寄托之用',
     result_name:'这就是你。',
@@ -1037,7 +988,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const ht = document.getElementById('heroTitle');
     if (ht) ht.innerHTML = I18N[lang].hero_title;
-    populateDob('heroDob', 'h', lang);
     populateDob('revealDob', 'r', lang);
     const sw = document.getElementById('langSwitch');
     if (sw) sw.textContent = lang === 'zh' ? 'EN' : '中文';
@@ -1053,7 +1003,6 @@ document.addEventListener('DOMContentLoaded', () => {
   applyLang(LANG);
 
   bindForm('revealForm', 'nameInput', 'r', 'formError');
-  bindForm('heroRevealForm', 'heroNameInput', 'h', 'heroFormError');
   document.getElementById('langSwitch').addEventListener('click', () => {
     applyLang(LANG === 'zh' ? 'en' : 'zh');
   });
