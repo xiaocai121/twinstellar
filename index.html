@@ -11,14 +11,17 @@
   <style>
   [hidden] { display: none !important; }
 :root {
-  --bg: #0D0D0F;
-  --bg-2: #14141a;
-  --panel: #1F1F25;
-  --gold: #C9A962;
-  --gold-soft: #e7cd95;
-  --ink: #EDEDF0;
+  --bg: #08080B;
+  --bg-2: #101017;
+  --panel: rgba(28, 28, 35, 0.55);
+  --gold: #CBA35B;
+  --gold-hi: #F2E0AE;
+  --gold-soft: #E6D2A0;
+  --gold-grad: linear-gradient(135deg, #F4E3B4 0%, #D8B675 42%, #B58A2E 78%, #E7CE92 100%);
+  --ink: #F1F0F4;
   --ink-dim: #9a9aa6;
-  --line: rgba(201, 169, 98, 0.28);
+  --line: rgba(203, 163, 91, 0.30);
+  --line-soft: rgba(203, 163, 91, 0.16);
   --fire: #E8663B;
   --earth: #C9A24B;
   --water: #4F86C6;
@@ -48,6 +51,11 @@ body {
   pointer-events: none;
 }
 
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(125% 105% at 50% 42%, transparent 55%, rgba(0,0,0,0.55) 100%);
+}
+
 header, section, footer { position: relative; z-index: 1; }
 
 /* ---------- top bar ---------- */
@@ -55,27 +63,29 @@ header, section, footer { position: relative; z-index: 1; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px 28px;
+  padding: 24px 30px;
   max-width: 1100px;
   margin: 0 auto;
 }
 .brand {
   font-family: 'Cormorant Garamond', serif;
-  letter-spacing: 0.42em;
+  letter-spacing: 0.46em;
   font-weight: 600;
   font-size: 20px;
-  color: var(--gold);
+  background: var(--gold-grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
 }
 .brand.small { font-size: 16px; }
 .topbar nav a {
   color: var(--ink-dim);
   text-decoration: none;
-  margin-left: 22px;
+  margin-left: 26px;
   font-size: 13px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   transition: color .25s;
 }
-.topbar nav a:hover { color: var(--gold); }
+.topbar nav a:hover { color: var(--gold-soft); }
 
 /* ---------- hero ---------- */
 .hero {
@@ -99,11 +109,15 @@ header, section, footer { position: relative; z-index: 1; }
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
-  font-size: clamp(44px, 9vw, 86px);
-  line-height: 1.05;
-  letter-spacing: 0.01em;
+  font-size: clamp(52px, 10vw, 98px);
+  line-height: 1.02;
+  letter-spacing: 0.015em;
 }
-.gold { color: var(--gold); }
+.gold {
+  background: var(--gold-grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
 .hero-sub {
   margin: 26px auto 34px;
   max-width: 540px;
@@ -131,59 +145,68 @@ header, section, footer { position: relative; z-index: 1; }
   height: 46px;
   border-radius: 50%;
   display: inline-block;
-  box-shadow: 0 0 26px rgba(201,169,98,0.45), inset 0 0 12px rgba(255,255,255,0.25);
+  box-shadow: 0 0 30px rgba(203,163,91,0.5), inset 0 0 14px rgba(255,255,255,0.3);
 }
-.bead-a { background: radial-gradient(circle at 35% 30%, #fff, var(--gold) 60%, #8a6f2e); }
-.bead-b { background: radial-gradient(circle at 35% 30%, #fff, #6b7fb0 55%, #2c3a63); }
+.bead-a { background: radial-gradient(circle at 35% 30%, #fff, var(--gold) 58%, #8a6f2e); }
+.bead-b { background: radial-gradient(circle at 35% 30%, #fff, #7d90c4 55%, #2c3a63); }
 .bead-link {
   width: 56px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), #6b7fb0);
-  opacity: 0.8;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), #7d90c4, transparent);
+  opacity: 0.85;
 }
 
 /* ---------- buttons ---------- */
 .btn-primary {
   display: inline-block;
-  background: linear-gradient(135deg, var(--gold), #b08d3f);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #E9CF94 0%, var(--gold) 48%, #A87E2C 100%);
   color: #1a1408;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.12em;
   font-size: 14px;
-  padding: 15px 30px;
+  padding: 15px 32px;
   border: none;
   border-radius: 40px;
   cursor: pointer;
   text-decoration: none;
-  transition: transform .2s, box-shadow .2s;
-  box-shadow: 0 10px 30px rgba(201,169,98,0.28);
+  transition: transform .25s, box-shadow .25s;
+  box-shadow: 0 10px 30px rgba(203,163,91,0.30);
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(201,169,98,0.4); }
+.btn-primary::after {
+  content: ""; position: absolute; top: 0; left: -70%; width: 45%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+  transform: skewX(-20deg); transition: left .65s ease;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 42px rgba(203,163,91,0.42); }
+.btn-primary:hover::after { left: 130%; }
 .btn-ghost {
-  background: transparent;
-  border: 1px solid var(--line);
+  background: rgba(28,28,35,0.35);
+  border: 1px solid var(--line-soft);
   color: var(--gold-soft);
   padding: 11px 20px;
   border-radius: 30px;
   cursor: pointer;
   font-size: 13px;
-  letter-spacing: 0.04em;
-  transition: border-color .25s, color .25s;
+  letter-spacing: 0.08em;
+  transition: border-color .25s, color .25s, background .25s;
 }
-.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); background: rgba(203,163,91,0.08); }
 
 /* ---------- reveal form ---------- */
 .reveal, .result, .story, .loading {
-  max-width: 720px;
+  max-width: 740px;
   margin: 0 auto;
-  padding: 70px 24px;
+  padding: 88px 24px;
   text-align: center;
 }
 .section-title {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
-  font-size: clamp(28px, 5vw, 42px);
-  margin-bottom: 12px;
+  font-size: clamp(30px, 5vw, 44px);
+  letter-spacing: 0.01em;
+  margin-bottom: 14px;
 }
 .section-sub { color: var(--ink-dim); font-weight: 300; margin-bottom: 36px; }
 .reveal-form {
@@ -202,8 +225,9 @@ header, section, footer { position: relative; z-index: 1; }
   color: var(--gold);
 }
 .field input {
-  background: var(--panel);
-  border: 1px solid var(--line);
+  background: rgba(28,28,35,0.5);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--line-soft);
   border-radius: 12px;
   padding: 14px 16px;
   color: var(--ink);
@@ -214,7 +238,7 @@ header, section, footer { position: relative; z-index: 1; }
 .field input:focus {
   outline: none;
   border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(201,169,98,0.15);
+  box-shadow: 0 0 0 3px rgba(203,163,91,0.16), inset 0 1px 0 rgba(255,255,255,0.04);
 }
 .field input::-webkit-calendar-picker-indicator { filter: invert(0.7) sepia(1) saturate(3) hue-rotate(5deg); }
 .reveal-form .btn-primary { margin-top: 8px; text-align: center; }
@@ -229,10 +253,12 @@ header, section, footer { position: relative; z-index: 1; }
   gap: 12px;
   max-width: 600px;
   margin: 28px auto 0;
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--panel);
+  padding: 20px;
+  border: 1px solid var(--line-soft);
+  border-radius: 20px;
+  background: rgba(20,20,26,0.45);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 20px 50px -20px rgba(0,0,0,0.6);
 }
 .hero-form .field {
   flex: 1 1 150px;
@@ -258,15 +284,16 @@ header, section, footer { position: relative; z-index: 1; }
 .dob-sel {
   flex: 1 1 80px;
   min-width: 64px;
-  background: var(--panel);
-  border: 1px solid var(--line);
+  background: rgba(28,28,35,0.5);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--line-soft);
   border-radius: 10px;
   padding: 12px 10px;
   color: var(--ink);
   font-size: 14px;
   font-family: inherit;
 }
-.dob-sel:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,169,98,0.15); }
+.dob-sel:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(203,163,91,0.16); }
 
 /* ---------- loading ---------- */
 .loading { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
@@ -290,15 +317,17 @@ header, section, footer { position: relative; z-index: 1; }
   margin-bottom: 38px;
 }
 .dual-card {
-  background: var(--panel);
-  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(30,30,37,0.72), rgba(18,18,24,0.55));
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--line-soft);
   border-radius: 18px;
   padding: 26px 30px;
   min-width: 180px;
-  transition: border-color .3s;
+  transition: border-color .3s, transform .3s;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
 }
-.dual-card.element-card { box-shadow: 0 0 30px -8px var(--el-color, var(--gold)); border-color: var(--el-color, var(--line)); }
-.dual-card.zodiac-card { box-shadow: 0 0 30px -8px var(--zx-color, var(--gold)); border-color: var(--zx-color, var(--line)); }
+.dual-card.element-card { box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 0 34px -10px var(--el-color, var(--gold)); border-color: var(--el-color, var(--line)); }
+.dual-card.zodiac-card { box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 0 34px -10px var(--zx-color, var(--gold)); border-color: var(--zx-color, var(--line)); }
 .dual-symbol { font-size: 40px; line-height: 1; margin-bottom: 12px; }
 .dual-label { letter-spacing: 0.24em; font-size: 11px; color: var(--ink-dim); }
 .dual-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; margin: 6px 0; }
@@ -307,16 +336,25 @@ header, section, footer { position: relative; z-index: 1; }
 
 .title-block { margin: 10px 0 30px; }
 .title-rule {
+  position: relative;
   height: 1px;
-  width: 70%;
-  margin: 18px auto;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  width: 64%;
+  margin: 20px auto;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+.title-rule::after {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  width: 6px; height: 6px; transform: translate(-50%,-50%) rotate(45deg);
+  background: var(--gold-grad); border-radius: 1px;
+  box-shadow: 0 0 10px rgba(203,163,91,0.5);
 }
 .sacred-title {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
-  font-size: clamp(32px, 7vw, 56px);
-  color: var(--gold);
+  font-size: clamp(34px, 7vw, 60px);
+  background: var(--gold-grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
   letter-spacing: 0.01em;
 }
 .sacred-title-cn { font-size: 18px; color: var(--ink-dim); letter-spacing: 0.3em; margin-top: 6px; }
@@ -324,7 +362,9 @@ header, section, footer { position: relative; z-index: 1; }
   font-family: 'Noto Serif SC', 'Cormorant Garamond', 'PingFang SC', 'Microsoft YaHei', serif;
   font-weight: 600;
   font-size: clamp(30px, 7vw, 50px);
-  color: var(--gold);
+  background: var(--gold-grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
   letter-spacing: 0.1em;
   margin-top: 0;
 }
@@ -350,8 +390,9 @@ header, section, footer { position: relative; z-index: 1; }
 
 .stones { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 6px; }
 .stone {
-  background: var(--panel);
-  border: 1px solid var(--line);
+  background: rgba(28,28,35,0.55);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--line-soft);
   border-radius: 30px;
   padding: 10px 20px;
   font-size: 14px;
@@ -362,18 +403,20 @@ header, section, footer { position: relative; z-index: 1; }
 .product-sub { color: #6c6c78; font-size: 12px; margin: 10px 0 26px; }
 .tiers { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 .tier {
-  background: var(--panel);
-  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(30,30,37,0.7), rgba(18,18,24,0.5));
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--line-soft);
   border-radius: 16px;
   padding: 22px 18px;
   width: 168px;
   cursor: pointer;
-  transition: transform .2s, border-color .2s, background .2s;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
   text-decoration: none;
   color: inherit;
   display: block;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
 }
-.tier:hover { transform: translateY(-4px); border-color: var(--gold); }
+.tier:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 16px 36px -14px rgba(203,163,91,0.35); }
 .tier .tier-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; }
 .tier .tier-desc { font-size: 11px; color: var(--ink-dim); margin: 6px 0 14px; min-height: 28px; }
 .tier .tier-price { color: var(--gold); font-size: 22px; font-weight: 600; letter-spacing: 0.02em; }
@@ -398,16 +441,17 @@ header, section, footer { position: relative; z-index: 1; }
 
 /* ---------- language switch ---------- */
 .lang-switch {
-  background: transparent;
-  border: 1px solid var(--line);
+  background: rgba(28,28,35,0.4);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--line-soft);
   color: var(--gold-soft);
   border-radius: 30px;
-  padding: 6px 14px;
+  padding: 6px 15px;
   font-size: 12px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   cursor: pointer;
   font-family: inherit;
-  transition: border-color .2s, color .2s;
+  transition: border-color .2s, color .2s, background .2s;
 }
 .lang-switch:hover { border-color: var(--gold); color: var(--gold); }
 @media (max-width: 520px) {
@@ -752,7 +796,7 @@ const I18N = {
   zh: {
     nav_home:'首页', nav_reveal:'揭晓', nav_story:'故事',
     eyebrow:'五行 × 星座',
-    hero_title:'两珠·<br><span class="gold">一个宇宙。</span>',
+    hero_title:'双珠<br><span class="gold">一个宇宙</span>',
     hero_sub:'每个灵魂降生时都伴着一颗双生星。一颗说宇宙的语言——你的星座；另一颗低语五行的古老智慧——金木水火土，塑造我们内在的小宇宙。它们共同织成你专属的神圣手链。',
     hero_cta:'◇ 揭晓我的宇宙 ◇',
     lbl_name:'你的名字', lbl_birthday:'生日',
@@ -768,9 +812,9 @@ const I18N = {
     product_sub:'用心手作 · 接单后 3–5 天制作 · 亲肤不过敏',
     btn_copy:'复制我的宇宙链接', btn_restart:'↺ 重新开始', btn_claim:'认领',
     story_title:'Twinstellar 的故事',
-    story_text:'每个灵魂降生时都伴着一颗双生星守护。一颗说宇宙的语言——千万年来指引人类的黄道星座；另一颗低语五行的古老智慧——金木水火土，塑造我们内在的小宇宙。<strong>两珠·一个宇宙。</strong>',
+    story_text:'每个灵魂降生时都伴着一颗双生星守护。一颗说宇宙的语言——千万年来指引人类的黄道星座；另一颗低语五行的古老智慧——金木水火土，塑造我们内在的小宇宙。<strong>双珠，一个宇宙</strong>',
     story_foot:'Twinstellar 是一处心愿的圣所。你不是在购买一条手链，是宇宙早已为你备好了一条。',
-    footer_text:'两珠 · 一个宇宙 · 仅作娱乐与心愿寄托之用。',
+    footer_text:'双珠 · 一个宇宙 · 仅作娱乐与心愿寄托之用',
     result_name:'这就是你。',
   },
 };
