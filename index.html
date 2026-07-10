@@ -388,6 +388,29 @@ header, section, footer { position: relative; z-index: 1; }
 
 .share-block { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
 
+/* ---------- waitlist (L1) ---------- */
+.waitlist-block { margin: 30px auto 22px; max-width: 460px; }
+.waitlist-label { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.waitlist-sub { color: #6c6c78; font-size: 12px; margin-bottom: 14px; }
+.waitlist-row { display: flex; gap: 10px; justify-content: center; }
+.waitlist-row input[type=email] {
+  background: rgba(28,28,35,0.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--line-soft); border-radius: 8px; padding: 10px 14px; color: var(--ink);
+  font-size: 14px; max-width: 220px; flex: 1;
+}
+.waitlist-confirm { color: var(--gold-soft); font-size: 13px; margin-top: 12px; }
+
+/* ---------- subscription (L4) ---------- */
+.subscription-block { margin: 26px auto 10px; max-width: 520px; }
+.sub-toggle {
+  background: none; border: 1px solid var(--line-soft); border-radius: 30px;
+  padding: 10px 22px; color: var(--gold-soft); font-size: 13px; cursor: pointer;
+  letter-spacing: 0.06em; transition: border-color .25s, color .25s;
+}
+.sub-toggle:hover { border-color: var(--gold); color: var(--gold); }
+.sub-detail { margin-top: 14px; color: #8c8c96; font-size: 13px; line-height: 1.7; }
+.sub-detail .btn-ghost { margin-top: 12px; }
+
 /* ---------- story ---------- */
 .story-text { color: #CFCDD8; font-weight: 300; font-size: 17.5px; line-height: 2.05; max-width: 680px; margin: 0 auto 30px; text-align: justify; text-justify: inter-character; letter-spacing: 0.01em; }
 .story-text::first-letter { font-family: 'Cormorant Garamond', 'Noto Serif SC', serif; float: left; font-size: 64px; line-height: 0.82; font-weight: 600; padding: 6px 14px 0 0; color: var(--gold); background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
@@ -613,6 +636,17 @@ header, section, footer { position: relative; z-index: 1; }
       <p class="mantra" id="mantraText">"I ignite the path forward."</p>
     </div>
 
+    <!-- L1: waitlist -->
+    <div class="waitlist-block" id="waitlistBlock">
+      <p class="waitlist-label" data-i18n="lbl_waitlist">Be the first to know</p>
+      <p class="waitlist-sub" data-i18n="waitlist_sub">Join the waitlist — no obligation, just a gentle note when your bracelet is ready.</p>
+      <div class="waitlist-row">
+        <input id="waitlistEmail" type="email" data-i18n-placeholder="waitlist_placeholder" placeholder="your@email.com" />
+        <button id="waitlistBtn" class="btn-ghost" data-i18n="waitlist_btn">◇ Notify Me ◇</button>
+      </div>
+      <p id="waitlistConfirm" class="waitlist-confirm" hidden data-i18n="waitlist_done">You're on the list. The universe will reach you.</p>
+    </div>
+
     <div class="stones-block">
       <p class="stones-label" data-i18n="lbl_stones">Your Power Stones</p>
       <div class="stones" id="stonesWrap"></div>
@@ -624,8 +658,20 @@ header, section, footer { position: relative; z-index: 1; }
       <div class="tiers" id="tiersWrap"></div>
     </div>
 
+    <!-- L4: subscription (collapsed by default) -->
+    <div class="subscription-block" id="subBlock">
+      <button class="sub-toggle" id="subToggle" type="button">
+        <span data-i18n="sub_teaser">◇ A deeper journey, every month ◇</span>
+      </button>
+      <div class="sub-detail" id="subDetail" hidden>
+        <p data-i18n="sub_desc">Each month: a personalized reading based on your cosmic signature, a ritual card, and a small crystal — delivered to your door.</p>
+        <a class="btn-ghost" id="subCta" data-i18n="sub_cta">◇ Begin the Journey ($9/mo) ◇</a>
+      </div>
+    </div>
+
     <div class="share-block">
       <button class="btn-ghost" id="copyLinkBtn" data-i18n="btn_copy">Copy my universe link</button>
+      <button class="btn-ghost" id="certBtn" data-i18n="btn_cert">◇ Download My Certificate ◇</button>
       <button class="btn-ghost" id="restartBtn" data-i18n="btn_restart">↺ Begin again</button>
     </div>
   </section>
@@ -739,6 +785,18 @@ const I18N = {
     story_foot:'Twinstellar is a sanctuary of intention. You do not buy a bracelet. The universe prepared one for you.',
     footer_text:'Two Beads. One Universe. · For intention and reflection — not a substitute for medical or spiritual counsel.',
     result_name:'This is you.',
+    // L1 waitlist
+    lbl_waitlist:'Be the first to know',
+    waitlist_sub:'Join the waitlist — no obligation, just a gentle note when your bracelet is ready.',
+    waitlist_placeholder:'your@email.com',
+    waitlist_btn:'◇ Notify Me ◇',
+    waitlist_done:'You\'re on the list. The universe will reach you.',
+    // L2 certificate
+    btn_cert:'◇ Download My Certificate ◇',
+    // L4 subscription
+    sub_teaser:'◇ A deeper journey, every month ◇',
+    sub_desc:'Each month: a personalized reading based on your cosmic signature, a ritual card, and a small crystal — delivered to your door.',
+    sub_cta:'◇ Begin the Journey ($9/mo) ◇',
   },
   zh: {
     nav_home:'首页', nav_reveal:'揭晓', nav_story:'故事',
@@ -763,6 +821,18 @@ const I18N = {
     story_foot:'Twinstellar 是一处心愿的圣所。你不是在购买一条手链，是宇宙早已为你备好了一条。',
     footer_text:'双珠·宇宙 · 用于心愿与自省，并非医疗或专业建议的替代。',
     result_name:'这就是你。',
+    // L1 waitlist
+    lbl_waitlist:'抢先知晓',
+    waitlist_sub:'加入候补名单——无需承诺，手链备好时轻声告知。',
+    waitlist_placeholder:'your@email.com',
+    waitlist_btn:'◇ 通知我 ◇',
+    waitlist_done:'你已在名单上。宇宙会找到你。',
+    // L2 certificate
+    btn_cert:'◇ 下载我的证书 ◇',
+    // L4 subscription
+    sub_teaser:'◇ 每月，一段更深的旅程 ◇',
+    sub_desc:'每月：基于你宇宙签名的专属解读、一张仪式卡、一颗小水晶——送到你手中。',
+    sub_cta:'◇ 开始旅程（$9/月） ◇',
   },
 };
 let LANG = 'en';
@@ -976,6 +1046,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const key = el.getAttribute('data-i18n');
       if (I18N[lang][key] != null) el.innerHTML = I18N[lang][key];
     });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (I18N[lang][key] != null) el.placeholder = I18N[lang][key];
+    });
     const ht = document.getElementById('heroTitle');
     if (ht) ht.innerHTML = I18N[lang].hero_title;
     populateDob('revealDob', 'r', lang);
@@ -1012,6 +1086,84 @@ document.addEventListener('DOMContentLoaded', () => {
     const combo = findCombo(e, z);
     if (combo) { renderResult(combo); show('result'); return; }
   }
+  // L1 waitlist: store email in localStorage
+  const wb = $('waitlistBlock');
+  if (wb) {
+    // restore saved state
+    const savedEmail = (() => { try { return localStorage.getItem('twin_waitlist_email'); } catch (_) { return ''; } })();
+    if (savedEmail) {
+      const ei = $('waitlistEmail'), wc = $('waitlistConfirm'), wbtn = $('waitlistBtn');
+      if (ei) ei.value = savedEmail;
+      if (wc) wc.hidden = false;
+      if (wbtn) wbtn.disabled = true;
+    }
+    $('waitlistBtn').addEventListener('click', () => {
+      const email = $('waitlistEmail').value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+      try { localStorage.setItem('twin_waitlist_email', email); } catch (_) {}
+      $('waitlistConfirm').hidden = false;
+      $('waitlistBtn').disabled = true;
+      // also store in leads
+      try {
+        const leads = JSON.parse(localStorage.getItem('twin_leads') || '[]');
+        leads.push({ email, type: 'waitlist', ts: Date.now() });
+        localStorage.setItem('twin_leads', JSON.stringify(leads));
+      } catch (_) {}
+    });
+  }
+
+  // L2 certificate: generate browser-side download
+  const cb = $('certBtn');
+  if (cb) {
+    cb.addEventListener('click', () => {
+      if (!lastResult || !lastResult.combo) return;
+      const combo = lastResult.combo;
+      const zh = LANG === 'zh';
+      const title = zh ? combo.title_cn : combo.title_en;
+      const mantra = zh ? (combo.mantra_cn || combo.mantra_en) : combo.mantra_en;
+      const stones = (combo.stones || []).join(', ');
+      const element = combo.element;
+      const zodiac = combo.zodiac;
+
+      // build a printable certificate via a temporary window
+      const w = window.open('', '_blank', 'width=800,height=1050');
+      if (!w) { alert(zh ? '请允许弹窗以生成证书。' : 'Please allow pop-ups to generate your certificate.'); return; }
+      w.document.write(`<!DOCTYPE html>
+<html lang="${zh?'zh-CN':'en'}"><head><meta charset="UTF-8"><title>${title}</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#08080B; color:#E4E2EE; font-family:'Cormorant Garamond','Noto Serif SC',serif;
+         display:flex; align-items:center; justify-content:center; min-height:100vh; }
+  .cert { max-width:620px; padding:50px 40px; text-align:center; border:1px solid rgba(203,163,91,0.3); border-radius:16px; }
+  .cert .brand { font-size:12px; letter-spacing:0.3em; color:#CBA35B; text-transform:uppercase; margin-bottom:24px; }
+  .cert .title { font-size:38px; font-weight:600; background:linear-gradient(135deg,#F4E3B4,#D8B675,#B58A2E,#E7CE92);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:12px; }
+  .cert .sub { font-size:14px; color:#8c8c96; margin-bottom:28px; }
+  .cert .mantra { font-style:italic; font-size:22px; color:#E4E2EE; margin-bottom:20px; }
+  .cert .stones { font-size:14px; color:#CBA35B; margin-bottom:28px; }
+  .cert .signature { font-size:13px; color:#6c6c78; border-top:1px solid rgba(203,163,91,0.15); padding-top:18px; }
+</style></head><body>
+<div class="cert">
+  <div class="brand">TWINSTELLAR</div>
+  <div class="title">${title}</div>
+  <div class="sub">${element} &times; ${zodiac} &mdash; ${zh?'六十种神圣组合之一':'one of sixty sacred combinations'}</div>
+  <div class="mantra">${zh?'「':'"' }${mantra}${zh?'」':'"' }</div>
+  <div class="stones">${zh?'能量石':'Power Stones'}: ${stones}</div>
+  <div class="signature">${zh?'双珠·宇宙':'Two Beads. One Universe.'}</div>
+</div></body></html>`);
+      w.document.close();
+      setTimeout(() => w.print(), 600);
+    });
+  }
+
+  // L4 subscription toggle
+  const st = $('subToggle'), sd = $('subDetail');
+  if (st && sd) {
+    st.addEventListener('click', () => {
+      sd.hidden = !sd.hidden;
+    });
+  }
+
   show('home');
 });
 
