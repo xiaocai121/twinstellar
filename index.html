@@ -383,7 +383,7 @@ header, section, footer { position: relative; z-index: 1; }
 .tier:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 16px 36px -14px rgba(203,163,91,0.35); }
 .tier .tier-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; }
 .tier .tier-desc { font-size: 11px; color: var(--ink-dim); margin: 6px 0 14px; min-height: 28px; }
-.tier .tier-price { color: var(--gold); font-size: 22px; font-weight: 600; letter-spacing: 0.02em; }
+.tier .tier-price { color: var(--gold-soft); font-size: 17px; font-weight: 500; letter-spacing: 0.02em; }
 .tier .tier-cta { margin-top: 12px; font-size: 12px; letter-spacing: 0.1em; color: var(--gold-soft); }
 
 .share-block { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
@@ -623,8 +623,8 @@ header, section, footer { position: relative; z-index: 1; }
     </div>
 
     <div class="product-block">
-      <p class="product-label" data-i18n="lbl_claim">Claim your sacred bracelet</p>
-      <p class="product-sub" data-i18n="product_sub">Handcrafted with intention · Made to order in 3–5 days · Sensitive-skin friendly</p>
+      <p class="product-label" data-i18n="lbl_claim">Bring it close</p>
+      <p class="product-sub" data-i18n="product_sub">The reading is a gift. If you would like its tangible form — handcrafted with intention, made to order in 3–5 days.</p>
       <div class="tiers" id="tiersWrap"></div>
     </div>
 
@@ -638,13 +638,13 @@ header, section, footer { position: relative; z-index: 1; }
   <section id="story" class="story">
     <p class="eyebrow" data-i18n="story_eyebrow">Our Philosophy</p>
     <h2 class="section-title" data-i18n="story_title">The Twinstellar Story</h2>
-    <p class="story-text" data-i18n="story_text">Every soul is born beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements — metal, wood, water, fire, earth — shaping the universe within. Twinstellar reads the day you arrived and fuses these two voices into one of sixty sacred combinations, each with its own name, mantra, and power stones. You do not choose the bracelet. The universe prepared it for you — handcrafted with intention, made to order in three to five days, and yours alone. <strong>Two Beads. One Universe.</strong></p>
+    <p class="story-text" data-i18n="story_text">Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one of sixty sacred combinations, each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. What we offer is a meta-synthesis — the celestial and the elemental, drawn into a form made only for you. The reading is ours to give you, freely: to keep, to return to, to share. And if you feel called to carry your signature with you, we will handcraft its tangible form, made to order in three to five days. <strong>Two Beads. One Universe.</strong></p>
     <p class="story-foot" data-i18n="story_foot">Twinstellar is a sanctuary of intention. You do not buy a bracelet. The universe prepared one for you.</p>
   </section>
 
   <footer class="footer">
     <div class="brand small">TWINSTELLAR</div>
-    <p data-i18n="footer_text">Two Beads. One Universe. · For entertainment & intention only.</p>
+    <p data-i18n="footer_text">Two Beads. One Universe. · For intention and reflection — not a substitute for medical or spiritual counsel.</p>
   </footer>
 
   <script>
@@ -705,9 +705,9 @@ const BOUNDARIES = [
 
 // ---- Material tiers (configurable prices) ----
 const TIERS = [
-  { id: 'steel',  name: 'Surgical Steel', name_cn: '医用精钢', desc: 'Everyday · Hypoallergenic', desc_cn: '日常佩戴 · 防过敏', price: 88 },
+  { id: 'steel',  name: 'Surgical Steel', name_cn: '医用精钢', desc: 'Everyday · Gentle on skin', desc_cn: '日常 · 温润亲肤', price: 88 },
   { id: 'silver', name: 'Sterling Silver', name_cn: '925 纯银', desc: 'Classic · Hand-finished',  desc_cn: '经典 · 手工打磨', price: 128 },
-  { id: 'gold',   name: '18K Gold Finish', name_cn: '18K 金镀层', desc: 'Premium · Limited', desc_cn: '奢华 · 限量', price: 168 },
+  { id: 'gold',   name: '18K Gold Finish', name_cn: '18K 金镀层', desc: 'Warm glow · For keeps', desc_cn: '暖光 · 珍藏', price: 168 },
 ];
 
 // ---- CHECKOUT: drop in your Stripe / Shopify / checkout link here ----
@@ -735,14 +735,14 @@ const I18N = {
     loading_text:'The universe is weaving your bracelet…',
     lbl_element:'YOUR ELEMENT', lbl_stars:'YOUR STARS',
     lbl_mantra:'Your Mantra', lbl_stones:'Your Power Stones',
-    lbl_claim:'Claim your sacred bracelet',
-    product_sub:'Handcrafted with intention · Made to order in 3–5 days · Sensitive-skin friendly',
-    btn_copy:'Copy my universe link', btn_restart:'↺ Begin again', btn_claim:'Claim',
+    lbl_claim:'Bring it close',
+    product_sub:'The reading is a gift. If you would like its tangible form — handcrafted with intention, made to order in 3–5 days.',
+    btn_copy:'Copy my universe link', btn_restart:'↺ Begin again', btn_claim:'Receive',
     story_title:'The Twinstellar Story',
     story_eyebrow:'Our Philosophy',
-    story_text:'Every soul is born beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements — metal, wood, water, fire, earth — shaping the universe within. Twinstellar reads the day you arrived and fuses these two voices into one of sixty sacred combinations, each with its own name, mantra, and power stones. You do not choose the bracelet. The universe prepared it for you — handcrafted with intention, made to order in three to five days, and yours alone. <strong>Two Beads. One Universe.</strong>',
+    story_text:'Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one of sixty sacred combinations, each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. What we offer is a meta-synthesis — the celestial and the elemental, drawn into a form made only for you. The reading is ours to give you, freely: to keep, to return to, to share. And if you feel called to carry your signature with you, we will handcraft its tangible form, made to order in three to five days. <strong>Two Beads. One Universe.</strong>',
     story_foot:'Twinstellar is a sanctuary of intention. You do not buy a bracelet. The universe prepared one for you.',
-    footer_text:'Two Beads. One Universe. · For entertainment & intention only.',
+    footer_text:'Two Beads. One Universe. · For intention and reflection — not a substitute for medical or spiritual counsel.',
     result_name:'This is you.',
   },
   zh: {
@@ -760,14 +760,14 @@ const I18N = {
     loading_text:'宇宙正在为你编织手链……',
     lbl_element:'你的元素', lbl_stars:'你的星座',
     lbl_mantra:'你的真言', lbl_stones:'你的能量石',
-    lbl_claim:'认领你的神圣手链',
-    product_sub:'用心手作 · 接单后 3–5 天制作 · 亲肤不过敏',
-    btn_copy:'复制我的宇宙链接', btn_restart:'↺ 重新开始', btn_claim:'认领',
+    lbl_claim:'让它贴近你',
+    product_sub:'解读本身已是馈赠。若想要它可触摸的形态——用心手作，接单后 3–5 天织成。',
+    btn_copy:'复制我的宇宙链接', btn_restart:'↺ 重新开始', btn_claim:'收下',
     story_title:'Twinstellar 的故事',
     story_eyebrow:'品牌哲思',
-    story_text:'每个灵魂降生时，都伴着一颗双生星——一颗说宇宙的语言，那是为你而亮的星座；另一颗低语五行的古老智慧，金木水火土，塑造你内在的小宇宙。Twinstellar 读取你来到世间的那一天，把这两种声音，熔铸成六十种神圣组合之一：每一种都有专属称号、真言与能量石。你不必挑选手链——是宇宙早已为你备好：用心手作，按单定制，独属于你。<strong>双珠·宇宙</strong>',
+    story_text:'每个人，都站在一段旅程的门槛上。头顶有一颗双生星：一颗说宇宙的语言，那是你的星座；一颗低语五行的古老智慧——金木水火土，流转在你体内。Twinstellar 读取你来到世间的那一天，把这两种声音，织成六十种神圣组合之一：每一种都有专属称号、真言与能量石。你从不是一堆待拆解的零件，而是一个开放的生命系统，始终与天地交换、共振。我们做的，是一次综合集成：把星座与五行，融成只属于你的形态。这份解读，是我们送你的礼物——可珍藏，可回望，也可分享。若你愿意让它贴身相伴，我们便以心意手作，接单后三至五天，织成它的实体。<strong>双珠·宇宙</strong>',
     story_foot:'Twinstellar 是一处心愿的圣所。你不是在购买一条手链，是宇宙早已为你备好了一条。',
-    footer_text:'双珠·宇宙 · 仅作娱乐与心愿寄托之用',
+    footer_text:'双珠·宇宙 · 用于心愿与自省，并非医疗或专业建议的替代。',
     result_name:'这就是你。',
   },
 };
