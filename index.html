@@ -219,6 +219,41 @@ header, section, footer { position: relative; z-index: 1; }
 .reveal-form .btn-primary { margin-top: 8px; text-align: center; }
 .form-error { color: #e0795f; font-size: 13px; margin-top: 4px; }
 
+/* ---------- hero form ---------- */
+.hero-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 12px;
+  max-width: 600px;
+  margin: 28px auto 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel);
+}
+.hero-form .field {
+  flex: 1 1 150px;
+  text-align: left;
+  margin: 0;
+}
+.hero-form .field input {
+  padding: 12px 14px;
+  font-size: 15px;
+}
+.hero-form .btn-primary {
+  flex: 0 0 auto;
+  padding: 12px 22px;
+  margin: 0;
+  font-size: 13px;
+}
+.hero-form .form-error {
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+}
+
 /* ---------- loading ---------- */
 .loading { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .loading-text { color: var(--gold-soft); letter-spacing: 0.1em; margin-top: 28px; font-style: italic; }
@@ -377,6 +412,18 @@ header, section, footer { position: relative; z-index: 1; }
     <h1 class="hero-title">Two Beads.<br /><span class="gold">One Universe.</span></h1>
     <p class="hero-sub">Every soul is born with a twin star. One speaks the language of the cosmos — your Zodiac. The other whispers the ancient wisdom of the Five Elements. Together they form your sacred bracelet.</p>
     <a href="#reveal" class="btn-primary">◇ Reveal My Universe ◇</a>
+    <form id="heroRevealForm" class="hero-form" novalidate>
+      <label class="field">
+        <span>Your name</span>
+        <input id="heroNameInput" type="text" placeholder="e.g. Sarah" autocomplete="given-name" />
+      </label>
+      <label class="field">
+        <span>Birthday</span>
+        <input id="heroBirthInput" type="date" max="2025-12-31" min="1900-01-01" />
+      </label>
+      <button type="submit" class="btn-primary">◇ Weave My Bracelet ◇</button>
+      <p id="heroFormError" class="form-error" hidden>Please enter your name and a valid birthday.</p>
+    </form>
     <p class="hero-foot">No sign-up. Just your name and the day you arrived.</p>
   </section>
 
@@ -672,17 +719,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // starfield
   initStars();
 
-  $('revealForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = $('nameInput').value.trim();
-    const birth = $('birthInput').value;
-    if (!name || !birth) {
-      $('formError').hidden = false;
-      return;
-    }
-    $('formError').hidden = true;
-    runReveal(name, birth);
-  });
+  function bindForm(formId, nameId, birthId, errorId) {
+    $(formId).addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = $(nameId).value.trim();
+      const birth = $(birthId).value;
+      if (!name || !birth) {
+        $(errorId).hidden = false;
+        return;
+      }
+      $(errorId).hidden = true;
+      runReveal(name, birth);
+    });
+  }
+  bindForm('revealForm', 'nameInput', 'birthInput', 'formError');
+  bindForm('heroRevealForm', 'heroNameInput', 'heroBirthInput', 'heroFormError');
 
   // deep-link: ?n=&e=&z= → show result directly
   const params = new URLSearchParams(location.search);
