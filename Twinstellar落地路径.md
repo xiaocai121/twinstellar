@@ -23,26 +23,27 @@
 **EN（北美轨道——个人英雄旅程 / 自主性 / 反硬销 / 自我表达）**
 > Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one of sixty sacred combinations, each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. What we offer is a meta-synthesis — the celestial and the elemental, drawn into a form made only for you. The reading is ours to give you, freely: to keep, to return to, to share. And if you feel called to carry your signature with you, we will handcraft its tangible form, made to order in three to five days. **Two Beads. One Universe.**
 
-**ZH（中国轨道——天人合一 / 缘 / 气 / 礼 / 系统整体观）**
-> 每个人，都站在一段旅程的门槛上。头顶有一颗双生星：一颗说宇宙的语言，那是你的星座；一颗低语五行的古老智慧——金木水火土，流转在你体内。Twinstellar 读取你来到世间的那一天，把这两种声音，织成六十种神圣组合之一：每一种都有专属称号、真言与能量石。你从不是一堆待拆解的零件，而是一个开放的生命系统，始终与天地交换、共振。我们做的，是一次综合集成：把星座与五行，融成只属于你的形态。这份解读，是我们送你的礼物——可珍藏，可回望，也可分享。若你愿意让它贴身相伴，我们便以心意手作，接单后三至五天，织成它的实体。**双珠·宇宙**
+**ZH（中国轨道——天人合一 / 道法自然 / 阴阳和合 / 礼）**
+> 每个人，都站在一段旅程的门槛上。头顶有一颗双生星：一颗说宇宙的语言，那是你的星座；一颗低语五行的古老智慧——金木水火土，流转在你体内。Twinstellar 读取你来到世间的那一天，把这两种声音，织成六十种神圣组合之一：每一种都有专属称号、真言与能量石。道不远人。你从不是孤立的碎片——天地之气在你体内流转，星座在上，五行在下，阴阳交感，自然显化为你独有的形态。我们做的，不过是一次天人感应：以你降生那日，观星座之轨、察五行之气，将这两股相反而相成的力量，和合成六十种道法自然之一。这份解读，是我们送你的礼物——可珍藏，可回望，也可分享。若你愿意让它贴身相伴，我们便以心意手作，接单后三至五天，织成它的实体。**双珠·宇宙**
 
 ### 1.3 双市场叙事策略（CN / NA）
 
 | 维度 | 北美 (NA) | 中国 (CN) |
 |---|---|---|
-| 文化根基 | 个人英雄旅程、自主性 (SDT) | 天人合一、缘、气、礼、系统整体观 |
-| 核心心理机制 | 心理抗拒→禁用 buy/claim/limited；符号消费=自我表达 | 钱学森开放复杂巨系统 + 祈福/圣化/转运 |
-| 话术关键 | "carry your signature if you feel called" | "天地共振 / 送你的礼物 / 贴身相伴" |
+| 文化根基 | 个人英雄旅程、自主性 (SDT) | 天人合一、道法自然、阴阳和合、礼 |
+| 核心心理机制 | 心理抗拒→禁用 buy/claim/limited；符号消费=自我表达 | 道教天人感应 + 祈福/圣化/转运 |
+| 话术关键 | "carry your signature if you feel called" | "天地交感 / 送你的礼物 / 贴身相伴" |
 | 免责语气 | 透明专业免责建立信任 | 心愿自省非替代建议 |
 
-**共用机制**：叙事传输 (Narrative Transportation) + 阈限仪式 (Liminality) + 综合集成（钱学森）+ 礼物经济（先赠解读）+ 延伸的自我 (Extended Self) + 反心理抗拒 (Reactance)。
+**共用机制**：叙事传输 (Narrative Transportation) + 阈限仪式 (Liminality) + 天人感应/阴阳和合（道教）+ 礼物经济（先赠解读）+ 延伸的自我 (Extended Self) + 反心理抗拒 (Reactance)。
 
 ---
 
 ## 二、商业理论栈（锚定版）
 
 ### Tier 0 — 品牌世界观
-- **钱学森系统论（系统科学）**：开放的复杂巨系统 (OCGS) / 综合集成（从定性到定量）/ 大成智慧 / 反还原论整体观。→ 你是开放复杂巨系统，手链是系统坐标的实体锚点；Twinstellar 做一次"综合集成"把星座×五行融铸成 60 种涌现形态之一。**这是区别于西方玄学品牌的中国差异化锚点。**
+- **道教文化（中文语境）**：天人感应 / 道法自然 / 阴阳和合 / 道不远人。→ 你不是孤立的碎片，天地之气在你体内流转；Twinstellar 以你降生那日，观星座之轨、察五行之气，将这两股相反而相成的力量，和合成六十种道法自然之一。**这是区别于西方玄学品牌的中国差异化锚点。**
+- **消费圣化理论 (Sacralization of Consumption)** — Belk, Sherry & Wallendorf (1989)：（EN 语境，保留）。
 
 ### Tier 2 — 叙事与沉浸
 - **叙事传输 (Narrative Transportation)** — Green & Brock (2000)：故事把人"运输"进去、降低反驳。
@@ -95,13 +96,15 @@
 | 水瓶 Aquarius | ♒ | THE VISIONARY / 远见者 | 1/20 – 2/18 |
 | 双鱼 Pisces | ♓ | THE MYSTIC / 梦想家 | 2/19 – 3/20 |
 
-### 3.4 60 组合示例（前 4 组，完整数据在 `index.html` 内嵌 `TWIN_COMBOS`）
-| 元素 | 星座 | 称号 EN | 称号 ZH | 真言 EN | 能量石 |
+### 3.4 60 组合示例（前 4 组，完整数据在 `index.html` 内嵌 `TWIN_COMBOS`，中文称号已全部道教化重译）
+| 元素 | 星座 | 称号 EN | 称号 ZH（道教） | 真言 EN | 能量石 |
 |---|---|---|---|---|---|
-| Fire | Aries | Blazing Vanguard | 炽焰先锋 | I ignite the path forward. | Ruby, Red Jasper |
-| Fire | Taurus | Blazing Architect | 烈焰筑梦者 | I forge enduring legacies. | Garnet, Fire Opal |
-| Fire | Gemini | Wildfire Messenger | 野火信使 | My words spark revolutions. | Carnelian, Fire Agate |
-| Fire | Cancer | Ember Guardian | 灰烬守护者 | I protect with fierce love. | Carnelian, Red Jasper |
+| Fire | Aries | Blazing Vanguard | 朱雀先锋 | I ignite the path forward. | Ruby, Red Jasper |
+| Fire | Taurus | Blazing Architect | 离火筑师 | I forge enduring legacies. | Garnet, Fire Opal |
+| Fire | Gemini | Wildfire Messenger | 炎轮信使 | My words spark revolutions. | Carnelian, Fire Agate |
+| Fire | Cancer | Ember Guardian | 余烬护法 | I protect with fierce love. | Carnelian, Red Jasper |
+
+> 道教称号体系：五方对应（火=朱雀、金=白虎、水=玄武、土=黄庭、木=青龙），星座原型对应修行角色（先锋/真君/元君/护法/灵官/道子/散人/炼师/玄鉴）。每组合固定 **2 颗能量石**。
 
 ---
 
@@ -114,9 +117,11 @@
 | **L1** | 候补名单 (waitlist) | $0 | 结果页——真言下方、能量石上方 | 输入邮箱 → localStorage 存储，按钮变确认 |
 | **L2** | 数字证书（称号证书） | 免费（预留 $5–9 付费） | 结果页——分享按钮区 | 浏览器端生成可打印证书（称号+真言+能量石） |
 | **L3** | 实物手链（3 档材质） | $88–168 | 结果页——product-block | 三档材质"收下 / Receive"→ 邮件预售（Stripe 链接预留） |
-| **L4** | 月度宇宙仪式订阅 | $9–19/月 | 结果页——L3 下方折叠区 | 折叠展开详情 + 订阅链接（默认收起不抢 L3 注意力） |
+| **L4** | 月度宇宙仪式订阅 + 首月赠手链 | $19–29/月 | 结果页——L3 下方折叠区 | 折叠展开详情 + 订阅链接（默认收起）；首月赠标准款手链作为欢迎礼 |
 
 **话术铁律**：所有层级统一用"礼物 / 邀请"语态，禁用 buy / claim / limited / 限量 / 限时。
+
+**L4 赠品模式逻辑**：手链物料成本可控（批量采购 $15–25），首月 $19–29 覆盖成本 → 第 2 个月起纯高利润。订阅者每月收到礼物（解读+仪式卡+小水晶），首月收到手链作为欢迎礼——禀赋效应↑、留存率↑。L3 与 L4 互补：L3 是"一次性买断高端定制手链"（三档 $88–168），L4 是"每月仪式体验 + 首月赠标准款手链"。
 
 **建议顺序**：L1 + L2 今天就能上线 → L3 用预售订单反推备货 → L4 有复购后再开。
 
@@ -245,7 +250,7 @@
 
 ## 十、结论
 
-1. **品牌已从"卖手链"升维为"宇宙为你显化符号"**——以钱学森系统论为差异化锚点、以叙事传输+礼物经济+延伸的自我为体验骨架。
+1. **品牌已从"卖手链"升维为"宇宙为你显化符号"**——以道教文化（天人感应/阴阳和合/道法自然）为中文语境差异化锚点、以叙事传输+礼物经济+延伸的自我为体验骨架。
 2. **站点已实现四级变现阶梯**（L1 候补 → L2 证书 → L3 手链 → L4 订阅），全在单文件静态 MVP 中，无需后端。
 3. **双市场轨道已建立**：NA（英雄旅程+自主性）与 CN（天人合一+系统整体观），文案与话术各轨统一。
 4. **60 组合数据是唯一内容源头**：所有 SEO 页、社交卡片、短视频均可从同一份数据衍生，AI 辅助生产。
