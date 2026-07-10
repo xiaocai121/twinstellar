@@ -1027,7 +1027,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   function readDob(prefix, errorId) {
     const m = $(prefix+'Month').value, d = $(prefix+'Day').value, y = $(prefix+'Year').value;
-    if (!m || !d || !y) { $(errorId).hidden = false; return null; }
+    if (!m || !d || !y) {
+      $(errorId).hidden = false;
+      // highlight first missing field
+      if (!m) $(prefix+'Month').focus();
+      else if (!d) $(prefix+'Day').focus();
+      else $(prefix+'Year').focus();
+      return null;
+    }
     return `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
   }
   function bindForm(formId, prefix, errorId) {
@@ -1038,6 +1045,17 @@ document.addEventListener('DOMContentLoaded', () => {
       $(errorId).hidden = true;
       runReveal(dateStr);
     });
+  }
+  // watch dob selects to give visual feedback
+  function watchDob(prefix) {
+    const btn = document.querySelector(`#${prefix}evealForm button[type=submit]`); // hacky but works: 'r' → 'revealForm'
+    const selects = [$(prefix+'Month'), $(prefix+'Day'), $(prefix+'Year')];
+    function check() {
+      const allFilled = selects.every(s => s && s.value);
+      if (btn) btn.style.opacity = allFilled ? '1' : '0.45';
+    }
+    selects.forEach(s => { if (s) s.addEventListener('change', check); });
+    check();
   }
   function applyLang(lang) {
     LANG = lang;
@@ -1067,6 +1085,7 @@ document.addEventListener('DOMContentLoaded', () => {
   applyLang(LANG);
 
   bindForm('revealForm', 'r', 'formError');
+  watchDob('r');
   document.getElementById('langSwitch').addEventListener('click', () => {
     applyLang(LANG === 'zh' ? 'en' : 'zh');
   });
