@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
+  [hidden] { display: none !important; }
 :root {
   --bg: #0D0D0F;
   --bg-2: #14141a;
@@ -253,6 +254,19 @@ header, section, footer { position: relative; z-index: 1; }
   text-align: center;
   margin-top: 8px;
 }
+.dob { display: flex; flex-wrap: wrap; gap: 8px; }
+.dob-sel {
+  flex: 1 1 80px;
+  min-width: 64px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 10px;
+  color: var(--ink);
+  font-size: 14px;
+  font-family: inherit;
+}
+.dob-sel:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,169,98,0.15); }
 
 /* ---------- loading ---------- */
 .loading { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
@@ -419,7 +433,11 @@ header, section, footer { position: relative; z-index: 1; }
       </label>
       <label class="field">
         <span>Birthday</span>
-        <input id="heroBirthInput" type="date" max="2025-12-31" min="1900-01-01" />
+        <div class="dob">
+          <select id="hMonth" class="dob-sel" aria-label="Month"></select>
+          <select id="hDay" class="dob-sel" aria-label="Day"></select>
+          <select id="hYear" class="dob-sel" aria-label="Year"></select>
+        </div>
       </label>
       <button type="submit" class="btn-primary">◇ Weave My Bracelet ◇</button>
       <p id="heroFormError" class="form-error" hidden>Please enter your name and a valid birthday.</p>
@@ -438,7 +456,11 @@ header, section, footer { position: relative; z-index: 1; }
       </label>
       <label class="field">
         <span>Your birthday</span>
-        <input id="birthInput" type="date" max="2025-12-31" min="1900-01-01" />
+        <div class="dob">
+          <select id="rMonth" class="dob-sel" aria-label="Month"></select>
+          <select id="rDay" class="dob-sel" aria-label="Day"></select>
+          <select id="rYear" class="dob-sel" aria-label="Year"></select>
+        </div>
       </label>
       <button type="submit" class="btn-primary">◇ Weave My Bracelet ◇</button>
       <p id="formError" class="form-error" hidden>Please enter your name and a valid birthday.</p>
@@ -516,7 +538,6 @@ header, section, footer { position: relative; z-index: 1; }
   <footer class="footer">
     <div class="brand small">TWINSTELLAR</div>
     <p>Two Beads. One Universe. · For entertainment & intention only.</p>
-    <p style="opacity:.55;font-size:12px;margin-top:6px">Auto-deployed from GitHub · last updated 2026-07-10</p>
   </footer>
 
   <script>
@@ -719,21 +740,37 @@ document.addEventListener('DOMContentLoaded', () => {
   // starfield
   initStars();
 
-  function bindForm(formId, nameId, birthId, errorId) {
+  function populateDob(prefix) {
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const mSel = $(prefix + 'Month'), dSel = $(prefix + 'Day'), ySel = $(prefix + 'Year');
+    mSel.innerHTML = '<option value="">Month</option>' + months.map((m,i)=>`<option value="${i+1}">${m}</option>`).join('');
+    let days = '<option value="">Day</option>';
+    for (let d=1; d<=31; d++) days += `<option value="${d}">${d}</option>`;
+    dSel.innerHTML = days;
+    let yrs = '<option value="">Year</option>';
+    for (let y=2025; y>=1920; y--) yrs += `<option value="${y}">${y}</option>`;
+    ySel.innerHTML = yrs;
+  }
+  function readDob(prefix, errorId) {
+    const m = $(prefix+'Month').value, d = $(prefix+'Day').value, y = $(prefix+'Year').value;
+    if (!m || !d || !y) { $(errorId).hidden = false; return null; }
+    return `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+  }
+  function bindForm(formId, nameId, prefix, errorId) {
     $(formId).addEventListener('submit', (e) => {
       e.preventDefault();
       const name = $(nameId).value.trim();
-      const birth = $(birthId).value;
-      if (!name || !birth) {
-        $(errorId).hidden = false;
-        return;
-      }
+      if (!name) { $(errorId).hidden = false; return; }
+      const dateStr = readDob(prefix, errorId);
+      if (!dateStr) return;
       $(errorId).hidden = true;
-      runReveal(name, birth);
+      runReveal(name, dateStr);
     });
   }
-  bindForm('revealForm', 'nameInput', 'birthInput', 'formError');
-  bindForm('heroRevealForm', 'heroNameInput', 'heroBirthInput', 'heroFormError');
+  populateDob('r');
+  populateDob('h');
+  bindForm('revealForm', 'nameInput', 'r', 'formError');
+  bindForm('heroRevealForm', 'heroNameInput', 'h', 'heroFormError');
 
   // deep-link: ?n=&e=&z= → show result directly
   const params = new URLSearchParams(location.search);
