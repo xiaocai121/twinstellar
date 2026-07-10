@@ -389,9 +389,11 @@ header, section, footer { position: relative; z-index: 1; }
 .share-block { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
 
 /* ---------- story ---------- */
-.story-text { color: #C9C7D2; font-weight: 300; font-size: 17px; line-height: 1.95; max-width: 660px; margin: 0 auto 26px; }
+.story-text { color: #CFCDD8; font-weight: 300; font-size: 17.5px; line-height: 2.05; max-width: 680px; margin: 0 auto 30px; text-align: justify; text-justify: inter-character; letter-spacing: 0.01em; }
+.story-text::first-letter { font-family: 'Cormorant Garamond', 'Noto Serif SC', serif; float: left; font-size: 64px; line-height: 0.82; font-weight: 600; padding: 6px 14px 0 0; color: var(--gold); background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .story-text strong { color: var(--gold-soft); font-weight: 500; letter-spacing: 0.02em; }
-.story-foot { color: var(--gold-soft); font-style: italic; font-size: 15px; max-width: 540px; margin: 0 auto; }
+.story-foot { position: relative; color: var(--gold-soft); font-style: italic; font-size: 15.5px; line-height: 1.7; max-width: 560px; margin: 0 auto; padding-top: 22px; }
+.story-foot::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 46px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
 
 /* ---------- footer ---------- */
 .footer {
