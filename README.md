@@ -24,6 +24,19 @@ python3 -m http.server 8123
 - GitHub Pages 自动重建上线（通常 1–2 分钟）
 - 注意根目录的 `.nojekyll`：禁用 Jekyll，确保 `combo/` 等含下划线路径的静态资源被原样托管。
 
+### 自定义域名 DNS（twinstellar.com）
+GitHub Pages 已配置 `cname: twinstellar.com` 且构建正常（API 确认 `status: built`）。若线上仍显示旧内容（如 Netlify 旧构建），是 DNS 未指向 GitHub Pages 所致。在域名服务商处：
+1. **删除**指向 Netlify 的解析记录（Netlify 负载均衡 IP / `apex-loadbalancer.netlify.com` 等）。
+2. **添加 4 条 A 记录**（主机名 `@` / 根域名）：
+   - `185.199.108.153`
+   - `185.199.109.153`
+   - `185.199.110.153`
+   - `185.199.111.153`
+3. （可选）`www` 用 CNAME 指向 `xiaocai121.github.io`。
+4. 若 DNS 服务商支持 CNAME 扁平化（如 Cloudflare），也可 CNAME `@` → `xiaocai121.github.io`。
+5. 改完等待传播（数分钟～48h），验证：`curl -sI https://twinstellar.com/` 应返回 `server: GitHub.com`，且页面无 `bracelet`/`手链`。
+> 若仓库 Settings → Pages 显示域名待验证，重新保存自定义域名并按提示添加一条 TXT 验证记录即可。
+
 ## 接收入（未来 · 需 Stripe）
 `index.html` 中的 `SUBSCRIBE_BASE` 留空时，订阅/证书按钮走本地 `mailto` 线索捕获（写入 `localStorage` 的 `twin_leads`，附 `ref` 推荐字段）。
 接入 Stripe 后，把 `SUBSCRIBE_BASE` / 证书链接改为对应 Payment Link 即可转为真实结账（见路线图 P4）。
