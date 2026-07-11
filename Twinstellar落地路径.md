@@ -20,8 +20,10 @@
 
 ### 1.2 品牌叙事——最终版本（站点 story 区）
 
-**EN（北美轨道——个人英雄旅程 / 自主性 / 反硬销 / 自我表达）**
-> Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one living signature, one of sixty sacred combinations — each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. The reading is ours to give you, freely: to keep, to return to, to share. Your signature is a living thing — deepen it month by month, or carry our welcome gift when the journey calls you further. **Two Beads. One Universe.**
+**EN（北美轨道——个人英雄旅程 / 自主性 / 反硬销 / 自我表达 / 主角能量 / Soft life）**
+> Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one living signature, one of sixty sacred combinations — each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. The reading is ours to give you, freely: to keep, to return to, to share. You are the author of your own story — and your signature is a living thing, a quiet return to yourself rather than another productivity app. Deepen it month by month, or carry our welcome gift when the journey calls you further. **Two Beads. One Universe.**
+
+> **NA 优化要点（对照北美基准）**：EN 叙事从"宇宙显化"升级为「你是自己人生的作者 + 反内卷的温柔仪式 + 自我发现」，用当代 NA 语汇（main character energy / soft life / inner compass / a moment of stillness）。hero_sub 强化"entirely, unmistakably yours"的所有权语气；story 加入"You are the author of your own story"与"not another productivity app — a quiet return to yourself"。
 
 **ZH（中国轨道——天人合一 / 道法自然 / 阴阳和合 / 礼）**
 > 每个人，都站在一段旅程的门槛上。头顶有一颗双生星：一颗说宇宙的语言，那是你的星座；一颗低语五行的古老智慧——金木水火土，流转在你体内。Twinstellar 读取你来到世间的那一天，把这两种声音，织成六十种神圣组合之一：每一种都有专属称号、真言与能量石。道不远人。你从不是孤立的碎片——天地之气在你体内流转，星座在上，五行在下，阴阳交感，自然显化为你独有的「宇宙签名」。我们做的，不过是一次天人感应：以你降生那日，观星座之轨、察五行之气，将这两股相反而相成的力量，和合成六十种道法自然之一。这份签名，本就是活的宇宙回信——可免费珍藏，可订阅让它每月生长，也可分享给同道；若你心有所感、愿入此道更深，手链是我们迎你正式入道的礼物。**双珠·宇宙**
@@ -149,14 +151,15 @@
 |:----:|:-----|:----:|:-----|:-----|:-----|
 | **L1** | 候补名单 (waitlist) | $0 | 结果页——真言下方 | 输入邮箱 → localStorage，按钮变确认 | 获客钩子 |
 | **L2** | 数字证书（称号证书） | **$5–9 付费** | 结果页——L1 之后、L4 之前 | Stripe 付费 → 浏览器生成精美可打印/下载证书（称号+真言+能量石+专属纹样） | **虚拟销售主力** |
-| **L4** | 月度宇宙签名订阅 | **$19–29/月** | 结果页——L2 之后，**默认展开、金色强调（英雄产品）** | 每月：专属深度解读 + 仪式卡 + 定制壁纸/数字礼包；订阅满 3 月赠标准款手链作为入道之礼 | **核心收入线（MRR）** |
+| **L4** | 月度宇宙签名订阅 | **$19/月 或 $149/年（省 34%，默认主推年付）** | 结果页——L2 之后，**默认展开、金色强调（英雄产品）** | 每月：专属深度解读 + 仪式卡 + 定制壁纸/数字礼包；订阅满 3 月赠标准款手链作为入道之礼 | **核心收入线（MRR）** |
 | **L3** | 实物手链（奖品/周边） | 非售卖 | **Phase 1 站点隐藏**；Phase 2 作为「奖品说明块」回归 | 订阅满额赠 / 活动奖 / 抽奖品（3 档材质 $88–168 仅作奖品规格参考，不公开标价） | **辅助奖品，非销售主体** |
 
 **话术铁律**：所有层级统一用"礼物 / 邀请 / 深化"语态，禁用 buy / claim / limited / 限量 / 限时。
 
 **L4 订阅英雄化逻辑**：
-- 价值主张：你的宇宙签名是活的——每月一次更深的解读、一张仪式卡、一份定制数字礼包，让它持续生长。
+- 价值主张：你的宇宙签名是活的——每月一次更深的解读、一张仪式卡、一份定制数字礼包，让它持续生长；文案把订阅塑造成"温柔的日常仪式（a gentle daily ritual）"，为未来日签功能铺叙事。
 - 获客钩子（替代原"首月赠手链"）：**首月专属数字仪式礼包**（深度解读 + 仪式卡 + 定制壁纸），手链改为「订阅满 3 月」的入道之礼或活动奖品，降低前期供应链依赖。
+- **年付锚点（NA 优化）**：月付 $19 作为"随用随付"档，**年付 $149/年（≈$12.4/月，省 34%）默认主推**，CTA 并列展示"$19/mo or $149/yr"、下方加"Save 34% with the year · cancel anytime"徽标。对齐 Chani 年付省 25% 模式，承接 40–60% 年付 uptake 与更低流失（年付 3–5% vs 月付 8–15%）。
 - 留存逻辑：每月礼物（解读+仪式卡+数字礼包）维持禀赋效应与回访习惯；满 3 月赠手链作为里程碑奖励，制造"升级感"而非"首单成本"。
 
 **L2 付费化逻辑**：从免费赠品升级为 $5–9 轻量虚拟产品，与 L4 共同构成「虚拟产品销售线」。免费解读（礼物经济）→ 付费证书（轻转化）→ 订阅（深度绑定），形成低门槛递进漏斗。
@@ -218,6 +221,10 @@
 - **60 组合 = 60 天不重样素材**：每天取 1 个组合，AI 生成图文/短视频卡片（称号+真言+能量石）。
 - **三轨内容线**：知识（深度解读）/ 身份（"我测出来是 XX"UGC 反应）/ 仪式（新月满月指南）。
 - **SEO 60 页**：从 60 组合数据自动生成 60 个长尾落地页（模板渲染），主关键词转向 "Fire Aries cosmic signature / meaning / reading"（搜索量远大于 bracelet），手链词仅作长尾补充（"Fire Aries bracelet meaning" 作为 Phase 2 奖品相关页）。
+- **关键词簇升级（NA 优化）**：在既有 `cosmic signature` / `five element zodiac reading` / `Fire Aries meaning` 主簇之外，补充当代 NA 需求簇：
+  - `daily ritual astrology`（日签习惯）、`soft life astrology`（反内卷仪式）
+  - `self-discovery reading`（自我发现）、`inner compass`（内在罗盘）、`five elements personality`（五行人格）
+  - 社媒标签与 #fivestarzodiac 并列补充：#softlife #maincharacterenergy #dailyritual #selfdiscovery
 
 ### 6.2 分发阵地
 | 阵地 | 内容形式 | 市场 |
@@ -233,7 +240,7 @@
 |---|---|---|
 | 冷启动 | W1–W2 | 分享裂变 + 社交钩子 + 60 SEO 页生成 |
 | 内容矩阵 | W3–W4 | AI 批量出 60 套图文+视频、三轨内容线启动 |
-| 社群 UGC | M1–M2 | 宇宙签名墙、邀请解锁、Reddit/豆瓣渗透 |
+| 社群 UGC | M1–M2 | 宇宙签名墙、同频星座亲属（find your constellation kin）、邀请解锁、Reddit/豆瓣渗透 |
 | 付费放大 | M2+ | 再营销、KOC 数字体验卡/折扣码（非实物寄样）、Pinterest 广告 |
 
 ---
@@ -298,3 +305,4 @@
 3. **双市场轨道已建立**：NA（英雄旅程+自主性）与 CN（天人合一+道法自然），文案与话术各轨统一。
 4. **60 组合数据是唯一内容源头**：所有 SEO 页（关键词转向 cosmic signature/reading）、社交卡片、短视频均可从同一份数据衍生，AI 辅助生产。
 5. **下一步**：推广裂变 → 收候补名单 → L2 付费证书 + L4 订阅跑通 MRR → 订阅满 3 月以手链作入道之礼，验证奖品模型后再评估限量周边。
+6. **NA 优化已落地（Request C）**：EN 叙事升级为「主角能量 + Soft life + 自我发现」框架；L4 引入年付锚点 $149/年（省 34%，主推年付、月付 $19 为随用随付档）；L1/L2 话术升级为社群/身份确认语气；分享块加「找到同频星座亲属」副文案；SEO 关键词簇补充 daily ritual / soft life / self-discovery / inner compass。全程保留独特性护栏（东西方合成 60 签名、道教锚点、电影化英雄旅程、礼物经济、无姓名输入、双珠解耦、L3 隐藏），避免与 Co-Star/The Pattern/Karma and Luck 同质化。日签循环、合盘报告、年付切换 UI+试用列为未来阶段。

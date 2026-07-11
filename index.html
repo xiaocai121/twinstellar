@@ -422,6 +422,14 @@ header, section, footer { position: relative; z-index: 1; }
 .sub-toggle:hover { border-color: var(--gold); color: var(--gold); }
 .sub-detail { margin-top: 14px; color: #8c8c96; font-size: 13px; line-height: 1.7; }
 .sub-detail .btn-primary { margin-top: 16px; }
+.sub-annual {
+  display: inline-block; margin: 14px auto 0; padding: 6px 16px;
+  font-size: 12px; letter-spacing: 0.08em; color: var(--gold-soft);
+  border: 1px solid var(--line-soft); border-radius: 30px;
+  background: rgba(203,163,91,0.06);
+}
+.subscription-block.hero .sub-annual { display: block; width: fit-content; }
+.share-sub { color: var(--ink-dim); font-size: 13px; line-height: 1.6; text-align: center; max-width: 460px; margin: 28px auto 0; font-style: italic; }
 
 /* ---------- story ---------- */
 .story-text { color: #CFCDD8; font-weight: 300; font-size: 17.5px; line-height: 2.05; max-width: 680px; margin: 0 auto 30px; text-align: justify; text-justify: inter-character; letter-spacing: 0.01em; }
@@ -536,7 +544,8 @@ header, section, footer { position: relative; z-index: 1; }
 #result.view-in .stones-block   { animation: fadeUp .9s 2.10s both; }
 #result.view-in .cert-block     { animation: fadeUp .9s 2.30s both; }
 #result.view-in .subscription-block { animation: fadeUp .9s 2.60s both; }
-#result.view-in .share-block    { animation: fadeUp .8s 2.90s both; }
+#result.view-in .share-sub     { animation: fadeUp .8s 2.80s both; }
+#result.view-in .share-block    { animation: fadeUp .8s 2.95s both; }
 #result.view-in .stones .stone:nth-child(1) { animation: popIn .5s 2.15s both; }
 #result.view-in .stones .stone:nth-child(2) { animation: popIn .5s 2.25s both; }
 #result.view-in .stones .stone:nth-child(3) { animation: popIn .5s 2.35s both; }
@@ -579,7 +588,7 @@ header, section, footer { position: relative; z-index: 1; }
     </div>
     <p class="eyebrow" data-i18n="eyebrow">Five Elements × Zodiac</p>
     <h1 class="hero-title" id="heroTitle">Two Beads.<br /><span class="gold">One Universe.</span></h1>
-    <p class="hero-sub" data-i18n="hero_sub">Every soul is born with a twin star. One speaks the language of the cosmos — your Zodiac. The other whispers the ancient wisdom of the Five Elements. Together they form your cosmic signature.</p>
+    <p class="hero-sub" data-i18n="hero_sub">Somewhere in the sky, two stars were holding a place for you — one telling the story of your Zodiac, the other carrying the old wisdom of the Five Elements. Twinstellar reads the day you were born and weaves them into one cosmic signature that is entirely, unmistakably yours.</p>
     <a href="#reveal" class="btn-primary" data-i18n="hero_cta">◇ Reveal My Universe ◇</a>
     <p class="hero-foot" data-i18n="hero_foot">No sign-up. Just your birthday — the day you arrived.</p>
   </section>
@@ -653,7 +662,7 @@ header, section, footer { position: relative; z-index: 1; }
     <!-- L1: waitlist -->
     <div class="waitlist-block" id="waitlistBlock">
       <p class="waitlist-label" data-i18n="lbl_waitlist">Be the first to know</p>
-      <p class="waitlist-sub" data-i18n="waitlist_sub">Join the waitlist — no obligation, just a gentle note when we open the circle.</p>
+      <p class="waitlist-sub" data-i18n="waitlist_sub">Join the circle — no noise, no obligation. Just a gentle note when we open the door, and a quiet place to return to.</p>
       <div class="waitlist-row">
         <input id="waitlistEmail" type="email" data-i18n-placeholder="waitlist_placeholder" placeholder="your@email.com" />
         <button id="waitlistBtn" class="btn-ghost" data-i18n="waitlist_btn">◇ Notify Me ◇</button>
@@ -669,7 +678,7 @@ header, section, footer { position: relative; z-index: 1; }
     <!-- L2: certificate (paid virtual product) -->
     <div class="cert-block" id="certBlock">
       <p class="cert-label" data-i18n="lbl_cert">Your sacred certificate</p>
-      <p class="cert-sub" data-i18n="cert_sub">A keepsake of your cosmic signature — your name, mantra, and power stones, beautifully rendered.</p>
+      <p class="cert-sub" data-i18n="cert_sub">Your first artifact — a beautifully rendered keepsake of your signature, mantra, and power stones. Proof that you are the author of your own story.</p>
       <button class="btn-primary" id="certBtn" data-i18n="btn_cert">◇ Get My Certificate ($5–9) ◇</button>
     </div>
 
@@ -677,8 +686,9 @@ header, section, footer { position: relative; z-index: 1; }
     <div class="subscription-block hero" id="subBlock">
       <p class="sub-label" data-i18n="lbl_sub">Your signature, alive every month</p>
       <div class="sub-detail" id="subDetail">
-        <p data-i18n="sub_desc">Each month: a deeper reading of your cosmic signature, a ritual card, and a custom wallpaper — delivered to your inbox. Stay three months and we send your welcome bracelet, our gift as you enter the path.</p>
-        <a class="btn-primary" id="subCta" data-i18n="sub_cta">◇ Begin the Journey ($19/mo) ◇</a>
+        <p data-i18n="sub_desc">Your signature is a living thing. Each month we send a deeper reading, a ritual card, and a custom wallpaper — small, quiet arrivals that make the cosmic feel close. Begin with the year and let it become a gentle ritual; stay three months and we send your welcome bracelet, our gift as you enter the path.</p>
+        <p class="sub-annual" data-i18n="sub_annual">Save 34% with the year · cancel anytime</p>
+        <a class="btn-primary" id="subCta" data-i18n="sub_cta">◇ Begin the Journey — $19/mo or $149/yr ◇</a>
       </div>
     </div>
 
@@ -689,6 +699,7 @@ header, section, footer { position: relative; z-index: 1; }
       <div class="tiers" id="tiersWrap"></div>
     </div>
 
+    <p class="share-sub" data-i18n="share_sub">Find your constellation kin — share your signature with a kindred spirit.</p>
     <div class="share-block">
       <button class="btn-ghost" id="copyLinkBtn" data-i18n="btn_copy">Copy my universe link</button>
       <button class="btn-ghost" id="restartBtn" data-i18n="btn_restart">↺ Begin again</button>
@@ -699,7 +710,7 @@ header, section, footer { position: relative; z-index: 1; }
   <section id="story" class="story">
     <p class="eyebrow" data-i18n="story_eyebrow">Our Philosophy</p>
     <h2 class="section-title" data-i18n="story_title">The Twinstellar Story</h2>
-    <p class="story-text" data-i18n="story_text">Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one living signature, one of sixty sacred combinations — each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. The reading is ours to give you, freely: to keep, to return to, to share. Your signature is a living thing — deepen it month by month, or carry our welcome gift when the journey calls you further. <strong>Two Beads. One Universe.</strong></p>
+    <p class="story-text" data-i18n="story_text">Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one living signature, one of sixty sacred combinations — each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. The reading is ours to give you, freely: to keep, to return to, to share. You are the author of your own story — and your signature is a living thing, a quiet return to yourself rather than another productivity app. Deepen it month by month, or carry our welcome gift when the journey calls you further. <strong>Two Beads. One Universe.</strong></p>
     <p class="story-foot" data-i18n="story_foot">Twinstellar is a sanctuary of intention. The signature is yours freely. The bracelet is our gift when you enter the path.</p>
   </section>
 
@@ -788,7 +799,7 @@ const I18N = {
     nav_home:'Home', nav_reveal:'Reveal', nav_story:'Story',
     eyebrow:'Five Elements × Zodiac',
     hero_title:'Two Beads.<br><span class="gold">One Universe.</span>',
-    hero_sub:'Every soul is born with a twin star. One speaks the language of the cosmos — your Zodiac. The other whispers the ancient wisdom of the Five Elements. Together they form your cosmic signature.',
+    hero_sub:'Somewhere in the sky, two stars were holding a place for you — one telling the story of your Zodiac, the other carrying the old wisdom of the Five Elements. Twinstellar reads the day you were born and weaves them into one cosmic signature that is entirely, unmistakably yours.',
     hero_cta:'◇ Reveal My Universe ◇',
     btn_weave:'◇ Reveal My Signature ◇',
     err_form:'Please enter a valid birthday.',
@@ -802,26 +813,28 @@ const I18N = {
     lbl_claim:'Bring it close',
     product_sub:'The reading is a gift. If you would like its tangible form — handcrafted with intention, made to order in 3–5 days.',
     btn_copy:'Copy my universe link', btn_restart:'↺ Begin again', btn_claim:'Receive',
+    share_sub:'Find your constellation kin — share your signature with a kindred spirit.',
     story_title:'The Twinstellar Story',
     story_eyebrow:'Our Philosophy',
-    story_text:'Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one living signature, one of sixty sacred combinations — each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. The reading is ours to give you, freely: to keep, to return to, to share. Your signature is a living thing — deepen it month by month, or carry our welcome gift when the journey calls you further. <strong>Two Beads. One Universe.</strong>',
+    story_text:'Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one living signature, one of sixty sacred combinations — each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. The reading is ours to give you, freely: to keep, to return to, to share. You are the author of your own story — and your signature is a living thing, a quiet return to yourself rather than another productivity app. Deepen it month by month, or carry our welcome gift when the journey calls you further. <strong>Two Beads. One Universe.</strong>',
     story_foot:'Twinstellar is a sanctuary of intention. The signature is yours freely. The bracelet is our gift when you enter the path.',
     footer_text:'Two Beads. One Universe. · For intention and reflection — not a substitute for medical or spiritual counsel.',
     result_name:'This is you.',
     // L1 waitlist
-    lbl_waitlist:'Be the first to know',
-    waitlist_sub:'Join the waitlist — no obligation, just a gentle note when we open the circle.',
+    lbl_waitlist:'Join the circle',
+    waitlist_sub:'Join the circle — no noise, no obligation. Just a gentle note when we open the door, and a quiet place to return to.',
     waitlist_placeholder:'your@email.com',
     waitlist_btn:'◇ Notify Me ◇',
     waitlist_done:'You\'re on the list. The universe will reach you.',
     // L2 certificate (paid virtual product)
     lbl_cert:'Your sacred certificate',
-    cert_sub:'A keepsake of your cosmic signature — your name, mantra, and power stones, beautifully rendered.',
+    cert_sub:'Your first artifact — a beautifully rendered keepsake of your signature, mantra, and power stones. Proof that you are the author of your own story.',
     btn_cert:'◇ Get My Certificate ($5–9) ◇',
     // L4 subscription (hero product)
     lbl_sub:'Your signature, alive every month',
-    sub_desc:'Each month: a deeper reading of your cosmic signature, a ritual card, and a custom wallpaper — delivered to your inbox. Stay three months and we send your welcome bracelet, our gift as you enter the path.',
-    sub_cta:'◇ Begin the Journey ($19/mo) ◇',
+    sub_desc:'Your signature is a living thing. Each month we send a deeper reading, a ritual card, and a custom wallpaper — small, quiet arrivals that make the cosmic feel close. Begin with the year and let it become a gentle ritual; stay three months and we send your welcome bracelet, our gift as you enter the path.',
+    sub_cta:'◇ Begin the Journey — $19/mo or $149/yr ◇',
+    sub_annual:'Save 34% with the year · cancel anytime',
   },
   zh: {
     nav_home:'首页', nav_reveal:'揭晓', nav_story:'故事',
@@ -841,6 +854,7 @@ const I18N = {
     lbl_claim:'让它贴近你',
     product_sub:'解读本身已是馈赠。若想要它可触摸的形态——用心手作，接单后 3–5 天织成。',
     btn_copy:'复制我的宇宙链接', btn_restart:'↺ 重新开始', btn_claim:'收下',
+    share_sub:'找到同频的星座亲属——把签名分享给同频的人。',
     story_title:'Twinstellar 的故事',
     story_eyebrow:'品牌哲思',
     story_text:'每个人，都站在一段旅程的门槛上。头顶有一颗双生星：一颗说宇宙的语言，那是你的星座；一颗低语五行的古老智慧——金木水火土，流转在你体内。Twinstellar 读取你来到世间的那一天，把这两种声音，织成六十种神圣组合之一：每一种都有专属称号、真言与能量石。道不远人。你从不是孤立的碎片——天地之气在你体内流转，星座在上，五行在下，阴阳交感，自然显化为你独有的「宇宙签名」。我们做的，不过是一次天人感应：以你降生那日，观星座之轨、察五行之气，将这两股相反而相成的力量，和合成六十种道法自然之一。这份签名，本就是活的宇宙回信——可免费珍藏，可订阅让它每月生长，也可分享给同道；若你心有所感、愿入此道更深，手链是我们迎你正式入道的礼物。<strong>双珠·宇宙</strong>',
@@ -848,19 +862,20 @@ const I18N = {
     footer_text:'双珠·宇宙 · 用于心愿与自省，并非医疗或专业建议的替代。',
     result_name:'这就是你。',
     // L1 waitlist
-    lbl_waitlist:'抢先知晓',
-    waitlist_sub:'加入候补名单——无需承诺，入道之门开启时轻声告知。',
+    lbl_waitlist:'加入同道圈',
+    waitlist_sub:'加入同道圈——无喧嚣，无负担。门启时轻声相告，也留一处可随时回来的静地。',
     waitlist_placeholder:'your@email.com',
     waitlist_btn:'◇ 通知我 ◇',
     waitlist_done:'你已在名单上。宇宙会找到你。',
     // L2 certificate (paid virtual product)
     lbl_cert:'你的神圣证书',
-    cert_sub:'一枚宇宙签名的珍藏——你的称号、真言与能量石，精美呈现。',
+    cert_sub:'你入道的第一件信物——你的称号、真言与能量石精美呈现，见证你正是自己人生的作者。',
     btn_cert:'◇ 获取我的证书（$5–9） ◇',
     // L4 subscription (hero product)
     lbl_sub:'你的签名，每月都在生长',
-    sub_desc:'每月：基于你宇宙签名的更深解读、一张仪式卡、一份定制壁纸——送达你的邮箱。订阅满三月，我们寄出迎你入道的手链，作为礼物。',
-    sub_cta:'◇ 开始旅程（$19/月） ◇',
+    sub_desc:'你的签名是活的。每月：基于你宇宙签名的更深解读、一张仪式卡、一份定制壁纸——如静谧的到访，让宇宙离你很近。以年付开启，让它成为温柔的日常仪式；订阅满三月，我们寄出迎你入道的手链，作为礼物。',
+    sub_cta:'◇ 开始旅程 —— $19/月 或 $149/年 ◇',
+    sub_annual:'年付省 34% · 随时可取消',
   },
 };
 let LANG = 'en';
@@ -925,7 +940,7 @@ function renderResult(combo) {
   $('tiersWrap').innerHTML = TIERS.map(t => {
     const href = CHECKOUT_BASE
       ? `${CHECKOUT_BASE}?element=${combo.element}&zodiac=${combo.zodiac}&tier=${t.id}`
-      : `#claim:${combo.element}-${combo.zodiac}-${t.id}`;
+      : `#receive:${combo.element}-${combo.zodiac}-${t.id}`;
     const tName = zh ? (t.name_cn || t.name) : t.name;
     const tDesc = zh ? (t.desc_cn || t.desc) : t.desc;
     return `<a class="tier" href="${href}" data-tier="${t.id}">
@@ -953,7 +968,7 @@ function renderResult(combo) {
   // pre-order capture (when no checkout link configured)
   document.querySelectorAll('.tier').forEach(a => {
     a.addEventListener('click', (e) => {
-      if (!CHECKOUT_BASE && a.getAttribute('href').startsWith('#claim')) {
+      if (!CHECKOUT_BASE && a.getAttribute('href').startsWith('#receive')) {
         e.preventDefault();
         preorderCapture(combo, a.dataset.tier);
       }
@@ -976,7 +991,7 @@ function preorderCapture(combo, tierId) {
   const zh = LANG === 'zh';
   const title = zh ? combo.title_cn : combo.title_en;
   const mat = zh ? (tier.name_cn || tier.name) : tier.name;
-  const subject = zh ? `认领 ${title}（${mat}）` : `Claim ${combo.title_en} (${tier.name})`;
+  const subject = zh ? `收下 ${title}（${mat}）` : `Receive ${combo.title_en} (${tier.name})`;
   const body = zh
     ? `你好 Twinstellar：%0D%0A%0D%0A我想把属于自己的神圣手链请进生活：%0D%0A组合：${title}（${combo.element} + ${combo.zodiac}）%0D%0A材质：${mat}%0D%0A%0D%0A谢谢！`
     : `Hi Twinstellar,%0D%0A%0D%0AI'd like to receive my welcome bracelet as your gift:%0D%0ACombination: ${combo.title_en} (${combo.element} + ${combo.zodiac})%0D%0AMaterial: ${tier.name}%0D%0A%0D%0AThank you!`;
