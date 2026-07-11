@@ -1,32 +1,34 @@
-# Twinstellar · 品牌手册与经验沉淀
+# Twinstellar · 品牌手册与落地路径（合成版 · 唯一权威文件）
 
 > 一人公司、每天约 2 小时、无代码/设计能力、一切尽量自动化。
-> 域名 **twinstellar.com** 已上线（Netlify + GitHub 自动部署）。
-> 本文档是品牌文化、五行星座系统、商业理论栈、变现阶梯、站点架构的**唯一真相源 (Single Source of Truth)**。
+> 域名 **twinstellar.com** 已上线（**GitHub Pages 免费托管**：公开仓库 → 自定义域名 + 强制 HTTPS，零成本、无额度焦虑）。
+> 本文档是品牌文化、五行星座系统、商业理论栈、**免费/付费内容架构**、**病毒裂变机制**、站点架构的**唯一真相源 (Single Source of Truth)**。
+> **本轮硬转向（Request D）**：**彻底移除手链实物内容**，转向**纯数字宇宙签名体验**；以**免费内容引擎 + 病毒式裂变引擎**双轮获客与变现；同时准备好免费版本与付费版本的内容。
 
 ---
 
-## 一、品牌文化（更新版）
+## 一、品牌文化（合成版）
 
 ### 1.1 品牌身份
+
 | 维度 | 定义 |
 |:-----|:-----|
 | 品牌名 | **Twinstellar** |
-| 英文 slogan | **Two Beads. One Universe.**（双珠 = 星座 + 五行两股宇宙之力，非物理珠子） |
+| 英文 slogan | **Two Beads. One Universe.**（双珠 = 星座 + 五行两股宇宙之力，纯数字符号，非物理珠子） |
 | 中文 slogan | **双珠·宇宙** |
-| 品类 | **高端灵性宇宙签名体验品牌**：数字解读 + 订阅优先，手链仅作迎你入道的实物奖品 |
-| 一句话定位 | 宇宙为你显化一枚专属「宇宙签名」——可免费珍藏、可订阅让它每月生长、可分享给同道；实体手链不是目的，而是我们迎你正式入道的礼物与奖品。 |
-| 品牌圣所 (Sanctuary) | **数字心愿圣所**：解读免费赠予、证书可购珍藏、订阅深化联结、手链为奖——一切以"关系"而非"货架"为中心 |
+| 品类 | **纯数字高端灵性宇宙签名体验品牌**：数字解读免费赠予 + 证书可购珍藏 + 订阅深化联结 + 分享裂变扩圈 |
+| 一句话定位 | 宇宙为你显化一枚专属「宇宙签名」——可免费珍藏、可订阅让它每月生长、可分享给同道。无实物、零供应链，一切以"关系"而非"货架"为中心。 |
+| 品牌圣所 (Sanctuary) | **数字心愿圣所**：解读免费赠予、证书可购珍藏、订阅深化联结、分享裂变扩圈——一切以"关系"而非"货架"为中心 |
 
 ### 1.2 品牌叙事——最终版本（站点 story 区）
 
 **EN（北美轨道——个人英雄旅程 / 自主性 / 反硬销 / 自我表达 / 主角能量 / Soft life）**
-> Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one living signature, one of sixty sacred combinations — each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. The reading is ours to give you, freely: to keep, to return to, to share. You are the author of your own story — and your signature is a living thing, a quiet return to yourself rather than another productivity app. Deepen it month by month, or carry our welcome gift when the journey calls you further. **Two Beads. One Universe.**
+> Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one living signature, one of sixty sacred combinations — each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. The reading is ours to give you, freely: to keep, to return to, to share. You are the author of your own story — and your signature is a living thing, a quiet return to yourself rather than another productivity app. Deepen it month by month, or begin the journey when you are ready. **Two Beads. One Universe.**
 
 > **NA 优化要点（对照北美基准）**：EN 叙事从"宇宙显化"升级为「你是自己人生的作者 + 反内卷的温柔仪式 + 自我发现」，用当代 NA 语汇（main character energy / soft life / inner compass / a moment of stillness）。hero_sub 强化"entirely, unmistakably yours"的所有权语气；story 加入"You are the author of your own story"与"not another productivity app — a quiet return to yourself"。
 
 **ZH（中国轨道——天人合一 / 道法自然 / 阴阳和合 / 礼）**
-> 每个人，都站在一段旅程的门槛上。头顶有一颗双生星：一颗说宇宙的语言，那是你的星座；一颗低语五行的古老智慧——金木水火土，流转在你体内。Twinstellar 读取你来到世间的那一天，把这两种声音，织成六十种神圣组合之一：每一种都有专属称号、真言与能量石。道不远人。你从不是孤立的碎片——天地之气在你体内流转，星座在上，五行在下，阴阳交感，自然显化为你独有的「宇宙签名」。我们做的，不过是一次天人感应：以你降生那日，观星座之轨、察五行之气，将这两股相反而相成的力量，和合成六十种道法自然之一。这份签名，本就是活的宇宙回信——可免费珍藏，可订阅让它每月生长，也可分享给同道；若你心有所感、愿入此道更深，手链是我们迎你正式入道的礼物。**双珠·宇宙**
+> 每个人，都站在一段旅程的门槛上。头顶有一颗双生星：一颗说宇宙的语言，那是你的星座；一颗低语五行的古老智慧——金木水火土，流转在你体内。Twinstellar 读取你来到世间的那一天，把这两种声音，织成六十种神圣组合之一：每一种都有专属称号、真言与能量石。道不远人。你从不是孤立的碎片——天地之气在你体内流转，星座在上，五行在下，阴阳交感，自然显化为你独有的「宇宙签名」。我们做的，不过是一次天人感应：以你降生那日，观星座之轨、察五行之气，将这两股相反而相成的力量，和合成六十种道法自然之一。这份签名，本就是活的宇宙回信——可免费珍藏，可订阅让它每月生长，也可分享给同道。**双珠·宇宙**
 
 ### 1.3 双市场叙事策略（CN / NA）
 
@@ -34,10 +36,19 @@
 |---|---|---|
 | 文化根基 | 个人英雄旅程、自主性 (SDT) | 天人合一、道法自然、阴阳和合、礼 |
 | 核心心理机制 | 心理抗拒→禁用 buy/claim/limited；符号消费=自我表达 | 道教天人感应 + 祈福/圣化/转运 |
-| 话术关键 | "your signature is a living thing — deepen it monthly" | "天地交感 / 送你的礼物 / 入道之礼" |
+| 话术关键 | "your signature is a living thing — deepen it monthly" | "天地交感 / 送你的礼物 / 分享即联结" |
 | 免责语气 | 透明专业免责建立信任 | 心愿自省非替代建议 |
 
-**共用机制**：叙事传输 (Narrative Transportation) + 阈限仪式 (Liminality) + 天人感应/阴阳和合（道教）+ 礼物经济（先赠解读）+ 延伸的自我 (Extended Self) + 反心理抗拒 (Reactance)。
+**共用机制**：叙事传输 (Narrative Transportation) + 阈限仪式 (Liminality) + 天人感应/阴阳和合（道教）+ 礼物经济（先赠解读）+ 延伸的自我 (Extended Self) + 反心理抗拒 (Reactance) + 病毒式传播（原生分享 + 推荐裂变）。
+
+### 1.4 双引擎增长模型（合成版核心）
+
+品牌增长不靠付费投放，而靠两个零 CAC 引擎相互放大：
+
+- **左引擎 · 免费内容引擎**：60 组合 = 60 个不重样的长尾内容源。每天取 1 个组合，AI 生成图文/短视频卡片（称号+真言+能量石），并自动生成 60 个 SEO 长尾落地页（P1），承接 `daily ritual` / `soft life` / `self-discovery` / `inner compass` 等当代 NA 需求词与中文「五行人格 / 自我探索」词。
+- **右引擎 · 病毒裂变引擎**：结果页原生分享按钮（X / Facebook / Pinterest / WhatsApp / Reddit）+ 复制链接 + `?ref=` 推荐捕获 + UGC 签名卡（"I am a {title}"），让每一次免费解读都变成一次零成本传播，把免费流量指数级放大。
+
+> 两引擎关系：**免费内容引擎生产可分享素材，病毒裂变引擎放大分发**——免费内容即获客漏斗顶端，也是付费转化（证书 / 订阅）的入口。
 
 ---
 
@@ -55,14 +66,15 @@
 ### Tier 3 — 转化而不硬销
 - **心理抗拒 (Psychological Reactance)** — Brehm (1966)：自由被威胁就反弹。→ 去 Claim/Limited/限时，先给免费解读。
 - **自我决定论 (Self-Determination Theory)** — Deci & Ryan：自主性 + 关联感。→ 让用户"接收"而非"被卖"。
-- **礼物经济 (The Gift)** — Mauss：先免费赠"解读"，建立互惠与信任，实体再成可选延伸。
+- **礼物经济 (The Gift)** — Mauss：先免费赠"解读"，建立互惠与信任；数字宇宙签名本身即交付物，无需物理延伸。
 - **价值共创 / S-D Logic** — Vargo & Lusch：quiz 让用户参与"织"出结果 → 禀赋效应↑。
 - **心流 (Flow)** — Csikszentmihalyi：无缝沉浸，减少"这是商店"的跳脱。
 
 ### Tier 4 — 符号与意义消费
 - **符号消费 / 拟像** — Baudrillard《The System of Objects》：买的是"意义符号"不是物件。
-- **延伸的自我 (Extended Self)** — Belk：物件延伸自我认同。**数字语境下，神圣「宇宙签名」本身即是延伸自我——它是一枚活在关系中的符号，不依赖物理载体。** 手链只是 Phase 2 可选的物质化奖品。
-- **Jobs to be Done** — Christensen：用户"雇"宇宙签名做的工作是身份确认、安抚、与宇宙连接——这一 JTBD 由数字解读 + 订阅持续满足，手链作奖品时再叠加"可佩戴"维度。
+- **延伸的自我 (Extended Self)** — Belk：物件延伸自我认同。**数字语境下，神圣「宇宙签名」本身即是延伸自我——它是一枚活在关系中的符号，不依赖物理载体。**
+- **Jobs to be Done** — Christensen：用户"雇"宇宙签名做的工作是身份确认、安抚、与宇宙连接——这一 JTBD 由数字解读 + 订阅完整满足，无需物理载体。
+- **病毒式传播 (Virality)** — Berger《Contagious》：社交货币（"我是 XX 签名"身份标签）+ 实用价值（免费解读）+ 触发（每日签文/同道分享）驱动自发传播。
 
 ---
 
@@ -143,39 +155,63 @@
 
 ---
 
-## 四、变现逻辑：四级阶梯（虚拟优先 · 手链降级为奖品）
+## 四、变现逻辑与内容架构（三级阶梯 · 免费获客 · 虚拟优先）
 
-**战略转向**：从「手链中心」转为「虚拟产品 + 订阅优先」。手链在推广前期**完全不出现在站点与营销**，仅作为订阅满额 / 活动 / 抽奖的实物奖品（迎你入道之礼）。按"投入小、回款快、可自动化、边际成本≈0"排序。
+### 4.1 战略定位
+
+**纯数字宇宙签名体验品牌**——无实物、零供应链。所有变现均在单文件静态 MVP 中完成，无需后端。以「免费内容引流 + 礼物经济轻转化 + 订阅深度绑定」为漏斗，配合病毒式裂变零 CAC 放大。
 
 | 层级 | 产品 | 单价 | 网页落位 | 交付方式 | 战略角色 |
 |:----:|:-----|:----:|:-----|:-----|:-----|
 | **L1** | 候补名单 (waitlist) | $0 | 结果页——真言下方 | 输入邮箱 → localStorage，按钮变确认 | 获客钩子 |
-| **L2** | 数字证书（称号证书） | **$5–9 付费** | 结果页——L1 之后、L4 之前 | Stripe 付费 → 浏览器生成精美可打印/下载证书（称号+真言+能量石+专属纹样） | **虚拟销售主力** |
-| **L4** | 月度宇宙签名订阅 | **$19/月 或 $149/年（省 34%，默认主推年付）** | 结果页——L2 之后，**默认展开、金色强调（英雄产品）** | 每月：专属深度解读 + 仪式卡 + 定制壁纸/数字礼包；订阅满 3 月赠标准款手链作为入道之礼 | **核心收入线（MRR）** |
-| **L3** | 实物手链（奖品/周边） | 非售卖 | **Phase 1 站点隐藏**；Phase 2 作为「奖品说明块」回归 | 订阅满额赠 / 活动奖 / 抽奖品（3 档材质 $88–168 仅作奖品规格参考，不公开标价） | **辅助奖品，非销售主体** |
+| **L2** | 数字证书（签名珍藏） | **$5–9 付费** | 结果页——L1 之后、L3 之前 | Stripe 付费 → 浏览器生成精美可打印/下载证书（称号+真言+能量石+专属纹样） | **虚拟销售主力** |
+| **L3** | 月度宇宙签名订阅 | **$19/月 或 $149/年（省 34%，默认主推年付）** | 结果页——L2 之后，**默认展开、金色强调（英雄产品）** | 每月：专属深度解读 + 仪式卡 + 定制壁纸/数字礼包 | **核心收入线（MRR）** |
 
 **话术铁律**：所有层级统一用"礼物 / 邀请 / 深化"语态，禁用 buy / claim / limited / 限量 / 限时。
 
-**L4 订阅英雄化逻辑**：
+### 4.2 L3 订阅英雄化逻辑
 - 价值主张：你的宇宙签名是活的——每月一次更深的解读、一张仪式卡、一份定制数字礼包，让它持续生长；文案把订阅塑造成"温柔的日常仪式（a gentle daily ritual）"，为未来日签功能铺叙事。
-- 获客钩子（替代原"首月赠手链"）：**首月专属数字仪式礼包**（深度解读 + 仪式卡 + 定制壁纸），手链改为「订阅满 3 月」的入道之礼或活动奖品，降低前期供应链依赖。
+- 获客钩子：**首月专属数字仪式礼包**（深度解读 + 仪式卡 + 定制壁纸），纯数字交付，边际成本≈0，零供应链依赖。
 - **年付锚点（NA 优化）**：月付 $19 作为"随用随付"档，**年付 $149/年（≈$12.4/月，省 34%）默认主推**，CTA 并列展示"$19/mo or $149/yr"、下方加"Save 34% with the year · cancel anytime"徽标。对齐 Chani 年付省 25% 模式，承接 40–60% 年付 uptake 与更低流失（年付 3–5% vs 月付 8–15%）。
-- 留存逻辑：每月礼物（解读+仪式卡+数字礼包）维持禀赋效应与回访习惯；满 3 月赠手链作为里程碑奖励，制造"升级感"而非"首单成本"。
+- 留存逻辑：每月礼物（解读+仪式卡+数字礼包）维持禀赋效应与回访习惯；订阅即"持续生长"的仪式，而非"首单成本"。
 
-**L2 付费化逻辑**：从免费赠品升级为 $5–9 轻量虚拟产品，与 L4 共同构成「虚拟产品销售线」。免费解读（礼物经济）→ 付费证书（轻转化）→ 订阅（深度绑定），形成低门槛递进漏斗。
+### 4.3 L2 付费化逻辑
+从免费赠品升级为 $5–9 轻量虚拟产品，与 L3 共同构成「虚拟产品销售线」。免费解读（礼物经济）→ 付费证书（轻转化）→ 订阅（深度绑定），形成低门槛递进漏斗。
 
-**L3 降级说明**：手链不是消失，而是**退居奖品位**。Phase 1 站点不展示购买块（去除 glowPulse、预购捕获），仅在有订阅满额/活动时以奖品形式出现；Phase 2 留存验证后，可作为「高端周边 / 入道礼」以奖品说明块回归，但**永不回到 L3 销售块的中心位置**。
+### 4.4 上线建议顺序
+L1 + L2 + L3 今天就能上线（零供应链、纯数字）→ 订阅留存验证后叠加合盘报告（P3）→ 接入 Stripe 后开放年付切换 UI + 免费试用（P4）。
 
-**建议顺序**：L1 + L2 + L4 今天就能上线（零供应链）→ 订阅留存验证后引入 L3 作奖品 → 待复购稳定再评估是否开放 L3 限量周边预售。
+### 4.5 病毒式裂变机制（新增）
+
+- **原生分享**：结果页 5 平台按钮（X / Facebook / Pinterest / WhatsApp / Reddit）+ 复制链接；移动端优先 `navigator.share()`（Web Share API），失败回退复制链接。各平台走官方 share intent/sharer URL，预填"身份感文案 + 深链"。
+- **推荐裂变 `?ref=`**：URL `?ref={code}`（推荐人 `element+zodiac`，如 `FireAries`）捕获进 `localStorage`(`twin_ref`)；结果页/候补区生成带 `?ref=` 的专属链接；奖励以 `localStorage` 记录 + leads 附 `ref` 字段为基础，完整发放留待接入后端/Stripe（P4）。
+- **Share-to-unlock（增长环）**：分享签名后可"解锁"一份 bonus 解读——本期先预留入口，逻辑用 `localStorage` 标记即可。
+- **UGC 签名卡**：结果页 "I am a {title}" 可分享文案/卡片（文本版先行，P1 升级图片卡），作为社媒 UGC 与签名墙种子。
+
+> 预填文案示例 — EN：*"I'm a {title_en} — my cosmic signature is {element} × {zodiac}. Discover yours: {url}"*；ZH：*"我是「{title_cn}」——我的宇宙签名是「{element} × {zodiac}」。揭晓你的：{url}"*。
+
+### 4.6 免费 / 付费内容架构（新增）
+
+**免费内容（引流 + 礼物经济，永不直接收费）**
+- 核心解读：称号 + 元素 + 星座 + 融合释义 + 真言 + 能量石（始终免费）。
+- 日常/每周免费灵性内容：日签 / 周运（未来 P2）。
+- 可分享签名卡 + 社媒裂变（4.5）。
+- 候补名单 L1（免费）、推荐奖励（免费）。
+- 60 页 SEO 长尾内容（P1，免费获客）。
+
+**付费内容（变现）**
+- **L2 证书 $5–9**：签名珍藏（"你宇宙叙事的第一件珍藏"），浏览器生成可下载/打印证书。
+- **L3 订阅 $19/月 或 $149/年（省 34%，主推年付）**：每月深度解读 + 仪式卡 + 定制壁纸；未来叠加**合盘报告 P3**。
+- **边界**：免费 = 发现 + 日常免费内容 + 社媒传播；付费 = 个性化深度（证书）+ 持续订阅特权。免费内容本身就是付费转化的漏斗入口（礼物经济 → 轻转化 → 深度绑定）。
 
 ---
 
 ## 五、站点架构（当前状态）
 
 ### 5.1 技术栈
-- **单文件静态 MVP**：`/workspace/index.html`（~93KB），全部内嵌（HTML + CSS + JS + 60 组合数据）。
-- **无后端**：五行/星座计算全在客户端；waitlist/leads 存 localStorage。
-- **部署**：GitHub (`xiaocai121/twinstellar`) → Netlify 自动构建 → `twinstellar.com`（DNS 免 ICP 备案）。
+- **单文件静态 MVP**：`/workspace/index.html`（~99KB），全部内嵌（HTML + CSS + JS + 60 组合数据）。
+- **无后端**：五行/星座计算全在客户端；waitlist/leads 存 localStorage；推荐码 `twin_ref` 存 localStorage。
+- **部署**：GitHub (`xiaocai121/twinstellar`) → **GitHub Pages 免费托管** → `twinstellar.com` 自定义域名、强制 HTTPS（零成本，无 Netlify 额度限制）。
 - **i18n**：EN/ZH 双语，`data-i18n` 属性驱动 + `applyLang()` + 浏览器语言检测 + localStorage 持久化。
 
 ### 5.2 页面结构
@@ -188,12 +224,11 @@
                                   ├─ 称号 (sacredTitleEn/Cn)
                                   ├─ 元素 + 星座双卡
                                   ├─ 融合释义 + 真言
-                                  ├─ L1 候补名单
                                   ├─ 能量石
+                                  ├─ L1 候补名单
                                   ├─ L2 数字证书按钮 (付费入口)
-                                  ├─ L4 月度订阅 (英雄产品，默认展开)
-                                  ├─ [L3 实物手链：Phase 1 隐藏]
-                                  └─ 分享 (Copy link + Restart)
+                                  ├─ L3 月度订阅 (英雄产品，默认展开)
+                                  └─ 分享裂变（原生按钮 + 复制链接 + 推荐 CTA + 重启）
 ```
 
 ### 5.3 交互体验（宇宙沉浸）
@@ -201,17 +236,20 @@
 - **星云** (nebula)：CSS 动画缓慢漂移，深空背景。
 - **视图溶解过渡**：`view-in`/`view-out` CSS class，fadeUp/fromLeft/fromRight 交错动画。
 - **loading 仪式**：双珠（星座+五行两股宇宙之力）向核心汇聚 (convergeA/B) + 轨道火花 (orbit/spark)，loading 文案 "Reading the stars for you…"。
-- **结果渐入**：称号 → 双卡 → 真言 → 能量石 → L1→L2→L4 依次 stagger 淡入（金色脉冲强调转移至 L4 订阅英雄块）。
-- **玻璃态 (Glassmorphism)**：`.field input` / `.dual-card` / `.stone` / `.tier` 使用 `backdrop-filter: blur()`。
+- **结果渐入**：称号 → 双卡 → 真言 → 能量石 → L1→L2→L3 依次 stagger 淡入（金色脉冲强调转移至 L3 订阅英雄块）。
+- **玻璃态 (Glassmorphism)**：`.field input` / `.dual-card` / `.stone` 使用 `backdrop-filter: blur()`。
 - **金属金渐变**：`.gold` / `.sacred-title` / `.brand` 使用 `background-clip: text` + `linear-gradient` 金色渐变。
 - **按钮光泽扫过**：`.btn-primary::after` shine sweep 动画。
 - **无障碍**：`prefers-reduced-motion` 媒体查询禁用所有动画。
 - **按钮反馈**：reveal 表单按钮在生日未选全时半透明 (opacity 0.45)，全选后变亮。
 
-### 5.4 分享裂变机制
-- 结果页"Copy my universe link" → URL 含 `?e=Fire&z=Aries` 参数。
+### 5.4 分享裂变机制（扩建版）
+- 结果页原生分享按钮组（X / Facebook / Pinterest / WhatsApp / Reddit）→ 各平台官方 share intent/sharer URL，预填"身份文案 + 深链"。
+- 复制链接（Copy my universe link）→ URL 含 `?e=Fire&z=Aries` 参数，并自动附加 `?ref={推荐人码}`（若来自推荐链接）。
 - 分享链接打开直接展示对应组合结果（deep-link 支持）。
+- 移动端优先 `navigator.share()`（Web Share API），失败回退复制。
 - 不含姓名参数（隐私友好，更愿转发）。
+- `?ref=` 推荐码在加载时即捕获进 `localStorage`，并记录在所产生 leads 的 `ref` 字段，用于未来奖励发放与归因。
 
 ---
 
@@ -220,7 +258,7 @@
 ### 6.1 内容杠杆
 - **60 组合 = 60 天不重样素材**：每天取 1 个组合，AI 生成图文/短视频卡片（称号+真言+能量石）。
 - **三轨内容线**：知识（深度解读）/ 身份（"我测出来是 XX"UGC 反应）/ 仪式（新月满月指南）。
-- **SEO 60 页**：从 60 组合数据自动生成 60 个长尾落地页（模板渲染），主关键词转向 "Fire Aries cosmic signature / meaning / reading"（搜索量远大于 bracelet），手链词仅作长尾补充（"Fire Aries bracelet meaning" 作为 Phase 2 奖品相关页）。
+- **SEO 60 页**：从 60 组合数据自动生成 60 个长尾落地页（模板渲染），主关键词 **"Fire Aries cosmic signature / meaning / reading"**（搜索量远大于 bracelet），纯 cosmic signature / reading 长尾，**不含手链词**。
 - **关键词簇升级（NA 优化）**：在既有 `cosmic signature` / `five element zodiac reading` / `Fire Aries meaning` 主簇之外，补充当代 NA 需求簇：
   - `daily ritual astrology`（日签习惯）、`soft life astrology`（反内卷仪式）
   - `self-discovery reading`（自我发现）、`inner compass`（内在罗盘）、`five elements personality`（五行人格）
@@ -245,20 +283,14 @@
 
 ---
 
-## 七、供应链与交付
+## 七、交付与供应链（纯数字 · 零实物）
 
-### L3 实物手链（奖品逻辑，非销售主体）
-> Phase 1 站点与营销完全不出现；仅作订阅满额/活动/抽奖的实物奖品。
+> **本品牌无实物，纯数字交付。** 不生产、不备货、不寄样。
 
-1. **按需少量备货**：用 L4 订阅满 3 月人数 + 活动规模决定备货量，避免库存。
-2. **三种无制造交付方式**：代工/一件代发（推荐）→ POD 首饰平台 → 手工自组（后期）。
-3. **品控**：首批自购 5–10 条样品，拍照/佩戴验证后再放量。
-4. **奖品话术**：以"入道之礼 / 迎你入道的礼物"呈现，不标价、不主推。
-
-### L1/L2/L4 交付（零/低供应链）
-- L1：零库存，仅收邮箱名单。
-- L2：浏览器端生成证书（PDF/打印），Stripe 付费后即时交付。
-- L4：纯数字为主（AI 生成月度深度解读 + 仪式卡 + 定制壁纸/数字礼包），边际成本≈0。
+- **L1 候补**：零库存，仅收邮箱名单（localStorage）。
+- **L2 证书**：浏览器端生成证书（PDF/打印），Stripe 付费后即时交付，边际成本≈0。
+- **L3 订阅**：纯数字为主（AI 生成月度深度解读 + 仪式卡 + 定制壁纸/数字礼包），边际成本≈0。
+- **裂变奖励**：推荐/分享解锁的 bonus 解读与试用延长，均为数字交付，无实物成本。
 
 ---
 
@@ -266,46 +298,36 @@
 
 - **免责声明**：脚注 "For intention and reflection — not a substitute for medical or spiritual counsel"（中文：用于心愿与自省，并非医疗或专业建议的替代）。**绝不**对水晶做医疗/疗效宣称（欧美合规红线）。
 - **商标**：Twinstellar 自创词风险低，稳定收入后注册美国商标。
-- **隐私**：仅收生日（不落服务器），waitlist 邮箱存 localStorage；未来若用表单需标明用途。
+- **隐私**：仅收生日（不落服务器），waitlist 邮箱存 localStorage；推荐码 `twin_ref` 仅存本地用于归因；未来若用表单需标明用途。
 - **来源数字**：文档另有"来源数字 1–9 → 五行"命理学输入，为可选项；当前 MVP 用生日（年干 + 月日）决定 60 组合，稳定可解释。来源数字可日后作为第二个 Quiz。
 
 ---
 
-## 九、Git 演进历史（21 commits，按时间倒序）
+## 九、Git 演进历史（节选）
 
 | 提交 | 说明 |
 |---|---|
-| `475995d` | fix: reveal 表单按钮在生日未选全时半透明提示，全选变亮 |
-| `3c7b9f3` | feat: L1 候补名单 + L2 数字证书 + L4 月度订阅，四级阶梯全部落地 |
-| `0edbf96` | chore: 更新 meta description 去掉 name |
+| `08eb893` | chore: 添加 CNAME 以启用 GitHub Pages 自定义域名 twinstellar.com |
+| `5b54335` | docs: 新增下一阶段路线图（60页SEO/日签/合盘/年付UI 已排期） |
+| `8a6a362` | feat: 北美市场优化——EN叙事升级+L4年付锚点$149/年+社群分享话术 |
+| `3c7b9f3` | feat: L1 候补名单 + L2 数字证书 + L4 月度订阅，变现阶梯落地 |
 | `e0291cd` | feat: 去掉姓名输入，仅需生日即可揭晓；分享链接去除 n= 参数 |
-| `655e7a1` | 商业理论栈注入：品牌故事重写(CN/NA双轨)、Claim→Receive、去 Limited/限量、footer 诫语升级 |
-| `b9d7cc0` | fix: i18n applyLang 改用 innerHTML |
-| `72c5cc1` | fix: 中文 Hero 标题改单行「双珠·宇宙」 |
-| `21ce6d3` | 中文标语统一为「双珠·宇宙」 |
-| `1ca4a7d` | 首页去输入框提升高级感 |
-| `011c236` | homepage: remove hero input form, enrich story |
-| `b2f49fe` | premium rework: 双珠 brand copy + metallic gold + glassmorphism |
-| `70d9a11` | fix: populateDob missing options + html bg |
 | `df1697d` | feat: cinematic cosmic UX — dissolve transitions, converging loader |
-| `945039b` | feat: localized result title per language |
-| `fe9efc6` | feat: bilingual EN/中文 UI |
-| `15fd566` | fix: hidden view toggle + date dropdowns |
-| `872b906` | feat: name+birthday form on hero |
-| `a2fa655` | test: auto-deploy proof |
-| `41d60e7` | netlify.toml + docs |
 | `1050a60` | MVP: single-file five-elements zodiac bracelet quiz |
+
+> 完整历史见 `git log`。早期提交信息中 "bracelet" 为 MVP 初始命名，品牌已硬转向纯数字签名体验。
 
 ---
 
 ## 十、结论
 
-1. **品牌已从"卖手链"升维为"宇宙为你显化签名"**——以道教文化（天人感应/阴阳和合/道法自然）为中文语境差异化锚点、以叙事传输+礼物经济+延伸的自我（数字符号亦可）为体验骨架；「双珠」重定义为星座+五行两股宇宙之力，与物理手链解耦。
-2. **站点已实现虚拟优先的四级变现阶梯**（L1 候补 → L2 付费证书 → L4 订阅英雄 → L3 手链降级为奖品），全在单文件静态 MVP 中，无需后端；Phase 1 不展示 L3 购买块。
-3. **双市场轨道已建立**：NA（英雄旅程+自主性）与 CN（天人合一+道法自然），文案与话术各轨统一。
-4. **60 组合数据是唯一内容源头**：所有 SEO 页（关键词转向 cosmic signature/reading）、社交卡片、短视频均可从同一份数据衍生，AI 辅助生产。
-5. **下一步**：推广裂变 → 收候补名单 → L2 付费证书 + L4 订阅跑通 MRR → 订阅满 3 月以手链作入道之礼，验证奖品模型后再评估限量周边。
-6. **NA 优化已落地（Request C）**：EN 叙事升级为「主角能量 + Soft life + 自我发现」框架；L4 引入年付锚点 $149/年（省 34%，主推年付、月付 $19 为随用随付档）；L1/L2 话术升级为社群/身份确认语气；分享块加「找到同频星座亲属」副文案；SEO 关键词簇补充 daily ritual / soft life / self-discovery / inner compass。全程保留独特性护栏（东西方合成 60 签名、道教锚点、电影化英雄旅程、礼物经济、无姓名输入、双珠解耦、L3 隐藏），避免与 Co-Star/The Pattern/Karma and Luck 同质化。日签循环、合盘报告、年付切换 UI+试用列为未来阶段。
+1. **品牌已从"卖手链"升维为「纯数字宇宙签名体验品牌」**——以道教文化（天人感应/阴阳和合/道法自然）为中文语境差异化锚点、以叙事传输+礼物经济+延伸的自我（数字符号）为体验骨架；「双珠」重定义为星座+五行两股宇宙之力，与物理手链彻底解耦（原"L3 隐藏"护栏作废）。
+2. **站点已实现虚拟优先的三级变现阶梯**（L1 候补 → L2 付费证书 → L3 订阅英雄），全在单文件静态 MVP 中，无需后端、无实物供应链。
+3. **双引擎增长模型已建立**：免费内容引擎（60 组合 → 60 SEO 长尾页 + 社媒图文/短视频）与病毒裂变引擎（原生分享 + 推荐 `?ref=` + UGC 签名卡）相互放大，零 CAC 获客。
+4. **免费/付费内容架构清晰**：免费 = 核心解读 + 日常免费内容 + 社媒传播（礼物经济引流）；付费 = 个性化深度证书 + 持续订阅特权（轻转化 → 深度绑定）。
+5. **双市场轨道已建立**：NA（英雄旅程+自主性）与 CN（天人合一+道法自然），文案与话术各轨统一。
+6. **60 组合数据是唯一内容源头**：所有 SEO 页、社交卡片、短视频、裂变签名卡均可从同一份数据衍生，AI 辅助生产。
+7. **NA 优化已落地（Request C）**：EN 叙事升级为「主角能量 + Soft life + 自我发现」框架；L3 引入年付锚点 $149/年（省 34%，主推年付、月付 $19 为随用随付档）；L1/L2 话术升级为社群/身份确认语气；分享块加「找到同频星座亲属」副文案；SEO 关键词簇补充 daily ritual / soft life / self-discovery / inner compass。日签循环、合盘报告、年付切换 UI+试用列为未来阶段。
 
 ---
 
@@ -317,9 +339,21 @@
 |:---:|:---|:---|:---|:---|:---|
 | **P1** | 60 页 SEO 自动生成 + UGC 签名墙 | 有机获客引擎；承接 daily ritual / soft life / self-discovery 长尾词；边际成本≈0 | 从 `TWIN_COMBOS` 模板渲染 60 个长尾落地页 + 社群签名墙展示 | 无后端（静态生成） | 低 |
 | **P2** | 日签习惯循环（freemium 钩子） | 养每日回访，提升免费→付费转化（3–8%）与留存 | 每日基于签名的「今日签文 / 仪式」卡；可纯前端轮播 60 组合 | 无后端 | 低 |
-| **P3** | 合盘 / 相容报告 | 研究指认为最高转化付费功能 | 输入两人生日生成相容解读；可作 L4 附加或独立轻付费 | 需相容逻辑设计 | 中 |
-| **P4** | 年付切换 UI + 免费试用 | 把年付锚点升级为真控件 + 14 天试用，进一步降流失 | 月/年切换组件 + Stripe 接入 + 试用 | 需 Stripe 账户接入 | 中（外部依赖） |
+| **P3** | 合盘 / 相容报告 | 研究指认为最高转化付费功能 | 输入两人生日生成相容解读；可作 L3 附加或独立轻付费 | 需相容逻辑设计 | 中 |
+| **P4** | 年付切换 UI + 免费试用 + 裂变奖励发放 | 把年付锚点升级为真控件 + 14 天试用，并落地 `?ref=` 推荐奖励 | 月/年切换组件 + Stripe 接入 + 试用 + leads 奖励归因 | 需 Stripe 账户接入 | 中（外部依赖） |
 
 **建议执行顺序**：P1 → P2 → P3 → P4（P4 依赖 Stripe 就绪，可并行准备）。
 
-**护栏不变**：所有新功能仍须保留 §三 独特性护栏（东西方合成 60 签名、道教锚点、电影化英雄旅程、礼物经济、无姓名输入、双珠解耦、L3 隐藏），避免同质化。
+**护栏不变**：所有新功能仍须保留 §三 独特性护栏（东西方合成 60 签名、道教锚点、电影化英雄旅程、礼物经济、无姓名输入、双珠解耦、**反同质化**），避免与 Co-Star（纯西占）/ Karma and Luck（东方符号实物）同质化——我们是无实物的东西方合成数字签名品牌。
+
+---
+
+## 附：独特性护栏（合成版最终版）
+
+1. **东西方合成 60 签名系统**（五行 × 星座，专有）
+2. **道教文化锚点**（CN 轨道，60 条 Taoist `fusion_cn` 不变）
+3. **电影化英雄旅程**（loading 阈限仪式、视图溶解）
+4. **礼物经济**（先免费赠解读，再轻转化；禁用 buy/claim/limited）
+5. **无姓名输入**（仅生日，隐私友好）
+6. **双珠 = 星座 + 五行两股宇宙之力**（纯数字符号，与物理手链彻底解耦；原"L3 隐藏"护栏作废）
+7. **反同质化**：区别于 Co-Star（纯西占）/ Karma and Luck（东方符号实物）——我们是无实物的东西方合成数字签名品牌

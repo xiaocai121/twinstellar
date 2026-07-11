@@ -682,24 +682,25 @@ header, section, footer { position: relative; z-index: 1; }
       <button class="btn-primary" id="certBtn" data-i18n="btn_cert">◇ Get My Certificate ($5–9) ◇</button>
     </div>
 
-    <!-- L4: subscription (hero product, default expanded) -->
+    <!-- L3: subscription (hero product, default expanded) -->
     <div class="subscription-block hero" id="subBlock">
       <p class="sub-label" data-i18n="lbl_sub">Your signature, alive every month</p>
       <div class="sub-detail" id="subDetail">
-        <p data-i18n="sub_desc">Your signature is a living thing. Each month we send a deeper reading, a ritual card, and a custom wallpaper — small, quiet arrivals that make the cosmic feel close. Begin with the year and let it become a gentle ritual; stay three months and we send your welcome bracelet, our gift as you enter the path.</p>
+        <p data-i18n="sub_desc">Your signature is a living thing. Each month we send a deeper reading, a ritual card, and a custom wallpaper — small, quiet arrivals that make the cosmic feel close. Begin with the year and let it become a gentle daily ritual.</p>
         <p class="sub-annual" data-i18n="sub_annual">Save 34% with the year · cancel anytime</p>
         <a class="btn-primary" id="subCta" data-i18n="sub_cta">◇ Begin the Journey — $19/mo or $149/yr ◇</a>
       </div>
     </div>
 
-    <!-- L3: bracelet (Phase 1 hidden — prize only) -->
-    <div class="product-block" id="productBlock" hidden>
-      <p class="product-label" data-i18n="lbl_claim">Bring it close</p>
-      <p class="product-sub" data-i18n="product_sub">The reading is a gift. If you would like its tangible form — handcrafted with intention, made to order in 3–5 days.</p>
-      <div class="tiers" id="tiersWrap"></div>
-    </div>
-
     <p class="share-sub" data-i18n="share_sub">Find your constellation kin — share your signature with a kindred spirit.</p>
+    <div class="share-row" id="shareRow">
+      <button class="share-btn" data-share="x" type="button" aria-label="Share on X">X</button>
+      <button class="share-btn" data-share="facebook" type="button" aria-label="Share on Facebook">f</button>
+      <button class="share-btn" data-share="pinterest" type="button" aria-label="Share on Pinterest">P</button>
+      <button class="share-btn" data-share="whatsapp" type="button" aria-label="Share on WhatsApp">Wa</button>
+      <button class="share-btn" data-share="reddit" type="button" aria-label="Share on Reddit">r</button>
+    </div>
+    <p class="share-reward" data-i18n="share_reward">Share your signature — you and a friend each unlock a bonus reading.</p>
     <div class="share-block">
       <button class="btn-ghost" id="copyLinkBtn" data-i18n="btn_copy">Copy my universe link</button>
       <button class="btn-ghost" id="restartBtn" data-i18n="btn_restart">↺ Begin again</button>
@@ -710,8 +711,8 @@ header, section, footer { position: relative; z-index: 1; }
   <section id="story" class="story">
     <p class="eyebrow" data-i18n="story_eyebrow">Our Philosophy</p>
     <h2 class="section-title" data-i18n="story_title">The Twinstellar Story</h2>
-    <p class="story-text" data-i18n="story_text">Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one living signature, one of sixty sacred combinations — each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. The reading is ours to give you, freely: to keep, to return to, to share. You are the author of your own story — and your signature is a living thing, a quiet return to yourself rather than another productivity app. Deepen it month by month, or carry our welcome gift when the journey calls you further. <strong>Two Beads. One Universe.</strong></p>
-    <p class="story-foot" data-i18n="story_foot">Twinstellar is a sanctuary of intention. The signature is yours freely. The bracelet is our gift when you enter the path.</p>
+    <p class="story-text" data-i18n="story_text">Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one living signature, one of sixty sacred combinations — each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. The reading is ours to give you, freely: to keep, to return to, to share. You are the author of your own story — and your signature is a living thing, a quiet return to yourself rather than another productivity app. Deepen it month by month, or begin the journey when you are ready. <strong>Two Beads. One Universe.</strong></p>
+    <p class="story-foot" data-i18n="story_foot">Twinstellar is a sanctuary of intention. Your signature is yours, freely — to keep, to return to, and to share.</p>
   </section>
 
   <footer class="footer">
@@ -775,19 +776,20 @@ const BOUNDARIES = [
   { m: 12, d: 22, z: 'capricorn' },
 ];
 
-// ---- Material tiers (configurable prices) ----
-const TIERS = [
-  { id: 'steel',  name: 'Surgical Steel', name_cn: '医用精钢', desc: 'Everyday · Gentle on skin', desc_cn: '日常 · 温润亲肤', price: 88 },
-  { id: 'silver', name: 'Sterling Silver', name_cn: '925 纯银', desc: 'Classic · Hand-finished',  desc_cn: '经典 · 手工打磨', price: 128 },
-  { id: 'gold',   name: '18K Gold Finish', name_cn: '18K 金镀层', desc: 'Warm glow · For keeps', desc_cn: '暖光 · 珍藏', price: 168 },
-];
-
-// ---- CHECKOUT: drop in your Stripe / Shopify / checkout link here ----
-// Leave as '' to use the built-in pre-order email capture.
-const CHECKOUT_BASE = '';
 // ---- SUBSCRIBE: drop in your Stripe / Patreon / membership link here ----
 // Leave as '' to use the built-in subscription email capture.
 const SUBSCRIBE_BASE = '';
+
+// ---- Referral: capture ?ref= and persist so invited friends can be credited ----
+function getRef() {
+  try { return localStorage.getItem('twin_ref') || ''; } catch (_) { return ''; }
+}
+function setRefFromUrl() {
+  try {
+    const p = new URLSearchParams(location.search).get('ref');
+    if (p) localStorage.setItem('twin_ref', p);
+  } catch (_) {}
+}
 
 // ---------- i18n (EN / 中文) ----------
 const LANG_MONTHS = {
@@ -810,14 +812,12 @@ const I18N = {
     loading_text:'Reading the stars for you…',
     lbl_element:'YOUR ELEMENT', lbl_stars:'YOUR STARS',
     lbl_mantra:'Your Mantra', lbl_stones:'Your Power Stones',
-    lbl_claim:'Bring it close',
-    product_sub:'The reading is a gift. If you would like its tangible form — handcrafted with intention, made to order in 3–5 days.',
-    btn_copy:'Copy my universe link', btn_restart:'↺ Begin again', btn_claim:'Receive',
+    btn_copy:'Copy my universe link', btn_restart:'↺ Begin again',
     share_sub:'Find your constellation kin — share your signature with a kindred spirit.',
     story_title:'The Twinstellar Story',
     story_eyebrow:'Our Philosophy',
-    story_text:'Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one living signature, one of sixty sacred combinations — each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. The reading is ours to give you, freely: to keep, to return to, to share. You are the author of your own story — and your signature is a living thing, a quiet return to yourself rather than another productivity app. Deepen it month by month, or carry our welcome gift when the journey calls you further. <strong>Two Beads. One Universe.</strong>',
-    story_foot:'Twinstellar is a sanctuary of intention. The signature is yours freely. The bracelet is our gift when you enter the path.',
+    story_text:'Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one living signature, one of sixty sacred combinations — each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. The reading is ours to give you, freely: to keep, to return to, to share. You are the author of your own story — and your signature is a living thing, a quiet return to yourself rather than another productivity app. Deepen it month by month, or begin the journey when you are ready. <strong>Two Beads. One Universe.</strong>',
+    story_foot:'Twinstellar is a sanctuary of intention. Your signature is yours, freely — to keep, to return to, and to share.',
     footer_text:'Two Beads. One Universe. · For intention and reflection — not a substitute for medical or spiritual counsel.',
     result_name:'This is you.',
     // L1 waitlist
@@ -832,9 +832,10 @@ const I18N = {
     btn_cert:'◇ Get My Certificate ($5–9) ◇',
     // L4 subscription (hero product)
     lbl_sub:'Your signature, alive every month',
-    sub_desc:'Your signature is a living thing. Each month we send a deeper reading, a ritual card, and a custom wallpaper — small, quiet arrivals that make the cosmic feel close. Begin with the year and let it become a gentle ritual; stay three months and we send your welcome bracelet, our gift as you enter the path.',
+    sub_desc:'Your signature is a living thing. Each month we send a deeper reading, a ritual card, and a custom wallpaper — small, quiet arrivals that make the cosmic feel close. Begin with the year and let it become a gentle daily ritual.',
     sub_cta:'◇ Begin the Journey — $19/mo or $149/yr ◇',
     sub_annual:'Save 34% with the year · cancel anytime',
+    share_reward:'Share your signature — you and a friend each unlock a bonus reading.',
   },
   zh: {
     nav_home:'首页', nav_reveal:'揭晓', nav_story:'故事',
@@ -851,14 +852,12 @@ const I18N = {
     loading_text:'宇宙正在为你读取星图……',
     lbl_element:'你的元素', lbl_stars:'你的星座',
     lbl_mantra:'你的真言', lbl_stones:'你的能量石',
-    lbl_claim:'让它贴近你',
-    product_sub:'解读本身已是馈赠。若想要它可触摸的形态——用心手作，接单后 3–5 天织成。',
-    btn_copy:'复制我的宇宙链接', btn_restart:'↺ 重新开始', btn_claim:'收下',
+    btn_copy:'复制我的宇宙链接', btn_restart:'↺ 重新开始',
     share_sub:'找到同频的星座亲属——把签名分享给同频的人。',
     story_title:'Twinstellar 的故事',
     story_eyebrow:'品牌哲思',
-    story_text:'每个人，都站在一段旅程的门槛上。头顶有一颗双生星：一颗说宇宙的语言，那是你的星座；一颗低语五行的古老智慧——金木水火土，流转在你体内。Twinstellar 读取你来到世间的那一天，把这两种声音，织成六十种神圣组合之一：每一种都有专属称号、真言与能量石。道不远人。你从不是孤立的碎片——天地之气在你体内流转，星座在上，五行在下，阴阳交感，自然显化为你独有的「宇宙签名」。我们做的，不过是一次天人感应：以你降生那日，观星座之轨、察五行之气，将这两股相反而相成的力量，和合成六十种道法自然之一。这份签名，本就是活的宇宙回信——可免费珍藏，可订阅让它每月生长，也可分享给同道；若你心有所感、愿入此道更深，手链是我们迎你正式入道的礼物。<strong>双珠·宇宙</strong>',
-    story_foot:'Twinstellar 是一处心愿的圣所。签名本就免费予你，手链是入道之礼。',
+    story_text:'每个人，都站在一段旅程的门槛上。头顶有一颗双生星：一颗说宇宙的语言，那是你的星座；一颗低语五行的古老智慧——金木水火土，流转在你体内。Twinstellar 读取你来到世间的那一天，把这两种声音，织成六十种神圣组合之一：每一种都有专属称号、真言与能量石。道不远人。你从不是孤立的碎片——天地之气在你体内流转，星座在上，五行在下，阴阳交感，自然显化为你独有的「宇宙签名」。我们做的，不过是一次天人感应：以你降生那日，观星座之轨、察五行之气，将这两股相反而相成的力量，和合成六十种道法自然之一。这份签名，本就是活的宇宙回信——可免费珍藏，可订阅让它每月生长，也可分享给同道；若你心有所感，便让签名每月生长得更深。<strong>双珠·宇宙</strong>',
+    story_foot:'Twinstellar 是一处心愿的圣所。签名本就免费予你——可珍藏、可重访、可分享。',
     footer_text:'双珠·宇宙 · 用于心愿与自省，并非医疗或专业建议的替代。',
     result_name:'这就是你。',
     // L1 waitlist
@@ -869,13 +868,14 @@ const I18N = {
     waitlist_done:'你已在名单上。宇宙会找到你。',
     // L2 certificate (paid virtual product)
     lbl_cert:'你的神圣证书',
-    cert_sub:'你入道的第一件信物——你的称号、真言与能量石精美呈现，见证你正是自己人生的作者。',
+    cert_sub:'你宇宙叙事的第一件珍藏——你的称号、真言与能量石精美呈现，见证你正是自己人生的作者。',
     btn_cert:'◇ 获取我的证书（$5–9） ◇',
     // L4 subscription (hero product)
     lbl_sub:'你的签名，每月都在生长',
-    sub_desc:'你的签名是活的。每月：基于你宇宙签名的更深解读、一张仪式卡、一份定制壁纸——如静谧的到访，让宇宙离你很近。以年付开启，让它成为温柔的日常仪式；订阅满三月，我们寄出迎你入道的手链，作为礼物。',
+    sub_desc:'你的签名是活的。每月：基于你宇宙签名的更深解读、一张仪式卡、一份定制壁纸——如静谧的到访，让宇宙离你很近。以年付开启，让它成为温柔的日常仪式。',
     sub_cta:'◇ 开始旅程 —— $19/月 或 $149/年 ◇',
     sub_annual:'年付省 34% · 随时可取消',
+    share_reward:'分享你的签名——你与朋友各解锁一份加赠解读。',
   },
 };
 let LANG = 'en';
@@ -935,27 +935,12 @@ function renderResult(combo) {
   $('stonesWrap').innerHTML = (combo.stones || [])
     .map(s => `<span class="stone">${s}</span>`).join('');
 
-  // tiers
-  const cta = I18N[LANG].btn_claim;
-  $('tiersWrap').innerHTML = TIERS.map(t => {
-    const href = CHECKOUT_BASE
-      ? `${CHECKOUT_BASE}?element=${combo.element}&zodiac=${combo.zodiac}&tier=${t.id}`
-      : `#receive:${combo.element}-${combo.zodiac}-${t.id}`;
-    const tName = zh ? (t.name_cn || t.name) : t.name;
-    const tDesc = zh ? (t.desc_cn || t.desc) : t.desc;
-    return `<a class="tier" href="${href}" data-tier="${t.id}">
-      <div class="tier-name">${tName}</div>
-      <div class="tier-desc">${tDesc}</div>
-      <div class="tier-price">$${t.price}</div>
-      <div class="tier-cta">◇ ${cta} ◇</div>
-    </a>`;
-  }).join('');
-
-  // wire share + restart
+  // wire viral share + restart + referral
   $('copyLinkBtn').onclick = () => copyLink(combo);
   $('restartBtn').onclick = () => { location.hash = '#reveal'; location.reload(); };
+  wireShare(combo);
 
-  // wire L4 subscription CTA
+  // wire L3 subscription CTA
   const subCta = $('subCta');
   if (subCta) {
     subCta.onclick = (e) => {
@@ -965,43 +950,51 @@ function renderResult(combo) {
     };
   }
 
-  // pre-order capture (when no checkout link configured)
-  document.querySelectorAll('.tier').forEach(a => {
-    a.addEventListener('click', (e) => {
-      if (!CHECKOUT_BASE && a.getAttribute('href').startsWith('#receive')) {
-        e.preventDefault();
-        preorderCapture(combo, a.dataset.tier);
-      }
-    });
-  });
-
   lastResult = { combo };
 }
 
+// ---- Viral share: native buttons + Web Share API fallback ----
+function shareUrl(combo) {
+  const ref = getRef();
+  return `${location.origin}${location.pathname}?e=${combo.element}&z=${combo.zodiac}${ref ? '&ref=' + encodeURIComponent(ref) : ''}`;
+}
+function shareText(combo) {
+  const zh = LANG === 'zh';
+  const url = shareUrl(combo);
+  return zh
+    ? `我是「${combo.title_cn}」——我的宇宙签名是「${combo.element} × ${combo.zodiac}」。揭晓你的：${url}`
+    : `I'm a ${combo.title_en} — my cosmic signature is ${combo.element} × ${combo.zodiac}. Discover yours: ${url}`;
+}
+function wireShare(combo) {
+  const txt = shareText(combo);
+  const url = shareUrl(combo);
+  document.querySelectorAll('#shareRow .share-btn').forEach(btn => {
+    btn.onclick = () => {
+      const net = btn.dataset.share;
+      const targets = {
+        x: `https://twitter.com/intent/tweet?text=${encodeURIComponent(txt)}`,
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+        pinterest: `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&description=${encodeURIComponent(txt)}`,
+        whatsapp: `https://wa.me/?text=${encodeURIComponent(txt)}`,
+        reddit: `https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(txt)}`,
+      };
+      const target = targets[net];
+      if (target) window.open(target, '_blank', 'noopener');
+    };
+  });
+  const copyBtn = $('copyLinkBtn');
+  if (navigator.share) {
+    copyBtn.onclick = () => { navigator.share({ title: 'Twinstellar', text: txt, url }).catch(() => {}); };
+  } else {
+    copyBtn.onclick = () => copyLink(combo);
+  }
+}
 function copyLink(combo) {
-  const url = `${location.origin}${location.pathname}?e=${combo.element}&z=${combo.zodiac}`;
+  const url = shareUrl(combo);
   navigator.clipboard?.writeText(url).then(() => {
     $('copyLinkBtn').textContent = LANG === 'zh' ? '链接已复制 ✓' : 'Link copied ✓';
     setTimeout(() => ($('copyLinkBtn').textContent = I18N[LANG].btn_copy), 2000);
   });
-}
-
-function preorderCapture(combo, tierId) {
-  const tier = TIERS.find(t => t.id === tierId);
-  const zh = LANG === 'zh';
-  const title = zh ? combo.title_cn : combo.title_en;
-  const mat = zh ? (tier.name_cn || tier.name) : tier.name;
-  const subject = zh ? `收下 ${title}（${mat}）` : `Receive ${combo.title_en} (${tier.name})`;
-  const body = zh
-    ? `你好 Twinstellar：%0D%0A%0D%0A我想把属于自己的神圣手链请进生活：%0D%0A组合：${title}（${combo.element} + ${combo.zodiac}）%0D%0A材质：${mat}%0D%0A%0D%0A谢谢！`
-    : `Hi Twinstellar,%0D%0A%0D%0AI'd like to receive my welcome bracelet as your gift:%0D%0ACombination: ${combo.title_en} (${combo.element} + ${combo.zodiac})%0D%0AMaterial: ${tier.name}%0D%0A%0D%0AThank you!`;
-  // store intent locally (for later automation / retargeting)
-  try {
-    const leads = JSON.parse(localStorage.getItem('twin_leads') || '[]');
-    leads.push({ element: combo.element, zodiac: combo.zodiac, tier: tierId, ts: Date.now() });
-    localStorage.setItem('twin_leads', JSON.stringify(leads));
-  } catch (_) {}
-  window.location.href = `mailto:hello@twinstellar.com?subject=${encodeURIComponent(subject)}&body=${body}`;
 }
 
 function subCapture(combo) {
@@ -1013,7 +1006,7 @@ function subCapture(combo) {
     : `Hi Twinstellar,%0D%0A%0D%0AI'd like my cosmic signature to keep growing each month:%0D%0ACombination: ${combo.title_en} (${combo.element} + ${combo.zodiac})%0D%0A%0D%0AThank you!`;
   try {
     const leads = JSON.parse(localStorage.getItem('twin_leads') || '[]');
-    leads.push({ element: combo.element, zodiac: combo.zodiac, type: 'subscription', ts: Date.now() });
+    leads.push({ element: combo.element, zodiac: combo.zodiac, type: 'subscription', ref: getRef(), ts: Date.now() });
     localStorage.setItem('twin_leads', JSON.stringify(leads));
   } catch (_) {}
   window.location.href = `mailto:hello@twinstellar.com?subject=${encodeURIComponent(subject)}&body=${body}`;
@@ -1073,6 +1066,7 @@ function runReveal(dateStr) {
 document.addEventListener('DOMContentLoaded', () => {
   // starfield
   initStars();
+  setRefFromUrl();
 
   function populateDob(containerId, prefix, lang) {
     const months = LANG_MONTHS[lang] || LANG_MONTHS.en;
@@ -1193,7 +1187,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // also store in leads
       try {
         const leads = JSON.parse(localStorage.getItem('twin_leads') || '[]');
-        leads.push({ email, type: 'waitlist', ts: Date.now() });
+        leads.push({ email, type: 'waitlist', ref: getRef(), ts: Date.now() });
         localStorage.setItem('twin_leads', JSON.stringify(leads));
       } catch (_) {}
     });
