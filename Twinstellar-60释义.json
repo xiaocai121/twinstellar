@@ -1,161 +1,117 @@
 {
   "meta": {
-    "brand": "Twinstellar · 宇宙签名双语释义库",
+    "brand": "Twinstellar · 宇宙签名双语释义库（文档权威版）",
     "generated_for": "后续网站/SEO/社交卡片/合盘报告统一内容源",
-    "structure_note": "英文 fusion 按道教三拍结构重写（元素本性 → 修行意象 → 神兽升华），与中文 fusion_cn 平行；中文 fusion_cn / 真言沿用站点权威版本。",
-    "source_doc": "五行星座罗盘系统-完整释义版.md（项目资产，道教释义框架同构来源）",
+    "source_doc": "五行星座罗盘系统-完整释义版.md（项目资产，fileId KkcorJjznNeH）",
+    "merge_note": "fusion_en 采用源文档权威『Fusion Energy』；fusion_cn 保留站点道教品牌声（朱雀先锋等）；element/zodiac_interpretation 取自文档五行/星座释义。",
     "count": 60
   },
-  "elements": {
-    "Fire": {
-      "name_en": "Fire",
-      "name_cn": "火",
-      "symbol": "🔥",
-      "beast_en": "the Vermillion Bird",
-      "beast_cn": "朱雀",
-      "essence_en": "Primal Fire",
-      "traits_en": "Will · Courage · Initiation",
-      "traits_cn": "意志 · 勇气 · 开创"
+  "five_elements_overview": [
+    {
+      "element": "🔥 Fire 火",
+      "source_numbers": "1, 6",
+      "core_energy": "Passion, Willpower, Transformation",
+      "sacred_keywords": "Will · Courage · Initiation"
     },
-    "Earth": {
-      "name_en": "Earth",
-      "name_cn": "土",
-      "symbol": "🌍",
-      "beast_en": "the Yellow Court",
-      "beast_cn": "黄庭(后土)",
-      "essence_en": "Deep Earth",
-      "traits_en": "Grounding · Patience · Creation",
-      "traits_cn": "沉稳 · 耐心 · 显化"
+    {
+      "element": "🌍 Earth 土",
+      "source_numbers": "2, 7",
+      "core_energy": "Stability, Nurturing, Wisdom",
+      "sacred_keywords": "Grounding · Patience · Creation"
     },
-    "Water": {
-      "name_en": "Water",
-      "name_cn": "水",
-      "symbol": "💧",
-      "beast_en": "the Black Tortoise",
-      "beast_cn": "玄武",
-      "essence_en": "Abyssal Water",
-      "traits_en": "Depth · Sensitivity · Dreams",
-      "traits_cn": "深邃 · 感知 · 梦想"
+    {
+      "element": "💧 Water 水",
+      "source_numbers": "3, 8",
+      "core_energy": "Intuition, Emotion, Flow",
+      "sacred_keywords": "Depth · Sensitivity · Dreams"
     },
-    "Metal": {
-      "name_en": "Metal",
-      "name_cn": "金",
-      "symbol": "⚪",
-      "beast_en": "the White Tiger",
-      "beast_cn": "白虎",
-      "essence_en": "Unyielding Metal",
-      "traits_en": "Structure · Mastery · Refinement",
-      "traits_cn": "秩序 · 掌控 · 淬炼"
+    {
+      "element": "⚪ Metal 金",
+      "source_numbers": "4, 9",
+      "core_energy": "Precision, Strength, Clarity",
+      "sacred_keywords": "Structure · Mastery · Refinement"
     },
-    "Wood": {
-      "name_en": "Wood",
-      "name_cn": "木",
-      "symbol": "🌳",
-      "beast_en": "the Azure Dragon",
-      "beast_cn": "青龙",
-      "essence_en": "Living Wood",
-      "traits_en": "Expansion · Renewal · Creativity",
-      "traits_cn": "生长 · 焕新 · 创造"
+    {
+      "element": "🌳 Wood 木",
+      "source_numbers": "5",
+      "core_energy": "Growth, Flexibility, Vitality",
+      "sacred_keywords": "Expansion · Renewal · Creativity"
     }
-  },
-  "zodiac": {
-    "aries": {
-      "name_en": "Aries",
-      "name_cn": "白羊",
-      "symbol": "♈",
-      "arche_en": "THE PIONEER",
-      "arche_cn": "开拓者",
-      "boundary": "3/21 – 4/19"
+  ],
+  "zodiac_overview": [
+    {
+      "zodiac": "♈ Aries 白羊",
+      "archetype": "THE PIONEER",
+      "element": "Fire",
+      "core_traits": "Courage, Leadership, Fresh Starts"
     },
-    "taurus": {
-      "name_en": "Taurus",
-      "name_cn": "金牛",
-      "symbol": "♉",
-      "arche_en": "THE BUILDER",
-      "arche_cn": "构筑者",
-      "boundary": "4/20 – 5/20"
+    {
+      "zodiac": "♉ Taurus 金牛",
+      "archetype": "THE BUILDER",
+      "element": "Earth",
+      "core_traits": "Stability, Pleasure, Persistence"
     },
-    "gemini": {
-      "name_en": "Gemini",
-      "name_cn": "双子",
-      "symbol": "♊",
-      "arche_en": "THE MESSENGER",
-      "arche_cn": "信使",
-      "boundary": "5/21 – 6/20"
+    {
+      "zodiac": "♊ Gemini 双子",
+      "archetype": "THE MESSENGER",
+      "element": "Air",
+      "core_traits": "Communication, Adaptability, Intellect"
     },
-    "cancer": {
-      "name_en": "Cancer",
-      "name_cn": "巨蟹",
-      "symbol": "♋",
-      "arche_en": "THE GUARDIAN",
-      "arche_cn": "守护者",
-      "boundary": "6/21 – 7/22"
+    {
+      "zodiac": "♋ Cancer 巨蟹",
+      "archetype": "THE GUARDIAN",
+      "element": "Water",
+      "core_traits": "Intuition, Protection, Home, Family"
     },
-    "leo": {
-      "name_en": "Leo",
-      "name_cn": "狮子",
-      "symbol": "♌",
-      "arche_en": "THE SOVEREIGN",
-      "arche_cn": "王者",
-      "boundary": "7/23 – 8/22"
+    {
+      "zodiac": "♌ Leo 狮子",
+      "archetype": "THE SOVEREIGN",
+      "element": "Fire",
+      "core_traits": "Generosity, Creativity, Confidence"
     },
-    "virgo": {
-      "name_en": "Virgo",
-      "name_cn": "处女",
-      "symbol": "♍",
-      "arche_en": "THE PURIFIER",
-      "arche_cn": "净化者",
-      "boundary": "8/23 – 9/22"
+    {
+      "zodiac": "♍ Virgo 处女",
+      "archetype": "THE PURIFIER",
+      "element": "Earth",
+      "core_traits": "Analysis, Perfection, Healing, Service"
     },
-    "libra": {
-      "name_en": "Libra",
-      "name_cn": "天秤",
-      "symbol": "♎",
-      "arche_en": "THE HARMONIZER",
-      "arche_cn": "调和者",
-      "boundary": "9/23 – 10/22"
+    {
+      "zodiac": "♎ Libra 天秤",
+      "archetype": "THE HARMONIZER",
+      "element": "Air",
+      "core_traits": "Partnership, Beauty, Justice"
     },
-    "scorpio": {
-      "name_en": "Scorpio",
-      "name_cn": "天蝎",
-      "symbol": "♏",
-      "arche_en": "THE PHOENIX",
-      "arche_cn": "蜕变者",
-      "boundary": "10/23 – 11/21"
+    {
+      "zodiac": "♏ Scorpio 天蝎",
+      "archetype": "THE PHOENIX",
+      "element": "Water",
+      "core_traits": "Intensity, Regeneration, Secrets"
     },
-    "sagittarius": {
-      "name_en": "Sagittarius",
-      "name_cn": "射手",
-      "symbol": "♐",
-      "arche_en": "THE SEEKER",
-      "arche_cn": "探索者",
-      "boundary": "11/22 – 12/20"
+    {
+      "zodiac": "♐ Sagittarius 射手",
+      "archetype": "THE SEEKER",
+      "element": "Fire",
+      "core_traits": "Freedom, Adventure, Truth"
     },
-    "capricorn": {
-      "name_en": "Capricorn",
-      "name_cn": "摩羯",
-      "symbol": "♑",
-      "arche_en": "THE ARCHITECT",
-      "arche_cn": "成就者",
-      "boundary": "12/21 – 1/19"
+    {
+      "zodiac": "♑ Capricorn 摩羯",
+      "archetype": "THE ARCHITECT",
+      "element": "Earth",
+      "core_traits": "Ambition, Discipline, Mastery"
     },
-    "aquarius": {
-      "name_en": "Aquarius",
-      "name_cn": "水瓶",
-      "symbol": "♒",
-      "arche_en": "THE VISIONARY",
-      "arche_cn": "远见者",
-      "boundary": "1/20 – 2/18"
+    {
+      "zodiac": "♒ Aquarius 水瓶",
+      "archetype": "THE VISIONARY",
+      "element": "Air",
+      "core_traits": "Innovation, Humanity, Freedom"
     },
-    "pisces": {
-      "name_en": "Pisces",
-      "name_cn": "双鱼",
-      "symbol": "♓",
-      "arche_en": "THE MYSTIC",
-      "arche_cn": "梦想家",
-      "boundary": "2/19 – 3/20"
+    {
+      "zodiac": "♓ Pisces 双鱼",
+      "archetype": "THE MYSTIC",
+      "element": "Water",
+      "core_traits": "Compassion, Dreams, Intuition"
     }
-  },
+  ],
   "combos": [
     {
       "element": "Fire",
@@ -163,15 +119,26 @@
       "symbol": "♈",
       "title_en": "Blazing Vanguard",
       "title_cn": "朱雀先锋",
+      "doc_title_cn": "炽焰先锋",
       "source_numbers": "1, 6",
       "stones": [
         "Ruby",
         "Red Jasper"
       ],
-      "fusion_en": "**Blazing Vanguard** — the primal fire meets the pioneer's untamed drive: a spark leaps the threshold and becomes a blaze that leads the way. In the furnace of becoming, you break open the uncreated with an untamed will, and paths unfold where none stood before. The Vermillion Bird unfolds its wings above the ninth heaven, and wherever its wheel of fire turns, all things are made new.",
+      "fusion_en": "Blazing Vanguard fuses the primal spark of Fire with Aries' pioneering spirit. Your willpower ignites new beginnings with unstoppable force. Like a vanguard leading the charge, you illuminate paths that others follow.",
       "fusion_cn": "**朱雀先锋** 离火之气与先锋之志交感，南明之火燃于道心。丹炉初开，你以元始之火破执开天，号令四方。朱雀振翅于九天之上，炎轮所至万象更新。",
       "mantra_en": "I ignite the path forward.",
-      "mantra_cn": "我点燃前路之光。"
+      "mantra_cn": "我点燃前行的道路。",
+      "element_interpretation": {
+        "keywords": "Willpower, Leadership, Independence, Passion, Courage, Transformation",
+        "en": "Fire represents the spark of life, willpower, and transformative power. It symbolizes passion, courage, and the drive to initiate new beginnings.",
+        "cn_traits": "像火焰一样，你拥有炽热的意志和不竭的动力。你的能量是燃烧的、向上的、充满热情的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PIONEER",
+        "cn_traits": "勇敢无畏、敢于开拓、充满热情、行动迅速、喜欢挑战",
+        "growth_path": "学会将热情转化为持久的影响力"
+      }
     },
     {
       "element": "Fire",
@@ -179,15 +146,26 @@
       "symbol": "♉",
       "title_en": "Blazing Architect",
       "title_cn": "离火筑师",
+      "doc_title_cn": "烈焰筑梦者",
       "source_numbers": "1, 6",
       "stones": [
         "Garnet",
         "Fire Opal"
       ],
-      "fusion_en": "**Blazing Architect** — the southern flame meets the builder's patient hand: a steady burning that turns vision into enduring stone. In the still heart of the earth, you build with patient fire, and what you raise endures beyond the turning of ages. The Vermillion Bird unfolds its wings above the ninth heaven, and wherever its wheel of fire turns, all things are made new.",
+      "fusion_en": "Blazing Architect combines Fire's transformative power with Taurus' grounded stability. You channel passion into lasting creation. Your determination builds not just dreams, but empires that stand the test of time.",
       "fusion_cn": "**离火筑师** 离火之气与定静之性交感，火土相生凝为不朽。丹炉恒燃，你以不灭道心将造化铸成永恒的基业。朱雀衔金筑巢于南岳，功成不必速，恒久自生辉。",
       "mantra_en": "I forge enduring legacies.",
-      "mantra_cn": "我锻造永恒的传承。"
+      "mantra_cn": "我锻造不朽的传奇。",
+      "element_interpretation": {
+        "keywords": "Willpower, Leadership, Independence, Passion, Courage, Transformation",
+        "en": "Fire represents the spark of life, willpower, and transformative power. It symbolizes passion, courage, and the drive to initiate new beginnings.",
+        "cn_traits": "像火焰一样，你拥有炽热的意志和不竭的动力。你的能量是燃烧的、向上的、充满热情的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE BUILDER",
+        "cn_traits": "踏实稳定、追求美感、坚持不懈、注重安全感、享受生活",
+        "growth_path": "在物质世界中寻找精神满足"
+      }
     },
     {
       "element": "Fire",
@@ -195,15 +173,26 @@
       "symbol": "♊",
       "title_en": "Wildfire Messenger",
       "title_cn": "炎轮信使",
+      "doc_title_cn": "野火信使",
       "source_numbers": "1, 6",
       "stones": [
         "Carnelian",
         "Fire Agate"
       ],
-      "fusion_en": "**Wildfire Messenger** — the kindling spark meets the messenger's quick tongue: words take flame and run like wildfire from mind to mind. Upon the altar of the living word, you speak with a quick and shining mind, and every syllable sets a current in motion. The Vermillion Bird unfolds its wings above the ninth heaven, and wherever its wheel of fire turns, all things are made new.",
+      "fusion_en": "Wildfire Messenger merges Fire's intensity with Gemini's communicative gift. Your words carry sparks that ignite minds and spread ideas like wildfire. Communication becomes your most powerful tool for transformation.",
       "fusion_cn": "**炎轮信使** 离火之气与灵动之性交感，炎轮之光流转不息。灵台之上，你以通玄之言传道，星火燎原遍及四方。朱雀之翼掠过八荒，一字一焰感通天地。",
       "mantra_en": "My words spark revolutions.",
-      "mantra_cn": "我的言语点燃变革。"
+      "mantra_cn": "我的言语点燃革命。",
+      "element_interpretation": {
+        "keywords": "Willpower, Leadership, Independence, Passion, Courage, Transformation",
+        "en": "Fire represents the spark of life, willpower, and transformative power. It symbolizes passion, courage, and the drive to initiate new beginnings.",
+        "cn_traits": "像火焰一样，你拥有炽热的意志和不竭的动力。你的能量是燃烧的、向上的、充满热情的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE MESSENGER",
+        "cn_traits": "灵活多变、好奇心强、善于沟通、思维敏捷、兴趣广泛",
+        "growth_path": "在多样性中找到内在的专注"
+      }
     },
     {
       "element": "Fire",
@@ -211,15 +200,26 @@
       "symbol": "♋",
       "title_en": "Ember Guardian",
       "title_cn": "余烬护法",
+      "doc_title_cn": "灰烬守护者",
       "source_numbers": "1, 6",
       "stones": [
         "Carnelian",
         "Red Jasper"
       ],
-      "fusion_en": "**Ember Guardian** — the hearth-fire meets the guardian's tender heart: a warmth that shields, fierce as devotion, soft as home. Within the warm wall of the hearth, you shield the beloved with a fierce and tender devotion, and all who draw near are made whole. The Vermillion Bird unfolds its wings above the ninth heaven, and wherever its wheel of fire turns, all things are made new.",
+      "fusion_en": "Ember Guardian unites Fire's protective warmth with Cancer's nurturing instincts. Beneath your tough exterior burns a fierce love. You protect what matters most with the strength of burning devotion.",
       "fusion_cn": "**余烬护法** 离火之气与慈护之心交感，余烬含温不灭。丹炉之侧，你以炽烈道心护持所爱，以焚身之诚化育众生。朱雀衔火归巢，非为焚毁，乃为温养万物。",
       "mantra_en": "I protect with fierce love.",
-      "mantra_cn": "我以炽烈之爱守护。"
+      "mantra_cn": "我用炽烈的爱守护。",
+      "element_interpretation": {
+        "keywords": "Willpower, Leadership, Independence, Passion, Courage, Transformation",
+        "en": "Fire represents the spark of life, willpower, and transformative power. It symbolizes passion, courage, and the drive to initiate new beginnings.",
+        "cn_traits": "像火焰一样，你拥有炽热的意志和不竭的动力。你的能量是燃烧的、向上的、充满热情的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE GUARDIAN",
+        "cn_traits": "情感细腻、善于照顾他人、直觉敏锐、保护欲强、家庭观念重",
+        "growth_path": "在照顾他人的同时学会照顾自己"
+      }
     },
     {
       "element": "Fire",
@@ -227,15 +227,26 @@
       "symbol": "♌",
       "title_en": "Solar Sovereign",
       "title_cn": "日轮真君",
+      "doc_title_cn": "烈阳君王",
       "source_numbers": "1, 6",
       "stones": [
         "Sunstone",
         "Golden Beryl"
       ],
-      "fusion_en": "**Solar Sovereign** — pure radiance meets sovereign will: you are a living sun, and all eyes turn toward your light. Upon the throne of the open sky, you reign with a sovereign radiance, and every eye that meets yours is warmed to its core. The Vermillion Bird unfolds its wings above the ninth heaven, and wherever its wheel of fire turns, all things are made new.",
+      "fusion_en": "Solar Sovereign is the ultimate fire-fire fusion. Pure radiance meets absolute charisma. You are a living sun, drawing all eyes and warming all hearts. Leadership flows through you as naturally as sunlight.",
       "fusion_cn": "**日轮真君** 离火之气与王者之魄交感，日轮当空普照十方。灵台之上，你以君临之姿统御光明，号令四方。朱雀化为日中金乌，光芒所至万物朝宗。",
       "mantra_en": "I radiate divine authority.",
-      "mantra_cn": "我绽放神圣的威仪。"
+      "mantra_cn": "我散发神圣的权威。",
+      "element_interpretation": {
+        "keywords": "Willpower, Leadership, Independence, Passion, Courage, Transformation",
+        "en": "Fire represents the spark of life, willpower, and transformative power. It symbolizes passion, courage, and the drive to initiate new beginnings.",
+        "cn_traits": "像火焰一样，你拥有炽热的意志和不竭的动力。你的能量是燃烧的、向上的、充满热情的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE SOVEREIGN",
+        "cn_traits": "自信满满、创造力强、慷慨大方、热爱表达、天生领导力",
+        "growth_path": "在闪耀中保持谦逊"
+      }
     },
     {
       "element": "Fire",
@@ -243,15 +254,26 @@
       "symbol": "♍",
       "title_en": "Sacred Flame Purifier",
       "title_cn": "净明元君",
+      "doc_title_cn": "圣火净化者",
       "source_numbers": "1, 6",
       "stones": [
         "Citrine",
         "Amber"
       ],
-      "fusion_en": "**Sacred Flame Purifier** — the refining flame meets the purifier's clear eye: all that is false is burned away to reveal the gold beneath. At the precise edge of the flame, you burn away the false until only the true remains, and purity shines forth unblemished. The Vermillion Bird unfolds its wings above the ninth heaven, and wherever its wheel of fire turns, all things are made new.",
+      "fusion_en": "Sacred Flame Purifier combines Fire's transformative burning with Virgo's perfection-seeking. You burn away all that is false to reveal the gold within. Healing happens through your fierce yet compassionate illumination.",
       "fusion_cn": "**净明元君** 离火之气与至纯之性交感，净明之火自道心而生。丹炉之中，你以入微道心炼化虚妄，显露天成真性。朱雀衔火洗尘，焚尽非真，唯余纯一。",
       "mantra_en": "I burn away the false.",
-      "mantra_cn": "我焚尽虚妄。"
+      "mantra_cn": "我燃尽虚妄。",
+      "element_interpretation": {
+        "keywords": "Willpower, Leadership, Independence, Passion, Courage, Transformation",
+        "en": "Fire represents the spark of life, willpower, and transformative power. It symbolizes passion, courage, and the drive to initiate new beginnings.",
+        "cn_traits": "像火焰一样，你拥有炽热的意志和不竭的动力。你的能量是燃烧的、向上的、充满热情的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PURIFIER",
+        "cn_traits": "追求完美、分析能力强、注重细节、善于服务、务实可靠",
+        "growth_path": "接受不完美中的完美"
+      }
     },
     {
       "element": "Fire",
@@ -259,15 +281,26 @@
       "symbol": "♎",
       "title_en": "Balanced Blaze",
       "title_cn": "阴阳炎使",
+      "doc_title_cn": "均衡烈焰",
       "source_numbers": "1, 6",
       "stones": [
         "Fire Citrine",
         "Orange Sapphire"
       ],
-      "fusion_en": "**Balanced Blaze** — the dancing fire meets the harmonizer's steady grace: beauty is struck in the balance of passion and peace. Upon the balanced scale of heaven, you join opposing forces into one clear song, and harmony is born of your steady hand. The Vermillion Bird unfolds its wings above the ninth heaven, and wherever its wheel of fire turns, all things are made new.",
+      "fusion_en": "Balanced Blaze merges Fire's dynamic energy with Libra's love of harmony. You create beauty through passionate expression while maintaining perfect equilibrium. Art and aesthetics become your spiritual practice.",
       "fusion_cn": "**阴阳炎使** 离火之气与中和之性交感，阴阳二火相济相生。丹炉之内，你以阴阳和合之道调和造化，美自道中显化。朱雀展翅于阴阳交界，火候恰好，道法自然。",
       "mantra_en": "I illuminate through balance.",
-      "mantra_cn": "我以均衡照亮。"
+      "mantra_cn": "我以均衡照亮万物。",
+      "element_interpretation": {
+        "keywords": "Willpower, Leadership, Independence, Passion, Courage, Transformation",
+        "en": "Fire represents the spark of life, willpower, and transformative power. It symbolizes passion, courage, and the drive to initiate new beginnings.",
+        "cn_traits": "像火焰一样，你拥有炽热的意志和不竭的动力。你的能量是燃烧的、向上的、充满热情的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE HARMONIZER",
+        "cn_traits": "追求平衡、注重美感、善于外交、公平公正、爱好和平",
+        "growth_path": "在犹豫中做出坚定选择"
+      }
     },
     {
       "element": "Fire",
@@ -275,15 +308,26 @@
       "symbol": "♏",
       "title_en": "Eternal Phoenix Flame",
       "title_cn": "涅槃玄凤",
+      "doc_title_cn": "不灭凤焰",
       "source_numbers": "1, 6",
       "stones": [
         "Phoenix Opal",
         "Ruby"
       ],
-      "fusion_en": "**Eternal Phoenix Flame** — the undying fire meets the transformer's dark art: death cannot end you — each ash becomes a wing. In the deep crucible of endings, you shed the worn self and rise remade, and every death becomes a door. The Vermillion Bird unfolds its wings above the ninth heaven, and wherever its wheel of fire turns, all things are made new.",
+      "fusion_en": "Eternal Phoenix Flame is the most powerful fire combination. Like the phoenix, death cannot destroy you—only makes you stronger. You rise from every ashes, transformed and renewed. This is the energy of ultimate rebirth.",
       "fusion_cn": "**涅槃玄凤** 离火之气与化生之力交感，涅槃之火不灭不熄。丹炉浴火，你以羽化之道破执转轮，每一次焚毁皆为新生。朱雀焚身化作玄凤，灰烬之中元神更生。",
       "mantra_en": "From ashes, I rise eternal.",
-      "mantra_cn": "自灰烬中，我永恒重生。"
+      "mantra_cn": "从灰烬中，我永恒重生。",
+      "element_interpretation": {
+        "keywords": "Willpower, Leadership, Independence, Passion, Courage, Transformation",
+        "en": "Fire represents the spark of life, willpower, and transformative power. It symbolizes passion, courage, and the drive to initiate new beginnings.",
+        "cn_traits": "像火焰一样，你拥有炽热的意志和不竭的动力。你的能量是燃烧的、向上的、充满热情的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PHOENIX",
+        "cn_traits": "深邃神秘、意志坚定、洞察力强、善于转化、情感浓烈",
+        "growth_path": "将黑暗力量转化为光明智慧"
+      }
     },
     {
       "element": "Fire",
@@ -291,15 +335,26 @@
       "symbol": "♐",
       "title_en": "Comet Rider",
       "title_cn": "流光散人",
+      "doc_title_cn": "彗星骑士",
       "source_numbers": "1, 6",
       "stones": [
         "Fire Citrine",
         "Orange Sapphire"
       ],
-      "fusion_en": "**Comet Rider** — the upward flame meets the seeker's far arrow: you are a comet loosed across the sky in search of truth. Upon the wandering road of seekers, you follow the arrow of truth beyond the horizon, and the far country opens as you go. The Vermillion Bird unfolds its wings above the ninth heaven, and wherever its wheel of fire turns, all things are made new.",
+      "fusion_en": "Comet Rider combines Fire's upward thrust with Sagittarius' quest for truth. You are a shooting star, blazing across the sky of existence, seeking and illuminating truth wherever you roam.",
       "fusion_cn": "**流光散人** 离火之气与求道之心交感，流光飞逝照彻四方。天门之外，你以寻真之志游方问道，所至之处皆为光明。朱雀之影掠过四海，道不远人，光在脚下。",
       "mantra_en": "I shoot for the infinite.",
-      "mantra_cn": "我射向无垠之境。"
+      "mantra_cn": "我射向无限。",
+      "element_interpretation": {
+        "keywords": "Willpower, Leadership, Independence, Passion, Courage, Transformation",
+        "en": "Fire represents the spark of life, willpower, and transformative power. It symbolizes passion, courage, and the drive to initiate new beginnings.",
+        "cn_traits": "像火焰一样，你拥有炽热的意志和不竭的动力。你的能量是燃烧的、向上的、充满热情的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE SEEKER",
+        "cn_traits": "热爱自由、追求真理、乐观开朗、爱好冒险、思想开放",
+        "growth_path": "在冒险中找到内在的锚"
+      }
     },
     {
       "element": "Fire",
@@ -307,15 +362,26 @@
       "symbol": "♑",
       "title_en": "Volcanic Architect",
       "title_cn": "地火炼师",
+      "doc_title_cn": "火山筑者",
       "source_numbers": "1, 6",
       "stones": [
         "Red Tiger's Eye",
         "Ruby in Matrix"
       ],
-      "fusion_en": "**Volcanic Architect** — the deep magma meets the architect's long discipline: like a volcano, your ambition builds the mountain itself. Within the long labor of the mountain, you forge the lasting with unbroken discipline, and monuments rise where you stand. The Vermillion Bird unfolds its wings above the ninth heaven, and wherever its wheel of fire turns, all things are made new.",
+      "fusion_en": "Volcanic Architect unites Fire's explosive power with Capricorn's master-building skills. Like a volcano building mountains, your ambition shapes reality. You create monuments that mark your vision.",
       "fusion_cn": "**地火炼师** 离火之气与功成之志交感，地火潜行炼化山川。丹炉深处，你以不灭道心淬炼万象，造化自火中显形。朱雀衔火入地，炼山为金，功成不朽。",
       "mantra_en": "I shape mountains with vision.",
-      "mantra_cn": "我以远见雕琢群山。"
+      "mantra_cn": "我以愿景塑造高山。",
+      "element_interpretation": {
+        "keywords": "Willpower, Leadership, Independence, Passion, Courage, Transformation",
+        "en": "Fire represents the spark of life, willpower, and transformative power. It symbolizes passion, courage, and the drive to initiate new beginnings.",
+        "cn_traits": "像火焰一样，你拥有炽热的意志和不竭的动力。你的能量是燃烧的、向上的、充满热情的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE ARCHITECT",
+        "cn_traits": "雄心勃勃、脚踏实地、自律性强、注重成就、有耐心",
+        "growth_path": "在成功中找到精神的满足"
+      }
     },
     {
       "element": "Fire",
@@ -323,15 +389,26 @@
       "symbol": "♒",
       "title_en": "Cosmic Lightning",
       "title_cn": "紫电灵官",
+      "doc_title_cn": "宇宙闪电",
       "source_numbers": "1, 6",
       "stones": [
         "Fire Citrine",
         "Sunstone"
       ],
-      "fusion_en": "**Cosmic Lightning** — the revolutionary spark meets the visionary's bright mind: you strike the sleeping world awake with electric truth. At the gate where the old world ends, you strike with lightning clarity and open the new, and the future bends toward your vision. The Vermillion Bird unfolds its wings above the ninth heaven, and wherever its wheel of fire turns, all things are made new.",
+      "fusion_en": "Cosmic Lightning merges Fire's revolutionary spark with Aquarius' visionary innovation. You strike humanity with truths that electrify and transform. Revolutionary change is your birthright.",
       "fusion_cn": "**紫电灵官** 离火之气与破执之志交感，紫电横空劈开混沌。天门洞开，你以雷霆道力开天辟道，击穿一切虚妄。朱雀化为紫电，划破长夜，新天自生。",
       "mantra_en": "I strike with electric truth.",
-      "mantra_cn": "我以雷霆之真击穿。"
+      "mantra_cn": "我以闪电般的真理击穿。",
+      "element_interpretation": {
+        "keywords": "Willpower, Leadership, Independence, Passion, Courage, Transformation",
+        "en": "Fire represents the spark of life, willpower, and transformative power. It symbolizes passion, courage, and the drive to initiate new beginnings.",
+        "cn_traits": "像火焰一样，你拥有炽热的意志和不竭的动力。你的能量是燃烧的、向上的、充满热情的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE VISIONARY",
+        "cn_traits": "独立思考、创新精神、人道主义、热爱自由、思维独特",
+        "growth_path": "在独特中找到与人类连接"
+      }
     },
     {
       "element": "Fire",
@@ -339,15 +416,26 @@
       "symbol": "♓",
       "title_en": "Dreaming Flame Oracle",
       "title_cn": "太虚火鉴",
+      "doc_title_cn": "梦焰占卜者",
       "source_numbers": "1, 6",
       "stones": [
         "Fire Opal",
         "Mystic Quartz"
       ],
-      "fusion_en": "**Dreaming Flame Oracle** — the dreaming fire meets the mystic's deep sight: your visions burn with prophecy, and futures flicker in the flame. In the mirror of the dreaming deep, you read the hidden script of all things, and the seen and the unseen flow as one. The Vermillion Bird unfolds its wings above the ninth heaven, and wherever its wheel of fire turns, all things are made new.",
+      "fusion_en": "Dreaming Flame Oracle combines Fire's visionary power with Pisces' psychic depth. Your dreams don't just inspire—they burn with prophetic truth. You see futures through flames of intuition.",
       "fusion_cn": "**太虚火鉴** 离火之气与通感之灵交感，太虚之中灵光自现。灵台之中，你以玄鉴之火照见道境，窥见万象本源。朱雀衔光入梦，火中观道，幻即是真。",
       "mantra_en": "I dream in sacred fire.",
-      "mantra_cn": "我在圣火中梦见。"
+      "mantra_cn": "我在神圣之火中入梦。",
+      "element_interpretation": {
+        "keywords": "Willpower, Leadership, Independence, Passion, Courage, Transformation",
+        "en": "Fire represents the spark of life, willpower, and transformative power. It symbolizes passion, courage, and the drive to initiate new beginnings.",
+        "cn_traits": "像火焰一样，你拥有炽热的意志和不竭的动力。你的能量是燃烧的、向上的、充满热情的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE MYSTIC",
+        "cn_traits": "敏感梦幻、直觉强大、富有同情心、艺术气质、灵性深厚",
+        "growth_path": "将梦想转化为行动的力量"
+      }
     },
     {
       "element": "Earth",
@@ -355,15 +443,26 @@
       "symbol": "♈",
       "title_en": "Iron Pioneer",
       "title_cn": "金锋先锋",
+      "doc_title_cn": "铁血先驱",
       "source_numbers": "2, 7",
       "stones": [
         "Hematite",
         "Black Tourmaline"
       ],
-      "fusion_en": "**Iron Pioneer** — the deep earth meets the pioneer's bold step: you move the mountain not by wishing, but by walking. In the furnace of becoming, you break open the uncreated with an untamed will, and paths unfold where none stood before. The Yellow Court sits unmoving at the center of the world, and its deep virtue bears all things, unshaken through all time.",
+      "fusion_en": "Iron Pioneer fuses Earth's grounded strength with Aries' pioneering drive. You lead not with empty words, but with unstoppable action. Your feet are planted firmly as you forge new paths forward.",
       "fusion_cn": "**金锋先锋** 后土之德与开拓之志交感，厚土生金化为锋芒。丹田之中，你以坤元之力开天辟道，足踏实地而志在四方。黄庭居中镇八方，道行天下无远弗届。",
       "mantra_en": "I forge paths through stone.",
-      "mantra_cn": "我于磐石中开辟前路。"
+      "mantra_cn": "我穿越岩石开辟道路。",
+      "element_interpretation": {
+        "keywords": "Nurturing, Stability, Partnership, Wisdom, Grounding, Reflection",
+        "en": "Earth represents stability, nurturing, and grounded wisdom. It symbolizes patience, persistence, and the foundation upon which all things grow.",
+        "cn_traits": "像大地一样，你是稳定的、踏实的、充满智慧的。你的能量是扎实的、可靠的、滋养的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PIONEER",
+        "cn_traits": "勇敢无畏、敢于开拓、充满热情、行动迅速、喜欢挑战",
+        "growth_path": "学会将热情转化为持久的影响力"
+      }
     },
     {
       "element": "Earth",
@@ -371,15 +470,26 @@
       "symbol": "♉",
       "title_en": "Earth Sage",
       "title_cn": "玄铁厚土",
+      "doc_title_cn": "大地智者",
       "source_numbers": "2, 7",
       "stones": [
         "Jade",
         "Green Tourmaline"
       ],
-      "fusion_en": "**Earth Sage** — the still loam meets the builder's sure hand: like ancient hills, you hold truths that have stood since the world began. In the still heart of the earth, you build with patient fire, and what you raise endures beyond the turning of ages. The Yellow Court sits unmoving at the center of the world, and its deep virtue bears all things, unshaken through all time.",
+      "fusion_en": "Earth Sage is the ultimate earth-earth combination. Unshakeable stability meets profound wisdom. Like ancient mountains, you embody truths that have stood since the beginning of time.",
       "fusion_cn": "**玄铁厚土** 后土之德与定静之性交感，玄铁厚土浑然一体。丹田之内，你以不坏道心承载万物，沉稳如远古山脉。黄庭巍然居中，厚德载物，亘古不移。",
       "mantra_en": "I am rooted in eternal truth.",
-      "mantra_cn": "我根植于永恒之真。"
+      "mantra_cn": "我扎根于永恒真理。",
+      "element_interpretation": {
+        "keywords": "Nurturing, Stability, Partnership, Wisdom, Grounding, Reflection",
+        "en": "Earth represents stability, nurturing, and grounded wisdom. It symbolizes patience, persistence, and the foundation upon which all things grow.",
+        "cn_traits": "像大地一样，你是稳定的、踏实的、充满智慧的。你的能量是扎实的、可靠的、滋养的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE BUILDER",
+        "cn_traits": "踏实稳定、追求美感、坚持不懈、注重安全感、享受生活",
+        "growth_path": "在物质世界中寻找精神满足"
+      }
     },
     {
       "element": "Earth",
@@ -387,15 +497,26 @@
       "symbol": "♊",
       "title_en": "Stone Oracle",
       "title_cn": "金石灵言",
+      "doc_title_cn": "石语预言者",
       "source_numbers": "2, 7",
       "stones": [
         "Green Agate",
         "Moss Agate"
       ],
-      "fusion_en": "**Stone Oracle** — the old stone meets the messenger's quick voice: your words carry the weight of ages, and ground all who hear. Upon the altar of the living word, you speak with a quick and shining mind, and every syllable sets a current in motion. The Yellow Court sits unmoving at the center of the world, and its deep virtue bears all things, unshaken through all time.",
+      "fusion_en": "Stone Oracle combines Earth's ancient wisdom with Gemini's communicative gift. Your words carry the weight of millennia. You speak truths that ground and stabilize all who hear them.",
       "fusion_cn": "**金石灵言** 后土之德与灵动之性交感，金石自鸣道音流转不息。灵台之上，你以大地玄明传道，字字千钧。黄庭之中生金石之声，感通天地，一言为道。",
       "mantra_en": "I speak earth's ancient wisdom.",
-      "mantra_cn": "我诉说大地的远古智慧。"
+      "mantra_cn": "我诉说大地的古老智慧。",
+      "element_interpretation": {
+        "keywords": "Nurturing, Stability, Partnership, Wisdom, Grounding, Reflection",
+        "en": "Earth represents stability, nurturing, and grounded wisdom. It symbolizes patience, persistence, and the foundation upon which all things grow.",
+        "cn_traits": "像大地一样，你是稳定的、踏实的、充满智慧的。你的能量是扎实的、可靠的、滋养的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE MESSENGER",
+        "cn_traits": "灵活多变、好奇心强、善于沟通、思维敏捷、兴趣广泛",
+        "growth_path": "在多样性中找到内在的专注"
+      }
     },
     {
       "element": "Earth",
@@ -403,15 +524,26 @@
       "symbol": "♋",
       "title_en": "Eternal Sanctuary",
       "title_cn": "金阙护法",
+      "doc_title_cn": "永恒港湾",
       "source_numbers": "2, 7",
       "stones": [
         "Yellow Jasper",
         "Tiger Eye"
       ],
-      "fusion_en": "**Eternal Sanctuary** — the sheltered soil meets the guardian's wide arms: you are the safe harbor where every weary soul comes home. Within the warm wall of the hearth, you shield the beloved with a fierce and tender devotion, and all who draw near are made whole. The Yellow Court sits unmoving at the center of the world, and its deep virtue bears all things, unshaken through all time.",
+      "fusion_en": "Eternal Sanctuary unites Earth's nurturing power with Cancer's protective instincts. You are the ultimate safe haven, a place where all souls can rest, heal, and find home.",
       "fusion_cn": "**金阙护法** 后土之德与慈护之心交感，金阙巍然永镇中宫。丹田之中，你以瑶池之泽化育众生，护持万物。黄庭金阙永镇中宫，生生不息，万灵归焉。",
       "mantra_en": "I am the eternal sanctuary.",
-      "mantra_cn": "我即永恒的港湾。"
+      "mantra_cn": "我是永恒的避风港。",
+      "element_interpretation": {
+        "keywords": "Nurturing, Stability, Partnership, Wisdom, Grounding, Reflection",
+        "en": "Earth represents stability, nurturing, and grounded wisdom. It symbolizes patience, persistence, and the foundation upon which all things grow.",
+        "cn_traits": "像大地一样，你是稳定的、踏实的、充满智慧的。你的能量是扎实的、可靠的、滋养的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE GUARDIAN",
+        "cn_traits": "情感细腻、善于照顾他人、直觉敏锐、保护欲强、家庭观念重",
+        "growth_path": "在照顾他人的同时学会照顾自己"
+      }
     },
     {
       "element": "Earth",
@@ -419,15 +551,26 @@
       "symbol": "♌",
       "title_en": "Golden Monarch",
       "title_cn": "金阙真君",
+      "doc_title_cn": "金土君王",
       "source_numbers": "2, 7",
       "stones": [
         "Tiger Eye",
         "Yellow Jasper"
       ],
-      "fusion_en": "**Golden Monarch** — the golden ground meets the sovereign's bright crown: you raise kingdoms of beauty, and rule by quiet, generous wisdom. Upon the throne of the open sky, you reign with a sovereign radiance, and every eye that meets yours is warmed to its core. The Yellow Court sits unmoving at the center of the world, and its deep virtue bears all things, unshaken through all time.",
+      "fusion_en": "Golden Monarch merges Earth's wealth with Leo's royal energy. You build kingdoms of beauty and prosperity. Ruling comes naturally to you, grounded in practical wisdom and golden generosity.",
       "fusion_cn": "**金阙真君** 后土之德与王者之魄交感，金阙生辉统御四方。灵台之上，你以黄庭之尊君临天下，以厚德承载万物。金阙真君居中而立，厚德载物，万邦来朝。",
       "mantra_en": "I rule with golden wisdom.",
-      "mantra_cn": "我以金色智慧统御。"
+      "mantra_cn": "我以金色智慧统治。",
+      "element_interpretation": {
+        "keywords": "Nurturing, Stability, Partnership, Wisdom, Grounding, Reflection",
+        "en": "Earth represents stability, nurturing, and grounded wisdom. It symbolizes patience, persistence, and the foundation upon which all things grow.",
+        "cn_traits": "像大地一样，你是稳定的、踏实的、充满智慧的。你的能量是扎实的、可靠的、滋养的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE SOVEREIGN",
+        "cn_traits": "自信满满、创造力强、慷慨大方、热爱表达、天生领导力",
+        "growth_path": "在闪耀中保持谦逊"
+      }
     },
     {
       "element": "Earth",
@@ -435,15 +578,26 @@
       "symbol": "♍",
       "title_en": "Crystal Gardener",
       "title_cn": "瑶池仙师",
+      "doc_title_cn": "水晶园丁",
       "source_numbers": "2, 7",
       "stones": [
         "Clear Quartz",
         "Green Jade"
       ],
-      "fusion_en": "**Crystal Gardener** — the ordered garden meets the purifier's fine hand: from chaos you coax a crystalline and living order. At the precise edge of the flame, you burn away the false until only the true remains, and purity shines forth unblemished. The Yellow Court sits unmoving at the center of the world, and its deep virtue bears all things, unshaken through all time.",
+      "fusion_en": "Crystal Gardener combines Earth's productive nature with Virgo's perfectionism. You cultivate order from chaos, transforming anything messy into crystalline perfection. Service becomes your sacred art.",
       "fusion_cn": "**瑶池仙师** 后土之德与至纯之性交感，瑶池澄明映照万象。丹炉之中，你以至精道心培育秩序，化混沌为清明。瑶池之畔仙师运化，混沌生序，道法自然。",
       "mantra_en": "I cultivate divine order.",
-      "mantra_cn": "我培育神圣的秩序。"
+      "mantra_cn": "我培育神圣秩序。",
+      "element_interpretation": {
+        "keywords": "Nurturing, Stability, Partnership, Wisdom, Grounding, Reflection",
+        "en": "Earth represents stability, nurturing, and grounded wisdom. It symbolizes patience, persistence, and the foundation upon which all things grow.",
+        "cn_traits": "像大地一样，你是稳定的、踏实的、充满智慧的。你的能量是扎实的、可靠的、滋养的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PURIFIER",
+        "cn_traits": "追求完美、分析能力强、注重细节、善于服务、务实可靠",
+        "growth_path": "接受不完美中的完美"
+      }
     },
     {
       "element": "Earth",
@@ -451,15 +605,26 @@
       "symbol": "♎",
       "title_en": "Sacred Grove Harmonizer",
       "title_cn": "太和道子",
+      "doc_title_cn": "圣园和谐者",
       "source_numbers": "2, 7",
       "stones": [
         "Pink Tourmaline",
         "Rose Quartz"
       ],
-      "fusion_en": "**Sacred Grove Harmonizer** — the sacred grove meets the harmonizer's clear eye: you shape spaces where balance itself takes living breath. Upon the balanced scale of heaven, you join opposing forces into one clear song, and harmony is born of your steady hand. The Yellow Court sits unmoving at the center of the world, and its deep virtue bears all things, unshaken through all time.",
+      "fusion_en": "Sacred Grove Harmonizer unites Earth's natural beauty with Libra's aesthetic sense. You create spaces of perfect balance and harmony. Nature itself flows through your creative vision.",
       "fusion_cn": "**太和道子** 后土之德与中和之性交感，太和之气自黄庭而生。灵台之上，你以阴阳和合之道造化大美，万物和谐。黄庭之中生太和之气，天地交泰，道法自然。",
       "mantra_en": "I weave beauty into earth.",
-      "mantra_cn": "我将美编织入大地。"
+      "mantra_cn": "我将美丽编织入大地。",
+      "element_interpretation": {
+        "keywords": "Nurturing, Stability, Partnership, Wisdom, Grounding, Reflection",
+        "en": "Earth represents stability, nurturing, and grounded wisdom. It symbolizes patience, persistence, and the foundation upon which all things grow.",
+        "cn_traits": "像大地一样，你是稳定的、踏实的、充满智慧的。你的能量是扎实的、可靠的、滋养的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE HARMONIZER",
+        "cn_traits": "追求平衡、注重美感、善于外交、公平公正、爱好和平",
+        "growth_path": "在犹豫中做出坚定选择"
+      }
     },
     {
       "element": "Earth",
@@ -467,15 +632,26 @@
       "symbol": "♏",
       "title_en": "Obsidian Depths",
       "title_cn": "玄冥真君",
+      "doc_title_cn": "黑曜深渊",
       "source_numbers": "2, 7",
       "stones": [
         "Obsidian",
         "Black Onyx"
       ],
-      "fusion_en": "**Obsidian Depths** — the buried stone meets the transformer's deep descent: you go into the dark and return remade, bearing power. In the deep crucible of endings, you shed the worn self and rise remade, and every death becomes a door. The Yellow Court sits unmoving at the center of the world, and its deep virtue bears all things, unshaken through all time.",
+      "fusion_en": "Obsidian Depths merges Earth's grounding power with Scorpio's transformative intensity. You descend into the darkest depths and emerge transformed. Power flows from your willingness to face the shadows.",
       "fusion_cn": "**玄冥真君** 后土之德与化生之力交感，玄冥深邃暗藏生机。丹田深处，你以坤元道力破执转轮，潜入深渊而化生光明。黄庭之下暗藏玄冥，潜入最深，方见真道。",
       "mantra_en": "I descend to rise.",
-      "mantra_cn": "我沉潜，为以至高升起。"
+      "mantra_cn": "我下沉以崛起。",
+      "element_interpretation": {
+        "keywords": "Nurturing, Stability, Partnership, Wisdom, Grounding, Reflection",
+        "en": "Earth represents stability, nurturing, and grounded wisdom. It symbolizes patience, persistence, and the foundation upon which all things grow.",
+        "cn_traits": "像大地一样，你是稳定的、踏实的、充满智慧的。你的能量是扎实的、可靠的、滋养的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PHOENIX",
+        "cn_traits": "深邃神秘、意志坚定、洞察力强、善于转化、情感浓烈",
+        "growth_path": "将黑暗力量转化为光明智慧"
+      }
     },
     {
       "element": "Earth",
@@ -483,15 +659,26 @@
       "symbol": "♐",
       "title_en": "Earth Wanderer",
       "title_cn": "金行散人",
+      "doc_title_cn": "大地漫游者",
       "source_numbers": "2, 7",
       "stones": [
         "Jasper",
         "Bronzite"
       ],
-      "fusion_en": "**Earth Wanderer** — the wanderer's path meets the seeker's open road: you walk the earth as a scripture, and truth is under every foot. Upon the wandering road of seekers, you follow the arrow of truth beyond the horizon, and the far country opens as you go. The Yellow Court sits unmoving at the center of the world, and its deep virtue bears all things, unshaken through all time.",
+      "fusion_en": "Earth Wanderer combines Earth's stability with Sagittarius' love of adventure. You seek truth through physical experience, walking the earth with purpose and philosophical wisdom.",
       "fusion_cn": "**金行散人** 后土之德与求道之心交感，厚土含金行于四方。天门之外，你以寻真之志游方问道，以大地为道场。黄庭散人行走大地，道在脚下，真在足前。",
       "mantra_en": "I seek truth beneath my feet.",
-      "mantra_cn": "我于足下寻觅真理。"
+      "mantra_cn": "我在脚下寻找真理。",
+      "element_interpretation": {
+        "keywords": "Nurturing, Stability, Partnership, Wisdom, Grounding, Reflection",
+        "en": "Earth represents stability, nurturing, and grounded wisdom. It symbolizes patience, persistence, and the foundation upon which all things grow.",
+        "cn_traits": "像大地一样，你是稳定的、踏实的、充满智慧的。你的能量是扎实的、可靠的、滋养的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE SEEKER",
+        "cn_traits": "热爱自由、追求真理、乐观开朗、爱好冒险、思想开放",
+        "growth_path": "在冒险中找到内在的锚"
+      }
     },
     {
       "element": "Earth",
@@ -499,15 +686,26 @@
       "symbol": "♑",
       "title_en": "Eternal Foundation",
       "title_cn": "不坏金丹",
+      "doc_title_cn": "永恒基石",
       "source_numbers": "2, 7",
       "stones": [
         "Granite",
         "Petrified Wood"
       ],
-      "fusion_en": "**Eternal Foundation** — the foundation stone meets the architect's long view: mountains are but steps to you, and your works outlast the ages. Within the long labor of the mountain, you forge the lasting with unbroken discipline, and monuments rise where you stand. The Yellow Court sits unmoving at the center of the world, and its deep virtue bears all things, unshaken through all time.",
+      "fusion_en": "Eternal Foundation is the master builder's ultimate combination. Mountains are stepping stones for you. You create monuments that will endure for ages, legacies carved in stone.",
       "fusion_cn": "**不坏金丹** 后土之德与功成之志交感，金丹不坏万世永存。丹田之中，你以至坚道心淬炼造化，将一切经历炼为不朽。黄庭之中炼就不坏金丹，厚德载物，功成不朽。",
       "mantra_en": "I build monuments to time.",
-      "mantra_cn": "我为时光筑起丰碑。"
+      "mantra_cn": "我建造时间的丰碑。",
+      "element_interpretation": {
+        "keywords": "Nurturing, Stability, Partnership, Wisdom, Grounding, Reflection",
+        "en": "Earth represents stability, nurturing, and grounded wisdom. It symbolizes patience, persistence, and the foundation upon which all things grow.",
+        "cn_traits": "像大地一样，你是稳定的、踏实的、充满智慧的。你的能量是扎实的、可靠的、滋养的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE ARCHITECT",
+        "cn_traits": "雄心勃勃、脚踏实地、自律性强、注重成就、有耐心",
+        "growth_path": "在成功中找到精神的满足"
+      }
     },
     {
       "element": "Earth",
@@ -515,15 +713,26 @@
       "symbol": "♒",
       "title_en": "Living Circuit",
       "title_cn": "天罡灵脉",
+      "doc_title_cn": "智慧脉络",
       "source_numbers": "2, 7",
       "stones": [
         "Ajoite Quartz",
         "Eudialyte"
       ],
-      "fusion_en": "**Living Circuit** — the rooted ground meets the visionary's bright current: your newness grows from ancient truth, and the future stands on stone. At the gate where the old world ends, you strike with lightning clarity and open the new, and the future bends toward your vision. The Yellow Court sits unmoving at the center of the world, and its deep virtue bears all things, unshaken through all time.",
+      "fusion_en": "Living Circuit unites Earth's grounding wisdom with Aquarius' innovative energy. Your revolutionary ideas are firmly rooted in ancient truth. Innovation meets wisdom in perfect harmony.",
       "fusion_cn": "**天罡灵脉** 后土之德与破执之志交感，灵脉通天贯通古今。灵台之上，你以大地玄明开新转轮，古法之中孕育新生。黄庭灵脉贯通天地，道贯古今，生生不息。",
       "mantra_en": "I ground heaven to earth.",
-      "mantra_cn": "我将天辉引落大地。"
+      "mantra_cn": "我将天堂接地于人间。",
+      "element_interpretation": {
+        "keywords": "Nurturing, Stability, Partnership, Wisdom, Grounding, Reflection",
+        "en": "Earth represents stability, nurturing, and grounded wisdom. It symbolizes patience, persistence, and the foundation upon which all things grow.",
+        "cn_traits": "像大地一样，你是稳定的、踏实的、充满智慧的。你的能量是扎实的、可靠的、滋养的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE VISIONARY",
+        "cn_traits": "独立思考、创新精神、人道主义、热爱自由、思维独特",
+        "growth_path": "在独特中找到与人类连接"
+      }
     },
     {
       "element": "Earth",
@@ -531,15 +740,26 @@
       "symbol": "♓",
       "title_en": "Sleeping Stone",
       "title_cn": "瑶池玄石",
+      "doc_title_cn": "沉睡灵石",
       "source_numbers": "2, 7",
       "stones": [
         "Septarian",
         "Pietersite"
       ],
-      "fusion_en": "**Sleeping Stone** — the dreaming stone meets the mystic's still depth: through you the old earth dreams, and its dreams reach the waking world. In the mirror of the dreaming deep, you read the hidden script of all things, and the seen and the unseen flow as one. The Yellow Court sits unmoving at the center of the world, and its deep virtue bears all things, unshaken through all time.",
+      "fusion_en": "Sleeping Stone merges Earth's ancient stability with Pisces' dreamy wisdom. You channel collective dreams through your grounded vessel. Ancient wisdom flows through you to the modern world.",
       "fusion_cn": "**瑶池玄石** 后土之德与通感之灵交感，瑶池沉梦玄石自明。灵台之中，你以大地玄鉴承接道境，承载众生之梦。瑶池玄石静卧中央，梦载万古，灵通太虚。",
       "mantra_en": "I dream the earth's dreams.",
-      "mantra_cn": "我梦见大地的梦。"
+      "mantra_cn": "我梦见大地的梦境。",
+      "element_interpretation": {
+        "keywords": "Nurturing, Stability, Partnership, Wisdom, Grounding, Reflection",
+        "en": "Earth represents stability, nurturing, and grounded wisdom. It symbolizes patience, persistence, and the foundation upon which all things grow.",
+        "cn_traits": "像大地一样，你是稳定的、踏实的、充满智慧的。你的能量是扎实的、可靠的、滋养的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE MYSTIC",
+        "cn_traits": "敏感梦幻、直觉强大、富有同情心、艺术气质、灵性深厚",
+        "growth_path": "将梦想转化为行动的力量"
+      }
     },
     {
       "element": "Water",
@@ -547,15 +767,26 @@
       "symbol": "♈",
       "title_en": "Storm Commander",
       "title_cn": "玄武先锋",
+      "doc_title_cn": "暴风指挥官",
       "source_numbers": "3, 8",
       "stones": [
         "Aquamarine",
         "Blue Agate"
       ],
-      "fusion_en": "**Storm Commander** — the rising tide meets the pioneer's bold charge: you command the storm within and turn feeling into force. In the furnace of becoming, you break open the uncreated with an untamed will, and paths unfold where none stood before. The Black Tortoise rises from the abyss bearing the weight of the deep, and its ancient wisdom turns the tide of every storm.",
+      "fusion_en": "Storm Commander fuses Water's emotional depth with Aries' fearless action. You navigate life's storms with bold intensity. Emotional courage meets unstoppable drive in you.",
       "fusion_cn": "**玄武先锋** 坎水之渊与开拓之志交感，玄涛涌动化为先锋之势。丹田之中，你以至柔道力破阵开天，以柔克刚。玄武负甲而出，渊深之智御先锋之势。",
       "mantra_en": "I command the storm within.",
-      "mantra_cn": "我统御内心的风暴。"
+      "mantra_cn": "我掌控内心的风暴。",
+      "element_interpretation": {
+        "keywords": "Expression, Intuition, Flow, Emotion, Depth, Dreams",
+        "en": "Water represents emotional depth, intuition, and flowing adaptation. It symbolizes the subconscious mind, dreams, and the ability to navigate life's currents.",
+        "cn_traits": "像水一样，你拥有深邃的情感和敏锐的直觉。你的能量是流动的、包容的、充满智慧的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PIONEER",
+        "cn_traits": "勇敢无畏、敢于开拓、充满热情、行动迅速、喜欢挑战",
+        "growth_path": "学会将热情转化为持久的影响力"
+      }
     },
     {
       "element": "Water",
@@ -563,15 +794,26 @@
       "symbol": "♉",
       "title_en": "Deep Sea Root",
       "title_cn": "渊海定师",
+      "doc_title_cn": "深海之根",
       "source_numbers": "3, 8",
       "stones": [
         "Blue Agate",
         "Sapphire"
       ],
-      "fusion_en": "**Deep Sea Root** — the deep well meets the builder's steady heart: from the soul's spring you raise dreams that endure. In the still heart of the earth, you build with patient fire, and what you raise endures beyond the turning of ages. The Black Tortoise rises from the abyss bearing the weight of the deep, and its ancient wisdom turns the tide of every storm.",
+      "fusion_en": "Deep Sea Root combines Water's emotional wisdom with Taurus' practical nature. You build dreams from the wellspring of your soul. Creation flows from deep emotional truth.",
       "fusion_cn": "**渊海定师** 坎水之渊与定静之性交感，渊海深沉蕴藏万象。丹田之内，你以玄冥之定造化万物，以深沉之静承载一切。玄武镇守北海，渊深而不动，万象自生其中。",
       "mantra_en": "I grow from emotional truth.",
-      "mantra_cn": "我从情感之真中生长。"
+      "mantra_cn": "我自情感真相中成长。",
+      "element_interpretation": {
+        "keywords": "Expression, Intuition, Flow, Emotion, Depth, Dreams",
+        "en": "Water represents emotional depth, intuition, and flowing adaptation. It symbolizes the subconscious mind, dreams, and the ability to navigate life's currents.",
+        "cn_traits": "像水一样，你拥有深邃的情感和敏锐的直觉。你的能量是流动的、包容的、充满智慧的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE BUILDER",
+        "cn_traits": "踏实稳定、追求美感、坚持不懈、注重安全感、享受生活",
+        "growth_path": "在物质世界中寻找精神满足"
+      }
     },
     {
       "element": "Water",
@@ -579,15 +821,26 @@
       "symbol": "♊",
       "title_en": "Silver Current",
       "title_cn": "天河信使",
+      "doc_title_cn": "银色溪流",
       "source_numbers": "3, 8",
       "stones": [
         "Blue Lace Agate",
         "Apophyllite"
       ],
-      "fusion_en": "**Silver Current** — the silver current meets the messenger's quick mind: you flow through every voice, and feeling becomes fluent speech. Upon the altar of the living word, you speak with a quick and shining mind, and every syllable sets a current in motion. The Black Tortoise rises from the abyss bearing the weight of the deep, and its ancient wisdom turns the tide of every storm.",
+      "fusion_en": "Silver Current merges Water's flowing nature with Gemini's adaptive communication. You flow through life's currents with graceful adaptability. Words become streams of emotional intelligence.",
       "fusion_cn": "**天河信使** 坎水之渊与灵动之性交感，天河流转道音不息。灵台之上，你以玄通之言传道，水流不居润泽四方。玄武吐水成河，感通天地，一字一玄机。",
       "mantra_en": "I flow through all voices.",
-      "mantra_cn": "我流经万千声息。"
+      "mantra_cn": "我流经所有声音。",
+      "element_interpretation": {
+        "keywords": "Expression, Intuition, Flow, Emotion, Depth, Dreams",
+        "en": "Water represents emotional depth, intuition, and flowing adaptation. It symbolizes the subconscious mind, dreams, and the ability to navigate life's currents.",
+        "cn_traits": "像水一样，你拥有深邃的情感和敏锐的直觉。你的能量是流动的、包容的、充满智慧的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE MESSENGER",
+        "cn_traits": "灵活多变、好奇心强、善于沟通、思维敏捷、兴趣广泛",
+        "growth_path": "在多样性中找到内在的专注"
+      }
     },
     {
       "element": "Water",
@@ -595,15 +848,26 @@
       "symbol": "♋",
       "title_en": "Ocean Heart",
       "title_cn": "沧海护法",
+      "doc_title_cn": "海洋之心",
       "source_numbers": "3, 8",
       "stones": [
         "Pearl",
         "Blue Moonstone"
       ],
-      "fusion_en": "**Ocean Heart** — the boundless sea meets the guardian's wide embrace: you are the tide that nurtures all humanity. Within the warm wall of the hearth, you shield the beloved with a fierce and tender devotion, and all who draw near are made whole. The Black Tortoise rises from the abyss bearing the weight of the deep, and its ancient wisdom turns the tide of every storm.",
+      "fusion_en": "Ocean Heart is the ultimate water-water combination. You are the tide that nurtures all of humanity. Deep emotional currents flow through you to touch every heart.",
       "fusion_cn": "**沧海护法** 坎水之渊与慈护之心交感，沧海无边涵容万灵。丹田之中，你以上善之水化育众生，护持万物。玄武潜渊永世护持，沧海为怀，万灵归焉。",
       "mantra_en": "I am the tide that nurtures.",
-      "mantra_cn": "我是滋养众生的潮汐。"
+      "mantra_cn": "我是滋养的潮汐。",
+      "element_interpretation": {
+        "keywords": "Expression, Intuition, Flow, Emotion, Depth, Dreams",
+        "en": "Water represents emotional depth, intuition, and flowing adaptation. It symbolizes the subconscious mind, dreams, and the ability to navigate life's currents.",
+        "cn_traits": "像水一样，你拥有深邃的情感和敏锐的直觉。你的能量是流动的、包容的、充满智慧的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE GUARDIAN",
+        "cn_traits": "情感细腻、善于照顾他人、直觉敏锐、保护欲强、家庭观念重",
+        "growth_path": "在照顾他人的同时学会照顾自己"
+      }
     },
     {
       "element": "Water",
@@ -611,15 +875,26 @@
       "symbol": "♌",
       "title_en": "Golden Tide",
       "title_cn": "玄涛真君",
+      "doc_title_cn": "黄金潮汐",
       "source_numbers": "3, 8",
       "stones": [
         "Aqua Aura",
         "Blue Moonstone"
       ],
-      "fusion_en": "**Golden Tide** — the heart-ocean meets the sovereign's bright crown: you lead from the depths, and your feeling shines like gold. Upon the throne of the open sky, you reign with a sovereign radiance, and every eye that meets yours is warmed to its core. The Black Tortoise rises from the abyss bearing the weight of the deep, and its ancient wisdom turns the tide of every storm.",
+      "fusion_en": "Golden Tide unites Water's depth with Leo's radiant creativity. You lead from the heart ocean, guiding others with emotional intelligence that shines like gold.",
       "fusion_cn": "**玄涛真君** 坎水之渊与王者之魄交感，玄涛滔天君临四海。灵台之上，你以渊深之智统御万象，以柔中带刚之姿号令四方。玄武负岳而出，玄涛之上，君临四海。",
       "mantra_en": "I rule from the heart ocean.",
-      "mantra_cn": "我自心海统御。"
+      "mantra_cn": "我从心灵海洋中统治。",
+      "element_interpretation": {
+        "keywords": "Expression, Intuition, Flow, Emotion, Depth, Dreams",
+        "en": "Water represents emotional depth, intuition, and flowing adaptation. It symbolizes the subconscious mind, dreams, and the ability to navigate life's currents.",
+        "cn_traits": "像水一样，你拥有深邃的情感和敏锐的直觉。你的能量是流动的、包容的、充满智慧的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE SOVEREIGN",
+        "cn_traits": "自信满满、创造力强、慷慨大方、热爱表达、天生领导力",
+        "growth_path": "在闪耀中保持谦逊"
+      }
     },
     {
       "element": "Water",
@@ -627,15 +902,26 @@
       "symbol": "♍",
       "title_en": "Sacred Spring Purifier",
       "title_cn": "玉泉元君",
+      "doc_title_cn": "圣泉净化者",
       "source_numbers": "3, 8",
       "stones": [
         "Selenite",
         "Apophyllite"
       ],
-      "fusion_en": "**Sacred Spring Purifier** — the sacred spring meets the purifier's clear eye: with compassionate water you wash the world clean. At the precise edge of the flame, you burn away the false until only the true remains, and purity shines forth unblemished. The Black Tortoise rises from the abyss bearing the weight of the deep, and its ancient wisdom turns the tide of every storm.",
+      "fusion_en": "Sacred Spring Purifier combines Water's healing flow with Virgo's perfectionism. You wash away pain with compassionate waters. Emotional healing is your sacred gift.",
       "fusion_cn": "**玉泉元君** 坎水之渊与至纯之性交感，玉泉澄澈涤荡世间尘埃。丹炉之中，你以清泉道心洗练万象，化育纯真。玄武衔玉而出，玉泉涤尘，净明自生。",
       "mantra_en": "I cleanse with sacred waters.",
-      "mantra_cn": "我以圣水涤净。"
+      "mantra_cn": "我以圣水净化。",
+      "element_interpretation": {
+        "keywords": "Expression, Intuition, Flow, Emotion, Depth, Dreams",
+        "en": "Water represents emotional depth, intuition, and flowing adaptation. It symbolizes the subconscious mind, dreams, and the ability to navigate life's currents.",
+        "cn_traits": "像水一样，你拥有深邃的情感和敏锐的直觉。你的能量是流动的、包容的、充满智慧的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PURIFIER",
+        "cn_traits": "追求完美、分析能力强、注重细节、善于服务、务实可靠",
+        "growth_path": "接受不完美中的完美"
+      }
     },
     {
       "element": "Water",
@@ -643,15 +929,26 @@
       "symbol": "♎",
       "title_en": "Moonlight Scale",
       "title_cn": "太阴玄女",
+      "doc_title_cn": "月光天秤",
       "source_numbers": "3, 8",
       "stones": [
         "Kyanite",
         "Angelite"
       ],
-      "fusion_en": "**Moonlight Scale** — the moonlit pool meets the harmonizer's even hand: you weigh each heart and draw balance from understanding. Upon the balanced scale of heaven, you join opposing forces into one clear song, and harmony is born of your steady hand. The Black Tortoise rises from the abyss bearing the weight of the deep, and its ancient wisdom turns the tide of every storm.",
+      "fusion_en": "Moonlight Scale merges Water's intuitive wisdom with Libra's balanced judgment. You create harmony by understanding the depths of all hearts. Balance emerges from emotional understanding.",
       "fusion_cn": "**太阴玄女** 坎水之渊与中和之性交感，太阴如水映照万象。灵台之上，你以阴阳和合之道感通天地，于静中观照一切。玄武背映太阴，水中观月，阴阳自衡。",
       "mantra_en": "I balance with lunar wisdom.",
-      "mantra_cn": "我以月之智慧权衡。"
+      "mantra_cn": "我以月光智慧平衡。",
+      "element_interpretation": {
+        "keywords": "Expression, Intuition, Flow, Emotion, Depth, Dreams",
+        "en": "Water represents emotional depth, intuition, and flowing adaptation. It symbolizes the subconscious mind, dreams, and the ability to navigate life's currents.",
+        "cn_traits": "像水一样，你拥有深邃的情感和敏锐的直觉。你的能量是流动的、包容的、充满智慧的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE HARMONIZER",
+        "cn_traits": "追求平衡、注重美感、善于外交、公平公正、爱好和平",
+        "growth_path": "在犹豫中做出坚定选择"
+      }
     },
     {
       "element": "Water",
@@ -659,15 +956,26 @@
       "symbol": "♏",
       "title_en": "Abyssal Oracle",
       "title_cn": "重渊灵官",
+      "doc_title_cn": "深渊先知",
       "source_numbers": "3, 8",
       "stones": [
         "Larimar",
         "Kyanite"
       ],
-      "fusion_en": "**Abyssal Oracle** — the forbidding deep meets the transformer's dark gaze: you swim the abyss and rise with wisdom others fear to name. In the deep crucible of endings, you shed the worn self and rise remade, and every death becomes a door. The Black Tortoise rises from the abyss bearing the weight of the deep, and its ancient wisdom turns the tide of every storm.",
+      "fusion_en": "Abyssal Oracle is the most emotionally intense combination. You swim in the deepest waters and emerge with forbidden wisdom. Secrets that others fear, you transform into power.",
       "fusion_cn": "**重渊灵官** 坎水之渊与化生之力交感，重渊无底暗藏玄机。丹田深处，你以玄冥道力破执转轮，潜入最暗处方见真光。玄武潜行重渊，潜入最深，方见真道。",
       "mantra_en": "I dive into the forbidden depths.",
-      "mantra_cn": "我潜入禁地的深处。"
+      "mantra_cn": "我潜入禁禁深渊。",
+      "element_interpretation": {
+        "keywords": "Expression, Intuition, Flow, Emotion, Depth, Dreams",
+        "en": "Water represents emotional depth, intuition, and flowing adaptation. It symbolizes the subconscious mind, dreams, and the ability to navigate life's currents.",
+        "cn_traits": "像水一样，你拥有深邃的情感和敏锐的直觉。你的能量是流动的、包容的、充满智慧的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PHOENIX",
+        "cn_traits": "深邃神秘、意志坚定、洞察力强、善于转化、情感浓烈",
+        "growth_path": "将黑暗力量转化为光明智慧"
+      }
     },
     {
       "element": "Water",
@@ -675,15 +983,26 @@
       "symbol": "♐",
       "title_en": "Drifting Star",
       "title_cn": "北辰散人",
+      "doc_title_cn": "漂流星辰",
       "source_numbers": "3, 8",
       "stones": [
         "Blue Tourmaline",
         "Aqua Aura Quartz"
       ],
-      "fusion_en": "**Drifting Star** — the drifting star meets the seeker's far eye: you sail the inner sea by starlight, in search of truth. Upon the wandering road of seekers, you follow the arrow of truth beyond the horizon, and the far country opens as you go. The Black Tortoise rises from the abyss bearing the weight of the deep, and its ancient wisdom turns the tide of every storm.",
+      "fusion_en": "Drifting Star combines Water's emotional depth with Sagittarius' questing spirit. You navigate by inner stars, seeking truth across emotional seas. The dreamer-seeker lives within you.",
       "fusion_cn": "**北辰散人** 坎水之渊与求道之心交感，北辰指路道在四方。天门之外，你以玄明之心游方问道，以星辰为导。玄武仰观北辰，水中映星，道在四方天地之间。",
       "mantra_en": "I navigate by inner stars.",
-      "mantra_cn": "我以内心的星辰导航。"
+      "mantra_cn": "我以内在星辰导航。",
+      "element_interpretation": {
+        "keywords": "Expression, Intuition, Flow, Emotion, Depth, Dreams",
+        "en": "Water represents emotional depth, intuition, and flowing adaptation. It symbolizes the subconscious mind, dreams, and the ability to navigate life's currents.",
+        "cn_traits": "像水一样，你拥有深邃的情感和敏锐的直觉。你的能量是流动的、包容的、充满智慧的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE SEEKER",
+        "cn_traits": "热爱自由、追求真理、乐观开朗、爱好冒险、思想开放",
+        "growth_path": "在冒险中找到内在的锚"
+      }
     },
     {
       "element": "Water",
@@ -691,15 +1010,26 @@
       "symbol": "♑",
       "title_en": "Glacial Monument",
       "title_cn": "玄冰炼师",
+      "doc_title_cn": "冰川丰碑",
       "source_numbers": "3, 8",
       "stones": [
         "Dumortierite",
         "Sodalite"
       ],
-      "fusion_en": "**Glacial Monument** — the glacial deep meets the architect's patient will: from frozen wisdom you build what time cannot undo. Within the long labor of the mountain, you forge the lasting with unbroken discipline, and monuments rise where you stand. The Black Tortoise rises from the abyss bearing the weight of the deep, and its ancient wisdom turns the tide of every storm.",
+      "fusion_en": "Glacial Monument unites Water's patient flow with Capricorn's achievement drive. You build empires through deep emotional power and disciplined patience. Legacy flows from frozen wisdom.",
       "fusion_cn": "**玄冰炼师** 坎水之渊与功成之志交感，玄冰凝华万世不化。丹炉之中，你以至寒道心淬炼造化，以冰封之耐成就不朽。玄武吐息成冰，玄冰之中，万世功成。",
       "mantra_en": "I build from frozen wisdom.",
-      "mantra_cn": "我自冰封智慧中筑造。"
+      "mantra_cn": "我以冰冻智慧建造。",
+      "element_interpretation": {
+        "keywords": "Expression, Intuition, Flow, Emotion, Depth, Dreams",
+        "en": "Water represents emotional depth, intuition, and flowing adaptation. It symbolizes the subconscious mind, dreams, and the ability to navigate life's currents.",
+        "cn_traits": "像水一样，你拥有深邃的情感和敏锐的直觉。你的能量是流动的、包容的、充满智慧的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE ARCHITECT",
+        "cn_traits": "雄心勃勃、脚踏实地、自律性强、注重成就、有耐心",
+        "growth_path": "在成功中找到精神的满足"
+      }
     },
     {
       "element": "Water",
@@ -707,15 +1037,26 @@
       "symbol": "♒",
       "title_en": "Electric Tide",
       "title_cn": "太一灵官",
+      "doc_title_cn": "电光潮汐",
       "source_numbers": "3, 8",
       "stones": [
         "Aqua Aura",
         "Blue Sapphire"
       ],
-      "fusion_en": "**Electric Tide** — the charged tide meets the visionary's bright surge: you quicken feeling itself, and the world changes through the heart. At the gate where the old world ends, you strike with lightning clarity and open the new, and the future bends toward your vision. The Black Tortoise rises from the abyss bearing the weight of the deep, and its ancient wisdom turns the tide of every storm.",
+      "fusion_en": "Electric Tide merges Water's emotional current with Aquarius' revolutionary vision. You electrify emotional evolution, changing the world through progressive feelings.",
       "fusion_cn": "**太一灵官** 坎水之渊与破执之志交感，太一生水润泽新生。天门洞开，你以元始之水开天辟道，以水之柔韧破一切执念。玄武负太一之气，水润新生，万象更新。",
       "mantra_en": "I electrify emotional evolution.",
-      "mantra_cn": "我点亮情感的进化。"
+      "mantra_cn": "我以电能激发情感进化。",
+      "element_interpretation": {
+        "keywords": "Expression, Intuition, Flow, Emotion, Depth, Dreams",
+        "en": "Water represents emotional depth, intuition, and flowing adaptation. It symbolizes the subconscious mind, dreams, and the ability to navigate life's currents.",
+        "cn_traits": "像水一样，你拥有深邃的情感和敏锐的直觉。你的能量是流动的、包容的、充满智慧的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE VISIONARY",
+        "cn_traits": "独立思考、创新精神、人道主义、热爱自由、思维独特",
+        "growth_path": "在独特中找到与人类连接"
+      }
     },
     {
       "element": "Water",
@@ -723,15 +1064,26 @@
       "symbol": "♓",
       "title_en": "Cosmic Ocean",
       "title_cn": "上善若水",
+      "doc_title_cn": "宇宙汪洋",
       "source_numbers": "3, 8",
       "stones": [
         "Moonstone",
         "Spirit Quartz"
       ],
-      "fusion_en": "**Cosmic Ocean** — the cosmic ocean meets the mystic's open sight: you are the sea that holds all consciousness, and dreams flow as one current. In the mirror of the dreaming deep, you read the hidden script of all things, and the seen and the unseen flow as one. The Black Tortoise rises from the abyss bearing the weight of the deep, and its ancient wisdom turns the tide of every storm.",
+      "fusion_en": "Cosmic Ocean is the ultimate psychic water combination. You are the ocean that contains all consciousness. Dreams flow through you as the universal current of all existence.",
       "fusion_cn": "**上善若水** 坎水之渊与通感之灵交感，上善之极无为而化。灵台之中，你以若水道心涵容万象，利万物而不争。玄武归于太一，上善若水，道在无为之境。",
       "mantra_en": "I am the ocean of all dreams.",
-      "mantra_cn": "我是万梦之洋。"
+      "mantra_cn": "我是万梦之海。",
+      "element_interpretation": {
+        "keywords": "Expression, Intuition, Flow, Emotion, Depth, Dreams",
+        "en": "Water represents emotional depth, intuition, and flowing adaptation. It symbolizes the subconscious mind, dreams, and the ability to navigate life's currents.",
+        "cn_traits": "像水一样，你拥有深邃的情感和敏锐的直觉。你的能量是流动的、包容的、充满智慧的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE MYSTIC",
+        "cn_traits": "敏感梦幻、直觉强大、富有同情心、艺术气质、灵性深厚",
+        "growth_path": "将梦想转化为行动的力量"
+      }
     },
     {
       "element": "Metal",
@@ -739,15 +1091,26 @@
       "symbol": "♈",
       "title_en": "Titan Ram",
       "title_cn": "黄庭先锋",
+      "doc_title_cn": "泰坦白羊",
       "source_numbers": "4, 9",
       "stones": [
         "Diamond",
         "White Gold"
       ],
-      "fusion_en": "**Titan Ram** — the unyielding blade meets the pioneer's bold charge: you are the edge that cuts the uncreated open. In the furnace of becoming, you break open the uncreated with an untamed will, and paths unfold where none stood before. The White Tiger crouches upon the western peak, and wherever its golden edge falls, a myriad spirits bow in homage.",
+      "fusion_en": "Titan Ram fuses Metal's unbreakable strength with Aries' pioneering courage. You are the blade that cuts through all obstacles. Conquest is your nature, forged in fire and tempered to perfection.",
       "fusion_cn": "**黄庭先锋** 兑金之刚与开拓之志交感，金锋破空无坚不摧。丹炉之中，你以至坚道心斩开混沌，开天辟道。白虎踞于西岳之上，金锋所向，无坚不摧。",
       "mantra_en": "I am forged for conquest.",
-      "mantra_cn": "我为征服而生。"
+      "mantra_cn": "我为征服而锻造。",
+      "element_interpretation": {
+        "keywords": "Structure, Precision, Strength, Refinement, Clarity, Mastery",
+        "en": "Metal represents structure, precision, and refined strength. It symbolizes clarity of thought, masterful execution, and the power of focused intention.",
+        "cn_traits": "像金属一样，你是精准的、有力的、追求完美的。你的能量是锋利的、清晰的、追求卓越的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PIONEER",
+        "cn_traits": "勇敢无畏、敢于开拓、充满热情、行动迅速、喜欢挑战",
+        "growth_path": "学会将热情转化为持久的影响力"
+      }
     },
     {
       "element": "Metal",
@@ -755,15 +1118,26 @@
       "symbol": "♉",
       "title_en": "Gilded Earth",
       "title_cn": "厚德载物",
+      "doc_title_cn": "镀金大地",
       "source_numbers": "4, 9",
       "stones": [
         "Imperial Topaz",
         "White Sapphire"
       ],
-      "fusion_en": "**Gilded Earth** — the bright ore meets the builder's sure eye: you shape wealth — of earth and of spirit — with exacting mastery. In the still heart of the earth, you build with patient fire, and what you raise endures beyond the turning of ages. The White Tiger crouches upon the western peak, and wherever its golden edge falls, a myriad spirits bow in homage.",
+      "fusion_en": "Gilded Earth combines Metal's refined precision with Taurus' appreciation of beauty. You create wealth—material and spiritual—with exacting mastery. Luxury meets lasting value in all you do.",
       "fusion_cn": "**厚德载物** 兑金之刚与定静之性交感，厚德含金承载造化之功。丹田之中，你以金丹道心造化万物，功成自显。白虎镇守西岳，厚德载物，万象归真。",
       "mantra_en": "I manifest golden prosperity.",
-      "mantra_cn": "我显化金色的丰盛。"
+      "mantra_cn": "我显化金色丰盛。",
+      "element_interpretation": {
+        "keywords": "Structure, Precision, Strength, Refinement, Clarity, Mastery",
+        "en": "Metal represents structure, precision, and refined strength. It symbolizes clarity of thought, masterful execution, and the power of focused intention.",
+        "cn_traits": "像金属一样，你是精准的、有力的、追求完美的。你的能量是锋利的、清晰的、追求卓越的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE BUILDER",
+        "cn_traits": "踏实稳定、追求美感、坚持不懈、注重安全感、享受生活",
+        "growth_path": "在物质世界中寻找精神满足"
+      }
     },
     {
       "element": "Metal",
@@ -771,15 +1145,26 @@
       "symbol": "♊",
       "title_en": "Mercury Messenger",
       "title_cn": "黄中通理",
+      "doc_title_cn": "水银信使",
       "source_numbers": "4, 9",
       "stones": [
         "Mercury Silver",
         "Platinum"
       ],
-      "fusion_en": "**Mercury Messenger** — the polished steel meets the messenger's quick wit: your words are forged to a fine and flawless point. Upon the altar of the living word, you speak with a quick and shining mind, and every syllable sets a current in motion. The White Tiger crouches upon the western peak, and wherever its golden edge falls, a myriad spirits bow in homage.",
+      "fusion_en": "Mercury Messenger merges Metal's precision with Gemini's quick wit. Your words are tools crafted to exact perfection. Communication becomes a precision instrument in your hands.",
       "fusion_cn": "**黄中通理** 兑金之刚与灵动之性交感，黄中自明金声玉振。灵台之上，你以至精之言传道，字字入微。白虎低啸通玄，金声玉振，感通天地万物。",
       "mantra_en": "I speak with polished precision.",
-      "mantra_cn": "我以淬炼的精准言说。"
+      "mantra_cn": "我以精炼精确发言。",
+      "element_interpretation": {
+        "keywords": "Structure, Precision, Strength, Refinement, Clarity, Mastery",
+        "en": "Metal represents structure, precision, and refined strength. It symbolizes clarity of thought, masterful execution, and the power of focused intention.",
+        "cn_traits": "像金属一样，你是精准的、有力的、追求完美的。你的能量是锋利的、清晰的、追求卓越的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE MESSENGER",
+        "cn_traits": "灵活多变、好奇心强、善于沟通、思维敏捷、兴趣广泛",
+        "growth_path": "在多样性中找到内在的专注"
+      }
     },
     {
       "element": "Metal",
@@ -787,15 +1172,26 @@
       "symbol": "♋",
       "title_en": "Steel Fortress",
       "title_cn": "坚城护法",
+      "doc_title_cn": "钢铸堡垒",
       "source_numbers": "4, 9",
       "stones": [
         "Steel",
         "Silver"
       ],
-      "fusion_en": "**Steel Fortress** — the steel wall meets the guardian's tender heart: unbreakable defense wrapped around a devotion that will not fail. Within the warm wall of the hearth, you shield the beloved with a fierce and tender devotion, and all who draw near are made whole. The White Tiger crouches upon the western peak, and wherever its golden edge falls, a myriad spirits bow in homage.",
+      "fusion_en": "Steel Fortress unites Metal's protective strength with Cancer's nurturing heart. You are unbreakable defense wrapped around tender devotion. Nothing penetrates your protective shell.",
       "fusion_cn": "**坚城护法** 兑金之刚与慈护之心交感，坚城不摧永镇一方。丹田之中，你以不坏道心护持所爱，以金刚之志卫道。白虎踞城永镇，金城为护，万邪不入。",
       "mantra_en": "I protect with unbreakable will.",
-      "mantra_cn": "我以不可摧之志守护。"
+      "mantra_cn": "我以坚不可摧的意志守护。",
+      "element_interpretation": {
+        "keywords": "Structure, Precision, Strength, Refinement, Clarity, Mastery",
+        "en": "Metal represents structure, precision, and refined strength. It symbolizes clarity of thought, masterful execution, and the power of focused intention.",
+        "cn_traits": "像金属一样，你是精准的、有力的、追求完美的。你的能量是锋利的、清晰的、追求卓越的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE GUARDIAN",
+        "cn_traits": "情感细腻、善于照顾他人、直觉敏锐、保护欲强、家庭观念重",
+        "growth_path": "在照顾他人的同时学会照顾自己"
+      }
     },
     {
       "element": "Metal",
@@ -803,15 +1199,26 @@
       "symbol": "♌",
       "title_en": "Radiant Crown",
       "title_cn": "中岳真君",
+      "doc_title_cn": "璀璨王冠",
       "source_numbers": "4, 9",
       "stones": [
         "Diamond",
         "Platinum"
       ],
-      "fusion_en": "**Radiant Crown** — the precious crown meets the sovereign's bright will: you reign in pure and luminous authority, by right and by light. Upon the throne of the open sky, you reign with a sovereign radiance, and every eye that meets yours is warmed to its core. The White Tiger crouches upon the western peak, and wherever its golden edge falls, a myriad spirits bow in homage.",
+      "fusion_en": "Radiant Crown combines Metal's precious nature with Leo's royal presence. You reign with sovereign authority, forged in pure precious energy. Crown and kingdom are yours by right.",
       "fusion_cn": "**中岳真君** 兑金之刚与王者之魄交感，中岳巍然统御四方。灵台之上，你以金刚道心君临天下，号令所至无不顺从。白虎踞于中岳，金锋所指，万灵朝宗。",
       "mantra_en": "I reign with sovereign light.",
-      "mantra_cn": "我以君王之光临御。"
+      "mantra_cn": "我以王者之光统治。",
+      "element_interpretation": {
+        "keywords": "Structure, Precision, Strength, Refinement, Clarity, Mastery",
+        "en": "Metal represents structure, precision, and refined strength. It symbolizes clarity of thought, masterful execution, and the power of focused intention.",
+        "cn_traits": "像金属一样，你是精准的、有力的、追求完美的。你的能量是锋利的、清晰的、追求卓越的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE SOVEREIGN",
+        "cn_traits": "自信满满、创造力强、慷慨大方、热爱表达、天生领导力",
+        "growth_path": "在闪耀中保持谦逊"
+      }
     },
     {
       "element": "Metal",
@@ -819,15 +1226,26 @@
       "symbol": "♍",
       "title_en": "Sacred Forge Master",
       "title_cn": "黄庭元君",
+      "doc_title_cn": "圣器锻造者",
       "source_numbers": "4, 9",
       "stones": [
         "Platinum",
         "White Topaz"
       ],
-      "fusion_en": "**Sacred Forge Master** — the sacred forge meets the purifier's fine hand: you refine each detail until it gleams with the divine. At the precise edge of the flame, you burn away the false until only the true remains, and purity shines forth unblemished. The White Tiger crouches upon the western peak, and wherever its golden edge falls, a myriad spirits bow in homage.",
+      "fusion_en": "Sacred Forge Master merges Metal's refinement with Virgo's perfectionism. Every detail is refined until it gleams with divine perfection. Precision is your spiritual practice.",
       "fusion_cn": "**黄庭元君** 兑金之刚与至纯之性交感，黄庭精微入微见真。丹炉之中，你以至精道心淬炼万象，每一处细节皆臻纯一。白虎低伏黄庭，金锋入微，纯一自生。",
       "mantra_en": "I refine until I gleam.",
-      "mantra_cn": "我淬炼，直至生辉。"
+      "mantra_cn": "我精炼至闪耀。",
+      "element_interpretation": {
+        "keywords": "Structure, Precision, Strength, Refinement, Clarity, Mastery",
+        "en": "Metal represents structure, precision, and refined strength. It symbolizes clarity of thought, masterful execution, and the power of focused intention.",
+        "cn_traits": "像金属一样，你是精准的、有力的、追求完美的。你的能量是锋利的、清晰的、追求卓越的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PURIFIER",
+        "cn_traits": "追求完美、分析能力强、注重细节、善于服务、务实可靠",
+        "growth_path": "接受不完美中的完美"
+      }
     },
     {
       "element": "Metal",
@@ -835,15 +1253,26 @@
       "symbol": "♎",
       "title_en": "Balanced Scale",
       "title_cn": "中和道子",
+      "doc_title_cn": "均衡天秤",
       "source_numbers": "4, 9",
       "stones": [
         "Diamond",
         "White Sapphire"
       ],
-      "fusion_en": "**Balanced Scale** — the perfect scale meets the harmonizer's even hand: you weigh all things in measure, and justice shines from your precision. Upon the balanced scale of heaven, you join opposing forces into one clear song, and harmony is born of your steady hand. The White Tiger crouches upon the western peak, and wherever its golden edge falls, a myriad spirits bow in homage.",
+      "fusion_en": "Balanced Scale unites Metal's precision with Libra's love of equilibrium. You weigh all things with perfect measure. Justice and harmony emerge from your elegant precision.",
       "fusion_cn": "**中和道子** 兑金之刚与中和之性交感，金衡自平刚柔并济。灵台之上，你以阴阳和合之道权衡万物，不偏不倚。白虎衔金衡而立，刚柔并济，中和自生。",
       "mantra_en": "I weigh with perfect measure.",
-      "mantra_cn": "我以完美尺度权衡。"
+      "mantra_cn": "我以完美尺度权衡。",
+      "element_interpretation": {
+        "keywords": "Structure, Precision, Strength, Refinement, Clarity, Mastery",
+        "en": "Metal represents structure, precision, and refined strength. It symbolizes clarity of thought, masterful execution, and the power of focused intention.",
+        "cn_traits": "像金属一样，你是精准的、有力的、追求完美的。你的能量是锋利的、清晰的、追求卓越的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE HARMONIZER",
+        "cn_traits": "追求平衡、注重美感、善于外交、公平公正、爱好和平",
+        "growth_path": "在犹豫中做出坚定选择"
+      }
     },
     {
       "element": "Metal",
@@ -851,15 +1280,26 @@
       "symbol": "♏",
       "title_en": "Damascus Rebirth",
       "title_cn": "后土重生",
+      "doc_title_cn": "大马士革重生",
       "source_numbers": "4, 9",
       "stones": [
         "Damascus Steel",
         "Rainbow Moonstone"
       ],
-      "fusion_en": "**Damascus Rebirth** — the tempered blade meets the transformer's dark art: with every death you are beaten stronger, and reborn through fire. In the deep crucible of endings, you shed the worn self and rise remade, and every death becomes a door. The White Tiger crouches upon the western peak, and wherever its golden edge falls, a myriad spirits bow in homage.",
+      "fusion_en": "Damascus Rebirth combines Metal's transformative forging with Scorpio's regenerative power. Stronger with every death, tempered by every trial. The warrior's power increases through transformation.",
       "fusion_cn": "**后土重生** 兑金之刚与化生之力交感，金中涅槃淬炼即新生。丹炉之中，你以金刚道心破执转轮，淬火重生。白虎浴火而啸，金中化生，每一次淬炼皆为新生。",
       "mantra_en": "I am tempered by trials.",
-      "mantra_cn": "我于淬炼中重生。"
+      "mantra_cn": "我在试炼中淬炼。",
+      "element_interpretation": {
+        "keywords": "Structure, Precision, Strength, Refinement, Clarity, Mastery",
+        "en": "Metal represents structure, precision, and refined strength. It symbolizes clarity of thought, masterful execution, and the power of focused intention.",
+        "cn_traits": "像金属一样，你是精准的、有力的、追求完美的。你的能量是锋利的、清晰的、追求卓越的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PHOENIX",
+        "cn_traits": "深邃神秘、意志坚定、洞察力强、善于转化、情感浓烈",
+        "growth_path": "将黑暗力量转化为光明智慧"
+      }
     },
     {
       "element": "Metal",
@@ -867,15 +1307,26 @@
       "symbol": "♐",
       "title_en": "Archer's Honor",
       "title_cn": "厚德散人",
+      "doc_title_cn": "弓手之荣",
       "source_numbers": "4, 9",
       "stones": [
         "Yellow Sapphire",
         "Imperial Topaz"
       ],
-      "fusion_en": "**Archer's Honor** — the arrow's bright head meets the seeker's true aim: in your philosophical forge, truth is refined to gold. Upon the wandering road of seekers, you follow the arrow of truth beyond the horizon, and the far country opens as you go. The White Tiger crouches upon the western peak, and wherever its golden edge falls, a myriad spirits bow in homage.",
+      "fusion_en": "Archer's Honor merges Metal's truth-seeking with Sagittarius' philosophical wisdom. Truth is refined to pure gold in your philosophical forge. The warrior-philosopher seeks pure wisdom.",
       "fusion_cn": "**厚德散人** 兑金之刚与求道之心交感，金行不倦道在征途。天门之外，你以金刚之志游方问道，以锋芒求索真谛。白虎散人行走四方，金锋寻真，道在征途。",
       "mantra_en": "I forge truth from experience.",
-      "mantra_cn": "我于阅历中锻出真理。"
+      "mantra_cn": "我从经验中锻造真理。",
+      "element_interpretation": {
+        "keywords": "Structure, Precision, Strength, Refinement, Clarity, Mastery",
+        "en": "Metal represents structure, precision, and refined strength. It symbolizes clarity of thought, masterful execution, and the power of focused intention.",
+        "cn_traits": "像金属一样，你是精准的、有力的、追求完美的。你的能量是锋利的、清晰的、追求卓越的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE SEEKER",
+        "cn_traits": "热爱自由、追求真理、乐观开朗、爱好冒险、思想开放",
+        "growth_path": "在冒险中找到内在的锚"
+      }
     },
     {
       "element": "Metal",
@@ -883,15 +1334,26 @@
       "symbol": "♑",
       "title_en": "Master Smith",
       "title_cn": "五岳炼师",
+      "doc_title_cn": "大师锻造师",
       "source_numbers": "4, 9",
       "stones": [
         "Titanium",
         "Black Diamond"
       ],
-      "fusion_en": "**Master Smith** — the master's hammer meets the architect's long labor: you shape reality itself with the cunning of the smith. Within the long labor of the mountain, you forge the lasting with unbroken discipline, and monuments rise where you stand. The White Tiger crouches upon the western peak, and wherever its golden edge falls, a myriad spirits bow in homage.",
+      "fusion_en": "Master Smith is the ultimate manifestation combination. You shape reality with master craftsmanship. World-building is your art, executed with metal precision.",
       "fusion_cn": "**五岳炼师** 兑金之刚与功成之志交感，五岳同炼万世功成。丹炉之中，你以不坏道心淬炼造化，功成不朽。白虎踞五岳炼金，万世功成，金身不坏。",
       "mantra_en": "I shape worlds with mastery.",
-      "mantra_cn": "我以匠术塑造世界。"
+      "mantra_cn": "我以大师之手塑造世界。",
+      "element_interpretation": {
+        "keywords": "Structure, Precision, Strength, Refinement, Clarity, Mastery",
+        "en": "Metal represents structure, precision, and refined strength. It symbolizes clarity of thought, masterful execution, and the power of focused intention.",
+        "cn_traits": "像金属一样，你是精准的、有力的、追求完美的。你的能量是锋利的、清晰的、追求卓越的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE ARCHITECT",
+        "cn_traits": "雄心勃勃、脚踏实地、自律性强、注重成就、有耐心",
+        "growth_path": "在成功中找到精神的满足"
+      }
     },
     {
       "element": "Metal",
@@ -899,15 +1361,26 @@
       "symbol": "♒",
       "title_en": "Platinum Future",
       "title_cn": "混沌灵官",
+      "doc_title_cn": "铂金未来",
       "source_numbers": "4, 9",
       "stones": [
         "Platinum",
         "White Diamond"
       ],
-      "fusion_en": "**Platinum Future** — the platinum vision meets the visionary's bright mind: you forge tomorrow in its purest and most precious form. At the gate where the old world ends, you strike with lightning clarity and open the new, and the future bends toward your vision. The White Tiger crouches upon the western peak, and wherever its golden edge falls, a myriad spirits bow in homage.",
+      "fusion_en": "Platinum Future combines Metal's precious nature with Aquarius' visionary innovation. Your ideas are refined to their purest, most valuable form. Tomorrow is forged in your platinum vision.",
       "fusion_cn": "**混沌灵官** 兑金之刚与破执之志交感，混沌开金万象更新。天门洞开，你以金刚道力开天辟道，破混沌而开新天。白虎破混沌而出，金锋开新，万象更新。",
       "mantra_en": "I forge tomorrow's vision.",
-      "mantra_cn": "我锻造明日的远见。"
+      "mantra_cn": "我锻造明日的愿景。",
+      "element_interpretation": {
+        "keywords": "Structure, Precision, Strength, Refinement, Clarity, Mastery",
+        "en": "Metal represents structure, precision, and refined strength. It symbolizes clarity of thought, masterful execution, and the power of focused intention.",
+        "cn_traits": "像金属一样，你是精准的、有力的、追求完美的。你的能量是锋利的、清晰的、追求卓越的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE VISIONARY",
+        "cn_traits": "独立思考、创新精神、人道主义、热爱自由、思维独特",
+        "growth_path": "在独特中找到与人类连接"
+      }
     },
     {
       "element": "Metal",
@@ -915,15 +1388,26 @@
       "symbol": "♓",
       "title_en": "Crystal Oracle",
       "title_cn": "黄庭玄鉴",
+      "doc_title_cn": "水晶先知",
       "source_numbers": "4, 9",
       "stones": [
         "Crystal Quartz",
         "Herkimer Diamond"
       ],
-      "fusion_en": "**Crystal Oracle** — the crystal edge meets the mystic's deep sight: you see through dream to the clear truth that lies beneath. In the mirror of the dreaming deep, you read the hidden script of all things, and the seen and the unseen flow as one. The White Tiger crouches upon the western peak, and wherever its golden edge falls, a myriad spirits bow in homage.",
+      "fusion_en": "Crystal Oracle merges Metal's clarity with Pisces' psychic depth. You see through illusions to crystal truth beneath dreams. Psychic power crystallizes into pure clarity in you.",
       "fusion_cn": "**黄庭玄鉴** 兑金之刚与通感之灵交感，黄庭如镜照见真幻。灵台之中，你以金刚玄鉴照见道境，穿透一切虚妄。白虎卧于黄庭，金镜照心，真幻自明。",
       "mantra_en": "I crystalize the dream realm.",
-      "mantra_cn": "我将梦境凝为水晶。"
+      "mantra_cn": "我将梦境结晶。",
+      "element_interpretation": {
+        "keywords": "Structure, Precision, Strength, Refinement, Clarity, Mastery",
+        "en": "Metal represents structure, precision, and refined strength. It symbolizes clarity of thought, masterful execution, and the power of focused intention.",
+        "cn_traits": "像金属一样，你是精准的、有力的、追求完美的。你的能量是锋利的、清晰的、追求卓越的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE MYSTIC",
+        "cn_traits": "敏感梦幻、直觉强大、富有同情心、艺术气质、灵性深厚",
+        "growth_path": "将梦想转化为行动的力量"
+      }
     },
     {
       "element": "Wood",
@@ -931,15 +1415,26 @@
       "symbol": "♈",
       "title_en": "Wild Pioneer",
       "title_cn": "青阳先锋",
+      "doc_title_cn": "狂野先驱",
       "source_numbers": "5",
       "stones": [
         "Green Tourmaline",
         "Moss Agate"
       ],
-      "fusion_en": "**Wild Pioneer** — the living shoot meets the pioneer's bold step: you break every boundary with the force of growing things. In the furnace of becoming, you break open the uncreated with an untamed will, and paths unfold where none stood before. The Azure Dragon winds through the eastern sky, and where it passes, the great Way reveals itself in untamed and boundless life.",
+      "fusion_en": "Wild Pioneer fuses Wood's explosive growth with Aries' pioneering spirit. You break through all barriers with living force. Growth is your nature, unstoppable and expanding.",
       "fusion_cn": "**青阳先锋** 震木之机与开拓之志交感，青阳初升万象更新。丹田之中，你以生生道力开天辟道，以蓬勃生机冲破一切藩篱。青龙腾跃于东方，青阳所至万象更新。",
       "mantra_en": "I grow beyond all limits.",
-      "mantra_cn": "我生长，逾越一切界限。"
+      "mantra_cn": "我超越一切界限成长。",
+      "element_interpretation": {
+        "keywords": "Growth, Flexibility, Vitality, Expansion, Creativity, Renewal",
+        "en": "Wood represents growth, flexibility, and vital expansion. It symbolizes the life force that pushes upward, the ability to bend without breaking, and constant renewal.",
+        "cn_traits": "像树木一样，你拥有顽强的生命力和灵活的适应力。你的能量是成长的、向上的、生生不息的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PIONEER",
+        "cn_traits": "勇敢无畏、敢于开拓、充满热情、行动迅速、喜欢挑战",
+        "growth_path": "学会将热情转化为持久的影响力"
+      }
     },
     {
       "element": "Wood",
@@ -947,15 +1442,26 @@
       "symbol": "♉",
       "title_en": "Ancient Oak",
       "title_cn": "扶桑定师",
+      "doc_title_cn": "古老橡树",
       "source_numbers": "5",
       "stones": [
         "Tree Agate",
         "Jade"
       ],
-      "fusion_en": "**Ancient Oak** — the deep root meets the builder's patient hand: like the ancient oak, you grow slow and reach the sky. In the still heart of the earth, you build with patient fire, and what you raise endures beyond the turning of ages. The Azure Dragon winds through the eastern sky, and where it passes, the great Way reveals itself in untamed and boundless life.",
+      "fusion_en": "Ancient Oak combines Wood's deep roots with Taurus' lasting stability. Your projects grow from fertile determination. Like the oak, you grow slowly but reach to the sky.",
       "fusion_cn": "**扶桑定师** 震木之机与定静之性交感，扶桑深根直抵苍穹。丹田之中，你以建木道心承载造化，根深而叶茂。青龙盘于扶桑之上，根深叶茂，直抵苍穹。",
       "mantra_en": "I root deep to grow high.",
-      "mantra_cn": "我深扎根，以向高生长。"
+      "mantra_cn": "我根深叶茂。",
+      "element_interpretation": {
+        "keywords": "Growth, Flexibility, Vitality, Expansion, Creativity, Renewal",
+        "en": "Wood represents growth, flexibility, and vital expansion. It symbolizes the life force that pushes upward, the ability to bend without breaking, and constant renewal.",
+        "cn_traits": "像树木一样，你拥有顽强的生命力和灵活的适应力。你的能量是成长的、向上的、生生不息的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE BUILDER",
+        "cn_traits": "踏实稳定、追求美感、坚持不懈、注重安全感、享受生活",
+        "growth_path": "在物质世界中寻找精神满足"
+      }
     },
     {
       "element": "Wood",
@@ -963,15 +1469,26 @@
       "symbol": "♊",
       "title_en": "Dancing Reed",
       "title_cn": "扶摇信使",
+      "doc_title_cn": "风中舞苇",
       "source_numbers": "5",
       "stones": [
         "Chrysoprase",
         "Peach Moonstone"
       ],
-      "fusion_en": "**Dancing Reed** — the swaying reed meets the messenger's quick tongue: you bend and never break, and your word moves like wind through grass. Upon the altar of the living word, you speak with a quick and shining mind, and every syllable sets a current in motion. The Azure Dragon winds through the eastern sky, and where it passes, the great Way reveals itself in untamed and boundless life.",
+      "fusion_en": "Dancing Reed merges Wood's flexibility with Gemini's adaptive nature. You bend without breaking, swaying gracefully through all challenges. Communication flows like wind through reeds.",
       "fusion_cn": "**扶摇信使** 震木之机与灵动之性交感，扶摇而上风过林梢。灵台之上，你以青阳之言传道，言语如春风化雨。青龙乘扶摇而上，一字一叶，感通天地。",
       "mantra_en": "I bend without breaking.",
-      "mantra_cn": "我弯曲，却不断裂。"
+      "mantra_cn": "我弯曲而不折断。",
+      "element_interpretation": {
+        "keywords": "Growth, Flexibility, Vitality, Expansion, Creativity, Renewal",
+        "en": "Wood represents growth, flexibility, and vital expansion. It symbolizes the life force that pushes upward, the ability to bend without breaking, and constant renewal.",
+        "cn_traits": "像树木一样，你拥有顽强的生命力和灵活的适应力。你的能量是成长的、向上的、生生不息的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE MESSENGER",
+        "cn_traits": "灵活多变、好奇心强、善于沟通、思维敏捷、兴趣广泛",
+        "growth_path": "在多样性中找到内在的专注"
+      }
     },
     {
       "element": "Wood",
@@ -979,15 +1496,26 @@
       "symbol": "♋",
       "title_en": "Healing Grove",
       "title_cn": "青囊护法",
+      "doc_title_cn": "治愈林",
       "source_numbers": "5",
       "stones": [
         "Emerald",
         "Green Jade"
       ],
-      "fusion_en": "**Healing Grove** — the healing grove meets the guardian's wide arms: you are a living sanctuary where all who rest beneath you are made well. Within the warm wall of the hearth, you shield the beloved with a fierce and tender devotion, and all who draw near are made whole. The Azure Dragon winds through the eastern sky, and where it passes, the great Way reveals itself in untamed and boundless life.",
+      "fusion_en": "Healing Grove unites Wood's nurturing growth with Cancer's protective instincts. You are a sanctuary of living growth, nurturing all who rest beneath your branches.",
       "fusion_cn": "**青囊护法** 震木之机与慈护之心交感，青囊含生化育万物。丹田之中，你以生生道心滋养众生，庇护万物生长。青龙衔青囊而护，生生之气，滋养众生。",
       "mantra_en": "I grow nurturing gardens.",
-      "mantra_cn": "我生长出滋养的园圃。"
+      "mantra_cn": "我培育滋养的花园。",
+      "element_interpretation": {
+        "keywords": "Growth, Flexibility, Vitality, Expansion, Creativity, Renewal",
+        "en": "Wood represents growth, flexibility, and vital expansion. It symbolizes the life force that pushes upward, the ability to bend without breaking, and constant renewal.",
+        "cn_traits": "像树木一样，你拥有顽强的生命力和灵活的适应力。你的能量是成长的、向上的、生生不息的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE GUARDIAN",
+        "cn_traits": "情感细腻、善于照顾他人、直觉敏锐、保护欲强、家庭观念重",
+        "growth_path": "在照顾他人的同时学会照顾自己"
+      }
     },
     {
       "element": "Wood",
@@ -995,15 +1523,26 @@
       "symbol": "♌",
       "title_en": "Solar Canopy",
       "title_cn": "东华真君",
+      "doc_title_cn": "阳光华盖",
       "source_numbers": "5",
       "stones": [
         "Peridot",
         "Green Aventurine"
       ],
-      "fusion_en": "**Solar Canopy** — the sheltering canopy meets the sovereign's bright crown: you shade and sustain all who walk beneath, and lead by giving shade. Upon the throne of the open sky, you reign with a sovereign radiance, and every eye that meets yours is warmed to its core. The Azure Dragon winds through the eastern sky, and where it passes, the great Way reveals itself in untamed and boundless life.",
+      "fusion_en": "Solar Canopy combines Wood's generous shade with Leo's royal presence. You shade and protect all beneath you. Leadership is natural shade—nurturing those who follow.",
       "fusion_cn": "**东华真君** 震木之机与王者之魄交感，东华生辉万物生长。灵台之上，你以青阳道心统御四方，以木德君临天下。青龙踞于东华，木德之君，万物生长。",
       "mantra_en": "I shade those who rest beneath.",
-      "mantra_cn": "我为憩于其下者遮荫。"
+      "mantra_cn": "我为下方之人遮荫。",
+      "element_interpretation": {
+        "keywords": "Growth, Flexibility, Vitality, Expansion, Creativity, Renewal",
+        "en": "Wood represents growth, flexibility, and vital expansion. It symbolizes the life force that pushes upward, the ability to bend without breaking, and constant renewal.",
+        "cn_traits": "像树木一样，你拥有顽强的生命力和灵活的适应力。你的能量是成长的、向上的、生生不息的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE SOVEREIGN",
+        "cn_traits": "自信满满、创造力强、慷慨大方、热爱表达、天生领导力",
+        "growth_path": "在闪耀中保持谦逊"
+      }
     },
     {
       "element": "Wood",
@@ -1011,15 +1550,26 @@
       "symbol": "♍",
       "title_en": "Verdant Alchemist",
       "title_cn": "青精元君",
+      "doc_title_cn": "翠绿炼金师",
       "source_numbers": "5",
       "stones": [
         "Green Calcite",
         "Unakite"
       ],
-      "fusion_en": "**Verdant Alchemist** — the verdant art meets the purifier's fine hand: you heal by growing, and each change you tend becomes a cleansing. At the precise edge of the flame, you burn away the false until only the true remains, and purity shines forth unblemished. The Azure Dragon winds through the eastern sky, and where it passes, the great Way reveals itself in untamed and boundless life.",
+      "fusion_en": "Verdant Alchemist merges Wood's transformative growth with Virgo's perfecting nature. You heal through growth, transforming through nurturing change. Growth becomes purification.",
       "fusion_cn": "**青精元君** 震木之机与至纯之性交感，青精入微见微知著。丹炉之中，你以生生道心化育纯真，于细微处见大道。青龙衔青精而炼，草木之中，见微知著。",
       "mantra_en": "I heal through growth.",
-      "mantra_cn": "我借生长而疗愈。"
+      "mantra_cn": "我通过成长疗愈。",
+      "element_interpretation": {
+        "keywords": "Growth, Flexibility, Vitality, Expansion, Creativity, Renewal",
+        "en": "Wood represents growth, flexibility, and vital expansion. It symbolizes the life force that pushes upward, the ability to bend without breaking, and constant renewal.",
+        "cn_traits": "像树木一样，你拥有顽强的生命力和灵活的适应力。你的能量是成长的、向上的、生生不息的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PURIFIER",
+        "cn_traits": "追求完美、分析能力强、注重细节、善于服务、务实可靠",
+        "growth_path": "接受不完美中的完美"
+      }
     },
     {
       "element": "Wood",
@@ -1027,15 +1577,26 @@
       "symbol": "♎",
       "title_en": "Zen Garden",
       "title_cn": "逍遥道子",
+      "doc_title_cn": "禅意花园",
       "source_numbers": "5",
       "stones": [
         "Rose Quartz",
         "Green Tourmaline"
       ],
-      "fusion_en": "**Zen Garden** — the wild garden meets the harmonizer's clear eye: you cultivate balance as a living thing, and beauty grows of its own. Upon the balanced scale of heaven, you join opposing forces into one clear song, and harmony is born of your steady hand. The Azure Dragon winds through the eastern sky, and where it passes, the great Way reveals itself in untamed and boundless life.",
+      "fusion_en": "Zen Garden unites Wood's natural beauty with Libra's aesthetic harmony. You create living art, cultivating perfect balance through living design. Harmony grows naturally through you.",
       "fusion_cn": "**逍遥道子** 震木之机与中和之性交感，逍遥自生道法自然。灵台之上，你以自然之道造化大美，不假雕饰。青龙游于天地之间，道法自然，逍遥无极。",
       "mantra_en": "I cultivate perfect harmony.",
-      "mantra_cn": "我培育完美的和谐。"
+      "mantra_cn": "我培育完美和谐。",
+      "element_interpretation": {
+        "keywords": "Growth, Flexibility, Vitality, Expansion, Creativity, Renewal",
+        "en": "Wood represents growth, flexibility, and vital expansion. It symbolizes the life force that pushes upward, the ability to bend without breaking, and constant renewal.",
+        "cn_traits": "像树木一样，你拥有顽强的生命力和灵活的适应力。你的能量是成长的、向上的、生生不息的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE HARMONIZER",
+        "cn_traits": "追求平衡、注重美感、善于外交、公平公正、爱好和平",
+        "growth_path": "在犹豫中做出坚定选择"
+      }
     },
     {
       "element": "Wood",
@@ -1043,15 +1604,26 @@
       "symbol": "♏",
       "title_en": "Regenerating Forest",
       "title_cn": "枯荣灵官",
+      "doc_title_cn": "再生之林",
       "source_numbers": "5",
       "stones": [
         "Seraphinite",
         "Mangano Calcite"
       ],
-      "fusion_en": "**Regenerating Forest** — the regenerating wood meets the transformer's dark art: death becomes the soil, and from your ashes new growth springs. In the deep crucible of endings, you shed the worn self and rise remade, and every death becomes a door. The Azure Dragon winds through the eastern sky, and where it passes, the great Way reveals itself in untamed and boundless life.",
+      "fusion_en": "Regenerating Forest combines Wood's renewal with Scorpio's transformative power. Death becomes fertilizer for new life. Devastation transforms into seeds of new growth through you.",
       "fusion_cn": "**枯荣灵官** 震木之机与化生之力交感，枯荣相生化生不息。丹田深处，你以生生道力破执转轮，枯中见荣。青龙蜕皮更生，枯中见荣，化生永续不息。",
       "mantra_en": "I grow from my own ashes.",
-      "mantra_cn": "我自自身的灰烬中生长。"
+      "mantra_cn": "我从自身灰烬中成长。",
+      "element_interpretation": {
+        "keywords": "Growth, Flexibility, Vitality, Expansion, Creativity, Renewal",
+        "en": "Wood represents growth, flexibility, and vital expansion. It symbolizes the life force that pushes upward, the ability to bend without breaking, and constant renewal.",
+        "cn_traits": "像树木一样，你拥有顽强的生命力和灵活的适应力。你的能量是成长的、向上的、生生不息的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE PHOENIX",
+        "cn_traits": "深邃神秘、意志坚定、洞察力强、善于转化、情感浓烈",
+        "growth_path": "将黑暗力量转化为光明智慧"
+      }
     },
     {
       "element": "Wood",
@@ -1059,15 +1631,26 @@
       "symbol": "♐",
       "title_en": "Winding Vine",
       "title_cn": "扶桑散人",
+      "doc_title_cn": "蜿蜒藤蔓",
       "source_numbers": "5",
       "stones": [
         "Green Tourmaline",
         "Moss Agate"
       ],
-      "fusion_en": "**Winding Vine** — the winding vine meets the seeker's open road: your quest climbs like a plant, finding the way through any ground. Upon the wandering road of seekers, you follow the arrow of truth beyond the horizon, and the far country opens as you go. The Azure Dragon winds through the eastern sky, and where it passes, the great Way reveals itself in untamed and boundless life.",
+      "fusion_en": "Winding Vine merges Wood's organic growth with Sagittarius' questing spirit. Your quest grows like a vine, finding paths through any terrain. Exploration is your natural growth pattern.",
       "fusion_cn": "**扶桑散人** 震木之机与求道之心交感，扶桑指路生生不息。天门之外，你以青阳之志游方问道，以生长之姿探寻真谛。青龙散人游于扶桑，生生之道，在于前行。",
       "mantra_en": "I wind toward truth naturally.",
-      "mantra_cn": "我自然蜿蜒，趋向真理。"
+      "mantra_cn": "我自然而然地向真理蜿蜒。",
+      "element_interpretation": {
+        "keywords": "Growth, Flexibility, Vitality, Expansion, Creativity, Renewal",
+        "en": "Wood represents growth, flexibility, and vital expansion. It symbolizes the life force that pushes upward, the ability to bend without breaking, and constant renewal.",
+        "cn_traits": "像树木一样，你拥有顽强的生命力和灵活的适应力。你的能量是成长的、向上的、生生不息的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE SEEKER",
+        "cn_traits": "热爱自由、追求真理、乐观开朗、爱好冒险、思想开放",
+        "growth_path": "在冒险中找到内在的锚"
+      }
     },
     {
       "element": "Wood",
@@ -1075,15 +1658,26 @@
       "symbol": "♑",
       "title_en": "Living Monument",
       "title_cn": "建木炼师",
+      "doc_title_cn": "活的丰碑",
       "source_numbers": "5",
       "stones": [
         "Bumblebee Jasper",
         "Picture Jasper"
       ],
-      "fusion_en": "**Living Monument** — the living timber meets the architect's long labor: you raise legacies that are alive, and ever still becoming. Within the long labor of the mountain, you forge the lasting with unbroken discipline, and monuments rise where you stand. The Azure Dragon winds through the eastern sky, and where it passes, the great Way reveals itself in untamed and boundless life.",
+      "fusion_en": "Living Monument unites Wood's dynamic growth with Capricorn's achievement drive. You build living legacies, empires that are alive and ever-expanding. Achievement grows organically through you.",
       "fusion_cn": "**建木炼师** 震木之机与功成之志交感，建木通天生机不息。丹炉之中，你以生生道心淬炼造化，功成而不朽。青龙绕建木而上，生机不息，万世功成。",
       "mantra_en": "I build living legacies.",
-      "mantra_cn": "我筑起生生不息的传承。"
+      "mantra_cn": "我建造活的遗产。",
+      "element_interpretation": {
+        "keywords": "Growth, Flexibility, Vitality, Expansion, Creativity, Renewal",
+        "en": "Wood represents growth, flexibility, and vital expansion. It symbolizes the life force that pushes upward, the ability to bend without breaking, and constant renewal.",
+        "cn_traits": "像树木一样，你拥有顽强的生命力和灵活的适应力。你的能量是成长的、向上的、生生不息的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE ARCHITECT",
+        "cn_traits": "雄心勃勃、脚踏实地、自律性强、注重成就、有耐心",
+        "growth_path": "在成功中找到精神的满足"
+      }
     },
     {
       "element": "Wood",
@@ -1091,15 +1685,26 @@
       "symbol": "♒",
       "title_en": "Strange Sprout",
       "title_cn": "青帝灵官",
+      "doc_title_cn": "奇异新芽",
       "source_numbers": "5",
       "stones": [
         "Grandidierite",
         "Seraphinite"
       ],
-      "fusion_en": "**Strange Sprout** — the strange sprout meets the visionary's bright mind: your newness grows by unlikely paths, and changes all it touches. At the gate where the old world ends, you strike with lightning clarity and open the new, and the future bends toward your vision. The Azure Dragon winds through the eastern sky, and where it passes, the great Way reveals itself in untamed and boundless life.",
+      "fusion_en": "Strange Sprout combines Wood's unconventional growth with Aquarius' revolutionary spirit. Your innovations grow in unexpected ways, changing everything through strange flourishing.",
       "fusion_cn": "**青帝灵官** 震木之机与破执之志交感，青帝开新万象更新。天门洞开，你以生生道力开天辟道，以蓬勃生机破旧立新。青龙破土而出，青帝之令，万象更新。",
       "mantra_en": "I grow in strange ways.",
-      "mantra_cn": "我以奇异的方式生长。"
+      "mantra_cn": "我以奇异方式成长。",
+      "element_interpretation": {
+        "keywords": "Growth, Flexibility, Vitality, Expansion, Creativity, Renewal",
+        "en": "Wood represents growth, flexibility, and vital expansion. It symbolizes the life force that pushes upward, the ability to bend without breaking, and constant renewal.",
+        "cn_traits": "像树木一样，你拥有顽强的生命力和灵活的适应力。你的能量是成长的、向上的、生生不息的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE VISIONARY",
+        "cn_traits": "独立思考、创新精神、人道主义、热爱自由、思维独特",
+        "growth_path": "在独特中找到与人类连接"
+      }
     },
     {
       "element": "Wood",
@@ -1107,15 +1712,26 @@
       "symbol": "♓",
       "title_en": "Dreaming Forest",
       "title_cn": "若木玄鉴",
+      "doc_title_cn": "梦幻森林",
       "source_numbers": "5",
       "stones": [
         "Green Fluorite",
         "Amazonite"
       ],
-      "fusion_en": "**Dreaming Forest** — the dreaming forest meets the mystic's open sight: intuition takes root as a living garden, and dreams grow green within you. In the mirror of the dreaming deep, you read the hidden script of all things, and the seen and the unseen flow as one. The Azure Dragon winds through the eastern sky, and where it passes, the great Way reveals itself in untamed and boundless life.",
+      "fusion_en": "Dreaming Forest merges Wood's living growth with Pisces' psychic depth. Intuition manifests as a living garden of wisdom. Dreams grow within you like a forest of infinite possibility.",
       "fusion_cn": "**若木玄鉴** 震木之机与通感之灵交感，若木参天道在万物。灵台之中，你以青阳玄鉴照见道境，于万物生长中窥见真谛。青龙卧于若木，生生入梦，道在万物之中。",
       "mantra_en": "I dream in living green.",
-      "mantra_cn": "我在生生的绿意中梦见。"
+      "mantra_cn": "我在活生生的绿色中入梦。",
+      "element_interpretation": {
+        "keywords": "Growth, Flexibility, Vitality, Expansion, Creativity, Renewal",
+        "en": "Wood represents growth, flexibility, and vital expansion. It symbolizes the life force that pushes upward, the ability to bend without breaking, and constant renewal.",
+        "cn_traits": "像树木一样，你拥有顽强的生命力和灵活的适应力。你的能量是成长的、向上的、生生不息的。"
+      },
+      "zodiac_interpretation": {
+        "archetype": "THE MYSTIC",
+        "cn_traits": "敏感梦幻、直觉强大、富有同情心、艺术气质、灵性深厚",
+        "growth_path": "将梦想转化为行动的力量"
+      }
     }
   ]
 }

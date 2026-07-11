@@ -153,7 +153,7 @@
 
 > 完整 60 条 fusion_cn 数据内嵌于 `index.html` 的 `TWIN_COMBOS` 数组中。每条遵循 3 句结构：阴阳五行之气定位 → 道教修行意象 → 神兽境界升华。已去除所有现代词汇（领导力/创新/沟通/疗愈等），统一使用道教替代用语。
 
-**双语释义源文件（新增）**：`Twinstellar-60释义.json`（机器可用，含 5 元素/12 星座元数据 + 60 组 EN/CN 释义、真言、能量石、来源数字）与 `Twinstellar-60释义.md`（人工可读，按元素分组的中英双栏）。英文 `fusion` 已按与中文同源的道教三拍结构重写（元素本性 → 修行意象 → 神兽升华），与中文 `fusion_cn` 形成真正平行的中英对；中文 `fusion_cn` 与真言沿用站点权威道教版本。两文件为后续网站/SEO/社交卡片/合盘报告的**统一内容真相源**，由 `index.html` 的 `TWIN_COMBOS` 经 `gen_interp.js` 派生、`build_seo.py` 直接消费。
+**双语释义源文件（文档权威版）**：`Twinstellar-60释义.json`（机器可用，含五行/星座总览 + 60 组：文档权威 `fusion_en`、站点道教品牌 `fusion_cn`、真言、能量石、来源数字，以及取自文档的 `element_interpretation`/`zodiac_interpretation`）与 `Twinstellar-60释义.md`（人工可读，按元素分组的中英双栏）。`fusion_en` 直接采用核心文档《五行星座罗盘系统-完整释义版.md》的权威『Fusion Energy』；`fusion_cn` 保留站点道教品牌声（朱雀先锋等 Taoist 三拍结构）；五行/星座释义哲学取自该文档。两文件为后续网站/SEO/社交卡片/合盘报告的**统一内容真相源**——站点 `index.html` 的 `TWIN_COMBOS.fusion` 已对齐文档权威版，由 `build_seo.py` 直接消费生成 combo 页。
 
 ---
 
