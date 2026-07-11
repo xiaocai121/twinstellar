@@ -1,12 +1,13 @@
-# Twinstellar MVP · 部署与接单说明
+# Twinstellar · 宇宙签名体验（纯静态单文件 MVP）
 
-一个**纯静态**网站（无需服务器、无需数据库）。输入姓名+生日 → 算出你的五行+星座 → 匹配 60 种专属组合之一 → 展示释义 → "Claim" 手链。
+一个**纯静态**网站（无需服务器、无需数据库）。输入生日 → 算出你的五行 + 星座 → 匹配 60 种专属「宇宙签名」之一 → 展示称号 / 融合释义 / 真言 / 能量石，并可通过社交分享与推荐裂变传播。
+
+> **纯数字品牌**：无实物、零供应链。免费解读 + 证书 ($5–9) + 订阅 ($19/月 或 $149/年)。详见 `Twinstellar落地路径.md`（唯一权威文档）。
 
 ## 文件
-- `index.html` — **单文件自包含**（CSS、60 组合数据、计算引擎全部内联，无需任何外部文件，部署零依赖）
-- `twinstellar-deploy.zip` — 部署包（含 `index.html` + `netlify.toml`），直接拖到 Netlify 即可
-- `source/` — 拆分版源码（`styles.css` / `data.js` / `app.js`），仅供维护参考；部署用单文件版即可
-- `twinstellar-site/` — 同样的部署副本 + `netlify.toml`
+- `index.html` — **单文件自包含**（HTML + CSS + JS + 60 组合数据全部内联，部署零依赖）
+- `Twinstellar落地路径.md` — 品牌手册与落地路径（定位 / 系统 / 变现 / 裂变 / 免费·付费内容架构）
+- `CNAME` — 自定义域名 `twinstellar.com`
 
 ## 本地预览
 ```bash
@@ -15,66 +16,25 @@ python3 -m http.server 8123
 # 浏览器打开 http://localhost:8123
 ```
 
-## ⚠️ 先搞清楚：文件在哪
-这个 `index.html` **不在你自己的电脑上**，它住在云端 coding 工作区（沙箱）的 `/workspace` 里。
-你之前"找不到本地 index.html"，是因为它从来没下载到过你本机——所以需要先把它拿到手，才能部署。
+## 部署（GitHub Pages · 免费）
+仓库已设为 **公开仓库**，由 **GitHub Pages** 自动构建并托管到 `twinstellar.com`（自定义域名 + 强制 HTTPS，零成本、无 Netlify 额度限制）。
+- 改完 `index.html` / `Twinstellar落地路径.md` → `git add` → `git commit` → `git push origin main`
+- GitHub Pages 自动重建上线（通常 1–2 分钟）
 
-## 第 1 步：把文件拿到本机
-我已经在 `/workspace` 打好了一个部署包：`twinstellar-deploy.zip`（里面只有 `index.html` + `netlify.toml`，干净无杂文件）。
-拿到方式（任选其一）：
-- **方式 A（IDE 下载）**：在左侧文件面板找到 `twinstellar-deploy.zip` → 右键 → **下载 / 保存到本地**（或点文件旁的下载图标）。解压后得到 `index.html`。
-- **方式 B（GitHub 自动部署，免下载）**：见文末"进阶：GitHub 自动部署"。需要你本地先跑一次 `gh auth login` 授权，之后改代码我推一下就自动上线，**最适合"每天只花 2 小时、要全自动化"的节奏**。
-
-## 第 2 步：拖到 Netlify（30 秒）
-1. 打开 https://app.netlify.com/drop
-2. 把解压出来的 `index.html`（或直接把 `twinstellar-deploy.zip`）**拖进网页虚线框**
-3. 立刻获得一个 `https://xxx.netlify.app` 的临时网址 → 点开验证页面正常
-4. 进该站点的 **Site settings → Domain management → Custom domains**，添加 `twinstellar.com`
-
-## 第 3 步：在阿里云把域名指向 Netlify（无需 ICP 备案）
-> Netlify 是海外节点，国内法规下**只有 DNS 指向中国大陆服务器才需要 ICP 备案**；指向 Netlify 免备案。
-
-1. 登录阿里云 → **云解析 DNS** → 找到 `twinstellar.com`
-2. 添加/修改记录：
-   - 主机记录 `www` → 类型 `CNAME` → 记录值 `你的站点.netlify.app`
-   - 主机记录 `@`（主域名）→ 类型 `CNAME` → 记录值 `你的站点.netlify.app`
-   （若阿里云 `@` 不支持 CNAME，改用 `A` 记录指向 Netlify 提供的 IP，或开启 Netlify 的 "Primary domain" 按提示操作）
-3. 等待 5–30 分钟 DNS 生效 → 浏览器访问 `twinstellar.com` 即上线。
-
-## 进阶：GitHub 自动部署（推荐长期方案）
-我已在本工作区 `git init` 并提交好了 MVP。你只需：
-1. 本机终端跑 `gh auth login`（按提示用浏览器授权你的 GitHub 账号）
-2. 告诉我一声，我会帮你 `git remote add` + `git push` + 在 Netlify 用 "Import from Git" 连上仓库
-3. 之后每次改文案/价格，我改完推一下，网站自动更新，**你再也不用下载/拖文件**
-
-> 当前状态：本地 git 已提交（commit `1050a60`），只差你的 GitHub 授权即可一键上线。
-
-## 接入收款（两种方式）
-**方式 A · 正式结账（推荐）**
-1. 在 Stripe 建一个 Payment Link（或 Shopify Buy Button / Lemon Squeezy）
-2. 打开 `index.html`，搜索顶部的
-   ```js
-   const CHECKOUT_BASE = '';
-   ```
-   改成你的结账链接前缀，例如
-   ```js
-   const CHECKOUT_BASE = 'https://buy.stripe.com/xxx';
-   ```
-3. 三档材质的"Claim"按钮会自动带 `?element=&zodiac=&tier=` 参数跳转结账。
-
-**方式 B · 零配置预售（默认）**
-不改 `CHECKOUT_BASE`。点"Claim"会直接打开一封预填好的认领邮件（`hello@twinstellar.com`），
-并把意向写进浏览器本地（key: `twin_leads`），方便你之后统一跟进。
+## 接收入（未来 · 需 Stripe）
+`index.html` 中的 `SUBSCRIBE_BASE` 留空时，订阅/证书按钮走本地 `mailto` 线索捕获（写入 `localStorage` 的 `twin_leads`，附 `ref` 推荐字段）。
+接入 Stripe 后，把 `SUBSCRIBE_BASE` / 证书链接改为对应 Payment Link 即可转为真实结账（见路线图 P4）。
 
 ## 自定义
-- **改价格/材质**：编辑 `index.html` 里的 `TIERS` 数组。
-- **改文案**：`index.html` 中英文案直改（搜索关键词即可定位）。
-- **加 60 个 SEO 页**：60 组合数据都在 `index.html` 的 `TWIN_COMBOS` 里，可批量生成 `?e=&z=` 静态页。
+- **改价格/文案**：`index.html` 中英文案直改（搜索关键词即可定位）；阶梯逻辑见 `Twinstellar落地路径.md` §4。
+- **加 60 个 SEO 长尾页（P1）**：60 组合数据都在 `index.html` 的 `TWIN_COMBOS` 里，可用构建脚本批量渲染为独立静态落地页（见 `Twinstellar落地路径.md` §4.6 / §6.1）。
+- **病毒裂变**：结果页原生分享按钮（X / Facebook / Pinterest / WhatsApp / Reddit）+ 复制链接自带 `?ref=` 推荐参数；`?ref=` 在加载时捕获进 `localStorage`。
 
 ## 已验证
-- 计算逻辑：6/6 抽样通过，60 组合零缺失（木/火/土/金/水 × 12 星座全覆盖）
-- 静态托管：index / data.js / app.js / styles.css 均 200
+- 计算逻辑：60 组合零缺失（木/火/土/金/水 × 12 星座全覆盖）
+- 静态托管：GitHub Pages 返回 200，全站无 `bracelet`/`手链`/`buy`/`claim`/`limited`
 - JS 语法：`node --check` 通过
+- Playwright E2E：19/19（结果页渲染、分享 URL、?ref= 捕获、EN/ZH 切换、零 console error）
 
 ## 合规
-- 脚注已含 "For entertainment & intention only"。请勿对水晶做任何医疗/疗效宣称。
+- 脚注已含 "For intention and reflection — not a substitute for medical or spiritual counsel"。请勿对水晶/能量石做任何医疗/疗效宣称。
