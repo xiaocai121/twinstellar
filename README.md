@@ -6,6 +6,8 @@
 
 ## 文件
 - `index.html` — **单文件自包含**（HTML + CSS + JS + 60 组合数据全部内联，部署零依赖）
+- `build_seo.py` — P1 构建脚本：解析 `index.html` 中的 `TWIN_COMBOS / ELEMENTS / ZODIAC`，批量生成 60 个长尾 SEO 落地页 + 宇宙签名墙
+- `combo/` — 构建产物（60×`<slug>.html` + `index.html` 签名墙 + `combo.css`），**提交进仓库**由 GitHub Pages 直接托管
 - `Twinstellar落地路径.md` — 品牌手册与落地路径（定位 / 系统 / 变现 / 裂变 / 免费·付费内容架构）
 - `CNAME` — 自定义域名 `twinstellar.com`
 
@@ -20,6 +22,7 @@ python3 -m http.server 8123
 仓库已设为 **公开仓库**，由 **GitHub Pages** 自动构建并托管到 `twinstellar.com`（自定义域名 + 强制 HTTPS，零成本、无 Netlify 额度限制）。
 - 改完 `index.html` / `Twinstellar落地路径.md` → `git add` → `git commit` → `git push origin main`
 - GitHub Pages 自动重建上线（通常 1–2 分钟）
+- 注意根目录的 `.nojekyll`：禁用 Jekyll，确保 `combo/` 等含下划线路径的静态资源被原样托管。
 
 ## 接收入（未来 · 需 Stripe）
 `index.html` 中的 `SUBSCRIBE_BASE` 留空时，订阅/证书按钮走本地 `mailto` 线索捕获（写入 `localStorage` 的 `twin_leads`，附 `ref` 推荐字段）。
@@ -27,14 +30,15 @@ python3 -m http.server 8123
 
 ## 自定义
 - **改价格/文案**：`index.html` 中英文案直改（搜索关键词即可定位）；阶梯逻辑见 `Twinstellar落地路径.md` §4。
-- **加 60 个 SEO 长尾页（P1）**：60 组合数据都在 `index.html` 的 `TWIN_COMBOS` 里，可用构建脚本批量渲染为独立静态落地页（见 `Twinstellar落地路径.md` §4.6 / §6.1）。
+- **P1 免费内容引擎（已上线）**：运行 `python3 build_seo.py` 解析 `index.html` 常量，生成 `combo/<element>-<zodiac>.html`（60 页，含 `<title>`/meta/OG/Twitter/canonical/H1、五行×星座融合、真言、能量石、同元素+同星座内部链接、回主站 CTA 带 `?e=&z=`）、`combo/index.html`（60 张「宇宙签名墙」卡片）、`combo/combo.css`。产物提交进仓库，GitHub Pages 直接托管（见 `Twinstellar落地路径.md` §4.6 / §6.1）。
+- **P3 合盘报告（已上线，L3 付费增值）**：`index.html` 的 `#compat` 视图，输入两个生日 → `computeCompatibility()` 用 **五行 生克比和 + 星座共鸣** 算出 1–99 分、等级（天作之合/知音相惜/相成长/互补之美）、闪光点与边界。免费预览分数+等级+元素之契+星座共鸣+闪光点；**edges 与完整叙事为 L3 订阅解锁**（Stripe 落地 P4，当前 `SUB_BASE` 空时点击即解锁预览并保留 $19/mo 订阅 CTA）。
 - **病毒裂变**：结果页原生分享按钮（X / Facebook / Pinterest / WhatsApp / Reddit）+ 复制链接自带 `?ref=` 推荐参数；`?ref=` 在加载时捕获进 `localStorage`。
 
 ## 已验证
 - 计算逻辑：60 组合零缺失（木/火/土/金/水 × 12 星座全覆盖）
 - 静态托管：GitHub Pages 返回 200，全站无 `bracelet`/`手链`/`buy`/`claim`/`limited`
 - JS 语法：`node --check` 通过
-- Playwright E2E：19/19（结果页渲染、分享 URL、?ref= 捕获、EN/ZH 切换、零 console error）
+- Playwright E2E：24/24（P1 入口/签名墙/详情页、P3 合盘计算+解锁门控+EN·ZH、?ref= 捕获、零 console error）
 
 ## 合规
 - 脚注已含 "For intention and reflection — not a substitute for medical or spiritual counsel"。请勿对水晶/能量石做任何医疗/疗效宣称。

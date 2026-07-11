@@ -392,6 +392,8 @@ header, section, footer { position: relative; z-index: 1; }
 .tier .tier-cta { margin-top: 12px; font-size: 12px; letter-spacing: 0.1em; color: var(--gold-soft); }
 
 .share-block { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+.result-wall-link { display: inline-block; margin: 26px auto 0; color: var(--gold); font-size: 14px; letter-spacing: 0.05em; text-decoration: none; border-bottom: 1px solid rgba(201,162,95,0.4); padding-bottom: 2px; }
+.result-wall-link:hover { color: var(--gold-soft); }
 
 /* ---------- waitlist (L1) ---------- */
 .waitlist-block { margin: 30px auto 22px; max-width: 460px; }
@@ -448,6 +450,40 @@ header, section, footer { position: relative; z-index: 1; }
   margin-top: 40px;
 }
 .footer .brand { margin-bottom: 12px; }
+.footer-wall-link { display: inline-block; margin-top: 14px; color: var(--gold); font-size: 13px; letter-spacing: 0.04em; text-decoration: none; border-bottom: 1px solid rgba(201,162,95,0.4); padding-bottom: 2px; }
+.footer-wall-link:hover { color: var(--gold-soft); }
+
+/* ---------- compatibility (P3) ---------- */
+.result-compat-link { display: inline-block; margin: 14px auto 0; color: var(--gold-soft); font-size: 13px; letter-spacing: 0.04em; text-decoration: none; opacity: 0.85; }
+.result-compat-link:hover { color: var(--gold); opacity: 1; }
+.compat { max-width: 720px; margin: 0 auto; padding: 30px 24px 70px; text-align: center; }
+.compat-form { margin: 28px auto 0; max-width: 520px; }
+.compat-fields { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.compat-field { display: flex; flex-direction: column; gap: 6px; text-align: left; font-size: 13px; letter-spacing: 0.04em; color: var(--ink-dim); }
+.compat-date { background: rgba(255,255,255,0.05); border: 1px solid var(--line-soft); color: var(--ink); border-radius: 10px; padding: 10px 12px; font-size: 15px; color-scheme: dark; }
+.compat-date:focus { outline: none; border-color: var(--gold); }
+.compat-error { color: #e0795f; font-size: 13px; margin: 14px 0 0; }
+.compat-result { margin-top: 30px; }
+.compat-bond { font-family: Georgia, "Times New Roman", serif; font-size: 22px; color: var(--gold); margin: 6px 0 18px; }
+.compat-score-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.compat-ring { width: 132px; height: 132px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-size: 40px; color: var(--ink); background: conic-gradient(var(--gold) calc(var(--p,0) * 1%), rgba(255,255,255,0.06) 0); position: relative; }
+.compat-ring::before { content: ""; position: absolute; inset: 10px; border-radius: 50%; background: var(--bg, #0B0B11); }
+.compat-ring span, .compat-ring small { position: relative; z-index: 1; }
+.compat-ring small { font-size: 16px; color: var(--ink-dim); margin-left: 2px; }
+.compat-level { font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+.compat-cols { display: flex; gap: 16px; margin: 30px 0; text-align: left; }
+.compat-col { flex: 1; background: rgba(255,255,255,0.04); border: 1px solid var(--line-soft); border-radius: 16px; padding: 18px; }
+.compat-col h3, .compat-strengths h3, .compat-gated h3 { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin: 0 0 10px; }
+.compat-col p { margin: 0; color: var(--ink-dim); font-size: 14px; line-height: 1.6; }
+.compat-strengths { text-align: left; margin: 26px 0; }
+.compat-strengths ul, .compat-gated ul { list-style: none; padding: 0; margin: 0; }
+.compat-strengths li, .compat-gated li { padding: 8px 0 8px 22px; position: relative; color: var(--ink); font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.compat-strengths li::before, .compat-gated li::before { content: "◇"; position: absolute; left: 0; color: var(--gold); }
+.compat-gated { text-align: left; margin: 26px 0; background: rgba(201,162,95,0.05); border: 1px solid rgba(201,162,95,0.2); border-radius: 16px; padding: 20px; }
+.compat-gated p { color: var(--ink-dim); line-height: 1.7; margin: 0; }
+.compat-unlock { margin: 26px auto 0; max-width: 480px; }
+.compat-unlock p { color: var(--ink-dim); font-size: 14px; line-height: 1.6; margin: 0 0 14px; }
+@media (max-width: 520px) { .compat-cols { flex-direction: column; } }
 
 /* ---------- language switch ---------- */
 .lang-switch {
@@ -575,6 +611,8 @@ header, section, footer { position: relative; z-index: 1; }
       <a href="#home" data-i18n="nav_home">Home</a>
       <a href="#reveal" data-i18n="nav_reveal">Reveal</a>
       <a href="#story" data-i18n="nav_story">Story</a>
+      <a href="#compat" data-i18n="nav_compat">Compat</a>
+      <a href="combo/index.html" data-i18n="nav_signatures">Signatures</a>
     </nav>
     <button id="langSwitch" class="lang-switch" type="button">中文</button>
   </header>
@@ -705,6 +743,8 @@ header, section, footer { position: relative; z-index: 1; }
       <button class="btn-ghost" id="copyLinkBtn" data-i18n="btn_copy">Copy my universe link</button>
       <button class="btn-ghost" id="restartBtn" data-i18n="btn_restart">↺ Begin again</button>
     </div>
+    <a class="result-wall-link" href="combo/index.html" data-i18n="result_wall">◇ Browse the Cosmic Signature Wall ◇</a>
+    <a class="result-compat-link" href="#compat" data-i18n="result_compat">◇ Read your bond with another soul ◇</a>
   </section>
 
   <!-- ============ STORY ============ -->
@@ -715,9 +755,69 @@ header, section, footer { position: relative; z-index: 1; }
     <p class="story-foot" data-i18n="story_foot">Twinstellar is a sanctuary of intention. Your signature is yours, freely — to keep, to return to, and to share.</p>
   </section>
 
+  <!-- ============ COMPATIBILITY (P3 · L3 付费增值) ============ -->
+  <section id="compat" class="compat" hidden>
+    <p class="eyebrow" data-i18n="compat_eyebrow">Two Signatures, One Bond</p>
+    <h2 class="section-title" data-i18n="compat_title">The Compatibility Reading</h2>
+    <p class="section-sub" data-i18n="compat_sub">Enter two birthdays. We read how your Elements and Zodiacs weave together — a bond drawn from the same sixty sacred combinations that made you.</p>
+
+    <form id="compatForm" class="compat-form" novalidate>
+      <div class="compat-fields">
+        <label class="compat-field">
+          <span data-i18n="compat_you">You</span>
+          <input type="date" id="cYou" class="compat-date" required>
+        </label>
+        <label class="compat-field">
+          <span data-i18n="compat_other">The other soul</span>
+          <input type="date" id="cOther" class="compat-date" required>
+        </label>
+      </div>
+      <p class="compat-error" id="compatError" hidden></p>
+      <button type="submit" class="btn-primary" id="compatBtn" data-i18n="compat_btn">◇ Weave Our Bond ◇</button>
+    </form>
+
+    <div id="compatResult" class="compat-result" hidden>
+      <p class="compat-bond" id="compatBond"></p>
+      <div class="compat-score-wrap">
+        <div class="compat-ring" id="compatRing"><span id="compatScore">0</span><small>%</small></div>
+        <div class="compat-level" id="compatLevel"></div>
+      </div>
+
+      <div class="compat-cols">
+        <div class="compat-col">
+          <h3 data-i18n="compat_elem">Elemental Bond</h3>
+          <p id="compatElem"></p>
+        </div>
+        <div class="compat-col">
+          <h3 data-i18n="compat_zod">Zodiac Resonance</h3>
+          <p id="compatZod"></p>
+        </div>
+      </div>
+
+      <div class="compat-strengths">
+        <h3 data-i18n="compat_strengths">Where you shine</h3>
+        <ul id="compatStrengths"></ul>
+      </div>
+
+      <!-- L3 订阅解锁区 -->
+      <div class="compat-gated" id="compatGated" hidden>
+        <h3 data-i18n="compat_edges_t">The edges &amp; the work</h3>
+        <ul id="compatEdges"></ul>
+        <h3 data-i18n="compat_narr_t">Your bond, in full</h3>
+        <p id="compatNarrative"></p>
+      </div>
+
+      <div class="compat-unlock" id="compatUnlock">
+        <p data-i18n="compat_unlock">The full reading — where the edges ask for care, and a small ritual to weave you closer — is part of the Twinstellar journey.</p>
+        <button class="btn-primary" id="compatUnlockBtn" data-i18n="compat_cta">◇ Unlock the Full Reading — $19/mo ◇</button>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="brand small">TWINSTELLAR</div>
     <p data-i18n="footer_text">Two Beads. One Universe. · For intention and reflection — not a substitute for medical or spiritual counsel.</p>
+    <a class="footer-wall-link" href="combo/index.html" data-i18n="footer_wall">Explore all 60 cosmic signatures →</a>
   </footer>
 
   <script>
@@ -798,7 +898,7 @@ const LANG_MONTHS = {
 };
 const I18N = {
   en: {
-    nav_home:'Home', nav_reveal:'Reveal', nav_story:'Story',
+    nav_home:'Home', nav_reveal:'Reveal', nav_story:'Story', nav_signatures:'Signatures',
     eyebrow:'Five Elements × Zodiac',
     hero_title:'Two Beads.<br><span class="gold">One Universe.</span>',
     hero_sub:'Somewhere in the sky, two stars were holding a place for you — one telling the story of your Zodiac, the other carrying the old wisdom of the Five Elements. Twinstellar reads the day you were born and weaves them into one cosmic signature that is entirely, unmistakably yours.',
@@ -836,9 +936,27 @@ const I18N = {
     sub_cta:'◇ Begin the Journey — $19/mo or $149/yr ◇',
     sub_annual:'Save 34% with the year · cancel anytime',
     share_reward:'Share your signature — you and a friend each unlock a bonus reading.',
+    result_wall:'◇ Browse the Cosmic Signature Wall ◇',
+    footer_wall:'Explore all 60 cosmic signatures →',
+    nav_compat:'Compat',
+    compat_eyebrow:'Two Signatures, One Bond',
+    compat_title:'The Compatibility Reading',
+    compat_sub:'Enter two birthdays. We read how your Elements and Zodiacs weave together — a bond drawn from the same sixty sacred combinations that made you.',
+    compat_you:'You',
+    compat_other:'The other soul',
+    compat_btn:'◇ Weave Our Bond ◇',
+    compat_elem:'Elemental Bond',
+    compat_zod:'Zodiac Resonance',
+    compat_strengths:'Where you shine',
+    compat_edges_t:'The edges & the work',
+    compat_narr_t:'Your bond, in full',
+    compat_unlock:'The full reading — where the edges ask for care, and a small ritual to weave you closer — is part of the Twinstellar journey.',
+    compat_cta:'◇ Unlock the Full Reading — $19/mo ◇',
+    compat_err:'Please enter both birthdays.',
+    result_compat:'◇ Read your bond with another soul ◇',
   },
   zh: {
-    nav_home:'首页', nav_reveal:'揭晓', nav_story:'故事',
+    nav_home:'首页', nav_reveal:'揭晓', nav_story:'故事', nav_signatures:'宇宙签名',
     eyebrow:'五行 × 星座',
     hero_title:'双珠·<span class="gold">宇宙</span>',
     hero_sub:'每个灵魂降生时都伴着一颗双生星。一颗说宇宙的语言——你的星座；另一颗低语五行的古老智慧——金木水火土，流转在你体内。它们共同织成你专属的宇宙签名。',
@@ -876,6 +994,24 @@ const I18N = {
     sub_cta:'◇ 开始旅程 —— $19/月 或 $149/年 ◇',
     sub_annual:'年付省 34% · 随时可取消',
     share_reward:'分享你的签名——你与朋友各解锁一份加赠解读。',
+    result_wall:'◇ 浏览宇宙签名墙 ◇',
+    footer_wall:'探索全部 60 个宇宙签名 →',
+    nav_compat:'合盘',
+    compat_eyebrow:'双签名，一羁绊',
+    compat_title:'合盘解读',
+    compat_sub:'输入两个生日。我们解读你们的元素与星座如何交织——这羁绊，源自塑造你的同一组六十种神圣组合。',
+    compat_you:'你',
+    compat_other:'另一个灵魂',
+    compat_btn:'◇ 编织我们的羁绊 ◇',
+    compat_elem:'元素之契',
+    compat_zod:'星座共鸣',
+    compat_strengths:'你们闪光之处',
+    compat_edges_t:'边界与修行',
+    compat_narr_t:'你们的羁绊，全貌',
+    compat_unlock:'完整解读——边界之处如何用心呵护，以及一条让彼此更近的小仪式——皆属 Twinstellar 的旅程。',
+    compat_cta:'◇ 解锁完整解读 —— $19/月 ◇',
+    compat_err:'请输入两个生日。',
+    result_compat:'◇ 读取你与另一个灵魂的羁绊 ◇',
   },
 };
 let LANG = 'en';
@@ -897,7 +1033,94 @@ function calculateZodiac(month, day) {
 
 function findCombo(element, zodiac) {
   const list = window.TWIN_COMBOS || [];
-  return list.find(c => c.element.toLowerCase() === element && c.zodiac.toLowerCase() === zodiac) || null;
+  const e = String(element).toLowerCase(), z = String(zodiac).toLowerCase();
+  return list.find(c => c.element.toLowerCase() === e && c.zodiac.toLowerCase() === z) || null;
+}
+
+// ---------- compatibility (P3 · L3 付费增值) ----------
+const ELEM_CYCLE = ['wood', 'fire', 'earth', 'metal', 'water'];
+const ZODIAC_CYCLE = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
+const SUB_BASE = (typeof SUBSCRIBE_BASE !== 'undefined' && SUBSCRIBE_BASE) ? SUBSCRIBE_BASE : '';
+
+function elemRelation(a, b) {
+  const ia = ELEM_CYCLE.indexOf(a), ib = ELEM_CYCLE.indexOf(b);
+  if (ia === ib) return { key:'same', score: 24, en:'In Harmony · Same Element', cn:'比和 · 同元素' };
+  if ((ia + 1) % 5 === ib || (ib + 1) % 5 === ia) return { key:'sheng', score: 19, en:'Mutually Nourishing · 相生', cn:'相生 · 彼此滋养' };
+  if ((ia + 2) % 5 === ib || (ib + 2) % 5 === ia) return { key:'ke', score: 11, en:'Dynamic Tension · 相克', cn:'相克 · 张力共生' };
+  return { key:'neutral', score: 15, en:'Complementary Balance · 中和', cn:'中和 · 互补平衡' };
+}
+function zodiacResonance(a, b) {
+  if (a === b) return 9;
+  const ia = ZODIAC_CYCLE.indexOf(a), ib = ZODIAC_CYCLE.indexOf(b);
+  let d = Math.abs(ia - ib); d = Math.min(d, 12 - d);
+  return { 0:9, 1:5, 2:6, 3:3, 4:7, 5:4, 6:5 }[d];
+}
+function parseDob(s) { const p = String(s).split('-').map(Number); return { y: p[0], m: p[1], d: p[2] }; }
+
+function computeCompatibility(dA, dB) {
+  const eA = calculateElement(dA.y), eB = calculateElement(dB.y);
+  const zA = calculateZodiac(dA.m, dA.d), zB = calculateZodiac(dB.m, dB.d);
+  const cA = findCombo(eA, zA), cB = findCombo(eB, zB);
+  const rel = elemRelation(eA, eB);
+  const zr = zodiacResonance(zA, zB);
+  const score = Math.max(1, Math.min(99, 58 + rel.score + zr));
+  let level;
+  if (score >= 86) level = { key:'soul', en:'Cosmic Soulmates', cn:'天作之合' };
+  else if (score >= 72) level = { key:'kindred', en:'Kindred Spirits', cn:'知音相惜' };
+  else if (score >= 58) level = { key:'grow', en:'Growing Together', cn:'相成长' };
+  else level = { key:'contrast', en:'Beautiful Contrast', cn:'互补之美' };
+
+  const MAP = {
+    same:  { strengths: { en:['A natural, wordless understanding','Shared rhythms that make life feel easy','Loyalty that deepens with time'],
+                          cn:['天然默契，无需多言','同频的节奏让相处轻松','随时间愈深的忠诚'] },
+             edges:     { en:['Too much sameness can stall growth','Watch for echo-chambers of blind spots'],
+                          cn:['过于同质可能停滞成长','留意盲区在彼此身上被放大'] } },
+    sheng: { strengths: { en:['Energy flows between you with ease','One naturally supports the other’s gifts','A sense of being nourished, not drained'],
+                          cn:['能量在彼此间顺畅流动','一方天然滋养另一方的天赋','被滋养而非被消耗的感受'] },
+             edges:     { en:['The giving side can tire if unbalanced','Name needs openly before they fester'],
+                          cn:['给予的一方若失衡易疲惫','需求要尽早说清，勿让其发酵'] } },
+    ke:    { strengths: { en:['Friction that sparks real growth','A magnetic, never-boring tension','Each one polishes the other’s rough edge'],
+                          cn:['摩擦催生真实的成长','磁性的、从不无聊的张力','彼此打磨对方的棱角'] },
+             edges:     { en:['Clashes flare fast — slow down to listen','Power struggles need conscious agreements'],
+                          cn:['冲突易骤起——慢下来倾听','权力拉锯需有意识的约定'] } },
+    neutral:{ strengths: { en:['Fresh perspective from a different vantage','Room to be yourselves, side by side','Curiosity keeps the bond alive'],
+                          cn:['不同视角带来的新鲜','并肩做自己的空间','好奇心让羁绊长青'] },
+             edges:     { en:['Bridge the gap with small daily rituals','Don’t assume — ask'],
+                          cn:['用日常小仪式搭桥','勿妄加揣测——多问'] } }
+  };
+  const me = MAP[rel.key];
+  const titleA = cA ? cA.title_en : 'You', titleAc = cA ? cA.title_cn : '你';
+  const titleB = cB ? cB.title_en : 'Them', titleBc = cB ? cB.title_cn : '对方';
+  const relEn = rel.en.split(' · ')[0], relEn2 = rel.en.split(' · ')[1];
+  const relCn2 = rel.cn.split(' · ')[1];
+  const nar_en = `When ${titleA} meets ${titleB}, the ${relEn} between ${eA} and ${eB} sets the tone — ${relEn2}. Your bond reads ${score}%: ${level.en}. ${me.strengths.en[0]} ${me.edges.en[0]}`;
+  const nar_cn = `当「${titleAc}」遇上「${titleBc}」，${eA} 与 ${eB} 之间的${relCn2}奠定基调。你们契合 ${score}%：${level.cn}。${me.strengths.cn[0]} ${me.edges.cn[0]}`;
+  const zodEn = `${zA} and ${zB} meet at a ${zr >= 7 ? 'harmonious' : zr >= 4 ? 'curious' : 'dynamic'} resonance (${zr}/9).`;
+  const zodCn = `${zA} 与 ${zB} 的星座共鸣为${zr >= 7 ? '和谐' : zr >= 4 ? '灵动' : '张力'}${zr}/9。`;
+
+  return {
+    score, level, rel, zr, eA, eB, zA, zB, cA, cB,
+    strengths: me.strengths, edges: me.edges,
+    bondTitle: { en:`${titleA} × ${titleB}`, cn:`${titleAc} × ${titleBc}` },
+    narrative: { en: nar_en, cn: nar_cn },
+    zodText: { en: zodEn, cn: zodCn },
+    elemText: { en: rel.en + '.', cn: rel.cn + '。' }
+  };
+}
+
+let lastCompat = null;
+function renderCompat(data) {
+  const zh = LANG === 'zh';
+  $('compatBond').textContent = zh ? data.bondTitle.cn : data.bondTitle.en;
+  const ring = $('compatRing');
+  if (ring) ring.style.setProperty('--p', data.score);
+  $('compatScore').textContent = data.score;
+  $('compatLevel').textContent = zh ? data.level.cn : data.level.en;
+  $('compatElem').textContent = zh ? data.elemText.cn : data.elemText.en;
+  $('compatZod').textContent = zh ? data.zodText.cn : data.zodText.en;
+  $('compatStrengths').innerHTML = (zh ? data.strengths.cn : data.strengths.en).map(s => `<li>${s}</li>`).join('');
+  $('compatEdges').innerHTML = (zh ? data.edges.cn : data.edges.en).map(s => `<li>${s}</li>`).join('');
+  $('compatNarrative').textContent = zh ? data.narrative.cn : data.narrative.en;
 }
 
 // ---------- rendering ----------
@@ -1014,7 +1237,7 @@ function subCapture(combo) {
 
 // ---------- flow ----------
 function show(view) {
-  const VIEWS = ['home', 'reveal', 'loading', 'result', 'story'];
+  const VIEWS = ['home', 'reveal', 'loading', 'result', 'story', 'compat'];
   const incoming = $(view);
   let overlap = false;
   VIEWS.forEach(id => {
@@ -1136,6 +1359,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sw = document.getElementById('langSwitch');
     if (sw) sw.textContent = lang === 'zh' ? 'EN' : '中文';
     if (lastResult) renderResult(lastResult.combo);
+    if (lastCompat) renderCompat(lastCompat);
     try { localStorage.setItem('twin_lang', lang); } catch (_) {}
   }
 
@@ -1242,6 +1466,39 @@ document.addEventListener('DOMContentLoaded', () => {
   if (st && sd) {
     st.addEventListener('click', () => {
       sd.hidden = !sd.hidden;
+    });
+  }
+
+  // P3 compatibility (L3 gated)
+  const cf = $('compatForm');
+  if (cf) {
+    cf.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const va = $('cYou').value, vb = $('cOther').value;
+      const err = $('compatError');
+      if (!va || !vb) { err.textContent = I18N[LANG].compat_err; err.hidden = false; return; }
+      err.hidden = true;
+      const data = computeCompatibility(parseDob(va), parseDob(vb));
+      lastCompat = data;
+      $('compatResult').hidden = false;
+      $('compatGated').hidden = true;
+      const ub = $('compatUnlockBtn');
+      ub.disabled = false; ub.textContent = I18N[LANG].compat_cta;
+      renderCompat(data);
+      $('compatResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+  const ub = $('compatUnlockBtn');
+  if (ub) {
+    ub.addEventListener('click', () => {
+      if (SUB_BASE) {
+        const q = lastCompat ? `?source=compat&e=${lastCompat.eA}&z=${lastCompat.zA}` : '?source=compat';
+        window.location.href = SUB_BASE + q;
+        return;
+      }
+      $('compatGated').hidden = false;
+      ub.disabled = true;
+      ub.textContent = LANG === 'zh' ? '已解锁 ✓（订阅解锁更多）' : 'Unlocked ✓ (subscribe for more)';
     });
   }
 
