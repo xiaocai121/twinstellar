@@ -1538,19 +1538,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const title = zh ? combo.title_cn : combo.title_en;
       const mantra = zh ? (combo.mantra_cn || combo.mantra_en) : combo.mantra_en;
       const stones = (combo.stones || []).map(s => zh ? (STONE_CN[s] || s) : s).join(zh ? ' · ' : ', ');
-      const element = combo.element;
-      const zodiac = combo.zodiac;
+      const el = ELEMENTS[combo.element.toLowerCase()];
+      const zx = ZODIAC[combo.zodiac.toLowerCase()];
+      const sub = zh
+        ? `${el.cn} × ${zx.cn} — 六十种神圣组合之一`
+        : `${el.name} × ${zx.name} — one of sixty sacred combinations`;
 
       // wait for fonts (best effort, capped so offline/slow networks still work)
       try {
         await Promise.race([
           document.fonts.ready.then(() => Promise.all([
-            document.fonts.load("600 38px 'Cormorant Garamond', 'Noto Serif SC', serif"),
-            document.fonts.load("italic 500 24px 'Cormorant Garamond', 'Noto Serif SC', serif"),
-            document.fonts.load("500 22px 'Noto Serif SC', serif"),
-            document.fonts.load("400 16px 'Inter', sans-serif")
+            document.fonts.load("600 72px 'Cormorant Garamond', 'Noto Serif SC', serif"),
+            document.fonts.load("italic 500 40px 'Cormorant Garamond', 'Noto Serif SC', serif"),
+            document.fonts.load("500 40px 'Noto Serif SC', serif"),
+            document.fonts.load("400 24px 'Inter', sans-serif")
           ])),
-          new Promise(r => setTimeout(r, 1200))
+          new Promise(r => setTimeout(r, 1500))
         ]);
       } catch (_) {}
 
@@ -1589,11 +1592,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const ch = chars[i];
           const test = line + ch;
           const w = ctx.measureText(test).width;
-          if (w > maxWidth && line && !isCJK(ch)) {
-            ctx.fillText(line, x, yy);
-            line = ch;
-            yy += lineHeight;
-          } else if (w > maxWidth && line) {
+          if (w > maxWidth && line) {
             ctx.fillText(line, x, yy);
             line = ch;
             yy += lineHeight;
@@ -1646,151 +1645,189 @@ document.addEventListener('DOMContentLoaded', () => {
         return y + size * 1.25;
       }
 
-      // background
-      const bg = ctx.createRadialGradient(W/2, H/2, 150, W/2, H/2, 950);
-      bg.addColorStop(0, '#181826');
-      bg.addColorStop(1, '#08080B');
+      function drawDiamond(cx, cy, r) {
+        ctx.beginPath();
+        ctx.moveTo(cx, cy - r); ctx.lineTo(cx + r, cy);
+        ctx.lineTo(cx, cy + r); ctx.lineTo(cx - r, cy);
+        ctx.closePath(); ctx.fill();
+      }
+
+      // background with vignette
+      const bg = ctx.createRadialGradient(W/2, H/2, 120, W/2, H/2, 1000);
+      bg.addColorStop(0, '#1a1a28');
+      bg.addColorStop(0.55, '#0b0b12');
+      bg.addColorStop(1, '#050508');
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, W, H);
 
       // nebula glows
-      const ng1 = ctx.createRadialGradient(W*0.32, H*0.36, 0, W*0.32, H*0.36, 520);
-      ng1.addColorStop(0, 'rgba(79,134,198,0.13)');
+      const ng1 = ctx.createRadialGradient(W*0.28, H*0.32, 0, W*0.28, H*0.32, 620);
+      ng1.addColorStop(0, 'rgba(79,134,198,0.15)');
       ng1.addColorStop(1, 'rgba(79,134,198,0)');
       ctx.fillStyle = ng1; ctx.fillRect(0, 0, W, H);
-      const ng2 = ctx.createRadialGradient(W*0.68, H*0.62, 0, W*0.68, H*0.62, 520);
-      ng2.addColorStop(0, 'rgba(201,169,98,0.12)');
+      const ng2 = ctx.createRadialGradient(W*0.72, H*0.58, 0, W*0.72, H*0.58, 620);
+      ng2.addColorStop(0, 'rgba(201,169,98,0.14)');
       ng2.addColorStop(1, 'rgba(201,169,98,0)');
       ctx.fillStyle = ng2; ctx.fillRect(0, 0, W, H);
 
-      // frame
-      ctx.strokeStyle = 'rgba(203,163,91,0.35)';
-      ctx.lineWidth = 1.5;
-      roundRect(80, 80, W - 160, H - 160, 18);
+      // outer frame
+      ctx.strokeStyle = 'rgba(203,163,91,0.45)';
+      ctx.lineWidth = 2;
+      roundRect(70, 70, W - 140, H - 140, 24);
       ctx.stroke();
-      ctx.strokeStyle = 'rgba(203,163,91,0.10)';
+      // inner frame
+      ctx.strokeStyle = 'rgba(203,163,91,0.18)';
       ctx.lineWidth = 1;
-      roundRect(96, 96, W - 192, H - 192, 12);
+      roundRect(90, 90, W - 180, H - 180, 16);
       ctx.stroke();
 
       // corner diamonds
       ctx.fillStyle = '#CBA35B';
-      [[85,85],[W-85,85],[85,H-85],[W-85,H-85]].forEach(([cx,cy]) => {
-        ctx.beginPath();
-        ctx.moveTo(cx, cy-5); ctx.lineTo(cx+5, cy); ctx.lineTo(cx, cy+5); ctx.lineTo(cx-5, cy);
-        ctx.closePath(); ctx.fill();
-      });
+      [[74,74],[W-74,74],[74,H-74],[W-74,H-74]].forEach(([cx,cy]) => drawDiamond(cx, cy, 7));
+      // inner corner diamonds
+      ctx.fillStyle = 'rgba(203,163,91,0.55)';
+      [[90,90],[W-90,90],[90,H-90],[W-90,H-90]].forEach(([cx,cy]) => drawDiamond(cx, cy, 4));
+
+      // shift content down for more balanced vertical composition
+      ctx.save(); ctx.translate(0, 120);
 
       // brand
       ctx.save();
-      ctx.font = "600 14px 'Inter', sans-serif";
+      ctx.font = "600 16px 'Inter', sans-serif";
       ctx.fillStyle = '#CBA35B';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
-      ctx.letterSpacing = '0.3em';
-      ctx.fillText('TWINSTELLAR', W/2, 150);
+      ctx.letterSpacing = '0.4em';
+      ctx.fillText('TWINSTELLAR', W/2, 120);
       ctx.restore();
 
       // eyebrow
       ctx.save();
-      ctx.font = "400 13px 'Inter', sans-serif";
-      ctx.fillStyle = '#9a9aa6';
+      ctx.font = "400 14px 'Inter', sans-serif";
+      ctx.fillStyle = '#CBA35B';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
-      ctx.fillText(zh ? '五行 × 星座' : 'Five Elements × Zodiac', W/2, 200);
+      ctx.letterSpacing = '0.22em';
+      ctx.fillText(zh ? '五行 × 星座' : 'FIVE ELEMENTS × ZODIAC', W/2, 170);
       ctx.restore();
 
       // title
-      const titleY = 260;
-      const titleSize = 58;
+      const titleY = 230;
+      const titleSize = 72;
+      const titleFont = zh ? "'Noto Serif SC', 'Cormorant Garamond', serif" : "'Cormorant Garamond', 'Noto Serif SC', serif";
       ctx.save();
-      ctx.font = `600 ${titleSize}px 'Cormorant Garamond', 'Noto Serif SC', serif`;
+      ctx.font = `600 ${titleSize}px ${titleFont}`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
       const titleW = ctx.measureText(title).width;
-      const maxTitleW = W - 240;
+      const maxTitleW = W - 220;
       let finalTitleSize = titleSize;
       if (titleW > maxTitleW) finalTitleSize = Math.floor(titleSize * maxTitleW / titleW);
-      ctx.font = `600 ${finalTitleSize}px 'Cormorant Garamond', 'Noto Serif SC', serif`;
-      const grad = ctx.createLinearGradient(W/2 - titleW/2, titleY, W/2 + titleW/2, titleY);
+      ctx.font = `600 ${finalTitleSize}px ${titleFont}`;
+      const finalTitleW = ctx.measureText(title).width;
+      ctx.shadowColor = 'rgba(203,163,91,0.35)';
+      ctx.shadowBlur = 28;
+      ctx.shadowOffsetY = 6;
+      const grad = ctx.createLinearGradient(W/2 - finalTitleW/2, titleY, W/2 + finalTitleW/2, titleY);
       grad.addColorStop(0, '#F4E3B4'); grad.addColorStop(0.42, '#D8B675'); grad.addColorStop(0.78, '#B58A2E'); grad.addColorStop(1, '#E7CE92');
       ctx.fillStyle = grad;
       ctx.fillText(title, W/2, titleY);
       ctx.restore();
-      let cursor = titleY + finalTitleSize + 28;
+      let cursor = titleY + finalTitleSize * 1.15 + 36;
 
       // subtitle
       ctx.save();
-      ctx.font = "400 16px 'Inter', sans-serif";
-      ctx.fillStyle = '#8c8c96';
+      ctx.font = "400 24px 'Inter', 'Noto Serif SC', sans-serif";
+      ctx.fillStyle = '#D4C8A0';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
-      const sub = `${element} × ${zodiac} — ${zh ? '六十种神圣组合之一' : 'one of sixty sacred combinations'}`;
       ctx.fillText(sub, W/2, cursor);
       ctx.restore();
-      cursor += 48;
+      cursor += 56;
 
-      // divider
-      ctx.strokeStyle = 'rgba(203,163,91,0.25)';
-      ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(W/2 - 80, cursor); ctx.lineTo(W/2 + 80, cursor); ctx.stroke();
-      cursor += 44;
+      // divider with diamond
+      ctx.strokeStyle = 'rgba(203,163,91,0.4)';
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(W/2 - 100, cursor); ctx.lineTo(W/2 + 100, cursor); ctx.stroke();
+      ctx.fillStyle = 'rgba(203,163,91,0.85)';
+      drawDiamond(W/2, cursor, 5);
+      cursor += 54;
 
       // mantra label
       ctx.save();
-      ctx.font = "400 12px 'Inter', sans-serif";
+      ctx.font = "400 16px 'Inter', sans-serif";
       ctx.fillStyle = '#9a9aa6';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
+      ctx.letterSpacing = '0.28em';
       ctx.fillText(zh ? '真 言' : 'M A N T R A', W/2, cursor);
       ctx.restore();
-      cursor += 30;
+      cursor += 36;
 
       // mantra
       const mantraText = (zh ? '「' : '"') + mantra + (zh ? '」' : '"');
-      cursor = wrapText(mantraText, W/2, cursor, W - 280, 42, {
-        size: 28, style: 'italic', weight: '500', color: '#E4E2EE',
-        font: "'Cormorant Garamond', 'Noto Serif SC', serif"
+      const mantraFont = zh ? "'Noto Serif SC', 'Cormorant Garamond', serif" : "'Cormorant Garamond', 'Noto Serif SC', serif";
+      const mantraStyle = zh ? 'normal' : 'italic';
+      cursor = wrapText(mantraText, W/2, cursor, W - 260, 60, {
+        size: 40, style: mantraStyle, weight: '500', color: '#F1F0F4', font: mantraFont
       });
-      cursor += 54;
+      cursor += 70;
 
       // stones
+      const stonesFont = zh ? "'Inter', 'Noto Serif SC', sans-serif" : "'Inter', 'Noto Serif SC', sans-serif";
       ctx.save();
-      ctx.font = "500 18px 'Inter', sans-serif";
+      ctx.font = `500 26px ${stonesFont}`;
       ctx.fillStyle = '#CBA35B';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
       const stonesText = `${zh ? '能量石' : 'Power Stones'}: ${stones}`;
-      cursor = wrapText(stonesText, W/2, cursor, W - 260, 34, {
-        size: 18, weight: '500', color: '#CBA35B', font: "'Inter', 'Noto Serif SC', sans-serif"
+      cursor = wrapText(stonesText, W/2, cursor, W - 240, 42, {
+        size: 26, weight: '500', color: '#CBA35B', font: stonesFont
       });
       ctx.restore();
-      cursor += 60;
+      cursor += 66;
 
       // date
       const dateStr = new Date().toLocaleDateString(zh ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
       ctx.save();
-      ctx.font = "400 13px 'Inter', sans-serif";
-      ctx.fillStyle = '#6c6c78';
+      ctx.font = "400 18px 'Inter', sans-serif";
+      ctx.fillStyle = '#8c8c96';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
       ctx.fillText(dateStr, W/2, cursor);
       ctx.restore();
-      cursor += 46;
+      cursor += 68;
 
       // footer line
-      ctx.strokeStyle = 'rgba(203,163,91,0.15)';
+      ctx.strokeStyle = 'rgba(203,163,91,0.2)';
       ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(W/2 - 120, cursor); ctx.lineTo(W/2 + 120, cursor); ctx.stroke();
-      cursor += 24;
+      ctx.beginPath(); ctx.moveTo(W/2 - 140, cursor); ctx.lineTo(W/2 + 140, cursor); ctx.stroke();
+      cursor += 34;
 
-      // footer tagline
+      // footer tagline (consistent with main-site brand line)
       ctx.save();
-      ctx.font = "500 16px 'Cormorant Garamond', 'Noto Serif SC', serif";
-      ctx.fillStyle = '#6c6c78';
+      ctx.font = "500 22px 'Cormorant Garamond', 'Noto Serif SC', serif";
+      ctx.fillStyle = '#8c8c96';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
-      ctx.fillText(zh ? '双珠 · 一宇宙' : 'Two Beads. One Universe.', W/2, cursor);
+      ctx.fillText(zh ? '双珠·宇宙' : 'Two Beads. One Universe.', W/2, cursor);
+      ctx.restore();
+      ctx.restore(); // undo vertical shift
+
+      // bottom seal: large, faint element + zodiac glyphs to fill the lower field
+      ctx.save();
+      ctx.translate(W/2, 1260);
+      ctx.strokeStyle = 'rgba(203,163,91,0.35)';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(0, 0, 120, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(0, 0, 108, 0, Math.PI * 2); ctx.stroke();
+      ctx.fillStyle = 'rgba(242,224,174,0.72)';
+      ctx.shadowColor = 'rgba(203,163,91,0.45)';
+      ctx.shadowBlur = 24;
+      ctx.font = "120px 'Inter', 'Noto Serif SC', serif";
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(zx.symbol, 0, 0);
       ctx.restore();
 
       // download
