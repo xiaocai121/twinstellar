@@ -486,10 +486,15 @@ header, section, footer { position: relative; z-index: 1; }
 .fortune-phrase { font-size: 14px; color: var(--ink-dim); line-height: 1.6; margin: 0; }
 .caution-card { border-color: rgba(255,180,80,0.25); }
 .caution-card .fortune-label { color: #E8A840; }
-.streak-bar { max-width: 440px; margin: 0 auto 28px; }
-.streak-track { width: 100%; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; margin-bottom: 10px; }
-.streak-fill { height: 100%; background: linear-gradient(90deg, var(--gold), #E8C547); border-radius: 3px; transition: width .5s ease; }
-.streak-text { font-size: 13px; color: var(--ink-dim); letter-spacing: 0.06em; margin: 0; }
+/* Birth Chart */
+.birth-chart { max-width: 520px; margin: 28px auto 30px; }
+.birth-chart-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--gold); letter-spacing: 0.1em; margin: 0 0 18px; }
+.pillars { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.pillar { background: var(--panel); border: 1px solid var(--line-soft); border-radius: 14px; padding: 16px 18px; text-align: center; min-width: 100px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.pillar-label { display: block; font-size: 11px; letter-spacing: 0.16em; color: var(--ink-dim); margin-bottom: 6px; text-transform: uppercase; }
+.pillar-ganzhi { display: block; font-family: 'Noto Serif SC', 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: var(--gold-soft); letter-spacing: 0.12em; }
+.pillar-note { display: block; font-size: 11px; color: #6c6c78; margin-top: 4px; }
+.chart-summary { font-size: 13px; color: var(--ink-dim); line-height: 1.6; margin: 16px 0 0; font-style: italic; }
 .daily-actions { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 28px; }
 .daily-actions .btn-primary { padding: 16px 36px; font-size: 15px; }
 
@@ -764,7 +769,7 @@ header, section, footer { position: relative; z-index: 1; }
     </div>
 
     <!-- L3: subscription (hero product, default expanded) -->
-    <div class="subscription-block hero" id="subBlock">
+    <div class="subscription-block hero" id="subBlock" hidden>
       <p class="sub-label" data-i18n="lbl_sub">Your signature, alive every month</p>
       <div class="sub-detail" id="subDetail">
         <p data-i18n="sub_desc">Your signature is a living thing. Each month we send a deeper reading, a ritual card, and a custom wallpaper — small, quiet arrivals that make the cosmic feel close. Begin with the year and let it become a gentle daily ritual.</p>
@@ -861,7 +866,7 @@ header, section, footer { position: relative; z-index: 1; }
         <p id="compatNarrative"></p>
       </div>
 
-      <div class="compat-unlock" id="compatUnlock">
+      <div class="compat-unlock" id="compatUnlock" hidden>
         <p data-i18n="compat_unlock">The full reading — where the edges ask for care, and a small ritual to weave you closer — is part of the Twinstellar journey.</p>
         <button class="btn-primary" id="compatUnlockBtn" data-i18n="compat_cta">◇ Unlock the Full Reading — $19/mo ◇</button>
       </div>
@@ -899,9 +904,16 @@ header, section, footer { position: relative; z-index: 1; }
         <p class="fortune-phrase" id="fcaPhrase"></p>
       </div>
     </div>
-    <div class="streak-bar" id="streakBar">
-      <div class="streak-track"><div class="streak-fill" id="streakFill"></div></div>
-      <p class="streak-text" id="streakText"></p>
+    <!-- Birth Chart / 命盘 -->
+    <div class="birth-chart" id="birthChart">
+      <h3 class="birth-chart-title" data-i18n="birth_chart_title">Your Birth Chart</h3>
+      <div class="pillars" id="pillars">
+        <div class="pillar"><span class="pillar-label" data-i18n="pillar_year">年柱</span><span class="pillar-ganzhi" id="pcYear"></span><span class="pillar-note" id="pcYearNote"></span></div>
+        <div class="pillar"><span class="pillar-label" data-i18n="pillar_month">月柱</span><span class="pillar-ganzhi" id="pcMonth"></span><span class="pillar-note" id="pcMonthNote"></span></div>
+        <div class="pillar"><span class="pillar-label" data-i18n="pillar_day">日柱</span><span class="pillar-ganzhi" id="pcDay"></span><span class="pillar-note" id="pcDayNote"></span></div>
+        <div class="pillar"><span class="pillar-label" data-i18n="pillar_hour">时柱</span><span class="pillar-ganzhi" id="pcHour"></span><span class="pillar-note" id="pcHourNote"></span></div>
+      </div>
+      <p class="chart-summary" id="chartSummary"></p>
     </div>
     <p class="share-sub" data-i18n="daily_share_sub">Share today's fortune — every share brings you closer to unlocking.</p>
     <div class="share-row" id="dailyShareRow">
@@ -1107,6 +1119,12 @@ const I18N = {
     daily_card_btn:'◇ Download Daily Card ◇',
     daily_back_btn:'← Back to my signature',
     daily_result_link:'◇ Today\'s Daily Fortune ◇',
+    // Birth chart
+    birth_chart_title:'Your Birth Chart',
+    pillar_year:'YEAR',
+    pillar_month:'MONTH',
+    pillar_day:'DAY',
+    pillar_hour:'HOUR',
   },
   zh: {
     nav_home:'首页', nav_reveal:'揭晓', nav_story:'故事', nav_signatures:'宇宙签名',
@@ -1178,56 +1196,16 @@ const I18N = {
     daily_card_btn:'◇ 下载日签卡片 ◇',
     daily_back_btn:'← 回到我的签名',
     daily_result_link:'◇ 今日运势日签 ◇',
+    // Birth chart
+    birth_chart_title:'你的命盘',
+    pillar_year:'年柱',
+    pillar_month:'月柱',
+    pillar_day:'日柱',
+    pillar_hour:'时柱',
   },
 };
 let LANG = 'en';
 let lastResult = null;
-
-// ---- Daily check-in streak (localStorage) ----
-const CHECKIN_KEY = 'twin_daily_checkin';
-function todayStr() { return new Date().toISOString().slice(0, 10); }
-function yesterdayStr() {
-  const d = new Date(); d.setDate(d.getDate() - 1);
-  return d.toISOString().slice(0, 10);
-}
-function loadCheckin() {
-  try { return JSON.parse(localStorage.getItem(CHECKIN_KEY)) || null; } catch (_) { return null; }
-}
-function saveCheckin(data) {
-  try { localStorage.setItem(CHECKIN_KEY, JSON.stringify(data)); } catch (_) {}
-}
-function doCheckin(combo) {
-  const today = todayStr();
-  const data = loadCheckin() || { streak: 0, lastDate: '', shares: {}, totalShares: 0, unlocked: false };
-  if (data.lastDate === today) return data; // already checked in today
-  const yesterday = yesterdayStr();
-  if (data.lastDate === yesterday) data.streak += 1;
-  else data.streak = 1;
-  data.lastDate = today;
-  data.comboElement = combo.element;
-  data.comboZodiac = combo.zodiac;
-  if (data.streak >= 15) data.unlocked = true;
-  saveCheckin(data);
-  return data;
-}
-function recordShare() {
-  const today = todayStr();
-  const data = loadCheckin() || { streak: 0, lastDate: '', shares: {}, totalShares: 0, unlocked: false };
-  data.shares[today] = (data.shares[today] || 0) + 1;
-  data.totalShares = (data.totalShares || 0) + 1;
-  saveCheckin(data);
-}
-function streakProgress() {
-  const data = loadCheckin();
-  if (!data) return { current: 0, target: 15, percent: 0, checkedToday: false, unlocked: false };
-  return {
-    current: data.streak,
-    target: 15,
-    percent: Math.min(100, Math.round(data.streak / 15 * 100)),
-    checkedToday: data.lastDate === todayStr(),
-    unlocked: !!data.unlocked,
-  };
-}
 
 // ---------- calculations ----------
 function calculateElement(year) {
@@ -1320,11 +1298,44 @@ const ZHI_WX = ['water','earth','wood','wood','earth','fire','fire','earth','met
 const ZHI_ZX  = ['capricorn','aquarius','pisces','aries','aries','taurus','taurus','gemini','gemini','cancer','cancer','leo']; // 地支→星座(约)
 const ZX_CYCLE = ['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces'];
 
-// Day Gan-Zhi from Julian Day: JD 0 = Jan 1, 4713 BC; (JD+10)%60 maps to Gan-Zhi cycle
+// Day Gan-Zhi from Julian Day
 function dayGanZhi(date) {
   const jd = Math.floor(date.getTime() / 86400000 + 2440587.5);
   const cycle = ((jd - 10) % 60 + 60) % 60;
   return { gan: GAN[cycle % 10], zhi: ZHI[cycle % 12], ganIdx: cycle % 10, zhiIdx: cycle % 12, cycleIdx: cycle };
+}
+
+// Year Gan-Zhi: known refs — 2024=甲辰(40), 2025=乙巳(41), 2026=丙午(42)
+function yearGanZhi(year) {
+  const cycle = (year - 4) % 60;
+  return { gan: GAN[cycle % 10], zhi: ZHI[cycle % 12], ganIdx: cycle % 10, zhiIdx: cycle % 12, cycleIdx: cycle };
+}
+
+// Month Gan-Zhi (traditional: based on year stem + solar month)
+function monthGanZhi(year, month) {
+  const adjYear = month < 2 ? year - 1 : year;
+  const yGanIdx = yearGanZhi(adjYear).ganIdx;
+  // month branch: 1(Jan)=丑(1), 2(Feb)=寅(2), ..., 12(Dec)=子(0)
+  const mBranch = month % 12;
+  // stem offset from 寅月 (month 2): offset 0 for 寅, 1 for 卯, ... 11 for 丑
+  const mStemOffset = (month - 2 + 12) % 12;
+  const mGan = (yGanIdx * 2 + mStemOffset) % 10;
+  const cycleIdx = (mGan * 12 + mBranch) % 60;
+  return { gan: GAN[mGan], zhi: ZHI[mBranch], ganIdx: mGan, zhiIdx: mBranch, cycleIdx };
+}
+
+// Birth chart (四柱)
+function birthChart(birthYear, birthMonth, birthDay) {
+  const y = yearGanZhi(birthYear);
+  const m = monthGanZhi(birthYear, birthMonth);
+  const d = dayGanZhi(new Date(birthYear, birthMonth - 1, birthDay));
+  // Hour: approximate noon (午时, branch=6)
+  const hBranch = 6, hGan = (d.ganIdx * 2 + hBranch) % 10;
+  const h = { gan: GAN[hGan], zhi: ZHI[hBranch], ganIdx: hGan, zhiIdx: hBranch, cycleIdx: (hGan * 12 + hBranch) % 60 };
+  const elNames = { wood:'\u6728', fire:'\u706b', earth:'\u571f', metal:'\u91d1', water:'\u6c34' };
+  const elNamesEn = { wood:'Wood', fire:'Fire', earth:'Earth', metal:'Metal', water:'Water' };
+  const dayEl = GAN_WX[d.ganIdx];
+  return { year:y, month:m, day:d, hour:h, dayElement:dayEl, dayElementCn:elNames[dayEl], dayElementEn:elNamesEn[dayEl] };
 }
 
 // Fortune phrase pools — 5 tiers per dimension × 2 languages
@@ -1679,12 +1690,10 @@ function subCapture(combo) {
 function renderDaily() {
   if (!lastResult || !lastResult.combo) return;
   const combo = lastResult.combo;
-  doCheckin(combo); // record today's check-in
   const zh = LANG === 'zh';
   const el = ELEMENTS[combo.element.toLowerCase()];
   const zx = ZODIAC[combo.zodiac.toLowerCase()];
   const fortune = dailyFortune(combo, new Date());
-  const sp = streakProgress();
 
   $('dailySigSymbol').textContent = `${el.symbol} ${zx.symbol}`;
   $('dailySigName').textContent = zh ? combo.title_cn : combo.title_en;
@@ -1706,10 +1715,27 @@ function renderDaily() {
     card.style.transform = '';
   });
 
-  $('streakFill').style.width = sp.percent + '%';
-  $('streakText').textContent = zh
-    ? `已连签 ${sp.current}/15 天` + (sp.current >= 15 ? ' — 已解锁月会员！' : ` — 再签 ${15 - sp.current} 天解锁月会员`)
-    : `Streak: ${sp.current}/15 days` + (sp.current >= 15 ? ' — Monthly unlocked!' : ` — ${15 - sp.current} more to unlock monthly`);
+  // Birth chart
+  const bc = $('birthChart');
+  if (bc) {
+    if (lastResult.birthYear && lastResult.birthMonth && lastResult.birthDay) {
+      bc.style.display = '';
+      const chart = birthChart(lastResult.birthYear, lastResult.birthMonth, lastResult.birthDay);
+      $('pcYear').textContent = chart.year.gan + chart.year.zhi;
+      $('pcYearNote').textContent = zh ? '年柱' : 'Year';
+      $('pcMonth').textContent = chart.month.gan + chart.month.zhi;
+      $('pcMonthNote').textContent = zh ? '月柱' : 'Month';
+      $('pcDay').textContent = chart.day.gan + chart.day.zhi;
+      $('pcDayNote').textContent = zh ? '日柱 · 日主' + chart.dayElementCn : 'Day · ' + chart.dayElementEn;
+      $('pcHour').textContent = chart.hour.gan + chart.hour.zhi;
+      $('pcHourNote').textContent = zh ? '时柱 · 午时' : 'Hour · Noon';
+      $('chartSummary').textContent = zh
+        ? `日主${chart.dayElementCn}，生于${chart.month.zhi}月。${chart.dayElementCn}${chart.month.zhi === chart.day.zhi ? '得令，根基深厚' : chart.month.zhi === ZHI[ZHI_WX.indexOf(chart.dayElement)] ? '当令，气运亨通' : '中和，内外兼修'}。`
+        : `Day Master ${chart.dayElementEn}, born in ${chart.month.zhi} month. ${chart.month.zhi === chart.day.zhi ? 'Rooted and strong.' : ZHI_WX[chart.month.zhiIdx] === chart.dayElement ? 'In season, energy flows.' : 'Balanced, adaptable.'}`;
+    } else {
+      bc.style.display = 'none';
+    }
+  }
 }
 
 function show(view) {
@@ -1756,6 +1782,9 @@ function runReveal(dateStr) {
   if (ln) ln.textContent = '';
   setTimeout(() => {
     renderResult(combo);
+    lastResult.birthYear = year;
+    lastResult.birthMonth = month;
+    lastResult.birthDay = day;
     show('result');
     // deep link support
     history.replaceState(null, '', `?e=${element}&z=${zodiac}`);
@@ -1887,7 +1916,6 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       const target = targets[net];
       if (target) {
-        recordShare();
         window.open(target, '_blank', 'noopener');
       }
     });
@@ -2247,7 +2275,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const el = ELEMENTS[combo.element.toLowerCase()];
       const zx = ZODIAC[combo.zodiac.toLowerCase()];
       const title = zh ? combo.title_cn : combo.title_en;
-      const sp = streakProgress();
 
       try {
         await Promise.race([
@@ -2377,27 +2404,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       cur = rowY + 3 * (cardH + 14) + 40;
-
-      // streak bar
-      const barW = 520, barH = 8, barX = (W - barW) / 2;
-      ctx.save();
-      ctx.fillStyle = 'rgba(255,255,255,0.08)';
-      roundRect(barX, cur, barW, barH, 4); ctx.fill();
-      const fillW = barW * sp.percent / 100;
-      const fillGrad = ctx.createLinearGradient(barX, cur, barX + barW, cur);
-      fillGrad.addColorStop(0, '#CBA35B'); fillGrad.addColorStop(1, '#E8C547');
-      ctx.fillStyle = fillGrad;
-      roundRect(barX, cur, fillW, barH, 4); ctx.fill();
-      ctx.restore();
-      cur += 22;
-
-      ctx.save();
-      ctx.font = "400 14px 'Inter', 'Noto Serif SC', sans-serif";
-      ctx.fillStyle = '#9a9aa6'; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-      const streakTxt = zh ? `已连签 ${sp.current}/15 天` : `Streak: ${sp.current}/15 days`;
-      ctx.fillText(streakTxt, W/2, cur);
-      ctx.restore();
-      cur += 52;
 
       // footer line
       ctx.strokeStyle = 'rgba(203,163,91,0.2)'; ctx.lineWidth = 1;
