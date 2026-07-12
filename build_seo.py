@@ -42,6 +42,7 @@ process.stdout.write(JSON.stringify({
   combos: grab('TWIN_COMBOS', '[', ']'),
   elements: grab('ELEMENTS', '{', '}'),
   zodiac: grab('ZODIAC', '{', '}'),
+  stone_cn: grab('STONE_CN', '{', '}'),
 }));
 '''
 tmp = os.path.join(ROOT, ".extract.js")
@@ -57,6 +58,7 @@ finally:
 combos = json.loads(data["combos"])
 elements = json.loads(data["elements"])
 zodiac = json.loads(data["zodiac"])
+stone_cn = json.loads(data["stone_cn"] or "{}")
 
 # ---------- helpers ----------
 def esc(s):
@@ -264,7 +266,11 @@ for c in combos:
         f'<span class="lang-cn">{esc(x["title_cn"])}</span></a></li>'
         for x in rel_unique
     )
-    stones_li = "".join(f"<li>{esc(st)}</li>" for st in c["stones"])
+    stones_li = "".join(
+        f'<li><span class="lang-en">{esc(st)}</span>'
+        f'<span class="lang-cn">{esc(stone_cn.get(st, st))}</span></li>'
+        for st in c["stones"]
+    )
     html = COMBO_TPL.format(
         SHEAD=SHARED_HEAD,
         title_en=esc(c["title_en"]),

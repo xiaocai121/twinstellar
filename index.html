@@ -882,6 +882,33 @@ const ZODIAC = {
   pisces:     { name: 'PISCES',     cn: '双鱼座', symbol: '♓', arche: 'THE MYSTIC',   arche_cn: '梦想家' },
 };
 
+// ---- Power-stone EN -> CN names (single source of truth; consumed by build_seo.py too) ----
+const STONE_CN = {
+  'Ajoite Quartz': '阿乔石水晶', 'Amazonite': '天河石', 'Amber': '琥珀', 'Angelite': '天使石',
+  'Apophyllite': '鱼眼石', 'Aqua Aura': '水蓝钛晶', 'Aqua Aura Quartz': '水蓝钛晶', 'Aquamarine': '海蓝宝石',
+  'Black Diamond': '黑钻', 'Black Onyx': '黑玛瑙', 'Black Tourmaline': '黑碧玺', 'Blue Agate': '蓝玛瑙',
+  'Blue Lace Agate': '蓝纹玛瑙', 'Blue Moonstone': '蓝月光石', 'Blue Sapphire': '蓝宝石', 'Blue Tourmaline': '蓝碧玺',
+  'Bronzite': '古铜辉石', 'Bumblebee Jasper': '蜂巢碧玉', 'Carnelian': '红玉髓', 'Chrysoprase': '绿玉髓',
+  'Citrine': '黄水晶', 'Clear Quartz': '白水晶', 'Crystal Quartz': '水晶', 'Damascus Steel': '大马士革钢',
+  'Diamond': '钻石', 'Dumortierite': '蓝线石', 'Emerald': '祖母绿', 'Eudialyte': '异性石',
+  'Fire Agate': '火玛瑙', 'Fire Citrine': '火彩黄水晶', 'Fire Opal': '火欧泊', 'Garnet': '石榴石',
+  'Golden Beryl': '金绿柱石', 'Grandidierite': '蓝硅硼钙石', 'Granite': '花岗岩', 'Green Agate': '绿玛瑙',
+  'Green Aventurine': '绿东陵', 'Green Calcite': '绿方解石', 'Green Fluorite': '绿萤石', 'Green Jade': '绿翡翠',
+  'Green Tourmaline': '绿碧玺', 'Hematite': '赤铁矿', 'Herkimer Diamond': '赫基蒙水晶', 'Imperial Topaz': '帝王托帕石',
+  'Jade': '玉', 'Jasper': '碧玉', 'Kyanite': '蓝晶石', 'Larimar': '海纹石',
+  'Mangano Calcite': '锰方解石', 'Mercury Silver': '汞银', 'Moonstone': '月光石', 'Moss Agate': '苔纹玛瑙',
+  'Mystic Quartz': '幻彩水晶', 'Obsidian': '黑曜石', 'Orange Sapphire': '橙蓝宝石', 'Peach Moonstone': '蜜桃月光石',
+  'Pearl': '珍珠', 'Peridot': '橄榄石', 'Petrified Wood': '硅化木', 'Phoenix Opal': '凤凰欧泊',
+  'Picture Jasper': '风景碧玉', 'Pietersite': '彼得石', 'Pink Tourmaline': '粉碧玺', 'Platinum': '铂金',
+  'Rainbow Moonstone': '彩虹月光石', 'Red Jasper': '红碧玉', "Red Tiger's Eye": '红虎眼石', 'Rose Quartz': '粉水晶',
+  'Ruby': '红宝石', 'Ruby in Matrix': '基岩红宝石', 'Sapphire': '蓝宝石', 'Selenite': '透石膏',
+  'Septarian': '龟甲石', 'Seraphinite': '炽天使石', 'Silver': '银', 'Sodalite': '方钠石',
+  'Spirit Quartz': '精灵水晶', 'Steel': '钢', 'Sunstone': '太阳石', 'Tiger Eye': '虎眼石',
+  'Titanium': '钛', 'Tree Agate': '树纹玛瑙', 'Unakite': '尤纳基石', 'White Diamond': '白钻',
+  'White Gold': '白金', 'White Sapphire': '白蓝宝石', 'White Topaz': '白托帕石', 'Yellow Jasper': '黄碧玉',
+  'Yellow Sapphire': '黄蓝宝石',
+};
+
 // ---- Zodiac boundaries (month, day) — checked from late to early ----
 const BOUNDARIES = [
   { m: 1,  d: 20, z: 'aquarius' },
@@ -1178,7 +1205,7 @@ function renderResult(combo) {
 
   // stones
   $('stonesWrap').innerHTML = (combo.stones || [])
-    .map(s => `<span class="stone">${s}</span>`).join('');
+    .map(s => `<span class="stone">${zh ? (STONE_CN[s] || s) : s}</span>`).join('');
 
   // wire viral share + restart + referral
   $('copyLinkBtn').onclick = () => copyLink(combo);
@@ -1443,7 +1470,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const zh = LANG === 'zh';
       const title = zh ? combo.title_cn : combo.title_en;
       const mantra = zh ? (combo.mantra_cn || combo.mantra_en) : combo.mantra_en;
-      const stones = (combo.stones || []).join(zh ? ' · ' : ', ');
+      const stones = (combo.stones || []).map(s => zh ? (STONE_CN[s] || s) : s).join(zh ? ' · ' : ', ');
       const element = combo.element;
       const zodiac = combo.zodiac;
 
