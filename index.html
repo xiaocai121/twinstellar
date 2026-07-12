@@ -931,7 +931,7 @@ const I18N = {
     // L2 certificate (paid virtual product)
     lbl_cert:'Your sacred certificate',
     cert_sub:'Your first artifact — a beautifully rendered keepsake of your signature, mantra, and power stones. Proof that you are the author of your own story.',
-    btn_cert:'◇ Get My Certificate ($5–9) ◇',
+    btn_cert:'◇ Get My Certificate ◇',
     // L4 subscription (hero product)
     lbl_sub:'Your signature, alive every month',
     sub_desc:'Your signature is a living thing. Each month we send a deeper reading, a ritual card, and a custom wallpaper — small, quiet arrivals that make the cosmic feel close. Begin with the year and let it become a gentle daily ritual.',
@@ -989,7 +989,7 @@ const I18N = {
     // L2 certificate (paid virtual product)
     lbl_cert:'你的神圣证书',
     cert_sub:'你宇宙叙事的第一件珍藏——你的称号、真言与能量石精美呈现，见证你正是自己人生的作者。',
-    btn_cert:'◇ 获取我的证书（$5–9） ◇',
+    btn_cert:'◇ 获取我的证书 ◇',
     // L4 subscription (hero product)
     lbl_sub:'你的签名，每月都在生长',
     sub_desc:'你的签名是活的。每月：基于你宇宙签名的更深解读、一张仪式卡、一份定制壁纸——如静谧的到访，让宇宙离你很近。以年付开启，让它成为温柔的日常仪式。',
@@ -1386,13 +1386,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // deep-link: ?e=&z= → show result directly
-  const params = new URLSearchParams(location.search);
-  const e = params.get('e'), z = params.get('z');
-  if (e && z) {
-    const combo = findCombo(e, z);
-    if (combo) { renderResult(combo); show('result'); return; }
-  }
   // L1 waitlist: store email in localStorage
   const wb = $('waitlistBlock');
   if (wb) {
@@ -1419,47 +1412,283 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // L2 certificate: generate browser-side download
+  // L2 certificate: generate browser-side image and download
   const cb = $('certBtn');
   if (cb) {
-    cb.addEventListener('click', () => {
+    cb.addEventListener('click', async () => {
       if (!lastResult || !lastResult.combo) return;
       const combo = lastResult.combo;
       const zh = LANG === 'zh';
       const title = zh ? combo.title_cn : combo.title_en;
       const mantra = zh ? (combo.mantra_cn || combo.mantra_en) : combo.mantra_en;
-      const stones = (combo.stones || []).join(', ');
+      const stones = (combo.stones || []).join(zh ? ' · ' : ', ');
       const element = combo.element;
       const zodiac = combo.zodiac;
 
-      // build a printable certificate via a temporary window
-      const w = window.open('', '_blank', 'width=800,height=1050');
-      if (!w) { alert(zh ? '请允许弹窗以生成证书。' : 'Please allow pop-ups to generate your certificate.'); return; }
-      w.document.write(`<!DOCTYPE html>
-<html lang="${zh?'zh-CN':'en'}"><head><meta charset="UTF-8"><title>${title}</title>
-<style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:#08080B; color:#E4E2EE; font-family:'Cormorant Garamond','Noto Serif SC',serif;
-         display:flex; align-items:center; justify-content:center; min-height:100vh; }
-  .cert { max-width:620px; padding:50px 40px; text-align:center; border:1px solid rgba(203,163,91,0.3); border-radius:16px; }
-  .cert .brand { font-size:12px; letter-spacing:0.3em; color:#CBA35B; text-transform:uppercase; margin-bottom:24px; }
-  .cert .title { font-size:38px; font-weight:600; background:linear-gradient(135deg,#F4E3B4,#D8B675,#B58A2E,#E7CE92);
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:12px; }
-  .cert .sub { font-size:14px; color:#8c8c96; margin-bottom:28px; }
-  .cert .mantra { font-style:italic; font-size:22px; color:#E4E2EE; margin-bottom:20px; }
-  .cert .stones { font-size:14px; color:#CBA35B; margin-bottom:28px; }
-  .cert .signature { font-size:13px; color:#6c6c78; border-top:1px solid rgba(203,163,91,0.15); padding-top:18px; }
-</style></head><body>
-<div class="cert">
-  <div class="brand">TWINSTELLAR</div>
-  <div class="title">${title}</div>
-  <div class="sub">${element} &times; ${zodiac} &mdash; ${zh?'六十种神圣组合之一':'one of sixty sacred combinations'}</div>
-  <div class="mantra">${zh?'「':'"' }${mantra}${zh?'」':'"' }</div>
-  <div class="stones">${zh?'能量石':'Power Stones'}: ${stones}</div>
-  <div class="signature">${zh?'双珠·宇宙':'Two Beads. One Universe.'}</div>
-</div></body></html>`);
-      w.document.close();
-      setTimeout(() => w.print(), 600);
+      // wait for fonts (best effort, capped so offline/slow networks still work)
+      try {
+        await Promise.race([
+          document.fonts.ready.then(() => Promise.all([
+            document.fonts.load("600 38px 'Cormorant Garamond', 'Noto Serif SC', serif"),
+            document.fonts.load("italic 500 24px 'Cormorant Garamond', 'Noto Serif SC', serif"),
+            document.fonts.load("500 22px 'Noto Serif SC', serif"),
+            document.fonts.load("400 16px 'Inter', sans-serif")
+          ])),
+          new Promise(r => setTimeout(r, 1200))
+        ]);
+      } catch (_) {}
+
+      const W = 1200, H = 1600;
+      const SCALE = 2;
+      const canvas = document.createElement('canvas');
+      canvas.width = W * SCALE; canvas.height = H * SCALE;
+      const ctx = canvas.getContext('2d');
+      ctx.scale(SCALE, SCALE);
+
+      function roundRect(x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+        ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+        ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+        ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
+        ctx.closePath();
+      }
+
+      function wrapText(text, x, y, maxWidth, lineHeight, opts = {}) {
+        ctx.save();
+        const style = opts.style || 'normal';
+        const weight = opts.weight || '500';
+        const size = opts.size || 20;
+        const font = opts.font || "'Cormorant Garamond', 'Noto Serif SC', serif";
+        ctx.font = `${style} ${weight} ${size}px ${font}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillStyle = opts.color || '#E4E2EE';
+        const isCJK = (ch) => /[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef]/.test(ch);
+        const chars = Array.from(text);
+        let line = '';
+        let yy = y;
+        for (let i = 0; i < chars.length; i++) {
+          const ch = chars[i];
+          const test = line + ch;
+          const w = ctx.measureText(test).width;
+          if (w > maxWidth && line && !isCJK(ch)) {
+            ctx.fillText(line, x, yy);
+            line = ch;
+            yy += lineHeight;
+          } else if (w > maxWidth && line) {
+            ctx.fillText(line, x, yy);
+            line = ch;
+            yy += lineHeight;
+          } else {
+            line = test;
+          }
+        }
+        if (line) ctx.fillText(line, x, yy);
+        ctx.restore();
+        return yy + lineHeight;
+      }
+
+      function measureWrappedHeight(text, maxWidth, lineHeight, opts = {}) {
+        ctx.save();
+        const size = opts.size || 20;
+        const font = opts.font || "'Cormorant Garamond', 'Noto Serif SC', serif";
+        ctx.font = `${opts.style || 'normal'} ${opts.weight || '500'} ${size}px ${font}`;
+        const isCJK = (ch) => /[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef]/.test(ch);
+        const chars = Array.from(text);
+        let line = '';
+        let lines = 1;
+        for (let i = 0; i < chars.length; i++) {
+          const ch = chars[i];
+          const test = line + ch;
+          const w = ctx.measureText(test).width;
+          if (w > maxWidth && line) { lines++; line = ch; }
+          else line = test;
+        }
+        ctx.restore();
+        return lines * lineHeight;
+      }
+
+      function fillGradientText(text, x, y, opts = {}) {
+        const size = opts.size || 38;
+        const weight = opts.weight || '600';
+        const font = opts.font || "'Cormorant Garamond', 'Noto Serif SC', serif";
+        ctx.save();
+        ctx.font = `${weight} ${size}px ${font}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        const w = ctx.measureText(text).width;
+        const grad = ctx.createLinearGradient(x - w/2, y, x + w/2, y);
+        grad.addColorStop(0, '#F4E3B4');
+        grad.addColorStop(0.42, '#D8B675');
+        grad.addColorStop(0.78, '#B58A2E');
+        grad.addColorStop(1, '#E7CE92');
+        ctx.fillStyle = grad;
+        ctx.fillText(text, x, y);
+        ctx.restore();
+        return y + size * 1.25;
+      }
+
+      // background
+      const bg = ctx.createRadialGradient(W/2, H/2, 150, W/2, H/2, 950);
+      bg.addColorStop(0, '#181826');
+      bg.addColorStop(1, '#08080B');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, W, H);
+
+      // nebula glows
+      const ng1 = ctx.createRadialGradient(W*0.32, H*0.36, 0, W*0.32, H*0.36, 520);
+      ng1.addColorStop(0, 'rgba(79,134,198,0.13)');
+      ng1.addColorStop(1, 'rgba(79,134,198,0)');
+      ctx.fillStyle = ng1; ctx.fillRect(0, 0, W, H);
+      const ng2 = ctx.createRadialGradient(W*0.68, H*0.62, 0, W*0.68, H*0.62, 520);
+      ng2.addColorStop(0, 'rgba(201,169,98,0.12)');
+      ng2.addColorStop(1, 'rgba(201,169,98,0)');
+      ctx.fillStyle = ng2; ctx.fillRect(0, 0, W, H);
+
+      // frame
+      ctx.strokeStyle = 'rgba(203,163,91,0.35)';
+      ctx.lineWidth = 1.5;
+      roundRect(80, 80, W - 160, H - 160, 18);
+      ctx.stroke();
+      ctx.strokeStyle = 'rgba(203,163,91,0.10)';
+      ctx.lineWidth = 1;
+      roundRect(96, 96, W - 192, H - 192, 12);
+      ctx.stroke();
+
+      // corner diamonds
+      ctx.fillStyle = '#CBA35B';
+      [[85,85],[W-85,85],[85,H-85],[W-85,H-85]].forEach(([cx,cy]) => {
+        ctx.beginPath();
+        ctx.moveTo(cx, cy-5); ctx.lineTo(cx+5, cy); ctx.lineTo(cx, cy+5); ctx.lineTo(cx-5, cy);
+        ctx.closePath(); ctx.fill();
+      });
+
+      // brand
+      ctx.save();
+      ctx.font = "600 14px 'Inter', sans-serif";
+      ctx.fillStyle = '#CBA35B';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.letterSpacing = '0.3em';
+      ctx.fillText('TWINSTELLAR', W/2, 150);
+      ctx.restore();
+
+      // eyebrow
+      ctx.save();
+      ctx.font = "400 13px 'Inter', sans-serif";
+      ctx.fillStyle = '#9a9aa6';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText(zh ? '五行 × 星座' : 'Five Elements × Zodiac', W/2, 200);
+      ctx.restore();
+
+      // title
+      const titleY = 260;
+      const titleSize = 58;
+      ctx.save();
+      ctx.font = `600 ${titleSize}px 'Cormorant Garamond', 'Noto Serif SC', serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      const titleW = ctx.measureText(title).width;
+      const maxTitleW = W - 240;
+      let finalTitleSize = titleSize;
+      if (titleW > maxTitleW) finalTitleSize = Math.floor(titleSize * maxTitleW / titleW);
+      ctx.font = `600 ${finalTitleSize}px 'Cormorant Garamond', 'Noto Serif SC', serif`;
+      const grad = ctx.createLinearGradient(W/2 - titleW/2, titleY, W/2 + titleW/2, titleY);
+      grad.addColorStop(0, '#F4E3B4'); grad.addColorStop(0.42, '#D8B675'); grad.addColorStop(0.78, '#B58A2E'); grad.addColorStop(1, '#E7CE92');
+      ctx.fillStyle = grad;
+      ctx.fillText(title, W/2, titleY);
+      ctx.restore();
+      let cursor = titleY + finalTitleSize + 28;
+
+      // subtitle
+      ctx.save();
+      ctx.font = "400 16px 'Inter', sans-serif";
+      ctx.fillStyle = '#8c8c96';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      const sub = `${element} × ${zodiac} — ${zh ? '六十种神圣组合之一' : 'one of sixty sacred combinations'}`;
+      ctx.fillText(sub, W/2, cursor);
+      ctx.restore();
+      cursor += 48;
+
+      // divider
+      ctx.strokeStyle = 'rgba(203,163,91,0.25)';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(W/2 - 80, cursor); ctx.lineTo(W/2 + 80, cursor); ctx.stroke();
+      cursor += 44;
+
+      // mantra label
+      ctx.save();
+      ctx.font = "400 12px 'Inter', sans-serif";
+      ctx.fillStyle = '#9a9aa6';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText(zh ? '真 言' : 'M A N T R A', W/2, cursor);
+      ctx.restore();
+      cursor += 30;
+
+      // mantra
+      const mantraText = (zh ? '「' : '"') + mantra + (zh ? '」' : '"');
+      cursor = wrapText(mantraText, W/2, cursor, W - 280, 42, {
+        size: 28, style: 'italic', weight: '500', color: '#E4E2EE',
+        font: "'Cormorant Garamond', 'Noto Serif SC', serif"
+      });
+      cursor += 54;
+
+      // stones
+      ctx.save();
+      ctx.font = "500 18px 'Inter', sans-serif";
+      ctx.fillStyle = '#CBA35B';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      const stonesText = `${zh ? '能量石' : 'Power Stones'}: ${stones}`;
+      cursor = wrapText(stonesText, W/2, cursor, W - 260, 34, {
+        size: 18, weight: '500', color: '#CBA35B', font: "'Inter', 'Noto Serif SC', sans-serif"
+      });
+      ctx.restore();
+      cursor += 60;
+
+      // date
+      const dateStr = new Date().toLocaleDateString(zh ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      ctx.save();
+      ctx.font = "400 13px 'Inter', sans-serif";
+      ctx.fillStyle = '#6c6c78';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText(dateStr, W/2, cursor);
+      ctx.restore();
+      cursor += 46;
+
+      // footer line
+      ctx.strokeStyle = 'rgba(203,163,91,0.15)';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(W/2 - 120, cursor); ctx.lineTo(W/2 + 120, cursor); ctx.stroke();
+      cursor += 24;
+
+      // footer tagline
+      ctx.save();
+      ctx.font = "500 16px 'Cormorant Garamond', 'Noto Serif SC', serif";
+      ctx.fillStyle = '#6c6c78';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText(zh ? '双珠 · 一宇宙' : 'Two Beads. One Universe.', W/2, cursor);
+      ctx.restore();
+
+      // download
+      const safeName = title.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]+/g, '_') || 'Certificate';
+      canvas.toBlob(blob => {
+        if (!blob) return;
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Twinstellar-${safeName}.png`;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1200);
+      }, 'image/png');
     });
   }
 
@@ -1504,7 +1733,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  show('home');
+  // deep-link: ?e=&z= → show result directly (must run after all listeners are bound)
+  const params = new URLSearchParams(location.search);
+  const e = params.get('e'), z = params.get('z');
+  if (e && z) {
+    const combo = findCombo(e, z);
+    if (combo) { renderResult(combo); show('result'); }
+  } else {
+    show('home');
+  }
 });
 
 // ---------- starfield (lightweight canvas) ----------
