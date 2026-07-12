@@ -457,12 +457,14 @@ header, section, footer { position: relative; z-index: 1; }
 .result-compat-link { display: inline-block; margin: 14px auto 0; color: var(--gold-soft); font-size: 13px; letter-spacing: 0.04em; text-decoration: none; opacity: 0.85; }
 .result-compat-link:hover { color: var(--gold); opacity: 1; }
 .compat { max-width: 720px; margin: 0 auto; padding: 30px 24px 70px; text-align: center; }
-.compat-form { margin: 28px auto 0; max-width: 520px; }
-.compat-fields { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-.compat-field { display: flex; flex-direction: column; gap: 6px; text-align: left; font-size: 13px; letter-spacing: 0.04em; color: var(--ink-dim); }
-.compat-date { background: rgba(255,255,255,0.05); border: 1px solid var(--line-soft); color: var(--ink); border-radius: 10px; padding: 10px 12px; font-size: 15px; color-scheme: dark; }
+.compat-form { margin: 34px auto 0; max-width: 560px; }
+.compat-fields { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; }
+.compat-field { display: flex; flex-direction: column; gap: 10px; flex: 1 1 220px; max-width: 260px; text-align: left; font-size: 14px; letter-spacing: 0.04em; color: var(--ink-dim); }
+.compat-date { background: rgba(255,255,255,0.05); border: 1px solid var(--line-soft); color: var(--ink); border-radius: 12px; padding: 14px 16px; font-size: 16px; color-scheme: dark; width: 100%; box-sizing: border-box; }
 .compat-date:focus { outline: none; border-color: var(--gold); }
-.compat-error { color: #e0795f; font-size: 13px; margin: 14px 0 0; }
+.compat-form .btn-primary { margin-top: 28px; }
+.compat-error { color: #e0795f; font-size: 13px; margin: 18px 0 0; }
+@media (max-width: 560px) { .compat-fields { gap: 20px; } .compat-field { flex: 1 1 160px; max-width: 100%; } .compat-form .btn-primary { margin-top: 24px; } }
 .compat-result { margin-top: 30px; }
 .compat-bond { font-family: Georgia, "Times New Roman", serif; font-size: 22px; color: var(--gold); margin: 6px 0 18px; }
 .compat-score-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
