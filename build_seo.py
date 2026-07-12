@@ -166,8 +166,8 @@ COMBO_TPL = """<!DOCTYPE html>
 <header class="topbar">
   <a class="brand" href="{site}/">TWINSTELLAR</a>
   <nav>
-    <a href="{site}/">Home</a>
-    <a href="index.html">Signatures</a>
+    <a href="{site}/"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
+    <a href="index.html"><span class="lang-en">Signatures</span><span class="lang-cn">签名</span></a>
   </nav>
   <button id="langSwitch" class="lang-switch" type="button">中文</button>
 </header>
@@ -331,8 +331,8 @@ wall = f"""<!DOCTYPE html>
 <header class="topbar">
   <a class="brand" href="{SITE}/">TWINSTELLAR</a>
   <nav>
-    <a href="{SITE}/">Home</a>
-    <a href="index.html">Signatures</a>
+    <a href="{SITE}/"><span class="lang-en">Home</span><span class="lang-cn">首页</span></a>
+    <a href="index.html"><span class="lang-en">Signatures</span><span class="lang-cn">签名</span></a>
   </nav>
   <button id="langSwitch" class="lang-switch" type="button">中文</button>
 </header>
