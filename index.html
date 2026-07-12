@@ -1073,11 +1073,78 @@ function calculateElement(year) {
   return order[Math.floor(stem / 2)];
 }
 
-function calculateZodiac(month, day) {
-  for (const b of BOUNDARIES.slice().reverse()) {
-    if (month > b.m || (month === b.m && day >= b.day)) return b.z;
+// ---- Year-aware zodiac: the Sun enters each sign on a slightly different
+//      calendar date every year (leap years + orbital eccentricity shift the
+//      equinoxes/solstices by ±1 day). We solve the exact ingress moment per
+//      birth year instead of using fixed dates. ----
+
+// Low-precision solar *apparent* ecliptic longitude (Meeus, Astron. Alg. §25),
+// accurate to ~0.01° — far better than the 1-day resolution we need.
+function sunLongitude(date) {
+  const jd = date.getTime() / 86400000 + 2440587.5;        // JD from Unix epoch (ms)
+  const T = (jd - 2451545.0) / 36525.0;                    // Julian centuries since J2000
+  const L0 = 280.46646 + 36000.76983 * T + 0.0003032 * T * T;
+  const M = 357.52911 + 35999.05029 * T - 0.0001537 * T * T;
+  const Mr = M * Math.PI / 180;
+  const C = (1.914602 - 0.004817 * T - 0.000014 * T * T) * Math.sin(Mr)
+          + (0.019993 - 0.000101 * T) * Math.sin(2 * Mr)
+          + 0.000289 * Math.sin(3 * Mr);
+  let lambda = L0 + C;
+  const Omega = 125.04 - 1934.136 * T;
+  lambda -= 0.00569 + 0.00478 * Math.sin(Omega * Math.PI / 180);  // nutation + aberration
+  return ((lambda % 360) + 360) % 360;
+}
+function _angleDiff(a) { return ((a + 180) % 360 + 360) % 360 - 180; }
+
+// Approx ingress {m,d} for longitude 30*k, k=0..11 = Aries..Pisces (seeds only)
+const ZODIAC_SEED = [
+  { m: 3, d: 21 }, { m: 4, d: 20 }, { m: 5, d: 21 }, { m: 6, d: 21 },
+  { m: 7, d: 23 }, { m: 8, d: 23 }, { m: 9, d: 23 }, { m: 10, d: 23 },
+  { m: 11, d: 22 }, { m: 12, d: 22 }, { m: 1, d: 20 }, { m: 2, d: 19 },
+];
+const ZODIAC_BY_K = ['aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo',
+  'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces'];
+
+// Exact UTC ms when the Sun's longitude crosses 30*k in `year`
+function _ingressTime(year, k) {
+  const target = k * 30;
+  const seed = ZODIAC_SEED[k];
+  const guess = Date.UTC(year, seed.m - 1, seed.d, 12);
+  let lo = guess - 28 * 86400000, hi = guess + 28 * 86400000;
+  for (let i = 0; i < 56; i++) {
+    const mid = (lo + hi) / 2;
+    if (_angleDiff(sunLongitude(new Date(mid)) - target) > 0) hi = mid; else lo = mid;
   }
-  return 'capricorn';
+  return (lo + hi) / 2;
+}
+
+// Cache the 12 ingress times per year (they're fixed for a given year)
+const _ingressCache = {};
+function _ingressesFor(year) {
+  if (!_ingressCache[year]) {
+    const arr = [];
+    for (let k = 0; k < 12; k++) arr.push({ k, t: _ingressTime(year, k) });
+    arr.sort((a, b) => a.t - b.t);
+    _ingressCache[year] = arr;
+  }
+  return _ingressCache[year];
+}
+
+// Year-aware sign lookup; falls back to fixed dates if no valid year is given.
+function calculateZodiac(year, month, day) {
+  if (!year || year < 1 || year > 9999) {
+    for (const b of BOUNDARIES.slice().reverse()) {
+      if (month > b.m || (month === b.m && day >= b.day)) return b.z;
+    }
+    return 'capricorn';
+  }
+  const birth = Date.UTC(year, month - 1, day, 12);   // represent the date at noon UTC
+  const ing = _ingressesFor(year);
+  let chosen = (ing[0].k + 11) % 12;                  // sign active before the year's 1st ingress
+  for (const e of ing) {
+    if (birth >= e.t) chosen = e.k; else break;
+  }
+  return ZODIAC_BY_K[chosen];
 }
 
 function findCombo(element, zodiac) {
@@ -1108,7 +1175,7 @@ function parseDob(s) { const p = String(s).split('-').map(Number); return { y: p
 
 function computeCompatibility(dA, dB) {
   const eA = calculateElement(dA.y), eB = calculateElement(dB.y);
-  const zA = calculateZodiac(dA.m, dA.d), zB = calculateZodiac(dB.m, dB.d);
+  const zA = calculateZodiac(dA.y, dA.m, dA.d), zB = calculateZodiac(dB.y, dB.m, dB.d);
   const cA = findCombo(eA, zA), cB = findCombo(eB, zB);
   const rel = elemRelation(eA, eB);
   const zr = zodiacResonance(zA, zB);
@@ -1320,7 +1387,7 @@ function runReveal(dateStr) {
   const month = date.getMonth() + 1;
   const day = date.getDate();
   const element = calculateElement(year);
-  const zodiac = calculateZodiac(month, day);
+  const zodiac = calculateZodiac(year, month, day);
   const combo = findCombo(element, zodiac);
   if (!combo) { alert('Something went wrong reading the stars. Please try again.'); return; }
 
