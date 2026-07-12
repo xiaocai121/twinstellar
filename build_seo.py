@@ -309,9 +309,10 @@ for c in combos:
     cards.append(
         f'<a class="sig-card" href="{slug_of(c)}.html" style="--el:{el["color"]}">'
         f'<span class="sig-sym">{el["symbol"]}{zk["symbol"]}</span>'
-        f'<span class="sig-en">{esc(c["title_en"])}</span>'
-        f'<span class="sig-cn">{esc(c["title_cn"])}</span>'
-        f'<span class="sig-z">{zk["cn"]}</span>'
+        f'<span class="sig-en lang-en">{esc(c["title_en"])}</span>'
+        f'<span class="sig-cn lang-cn">{esc(c["title_cn"])}</span>'
+        f'<span class="sig-z lang-en">{esc(zk["name"])}</span>'
+        f'<span class="sig-z lang-cn">{esc(zk["cn"])}</span>'
         f"</a>"
     )
 wall = f"""<!DOCTYPE html>
