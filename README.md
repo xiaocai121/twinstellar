@@ -43,6 +43,16 @@ GitHub Pages 已配置 `cname: twinstellar.com` 且构建正常（API 确认 `st
 `index.html` 中的 `PAY_BASE` 留空时，结果页 / 日运页 / 合盘页的「解锁深度版」按钮走本地预览解锁（写入 `localStorage` 的 `twin_leads`，附 `ref` 推荐字段），便于设计评审与本地调试。
 接入 Stripe 后，把 `PAY_BASE` 改为对应的 **Payment Link** 即可转为真实一次性结账（全站三处 CTA 共用同一 `PAY_BASE`）。
 
+### 接入步骤
+1. Stripe 后台 → **Payment Links** → 新建，建一个**一次性（非订阅）**产品「核心解读 · 深度版」，设好价格（如 $9）与币种；可按需开启「收集邮箱」。
+2. 把该 Payment Link 的 **success_url** 设为站点回跳地址：`https://twinstellar.com/?paid=1`（上线后必须为 HTTPS 真实域名）。
+3. 复制 `https://buy.stripe.com/...` 链接，粘贴进 `index.html` 第 1010 行：`const PAY_BASE = 'https://buy.stripe.com/xxxx';`。
+4. 提交并部署（`git push origin main`），GitHub Pages 约 1–2 分钟生效。
+
+> 工作机制：点击 CTA → `openPay()` 把待解锁组合写入 `localStorage('twin_pending_deep')` 并跳转到 Stripe；付款完成用户点「返回商户」回到 `?paid=1` → 页面读取待解锁组合并自动展开深度解读。
+>
+> ⚠️ **当前为「软闸门」**：纯前端校验，懂技术的用户可在浏览器手动写入 `twin_pending_deep` 并访问 `?paid=1` 绕过付费。对 $9 一次性数字内容属可接受的 MVP 折中；若要硬闸门，需加 Stripe **Webhook + 签名校验 + 服务端签发令牌**（任意 Serverless：Cloudflare Worker / Vercel Edge），不在本静态站点范围内。
+
 | 路径 | 内容 | 价格 |
 |------|------|------|
 | 免费 | 基础核心解读（称号 + 元素 + 星座 + 融合释义 + 真言 + 能量石）+ 合盘免费预览（分数/等级/闪光点）+ 日运免费版 | $0 |

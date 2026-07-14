@@ -1512,6 +1512,10 @@ function deepCapture(combo) {
 }
 function openPay(source, combo) {
   if (!PAY_URL) return false;
+  // remember which combo the user intends to unlock, so the success_url return can reveal it
+  if (combo) {
+    try { localStorage.setItem('twin_pending_deep', JSON.stringify({ element: combo.element, zodiac: combo.zodiac })); } catch (_) {}
+  }
   const q = `?source=${source}` + (combo ? `&e=${combo.element}&z=${combo.zodiac}` : '');
   window.location.href = PAY_URL + q;
   return true;
@@ -2494,6 +2498,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (ub) {
     ub.addEventListener('click', () => {
       if (PAY_URL) {
+        if (lastCompat) { try { localStorage.setItem('twin_pending_deep', JSON.stringify({ element: lastCompat.eA, zodiac: lastCompat.zA })); } catch (_) {} }
         const q = lastCompat ? `?source=compat&e=${lastCompat.eA}&z=${lastCompat.zA}` : '?source=compat';
         window.location.href = PAY_URL + q;
         return;
@@ -2504,14 +2509,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // deep-link: ?e=&z= → show result directly (must run after all listeners are bound)
+  // post-payment return: Stripe success_url is configured as ?paid=1 → reveal the deep reading for the pending combo
   const params = new URLSearchParams(location.search);
-  const e = params.get('e'), z = params.get('z');
-  if (e && z) {
-    const combo = findCombo(e, z);
-    if (combo) { renderResult(combo); show('result'); }
+  const paid = params.get('paid');
+  if (paid && localStorage.getItem('twin_pending_deep')) {
+    try {
+      const pd = JSON.parse(localStorage.getItem('twin_pending_deep'));
+      const combo = findCombo(pd.element, pd.zodiac);
+      if (combo) {
+        lastResult = { combo };
+        renderResult(combo);
+        show('result');
+        deepCapture(combo);
+        const detail = $('deepDetail');
+        if (detail) detail.innerHTML = deepReadingHTML(combo, LANG);
+        const db = $('deepBlock'), dr = $('deepReveal');
+        if (db) db.hidden = true;
+        if (dr) { dr.hidden = false; dr.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      }
+    } catch (_) {}
+    localStorage.removeItem('twin_pending_deep');
   } else {
-    show('home');
+    // deep-link: ?e=&z= → show result directly
+    const e = params.get('e'), z = params.get('z');
+    if (e && z) {
+      const combo = findCombo(e, z);
+      if (combo) { renderResult(combo); show('result'); }
+    } else {
+      show('home');
+    }
   }
 });
 
