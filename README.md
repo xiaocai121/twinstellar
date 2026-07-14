@@ -2,7 +2,7 @@
 
 一个**纯静态**网站（无需服务器、无需数据库）。输入生日 → 算出你的五行 + 星座 → 匹配 60 种专属「宇宙签名」之一 → 展示称号 / 融合释义 / 真言 / 能量石，并可通过社交分享与推荐裂变传播。
 
-> **纯数字品牌**：无实物、零供应链。免费解读 + 证书 ($5–9) + 订阅 ($19/月 或 $149/年)。详见 `Twinstellar落地路径.md`（唯一权威文档）。
+> **纯数字品牌**：无实物、零供应链。**基础核心解读永久免费**（礼物经济获客钩子）；唯一付费路径为一次性「核心解读 · 深度版」——解锁更深内容（合盘边界与完整叙事、日运全本、专属仪式与叩问）。详见 `Twinstellar落地路径.md`（品牌与落地策略总纲）。
 
 ## 文件
 - `index.html` — **单文件自包含**（HTML + CSS + JS + 60 组合数据全部内联，部署零依赖）
@@ -37,14 +37,23 @@ GitHub Pages 已配置 `cname: twinstellar.com` 且构建正常（API 确认 `st
 5. 改完等待传播（数分钟～48h），验证：`curl -sI https://twinstellar.com/` 应返回 `server: GitHub.com`，且页面无 `bracelet`/`手链`。
 > 若仓库 Settings → Pages 显示域名待验证，重新保存自定义域名并按提示添加一条 TXT 验证记录即可。
 
-## 接收入（未来 · 需 Stripe）
-`index.html` 中的 `SUBSCRIBE_BASE` 留空时，订阅/证书按钮走本地 `mailto` 线索捕获（写入 `localStorage` 的 `twin_leads`，附 `ref` 推荐字段）。
-接入 Stripe 后，把 `SUBSCRIBE_BASE` / 证书链接改为对应 Payment Link 即可转为真实结账（见路线图 P4）。
+## 变现（单一付费路径 · 需 Stripe Payment Link）
+全站**仅保留一条收费路径**：一次性「核心解读 · 深度版」。
+
+`index.html` 中的 `PAY_BASE` 留空时，结果页 / 日运页 / 合盘页的「解锁深度版」按钮走本地预览解锁（写入 `localStorage` 的 `twin_leads`，附 `ref` 推荐字段），便于设计评审与本地调试。
+接入 Stripe 后，把 `PAY_BASE` 改为对应的 **Payment Link** 即可转为真实一次性结账（全站三处 CTA 共用同一 `PAY_BASE`）。
+
+| 路径 | 内容 | 价格 |
+|------|------|------|
+| 免费 | 基础核心解读（称号 + 元素 + 星座 + 融合释义 + 真言 + 能量石）+ 合盘免费预览（分数/等级/闪光点）+ 日运免费版 | $0 |
+| 一次性付费 | 「核心解读 · 深度版」：更深的织合叙事 + 专属仪式 + 可带身上的叩问；并解锁合盘边界与完整叙事、日运全本 | 一次性 |
+
+> 话术铁律（礼物经济）：全站禁用 `buy` / `claim` / `limited` / 限量 / 限时；统一用「礼物 / 邀请 / 深化」语态。
 
 ## 自定义
-- **改价格/文案**：`index.html` 中英文案直改（搜索关键词即可定位）；阶梯逻辑见 `Twinstellar落地路径.md` §4。
+- **改价格/文案**：`index.html` 中英文案直改（搜索 `data-i18n` 键或常量即可定位）；变现阶梯逻辑见本文件「变现」一节。
 - **P1 免费内容引擎（已上线）**：运行 `python3 build_seo.py` 解析 `index.html` 常量，生成 `combo/<element>-<zodiac>.html`（60 页，含 `<title>`/meta/OG/Twitter/canonical/H1、五行×星座融合、真言、能量石、同元素+同星座内部链接、回主站 CTA 带 `?e=&z=`）、`combo/index.html`（60 张「宇宙签名墙」卡片）、`combo/combo.css`。产物提交进仓库，GitHub Pages 直接托管（见 `Twinstellar落地路径.md` §4.6 / §6.1）。
-- **P3 合盘报告（已上线，L3 付费增值）**：`index.html` 的 `#compat` 视图，输入两个生日 → `computeCompatibility()` 用 **五行 生克比和 + 星座共鸣** 算出 1–99 分、等级（天作之合/知音相惜/相成长/互补之美）、闪光点与边界。免费预览分数+等级+元素之契+星座共鸣+闪光点；**edges 与完整叙事为 L3 订阅解锁**（Stripe 落地 P4，当前 `SUB_BASE` 空时点击即解锁预览并保留 $19/mo 订阅 CTA）。
+- **P3 合盘报告（已上线）**：`index.html` 的 `#compat` 视图，输入两个生日 → `computeCompatibility()` 用 **五行 生克比和 + 星座共鸣** 算出 1–99 分、等级（天作之合/知音相惜/相成长/互补之美）、闪光点与边界。免费预览分数+等级+元素之契+星座共鸣+闪光点；**edges 与完整叙事为「核心解读 · 深度版」一次性解锁**（Stripe 落地后，当前 `PAY_BASE` 空时点击即解锁预览）。
 - **病毒裂变**：结果页原生分享按钮（X / Facebook / Pinterest / WhatsApp / Reddit）+ 复制链接自带 `?ref=` 推荐参数；`?ref=` 在加载时捕获进 `localStorage`。
 
 ## 已验证

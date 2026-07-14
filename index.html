@@ -366,30 +366,23 @@ header, section, footer { position: relative; z-index: 1; }
 .product-block { margin: 46px auto 30px; }
 .product-sub { color: #6c6c78; font-size: 12px; margin: 10px 0 26px; }
 
-/* ---------- certificate (L2, paid virtual product) ---------- */
-.cert-block { margin: 34px auto 18px; max-width: 480px; }
-.cert-label { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-.cert-sub { color: #6c6c78; font-size: 12px; margin-bottom: 16px; }
-.tiers { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.tier {
-  background: linear-gradient(180deg, rgba(30,30,37,0.7), rgba(18,18,24,0.5));
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--line-soft);
-  border-radius: 16px;
-  padding: 22px 18px;
-  width: 168px;
-  cursor: pointer;
-  transition: transform .25s, border-color .25s, box-shadow .25s;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+/* ---------- 核心解读·深度版 (single paid path) ---------- */
+.deep-block { margin: 30px auto 18px; max-width: 520px; text-align: center; }
+.deep-block.hero {
+  background: linear-gradient(180deg, rgba(30,30,37,0.55), rgba(18,18,24,0.35));
+  border: 1px solid var(--line); border-radius: 20px; padding: 30px 26px;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 20px 50px -20px rgba(203,163,91,0.28);
+  text-align: left;
 }
-.tier:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 16px 36px -14px rgba(203,163,91,0.35); }
-.tier .tier-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; }
-.tier .tier-desc { font-size: 11px; color: var(--ink-dim); margin: 6px 0 14px; min-height: 28px; }
-.tier .tier-price { color: var(--gold-soft); font-size: 17px; font-weight: 500; letter-spacing: 0.02em; }
-.tier .tier-cta { margin-top: 12px; font-size: 12px; letter-spacing: 0.1em; color: var(--gold-soft); }
+.deep-label { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; text-align: center; }
+.deep-block.hero .deep-label { text-align: left; }
+.deep-detail { margin-top: 8px; color: #8c8c96; font-size: 14px; line-height: 1.8; }
+.deep-detail p { margin: 0 0 14px; color: var(--ink-dim); }
+.deep-detail strong { color: var(--gold-soft); font-weight: 500; }
+.deep-detail .deep-ritual, .deep-detail .deep-reflection { color: var(--ink-dim); }
+.deep-cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+.deep-note { font-size: 11px; color: #6c6c78; margin-top: 12px; letter-spacing: 0.02em; }
 
 .share-block { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
 .share-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 24px 0 10px; }
@@ -417,30 +410,7 @@ header, section, footer { position: relative; z-index: 1; }
 }
 .waitlist-confirm { color: var(--gold-soft); font-size: 13px; margin-top: 12px; }
 
-/* ---------- subscription (L4, hero product) ---------- */
-.subscription-block { margin: 26px auto 10px; max-width: 520px; }
-.subscription-block.hero {
-  background: linear-gradient(180deg, rgba(30,30,37,0.55), rgba(18,18,24,0.35));
-  border: 1px solid var(--line); border-radius: 20px; padding: 30px 26px;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 20px 50px -20px rgba(203,163,91,0.28);
-}
-.sub-label { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-.sub-toggle {
-  background: none; border: 1px solid var(--line-soft); border-radius: 30px;
-  padding: 10px 22px; color: var(--gold-soft); font-size: 13px; cursor: pointer;
-  letter-spacing: 0.06em; transition: border-color .25s, color .25s;
-}
-.sub-toggle:hover { border-color: var(--gold); color: var(--gold); }
-.sub-detail { margin-top: 14px; color: #8c8c96; font-size: 13px; line-height: 1.7; }
-.sub-detail .btn-primary { margin-top: 16px; }
-.sub-annual {
-  display: inline-block; margin: 14px auto 0; padding: 6px 16px;
-  font-size: 12px; letter-spacing: 0.08em; color: var(--gold-soft);
-  border: 1px solid var(--line-soft); border-radius: 30px;
-  background: rgba(203,163,91,0.06);
-}
-.subscription-block.hero .sub-annual { display: block; width: fit-content; }
+/* subscription (L2 cert / L3 sub) removed — single paid path is ".deep-block" */
 .share-sub { color: var(--ink-dim); font-size: 13px; line-height: 1.6; text-align: center; max-width: 460px; margin: 28px auto 0; font-style: italic; }
 
 /* ---------- story ---------- */
@@ -625,14 +595,14 @@ header, section, footer { position: relative; z-index: 1; }
 #result.view-in .mantra-block   { animation: fadeUp .9s 1.60s both; }
 #result.view-in .waitlist-block { animation: fadeUp .9s 1.90s both; }
 #result.view-in .stones-block   { animation: fadeUp .9s 2.10s both; }
-#result.view-in .cert-block     { animation: fadeUp .9s 2.30s both; }
-#result.view-in .subscription-block { animation: fadeUp .9s 2.60s both; }
+#result.view-in .deep-block     { animation: fadeUp .9s 2.30s both; }
+/* deep reveal (.deep-block.hero) animates on unlock, not on load */
 #result.view-in .share-sub     { animation: fadeUp .8s 2.80s both; }
 #result.view-in .share-block    { animation: fadeUp .8s 2.95s both; }
 #result.view-in .stones .stone:nth-child(1) { animation: popIn .5s 2.15s both; }
 #result.view-in .stones .stone:nth-child(2) { animation: popIn .5s 2.25s both; }
 #result.view-in .stones .stone:nth-child(3) { animation: popIn .5s 2.35s both; }
-#result.view-in .sub-label      { animation: glowPulse 2s 2.80s ease-out 1; }
+#result.view-in .deep-label      { animation: glowPulse 2s 2.80s ease-out 1; }
 
 @keyframes fadeUp   { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 @keyframes fromLeft { from { opacity: 0; transform: translateX(-34px); } to { opacity: 1; transform: none; } }
@@ -761,21 +731,16 @@ header, section, footer { position: relative; z-index: 1; }
       <div class="stones" id="stonesWrap"></div>
     </div>
 
-    <!-- L2: certificate (paid virtual product) -->
-    <div class="cert-block" id="certBlock">
-      <p class="cert-label" data-i18n="lbl_cert">Your sacred certificate</p>
-      <p class="cert-sub" data-i18n="cert_sub">Your first artifact — a beautifully rendered keepsake of your signature, mantra, and power stones. Proof that you are the author of your own story.</p>
-      <button class="btn-primary" id="certBtn" data-i18n="btn_cert">◇ Get My Certificate ($5–9) ◇</button>
+    <!-- 核心解读·深度版 (single paid path) -->
+    <div class="deep-block" id="deepBlock">
+      <p class="deep-label" data-i18n="lbl_deep">Your signature, in full</p>
+      <p class="product-sub" data-i18n="deep_sub">The free reading is yours to keep. The Deep Edition weaves your element, zodiac, and sacred title into a fuller reading — a quiet ritual and a question to carry.</p>
+      <button class="btn-primary" id="deepCta" data-i18n="btn_deep">◇ Unlock the Core Reading — Deep Edition ◇</button>
+      <p class="deep-note" data-i18n="deep_note">A one-time gift to yourself. No subscription, no noise.</p>
     </div>
-
-    <!-- L3: subscription (hero product, default expanded) -->
-    <div class="subscription-block hero" id="subBlock" hidden>
-      <p class="sub-label" data-i18n="lbl_sub">Your signature, alive every month</p>
-      <div class="sub-detail" id="subDetail">
-        <p data-i18n="sub_desc">Your signature is a living thing. Each month we send a deeper reading, a ritual card, and a custom wallpaper — small, quiet arrivals that make the cosmic feel close. Begin with the year and let it become a gentle daily ritual.</p>
-        <p class="sub-annual" data-i18n="sub_annual">Save 34% with the year · cancel anytime</p>
-        <a class="btn-primary" id="subCta" data-i18n="sub_cta">◇ Begin the Journey — $19/mo or $149/yr ◇</a>
-      </div>
+    <div class="deep-block hero" id="deepReveal" hidden>
+      <p class="deep-label" data-i18n="lbl_deep_full">Your Core Reading · Deep Edition</p>
+      <div class="deep-detail" id="deepDetail"></div>
     </div>
 
     <p class="share-sub" data-i18n="share_sub">Find your constellation kin — share your signature with a kindred spirit.</p>
@@ -858,7 +823,7 @@ header, section, footer { position: relative; z-index: 1; }
         <ul id="compatStrengths"></ul>
       </div>
 
-      <!-- L3 订阅解锁区 -->
+      <!-- 深度版解锁区 -->
       <div class="compat-gated" id="compatGated" hidden>
         <h3 data-i18n="compat_edges_t">The edges &amp; the work</h3>
         <ul id="compatEdges"></ul>
@@ -868,7 +833,7 @@ header, section, footer { position: relative; z-index: 1; }
 
       <div class="compat-unlock" id="compatUnlock" hidden>
         <p data-i18n="compat_unlock">The full reading — where the edges ask for care, and a small ritual to weave you closer — is part of the Twinstellar journey.</p>
-        <button class="btn-primary" id="compatUnlockBtn" data-i18n="compat_cta">◇ Unlock the Full Reading — $19/mo ◇</button>
+        <button class="btn-primary" id="compatUnlockBtn" data-i18n="compat_cta">◇ Unlock the Full Reading — Deep Edition ◇</button>
       </div>
     </div>
   </section>
@@ -915,6 +880,18 @@ header, section, footer { position: relative; z-index: 1; }
       </div>
       <p class="chart-summary" id="chartSummary"></p>
     </div>
+
+    <!-- 核心解读·深度版 (single paid path) — daily deep guide -->
+    <div class="deep-block" id="dailyDeepBlock">
+      <p class="deep-label" data-i18n="lbl_daily_deep">Go deeper</p>
+      <p class="product-sub" data-i18n="daily_deep_sub">The daily reading is a gift. The Deep Edition adds a personal ritual and a focus for your day.</p>
+      <button class="btn-primary" id="dailyDeepCta" data-i18n="btn_daily_deep">◇ Unlock the Core Reading — Deep Edition ◇</button>
+    </div>
+    <div class="deep-block hero" id="dailyDeepReveal" hidden>
+      <p class="deep-label" data-i18n="lbl_daily_deep_full">Your Daily Deep Guide</p>
+      <div class="deep-detail" id="dailyDeepDetail"></div>
+    </div>
+
     <p class="share-sub" data-i18n="daily_share_sub">Share today's fortune — every share brings you closer to unlocking.</p>
     <div class="share-row" id="dailyShareRow">
       <button class="share-btn" data-share="x" type="button" aria-label="Share on X">
@@ -1028,9 +1005,9 @@ const BOUNDARIES = [
   { m: 12, d: 22, z: 'capricorn' },
 ];
 
-// ---- SUBSCRIBE: drop in your Stripe / Patreon / membership link here ----
-// Leave as '' to use the built-in subscription email capture.
-const SUBSCRIBE_BASE = '';
+// ---- PAY_BASE: drop in your Stripe Payment Link for the one-time "核心解读·深度版" ----
+// Leave as '' to use preview-unlock (local lead capture, content revealed in-session).
+const PAY_BASE = '';
 
 // ---- Referral: capture ?ref= and persist so invited friends can be credited ----
 function getRef() {
@@ -1068,7 +1045,7 @@ const I18N = {
     share_sub:'Find your constellation kin — share your signature with a kindred spirit.',
     story_title:'The Twinstellar Story',
     story_eyebrow:'Our Philosophy',
-    story_text:'Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one living signature, one of sixty sacred combinations — each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. The reading is ours to give you, freely: to keep, to return to, to share. You are the author of your own story — and your signature is a living thing, a quiet return to yourself rather than another productivity app. Deepen it month by month, or begin the journey when you are ready. <strong>Two Beads. One Universe.</strong>',
+    story_text:'Every soul stands at a threshold beneath a twin star — one that speaks the language of the cosmos, your Zodiac; the other that whispers the ancient wisdom of the Five Elements. Twinstellar reads the day you arrived and weaves these two voices into one living signature, one of sixty sacred combinations — each with its own name, mantra, and power stones. You are not a machine to be taken apart. You are an open, living system, always exchanging with the wider cosmos. The reading is ours to give you, freely: to keep, to return to, to share. You are the author of your own story — and your signature is a living thing, a quiet return to yourself rather than another productivity app. Keep it, return to it, share it — and when you are ready, deepen it into the Core Reading · Deep Edition. <strong>Two Beads. One Universe.</strong>',
     story_foot:'Twinstellar is a sanctuary of intention. Your signature is yours, freely — to keep, to return to, and to share.',
     footer_text:'Two Beads. One Universe. · For intention and reflection — not a substitute for medical or spiritual counsel.',
     result_name:'This is you.',
@@ -1078,16 +1055,18 @@ const I18N = {
     waitlist_placeholder:'your@email.com',
     waitlist_btn:'◇ Wake Me ◇',
     waitlist_done:'You\'re on the list. The universe will reach you.',
-    // L2 certificate (paid virtual product)
-    lbl_cert:'Your sacred certificate',
-    cert_sub:'Your first artifact — a beautifully rendered keepsake of your signature, mantra, and power stones. Proof that you are the author of your own story.',
-    btn_cert:'◇ Get My Certificate ◇',
-    // L4 subscription (hero product)
-    lbl_sub:'Your signature, alive every month',
-    sub_desc:'Your signature is a living thing. Each month we send a deeper reading, a ritual card, and a custom wallpaper — small, quiet arrivals that make the cosmic feel close. Begin with the year and let it become a gentle daily ritual.',
-    sub_cta:'◇ Begin the Journey — $19/mo or $149/yr ◇',
-    sub_annual:'Save 34% with the year · cancel anytime',
-    share_reward:'Share your signature — you and a friend each unlock a bonus reading.',
+    // 核心解读·深度版 (single paid path)
+    lbl_deep:'Your signature, in full',
+    deep_sub:'The free reading is yours to keep. The Deep Edition weaves your element, zodiac, and sacred title into a fuller reading — a quiet ritual and a question to carry.',
+    btn_deep:'◇ Unlock the Core Reading — Deep Edition ◇',
+    deep_note:'A one-time gift to yourself. No subscription, no noise.',
+    lbl_deep_full:'Your Core Reading · Deep Edition',
+    share_reward:'Share your signature — you and a friend each receive a quiet gift.',
+    // daily deep guide
+    lbl_daily_deep:'Go deeper',
+    daily_deep_sub:'The daily reading is a gift. The Deep Edition adds a personal ritual and a focus for your day.',
+    btn_daily_deep:'◇ Unlock the Core Reading — Deep Edition ◇',
+    lbl_daily_deep_full:'Your Daily Deep Guide',
     result_wall:'◇ Browse the Cosmic Signature Wall ◇',
     footer_wall:'Explore all 60 cosmic signatures →',
     nav_compat:'Compat',
@@ -1103,7 +1082,7 @@ const I18N = {
     compat_edges_t:'The edges & the work',
     compat_narr_t:'Your bond, in full',
     compat_unlock:'The full reading — where the edges ask for care, and a small ritual to weave you closer — is part of the Twinstellar journey.',
-    compat_cta:'◇ Unlock the Full Reading — $19/mo ◇',
+    compat_cta:'◇ Unlock the Full Reading — Deep Edition ◇',
     compat_err:'Please enter both birthdays.',
     result_compat:'◇ Read your bond with another soul ◇',
     // Daily fortune
@@ -1145,7 +1124,7 @@ const I18N = {
     share_sub:'找到同频的星座亲属——把签名分享给同频的人。',
     story_title:'Twinstellar 的故事',
     story_eyebrow:'品牌哲思',
-    story_text:'每个人，都站在一段旅程的门槛上。头顶有一颗双生星：一颗说宇宙的语言，那是你的星座；一颗低语五行的古老智慧——金木水火土，流转在你体内。Twinstellar 读取你来到世间的那一天，把这两种声音，织成六十种神圣组合之一：每一种都有专属称号、真言与能量石。道不远人。你从不是孤立的碎片——天地之气在你体内流转，星座在上，五行在下，阴阳交感，自然显化为你独有的「宇宙签名」。我们做的，不过是一次天人感应：以你降生那日，观星座之轨、察五行之气，将这两股相反而相成的力量，和合成六十种道法自然之一。这份签名，本就是活的宇宙回信——可免费珍藏，可订阅让它每月生长，也可分享给同道；若你心有所感，便让签名每月生长得更深。<strong>双珠·宇宙</strong>',
+    story_text:'每个人，都站在一段旅程的门槛上。头顶有一颗双生星：一颗说宇宙的语言，那是你的星座；一颗低语五行的古老智慧——金木水火土，流转在你体内。Twinstellar 读取你来到世间的那一天，把这两种声音，织成六十种神圣组合之一：每一种都有专属称号、真言与能量石。道不远人。你从不是孤立的碎片——天地之气在你体内流转，星座在上，五行在下，阴阳交感，自然显化为你独有的「宇宙签名」。我们做的，不过是一次天人感应：以你降生那日，观星座之轨、察五行之气，将这两股相反而相成的力量，和合成六十种道法自然之一。这份签名，本就是活的宇宙回信——可免费珍藏，可分享给同道；若你心有所感，便解锁「核心解读·深度版」，让签名显化得更深。<strong>双珠·宇宙</strong>',
     story_foot:'Twinstellar 是一处心愿的圣所。签名本就免费予你——可珍藏、可重访、可分享。',
     footer_text:'双珠·宇宙 · 用于心愿与自省，并非医疗或专业建议的替代。',
     result_name:'这就是你。',
@@ -1155,16 +1134,13 @@ const I18N = {
     waitlist_placeholder:'your@email.com',
     waitlist_btn:'◇ 唤醒我 ◇',
     waitlist_done:'你已在名单上。宇宙会找到你。',
-    // L2 certificate (paid virtual product)
-    lbl_cert:'你的神圣证书',
-    cert_sub:'你宇宙叙事的第一件珍藏——你的称号、真言与能量石精美呈现，见证你正是自己人生的作者。',
-    btn_cert:'◇ 获取我的证书 ◇',
-    // L4 subscription (hero product)
-    lbl_sub:'你的签名，每月都在生长',
-    sub_desc:'你的签名是活的。每月：基于你宇宙签名的更深解读、一张仪式卡、一份定制壁纸——如静谧的到访，让宇宙离你很近。以年付开启，让它成为温柔的日常仪式。',
-    sub_cta:'◇ 开始旅程 —— $19/月 或 $149/年 ◇',
-    sub_annual:'年付省 34% · 随时可取消',
-    share_reward:'分享你的签名——你与朋友各解锁一份加赠解读。',
+    // 核心解读·深度版 (single paid path)
+    lbl_deep:'你的签名，全貌',
+    deep_sub:'基础解读已属你，免费珍藏。深度版将你的元素、星座与神圣称号，织成一份更完整的宇宙解读——一段静谧仪式，一个可随身携带的叩问。',
+    btn_deep:'◇ 解锁核心解读 · 深度版 ◇',
+    deep_note:'一次性的礼物予己。无订阅，无喧嚣。',
+    lbl_deep_full:'你的核心解读 · 深度版',
+    share_reward:'分享你的签名——你与朋友各得一份安静的礼物。',
     result_wall:'◇ 浏览宇宙签名墙 ◇',
     footer_wall:'探索全部 60 个宇宙签名 →',
     nav_compat:'合盘',
@@ -1180,7 +1156,7 @@ const I18N = {
     compat_edges_t:'边界与修行',
     compat_narr_t:'你们的羁绊，全貌',
     compat_unlock:'完整解读——边界之处如何用心呵护，以及一条让彼此更近的小仪式——皆属 Twinstellar 的旅程。',
-    compat_cta:'◇ 解锁完整解读 —— $19/月 ◇',
+    compat_cta:'◇ 解锁完整解读 · 深度版 ◇',
     compat_err:'请输入两个生日。',
     result_compat:'◇ 读取你与另一个灵魂的羁绊 ◇',
     // Daily fortune
@@ -1193,6 +1169,10 @@ const I18N = {
     fortune_wealth:'财运',
     fortune_caution:'警示',
     daily_share_sub:'分享今日运势——每次分享都让你更接近解锁。',
+    lbl_daily_deep:'再深一层',
+    daily_deep_sub:'日运本是礼物。深度版另赠一段个人仪式，与一日专注之所。',
+    btn_daily_deep:'◇ 解锁核心解读 · 深度版 ◇',
+    lbl_daily_deep_full:'你的日运 · 深度指引',
     daily_card_btn:'◇ 下载日签卡片 ◇',
     daily_back_btn:'← 回到我的签名',
     daily_result_link:'◇ 今日运势日签 ◇',
@@ -1489,7 +1469,53 @@ function findCombo(element, zodiac) {
 // ---------- compatibility (P3 · L3 付费增值) ----------
 const ELEM_CYCLE = ['wood', 'fire', 'earth', 'metal', 'water'];
 const ZODIAC_CYCLE = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
-const SUB_BASE = (typeof SUBSCRIBE_BASE !== 'undefined' && SUBSCRIBE_BASE) ? SUBSCRIBE_BASE : '';
+const PAY_URL = (typeof PAY_BASE !== 'undefined' && PAY_BASE) ? PAY_BASE : '';
+
+// ---------- 核心解读·深度版 (single paid path) ----------
+const ELEMENT_DEEP = {
+  wood:  { en:{ kw:'Growth, Flexibility, Vitality', ritual:'Each morning, set a green thing where you will see it — a leaf, a sprout — and name one thing you mean to grow.', q:'What small seed in your life is asking to be watered?' },
+           cn:{ kw:'生长 · 焕新 · 创造', ritual:'每日清晨，在视线所及处放一抹绿意——一片叶、一株苗，并念出一件你愿使之生长的事。', q:'此刻，哪一颗小小的种子正等待你浇灌？' } },
+  fire:  { en:{ kw:'Passion, Willpower, Transformation', ritual:'Light a candle at dusk and speak one intention aloud — let the flame carry it.', q:'What in you is ready to be transformed by your own will?' },
+           cn:{ kw:'意志 · 勇气 · 开创', ritual:'黄昏点燃一支烛火，将一句心愿轻声说予火听——让光焰带走它。', q:'你内心有什么，正待以己之意志被重塑？' } },
+  earth: { en:{ kw:'Stability, Nurturing, Wisdom', ritual:'Press your bare feet to the ground for a minute and name what steadies you.', q:'What foundation are you being asked to tend?' },
+           cn:{ kw:'沉稳 · 耐心 · 显化', ritual:'赤足立于大地一分钟，念出此刻让你安稳的事物。', q:'有什么根基，正等待你去照料？' } },
+  metal: { en:{ kw:'Precision, Strength, Clarity', ritual:'Clear one small space — a drawer, a corner — until it feels clean and true.', q:'Where would a little more clarity change everything?' },
+           cn:{ kw:'秩序 · 掌控 · 淬炼', ritual:'清理一处小小的空间——一个抽屉、一方角落，直到它清朗如实。', q:'何处，只需多一分清明，便将大不相同？' } },
+  water: { en:{ kw:'Intuition, Emotion, Flow', ritual:'Before sleep, write one feeling you carried today, then let it flow downstream.', q:'What is your intuition trying to tell you?' },
+           cn:{ kw:'深邃 · 感知 · 梦想', ritual:'入睡前，写下今日承载的一缕情绪，任它顺流而去。', q:'你的直觉，正试图告诉你什么？' } },
+};
+function deepReadingHTML(combo, lang) {
+  const zh = lang === 'zh';
+  const el = ELEMENTS[combo.element.toLowerCase()];
+  const zx = ZODIAC[combo.zodiac.toLowerCase()];
+  const d = ELEMENT_DEEP[combo.element.toLowerCase()][zh ? 'cn' : 'en'];
+  const title = zh ? combo.title_cn : combo.title_en;
+  const elName = zh ? el.cn : el.name;
+  const zxName = zh ? zx.cn : zx.name;
+  const weave = zh
+    ? `<p><strong>更深的织合。</strong>${elName} 遇 ${zxName}（${zx.arche_cn}）：${el.key_cn}。你的签名「${title}」落在${el.cn}的${d.kw}与${zx.arche_cn}之路的交汇处——它邀请你以本真前行。</p>`
+    : `<p><strong>The deeper weave.</strong> ${elName} meets ${zxName} (${zx.arche}): ${el.key}. Your signature “${title}” lives where ${el.name}’s ${d.kw} meets the ${zx.arche} path — it invites you to walk as yourself.</p>`;
+  const ritual = zh
+    ? `<p class="deep-ritual"><strong>你的仪式。</strong>${d.ritual}</p>`
+    : `<p class="deep-ritual"><strong>Your ritual.</strong>${d.ritual}</p>`;
+  const q = zh
+    ? `<p class="deep-reflection"><strong>一个可带的叩问。</strong>${d.q}</p>`
+    : `<p class="deep-reflection"><strong>A question to carry.</strong>${d.q}</p>`;
+  return weave + ritual + q;
+}
+function deepCapture(combo) {
+  try {
+    const leads = JSON.parse(localStorage.getItem('twin_leads') || '[]');
+    leads.push({ element: combo.element, zodiac: combo.zodiac, type: 'deep', ref: getRef(), ts: Date.now() });
+    localStorage.setItem('twin_leads', JSON.stringify(leads));
+  } catch (_) {}
+}
+function openPay(source, combo) {
+  if (!PAY_URL) return false;
+  const q = `?source=${source}` + (combo ? `&e=${combo.element}&z=${combo.zodiac}` : '');
+  window.location.href = PAY_URL + q;
+  return true;
+}
 
 function elemRelation(a, b) {
   const ia = ELEM_CYCLE.indexOf(a), ib = ELEM_CYCLE.indexOf(b);
@@ -1612,15 +1638,10 @@ function renderResult(combo) {
   $('restartBtn').onclick = () => { location.hash = '#reveal'; location.reload(); };
   wireShare(combo);
 
-  // wire L3 subscription CTA
-  const subCta = $('subCta');
-  if (subCta) {
-    subCta.onclick = (e) => {
-      if (SUBSCRIBE_BASE) { return; } // real checkout link handles navigation
-      e.preventDefault();
-      subCapture(combo);
-    };
-  }
+  // reset single paid path (核心解读·深度版) UI for the new result
+  const db = $('deepBlock'), dr = $('deepReveal');
+  if (db) db.hidden = false;
+  if (dr) dr.hidden = true;
 
   lastResult = { combo };
 }
@@ -1671,20 +1692,7 @@ function copyLink(combo) {
   });
 }
 
-function subCapture(combo) {
-  const zh = LANG === 'zh';
-  const title = zh ? combo.title_cn : combo.title_en;
-  const subject = zh ? `订阅我的宇宙签名旅程：${title}` : `Subscribe to my cosmic journey: ${combo.title_en}`;
-  const body = zh
-    ? `你好 Twinstellar：%0D%0A%0D%0A我愿让我的宇宙签名每月生长：%0D%0A组合：${title}（${combo.element} + ${combo.zodiac}）%0D%0A%0D%0A谢谢！`
-    : `Hi Twinstellar,%0D%0A%0D%0AI'd like my cosmic signature to keep growing each month:%0D%0ACombination: ${combo.title_en} (${combo.element} + ${combo.zodiac})%0D%0A%0D%0AThank you!`;
-  try {
-    const leads = JSON.parse(localStorage.getItem('twin_leads') || '[]');
-    leads.push({ element: combo.element, zodiac: combo.zodiac, type: 'subscription', ref: getRef(), ts: Date.now() });
-    localStorage.setItem('twin_leads', JSON.stringify(leads));
-  } catch (_) {}
-  window.location.href = `mailto:hello@twinstellar.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-}
+// subCapture (subscription mailto) removed — single paid path uses PAY_BASE / openPay()
 
 // ---------- flow ----------
 function renderDaily() {
@@ -1694,6 +1702,11 @@ function renderDaily() {
   const el = ELEMENTS[combo.element.toLowerCase()];
   const zx = ZODIAC[combo.zodiac.toLowerCase()];
   const fortune = dailyFortune(combo, new Date());
+
+  // reset single paid path (核心解读·深度版) daily UI
+  const ddb = $('dailyDeepBlock'), ddr = $('dailyDeepReveal');
+  if (ddb) ddb.hidden = false;
+  if (ddr) ddr.hidden = true;
 
   $('dailySigSymbol').textContent = `${el.symbol} ${zx.symbol}`;
   $('dailySigName').textContent = zh ? combo.title_cn : combo.title_en;
@@ -2429,11 +2442,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // L4 subscription toggle
-  const st = $('subToggle'), sd = $('subDetail');
-  if (st && sd) {
-    st.addEventListener('click', () => {
-      sd.hidden = !sd.hidden;
+  // 核心解读·深度版 — single paid path CTA (result page)
+  const deepCta = $('deepCta');
+  if (deepCta) {
+    deepCta.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (openPay('result', lastResult && lastResult.combo)) return;
+      if (lastResult && lastResult.combo) {
+        deepCapture(lastResult.combo);
+        $('deepDetail').innerHTML = deepReadingHTML(lastResult.combo, LANG);
+        $('deepBlock').hidden = true;
+        $('deepReveal').hidden = false;
+      }
+    });
+  }
+  // 核心解读·深度版 — single paid path CTA (daily page)
+  const dailyDeepCta = $('dailyDeepCta');
+  if (dailyDeepCta) {
+    dailyDeepCta.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (openPay('daily', lastResult && lastResult.combo)) return;
+      if (lastResult && lastResult.combo) {
+        deepCapture(lastResult.combo);
+        $('dailyDeepDetail').innerHTML = deepReadingHTML(lastResult.combo, LANG);
+        $('dailyDeepBlock').hidden = true;
+        $('dailyDeepReveal').hidden = false;
+      }
     });
   }
 
@@ -2459,14 +2493,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const ub = $('compatUnlockBtn');
   if (ub) {
     ub.addEventListener('click', () => {
-      if (SUB_BASE) {
+      if (PAY_URL) {
         const q = lastCompat ? `?source=compat&e=${lastCompat.eA}&z=${lastCompat.zA}` : '?source=compat';
-        window.location.href = SUB_BASE + q;
+        window.location.href = PAY_URL + q;
         return;
       }
       $('compatGated').hidden = false;
       ub.disabled = true;
-      ub.textContent = LANG === 'zh' ? '已解锁 ✓（订阅解锁更多）' : 'Unlocked ✓ (subscribe for more)';
+      ub.textContent = LANG === 'zh' ? '已解锁 ✓' : 'Unlocked ✓';
     });
   }
 
