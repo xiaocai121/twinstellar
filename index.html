@@ -381,6 +381,9 @@ header, section, footer { position: relative; z-index: 1; }
 .deep-detail p { margin: 0 0 14px; color: var(--ink-dim); }
 .deep-detail strong { color: var(--gold-soft); font-weight: 500; }
 .deep-detail .deep-ritual, .deep-detail .deep-reflection { color: var(--ink-dim); }
+.deep-detail .deep-sec { position: relative; padding-left: 15px; border-left: 2px solid rgba(201,162,95,0.32); margin: 0 0 17px; }
+.deep-detail .deep-sec:last-child { margin-bottom: 0; }
+.deep-detail .deep-sec strong { display: block; color: var(--gold-soft); font-weight: 500; letter-spacing: 0.05em; margin-bottom: 5px; }
 .deep-cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
 .deep-note { font-size: 11px; color: #6c6c78; margin-top: 12px; letter-spacing: 0.02em; }
 
@@ -1473,16 +1476,76 @@ const PAY_URL = (typeof PAY_BASE !== 'undefined' && PAY_BASE) ? PAY_BASE : '';
 
 // ---------- 核心解读·深度版 (single paid path) ----------
 const ELEMENT_DEEP = {
-  wood:  { en:{ kw:'Growth, Flexibility, Vitality', ritual:'Each morning, set a green thing where you will see it — a leaf, a sprout — and name one thing you mean to grow.', q:'What small seed in your life is asking to be watered?' },
-           cn:{ kw:'生长 · 焕新 · 创造', ritual:'每日清晨，在视线所及处放一抹绿意——一片叶、一株苗，并念出一件你愿使之生长的事。', q:'此刻，哪一颗小小的种子正等待你浇灌？' } },
-  fire:  { en:{ kw:'Passion, Willpower, Transformation', ritual:'Light a candle at dusk and speak one intention aloud — let the flame carry it.', q:'What in you is ready to be transformed by your own will?' },
-           cn:{ kw:'意志 · 勇气 · 开创', ritual:'黄昏点燃一支烛火，将一句心愿轻声说予火听——让光焰带走它。', q:'你内心有什么，正待以己之意志被重塑？' } },
-  earth: { en:{ kw:'Stability, Nurturing, Wisdom', ritual:'Press your bare feet to the ground for a minute and name what steadies you.', q:'What foundation are you being asked to tend?' },
-           cn:{ kw:'沉稳 · 耐心 · 显化', ritual:'赤足立于大地一分钟，念出此刻让你安稳的事物。', q:'有什么根基，正等待你去照料？' } },
-  metal: { en:{ kw:'Precision, Strength, Clarity', ritual:'Clear one small space — a drawer, a corner — until it feels clean and true.', q:'Where would a little more clarity change everything?' },
-           cn:{ kw:'秩序 · 掌控 · 淬炼', ritual:'清理一处小小的空间——一个抽屉、一方角落，直到它清朗如实。', q:'何处，只需多一分清明，便将大不相同？' } },
-  water: { en:{ kw:'Intuition, Emotion, Flow', ritual:'Before sleep, write one feeling you carried today, then let it flow downstream.', q:'What is your intuition trying to tell you?' },
-           cn:{ kw:'深邃 · 感知 · 梦想', ritual:'入睡前，写下今日承载的一缕情绪，任它顺流而去。', q:'你的直觉，正试图告诉你什么？' } },
+  wood: {
+    en: { kw:'Growth, Flexibility, Vitality',
+      ritual:'Each morning, set a green thing where you will see it — a leaf, a sprout — and name one thing you mean to grow.',
+      q:'What small seed in your life is asking to be watered?',
+      cycle:'Your signature stirs with the dawn and the first light of spring. Let Monday mornings and each new moon be your season of beginning — that is when your growth is most willing.',
+      withOthers:'With others you are the one who begins: you open the circle, plant the first true word, and invite the hesitant in. This is your gift — tend it, but do not burn yourself out being everyone’s spring.',
+      echo:'Your mantra is not a command but a climate — a way of standing that lets things take root. Return to it when you feel rushed; let it slow you back into your own season.' },
+    cn: { kw:'生长 · 焕新 · 创造',
+      ritual:'每日清晨，在视线所及处放一抹绿意——一片叶、一株苗，并念出一件你愿使之生长的事。',
+      q:'此刻，哪一颗小小的种子正等待你浇灌？',
+      cycle:'你的签名随晨光与初春一同萌动。以周一清晨与每一轮新月为「起始之期」——那时，生长最为欣然。',
+      withOthers:'与人相处，你是那个「起头的人」：开启一圈、种下第一句真心话、把犹疑者迎进来。这是你的天赋——善护它，但莫为众人的春天燃尽自己。',
+      echo:'你的真言不是命令，而是一方气候——一种让万物扎根的站立姿态。心浮气躁时回到它，让它把你缓缓带回自己的时序。' }
+  },
+  fire: {
+    en: { kw:'Passion, Willpower, Transformation',
+      ritual:'Light a candle at dusk and speak one intention aloud — let the flame carry it.',
+      q:'What in you is ready to be transformed by your own will?',
+      cycle:'Your signature burns brightest at noon and in the peak of summer — and in any moment you choose to act rather than wait. Strike while the iron is hot; your courage is the spark.',
+      withOthers:'With others you are the warmth that rallies a room — the one who says “let’s begin” and makes it real. Lead, but remember: fire that consumes itself leaves only ash. Keep some flame for you.',
+      echo:'Your mantra is an ember, not a shout. Hold it close in the cold hours; let it remind you that transformation is chosen, not forced — and that you are the one holding the match.' },
+    cn: { kw:'意志 · 勇气 · 开创',
+      ritual:'黄昏点燃一支烛火，将一句心愿轻声说予火听——让光焰带走它。',
+      q:'你内心有什么，正待以己之意志被重塑？',
+      cycle:'你的签名在正午与盛夏最为炽烈——也在你「选择行动而非等待」的每一刻。趁热打铁；你的勇气，便是那一点星火。',
+      withOthers:'与人相处，你是那暖热一室的人——说「我们开始吧」，并把可能变成真实。去引领，但记得：焚尽自身的火只余灰烬。给自己留一分光焰。',
+      echo:'你的真言是余烬，不是呐喊。寒凉时分把它贴近心口；让它提醒你：蜕变是被选择的，而非被逼迫的——而执火的人，是你自己。' }
+  },
+  earth: {
+    en: { kw:'Stability, Nurturing, Wisdom',
+      ritual:'Press your bare feet to the ground for a minute and name what steadies you.',
+      q:'What foundation are you being asked to tend?',
+      cycle:'Your signature is patient and slow — strongest at the turning of seasons and in the late-afternoon hush. Let Saturday be your rooted day; build what lasts, not what dazzles.',
+      withOthers:'With others you are the ground they stand on — the steady one who holds space, keeps the promise, remembers the detail. This is love in its quiet form. Just don’t carry what was never yours to hold.',
+      echo:'Your mantra is a foundation, not a finish line. Return to it when the world spins fast; let it remind you that what is built well does not need to hurry.' },
+    cn: { kw:'沉稳 · 耐心 · 显化',
+      ritual:'赤足立于大地一分钟，念出此刻让你安稳的事物。',
+      q:'有什么根基，正等待你去照料？',
+      cycle:'你的签名沉静而缓——在节气流转与午后静默时最为深厚。以周六为「扎根之日」；筑造能久存的，而非炫目的。',
+      withOthers:'与人相处，你是他们脚下的大地——那个稳稳托住、守住承诺、记住细节的人。这是安静形态的爱。只是，莫去扛那本不属于你的重量。',
+      echo:'你的真言是地基，不是终点。世态急转时回到它；让它提醒你：筑得扎实的，从不需要匆忙。' }
+  },
+  metal: {
+    en: { kw:'Precision, Strength, Clarity',
+      ritual:'Clear one small space — a drawer, a corner — until it feels clean and true.',
+      q:'Where would a little more clarity change everything?',
+      cycle:'Your signature sharpens in the clear cold of autumn and in the first hour of the day. Let discipline be your ritual: what you refine now, you will wield for years.',
+      withOthers:'With others you are the one who speaks the honest line — the standard, the boundary, the truth said kindly. People trust your edge. Wield it to clarify, never to cut them down.',
+      echo:'Your mantra is a blade kept clean, not a wall. Return to it when noise crowds in; let it cut away the excess until only what matters remains.' },
+    cn: { kw:'秩序 · 掌控 · 淬炼',
+      ritual:'清理一处小小的空间——一个抽屉、一方角落，直到它清朗如实。',
+      q:'何处，只需多一分清明，便将大不相同？',
+      cycle:'你的签名在清秋的凉意与一日之初最为锋利。让自律成为你的仪式：此刻你淬炼的，将为你所用多年。',
+      withOthers:'与人相处，你是那个说出真话的人——那标准、那边界、那句温和的实话。人们信任你的锋刃。用它来澄清，而非将人削落。',
+      echo:'你的真言是把守得干净的刀，不是一道墙。喧嚣涌来时回到它；让它削去多余，只留要紧的。' }
+  },
+  water: {
+    en: { kw:'Intuition, Emotion, Flow',
+      ritual:'Before sleep, write one feeling you carried today, then let it flow downstream.',
+      q:'What is your intuition trying to tell you?',
+      cycle:'Your signature deepens at night and in the stillness of winter — and in any pause long enough to listen. Trust the tide; your knowing arrives in waves, not announcements.',
+      withOthers:'With others you are the one who feels the room — who senses the unspoken and makes space for it. This is a rare grace. Drink from your own well too; don’t only carry theirs.',
+      echo:'Your mantra is a current, not a conclusion. Return to it when you feel pulled apart; let it gather you back into one quiet, knowing flow.' },
+    cn: { kw:'深邃 · 感知 · 梦想',
+      ritual:'入睡前，写下今日承载的一缕情绪，任它顺流而去。',
+      q:'你的直觉，正试图告诉你什么？',
+      cycle:'你的签名在夜色与冬日的静谧里最为深邃——也在任何「足够倾听的停顿」里。信任潮汐；你的知晓以浪而来，而非宣告。',
+      withOthers:'与人相处，你是那个感知全场的人——察觉未说出口的，并为它留出空间。这是稀有的恩典。也饮自己井里的水；莫只承载他人的。',
+      echo:'你的真言是一道流，不是结论。被拉扯离散时回到它；让它把你重新汇成一道安静而知晓的流。' }
+  }
 };
 function deepReadingHTML(combo, lang) {
   const zh = lang === 'zh';
@@ -1492,16 +1555,18 @@ function deepReadingHTML(combo, lang) {
   const title = zh ? combo.title_cn : combo.title_en;
   const elName = zh ? el.cn : el.name;
   const zxName = zh ? zx.cn : zx.name;
+  const H = zh
+    ? { weave:'更深的织合', ritual:'你的仪式', cycle:'能量的节律', with:'与他者的织合', q:'一个可带的叩问', echo:'真言的回响' }
+    : { weave:'The deeper weave', ritual:'Your ritual', cycle:'The rhythm of your energy', with:'Your weave with others', q:'A question to carry', echo:'The echo of your mantra' };
   const weave = zh
-    ? `<p><strong>更深的织合。</strong>${elName} 遇 ${zxName}（${zx.arche_cn}）：${el.key_cn}。你的签名「${title}」落在${el.cn}的${d.kw}与${zx.arche_cn}之路的交汇处——它邀请你以本真前行。</p>`
-    : `<p><strong>The deeper weave.</strong> ${elName} meets ${zxName} (${zx.arche}): ${el.key}. Your signature “${title}” lives where ${el.name}’s ${d.kw} meets the ${zx.arche} path — it invites you to walk as yourself.</p>`;
-  const ritual = zh
-    ? `<p class="deep-ritual"><strong>你的仪式。</strong>${d.ritual}</p>`
-    : `<p class="deep-ritual"><strong>Your ritual.</strong>${d.ritual}</p>`;
-  const q = zh
-    ? `<p class="deep-reflection"><strong>一个可带的叩问。</strong>${d.q}</p>`
-    : `<p class="deep-reflection"><strong>A question to carry.</strong>${d.q}</p>`;
-  return weave + ritual + q;
+    ? `<p class="deep-sec"><strong>${H.weave}。</strong>${elName} 遇 ${zxName}（${zx.arche_cn}）：${el.key_cn}。你的签名「${title}」落在${el.cn}的${d.kw}与${zx.arche_cn}之路的交汇处——它邀请你以本真前行，也在边界处教你以柔化刚、以静制动。</p>`
+    : `<p class="deep-sec"><strong>${H.weave}.</strong> ${elName} meets ${zxName} (${zx.arche}): ${el.key}. Your signature “${title}” lives where ${el.name}’s ${d.kw} meets the ${zx.arche} path — it invites you to walk as yourself, and teaches you at the edges to soften what is hard and still what is rushed.</p>`;
+  const ritual = `<p class="deep-sec"><strong>${H.ritual}。</strong>${d.ritual}</p>`;
+  const cycle  = `<p class="deep-sec"><strong>${H.cycle}。</strong>${d.cycle}</p>`;
+  const withO  = `<p class="deep-sec"><strong>${H.with}。</strong>${d.withOthers}</p>`;
+  const ques   = `<p class="deep-sec"><strong>${H.q}。</strong>${d.q}</p>`;
+  const echo   = `<p class="deep-sec"><strong>${H.echo}。</strong>${d.echo}</p>`;
+  return weave + ritual + cycle + withO + ques + echo;
 }
 function deepCapture(combo) {
   try {
