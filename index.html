@@ -401,6 +401,11 @@ header, section, footer { position: relative; z-index: 1; }
 .result-wall-link { display: inline-block; margin: 26px auto 0; color: var(--gold); font-size: 14px; letter-spacing: 0.05em; text-decoration: none; border-bottom: 1px solid rgba(201,162,95,0.4); padding-bottom: 2px; }
 .result-wall-link:hover { color: var(--gold-soft); }
 
+/* ---------- free signature save (gift-economy hook, no paywall) ---------- */
+.save-sig-block { margin: 26px auto 4px; text-align: center; max-width: 460px; }
+.save-sig-block .btn-ghost { margin: 0 auto; }
+.save-sig-note { color: var(--ink-dim); font-size: 13px; line-height: 1.6; margin: 12px 0 0; font-style: italic; }
+
 /* ---------- waitlist (L1) ---------- */
 .waitlist-block { margin: 30px auto 22px; max-width: 460px; }
 .waitlist-label { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
@@ -734,6 +739,12 @@ header, section, footer { position: relative; z-index: 1; }
       <div class="stones" id="stonesWrap"></div>
     </div>
 
+    <!-- 免费珍藏：下载你的宇宙签名卡片（礼物经济获客钩子，不付费即可） -->
+    <div class="save-sig-block" id="saveSigBlock">
+      <button class="btn-ghost" id="saveSigBtn" data-i18n="btn_save_sig">◇ Save Your Signature ◇</button>
+      <p class="save-sig-note" data-i18n="save_sig_note">Yours to keep — a quiet image of who you are.</p>
+    </div>
+
     <!-- 核心解读·深度版 (single paid path) -->
     <div class="deep-block" id="deepBlock">
       <p class="deep-label" data-i18n="lbl_deep">Your signature, in full</p>
@@ -1063,6 +1074,8 @@ const I18N = {
     deep_sub:'The free reading is yours to keep. The Deep Edition weaves your element, zodiac, and sacred title into a fuller reading — a quiet ritual and a question to carry.',
     btn_deep:'◇ Unlock the Core Reading — Deep Edition ◇',
     deep_note:'A one-time gift to yourself. No subscription, no noise.',
+    btn_save_sig:'◇ Save Your Signature ◇',
+    save_sig_note:'Yours to keep — a quiet image of who you are.',
     lbl_deep_full:'Your Core Reading · Deep Edition',
     share_reward:'Share your signature — you and a friend each receive a quiet gift.',
     // daily deep guide
@@ -1142,6 +1155,8 @@ const I18N = {
     deep_sub:'基础解读已属你，免费珍藏。深度版将你的元素、星座与神圣称号，织成一份更完整的宇宙解读——一段静谧仪式，一个可随身携带的叩问。',
     btn_deep:'◇ 解锁核心解读 · 深度版 ◇',
     deep_note:'一次性的礼物予己。无订阅，无喧嚣。',
+    btn_save_sig:'◇ 珍藏我的宇宙签名 ◇',
+    save_sig_note:'送你珍藏——一幅安静映照你本真的图。',
     lbl_deep_full:'你的核心解读 · 深度版',
     share_reward:'分享你的签名——你与朋友各得一份安静的礼物。',
     result_wall:'◇ 浏览宇宙签名墙 ◇',
@@ -2030,7 +2045,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // L2 certificate: generate browser-side image and download
-  const cb = $('certBtn');
+  const cb = $('saveSigBtn');
   if (cb) {
     cb.addEventListener('click', async () => {
       if (!lastResult || !lastResult.combo) return;
