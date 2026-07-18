@@ -37,33 +37,34 @@ GitHub Pages 已配置 `cname: twinstellar.com` 且构建正常（API 确认 `st
 5. 改完等待传播（数分钟～48h），验证：`curl -sI https://twinstellar.com/` 应返回 `server: GitHub.com`，且页面无 `bracelet`/`手链`。
 > 若仓库 Settings → Pages 显示域名待验证，重新保存自定义域名并按提示添加一条 TXT 验证记录即可。
 
-## 变现（单一付费路径 · 需 Stripe Payment Link）
-全站**仅保留一条收费路径**：一次性「核心解读 · 深度版」。
+## 变现（单一礼物路径 · 国内收款码 + 海外加密货币）
+全站**仅保留一条路径**：一次性「核心解读 · 深度版」，走**礼物经济**——自愿随喜，无强制校验（软闸门）。
 
-`index.html` 中的 `PAY_BASE_EN`（英文）与 `PAY_BASE_ZH`（中文）留空时，结果页 / 日运页 / 合盘页的「解锁深度版」按钮按当前语言走本地预览解锁（写入 `localStorage` 的 `twin_leads`，附 `ref` 推荐字段），便于设计评审与本地调试。
-接入 Stripe 后，分别把 `PAY_BASE_EN` 改为英文版 **$3.99 USD** 的 Payment Link、`PAY_BASE_ZH` 改为中文版 **¥2.99 CNY** 的 Payment Link，即可转为真实一次性结账（全站三处 CTA 按语言自动选用对应链接）。
+> 为什么不用 Stripe / 微信支付宝商户：你是**大陆个人身份**，无法完成 Stripe KYC，也无营业执照开通官方商户。因此采用**零资质、零后端**的双通道：
+> - 国内：你的**个人微信 / 支付宝收款码**（本来就有，无需注册）
+> - 海外：你的**加密货币 USDT 钱包**（无 KYC、全球可付、零后端）
 
-### 接入步骤
-1. Stripe 后台 → **Payment Links** → 新建**两条一次性（非订阅）**产品「核心解读 · 深度版」：**英文版 $3.99 USD**、**中文版 ¥2.99 CNY**（各建一条 Payment Link）；可按需开启「收集邮箱」。
-2. 把该 Payment Link 的 **success_url** 设为站点回跳地址：`https://twinstellar.com/?paid=1`（上线后必须为 HTTPS 真实域名）。
-3. 复制两条 `https://buy.stripe.com/...` 链接，分别粘贴进 `index.html`：`const PAY_BASE_EN = 'https://buy.stripe.com/xxxx-en';`（英文 $3.99）与 `const PAY_BASE_ZH = 'https://buy.stripe.com/xxxx-zh';`（中文 ¥2.99）。
-4. 提交并部署（`git push origin main`），GitHub Pages 约 1–2 分钟生效。
+### 配置（三步，无需后端）
+1. 把三张收款码图片放进 `assets/`：`wechat_qr.png`（微信）、`alipay_qr.png`（支付宝）、`usdt_qr.png`（USDT 收款二维码）。
+2. 打开 `index.html`，把 `GIFT.usdtAddr` 的占位文字改成你真实的 USDT 钱包地址（建议 TRC20）。
+3. （可选）改 `GIFT.cnAmount` / `GIFT.enAmount` 调整建议心意金额（默认 ¥2.99 / $3.99）。提交部署即可。
 
-> 工作机制：点击 CTA → `openPay()` 把待解锁组合写入 `localStorage('twin_pending_deep')` 并跳转到 Stripe；付款完成用户点「返回商户」回到 `?paid=1` → 页面读取待解锁组合并自动展开深度解读。
->
-> ⚠️ **当前为「软闸门」**：纯前端校验，懂技术的用户可在浏览器手动写入 `twin_pending_deep` 并访问 `?paid=1` 绕过付费。对 $9 一次性数字内容属可接受的 MVP 折中；若要硬闸门，需加 Stripe **Webhook + 签名校验 + 服务端签发令牌**（任意 Serverless：Cloudflare Worker / Vercel Edge），不在本静态站点范围内。
+### 工作机制
+点击「解锁深度版」→ 弹出礼物弹窗（展示微信 / 支付宝 / USDT 三种二维码 + 建议金额）→ 用户扫码付款后点「我已完成礼物」→ 前端直接渲染深度解读，并把 `?paid=1` 写入地址栏（刷新仍可见）。待解锁组合存于 `localStorage('twin_pending_deep')`，回跳时自动展开。
 
-| 路径 | 内容 | 价格 |
+> ⚠️ **软闸门**：纯前端，懂技术者可手动写入 `twin_pending_deep` 并访问 `?paid=1` 绕过。礼物经济本就自愿，对 ¥2.99/$3.99 一次性内容属可接受的 MVP 折中；若要硬闸门需加后端校验（不在纯静态范围内）。
+
+| 路径 | 内容 | 心意 |
 |------|------|------|
-| 免费 | 基础核心解读（称号 + 元素 + 星座 + 融合释义 + 真言 + 能量石）+ 合盘免费预览（分数/等级/闪光点）+ 日运免费版 | $0 |
-| 一次性付费 | 「核心解读 · 深度版」：更深的织合叙事 + 专属仪式 + 可带身上的叩问；并解锁合盘边界与完整叙事、日运全本 | 一次性 |
+| 免费 | 基础核心解读（称号 + 元素 + 星座 + 融合释义 + 真言 + 能量石）+ 合盘免费预览（分数/等级/闪光点）+ 日运免费版 | ¥0 |
+| 礼物随喜 | 「核心解读 · 深度版」：更深的织合叙事 + 专属仪式 + 可带身上的叩问；并解锁合盘边界与完整叙事、日运全本 | 建议 ¥2.99 / $3.99（随喜） |
 
 > 话术铁律（礼物经济）：全站禁用 `buy` / `claim` / `limited` / 限量 / 限时；统一用「礼物 / 邀请 / 深化」语态。
 
 ## 自定义
 - **改价格/文案**：`index.html` 中英文案直改（搜索 `data-i18n` 键或常量即可定位）；变现阶梯逻辑见本文件「变现」一节。
 - **P1 免费内容引擎（已上线）**：运行 `python3 build_seo.py` 解析 `index.html` 常量，生成 `combo/<element>-<zodiac>.html`（60 页，含 `<title>`/meta/OG/Twitter/canonical/H1、五行×星座融合、真言、能量石、同元素+同星座内部链接、回主站 CTA 带 `?e=&z=`）、`combo/index.html`（60 张「宇宙签名墙」卡片）、`combo/combo.css`。产物提交进仓库，GitHub Pages 直接托管（见 `Twinstellar落地路径.md` §4.6 / §6.1）。
-- **P3 合盘报告（已上线）**：`index.html` 的 `#compat` 视图，输入两个生日 → `computeCompatibility()` 用 **五行 生克比和 + 星座共鸣** 算出 1–99 分、等级（天作之合/知音相惜/相成长/互补之美）、闪光点与边界。免费预览分数+等级+元素之契+星座共鸣+闪光点；**edges 与完整叙事为「核心解读 · 深度版」一次性解锁**（Stripe 落地后，对应语言的 `PAY_BASE_EN` / `PAY_BASE_ZH` 空时点击即解锁预览）。
+- **P3 合盘报告（已上线）**：`index.html` 的 `#compat` 视图，输入两个生日 → `computeCompatibility()` 用 **五行 生克比和 + 星座共鸣** 算出 1–99 分、等级（天作之合/知音相惜/相成长/互补之美）、闪光点与边界。免费预览分数+等级+元素之契+星座共鸣+闪光点；**edges 与完整叙事为「核心解读 · 深度版」一次性解锁**（点击合盘解锁按钮 → 礼物弹窗 → 扫码付款后解锁）。
 - **病毒裂变**：结果页原生分享按钮（X / Facebook / Pinterest / WhatsApp / Reddit）+ 复制链接自带 `?ref=` 推荐参数；`?ref=` 在加载时捕获进 `localStorage`。
 
 ## 已验证

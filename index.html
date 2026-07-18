@@ -8,8 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@500;600&display=swap" rel="stylesheet" />
-  <!-- Stripe.js v3 — Checkout 结账（纯前端静态站点方案） -->
-  <script async src="https://js.stripe.com/v3/"></script>
   <style>
   [hidden] { display: none !important; }
 :root {
@@ -625,6 +623,53 @@ header, section, footer { position: relative; z-index: 1; }
   .nebula, .cosmos-core, .cosmos .bead, .orbit, #home.view-in *, #result.view-in * { animation: none !important; }
 }
 
+/* ---- 礼物弹窗 Gift modal ---- */
+.gift-modal {
+  position: fixed; inset: 0; z-index: 80;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(4, 4, 8, 0.78); backdrop-filter: blur(6px);
+  padding: 20px;
+}
+.gift-card {
+  position: relative; width: min(680px, 94vw); max-height: 90vh; overflow-y: auto;
+  background: linear-gradient(160deg, rgba(28,28,35,0.96), rgba(16,16,23,0.96));
+  border: 1px solid rgba(203,163,91,0.35); border-radius: 18px;
+  padding: 30px 28px 26px; text-align: center;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+}
+.gift-close {
+  position: absolute; top: 12px; right: 14px; width: 34px; height: 34px;
+  border: none; background: transparent; color: var(--gold-hi); font-size: 26px; line-height: 1;
+  cursor: pointer; opacity: 0.7;
+}
+.gift-close:hover { opacity: 1; }
+.gift-title {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif; font-size: 1.7rem;
+  color: var(--gold-hi); margin: 0 0 8px; font-weight: 600;
+}
+.gift-sub { color: #c9c9d4; font-size: 0.92rem; line-height: 1.6; margin: 0 auto 12px; max-width: 520px; }
+.gift-amount { color: var(--gold); font-size: 1.05rem; margin: 0 0 18px; }
+.gift-amount strong { color: var(--gold-hi); }
+.gift-channels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 22px; }
+.gift-ch {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(203,163,91,0.18);
+  border-radius: 14px; padding: 14px 10px; display: flex; flex-direction: column; align-items: center;
+}
+.gift-ch-label { color: var(--gold-hi); font-size: 0.86rem; margin: 0 0 10px; font-weight: 500; }
+.gift-qr {
+  width: 116px; height: 116px; object-fit: contain; background: #fff; border-radius: 10px; padding: 5px;
+}
+.gift-ch-addr {
+  color: var(--gold); font-size: 0.72rem; word-break: break-all; margin: 8px 0 0; max-width: 100%;
+}
+.gift-ch-note { color: #8c8c98; font-size: 0.72rem; margin: 8px 0 0; line-height: 1.4; }
+.gift-done { width: 100%; max-width: 360px; margin: 0 auto; }
+.gift-foot { color: #7a7a86; font-size: 0.74rem; margin: 14px 0 0; }
+@media (max-width: 560px) {
+  .gift-channels { grid-template-columns: 1fr; }
+  .gift-title { font-size: 1.4rem; }
+}
+
 </style>
 </head>
 <body>
@@ -1022,29 +1067,18 @@ const BOUNDARIES = [
   { m: 12, d: 22, z: 'capricorn' },
 ];
 
-// ---- 单一付费路径「核心解读·深度版」— Stripe Checkout 集成 ----
-// 纯静态站点使用 Stripe.js redirectToCheckout（前端发起，Stripe 托管结账页）
-// 测试密钥 (pk_test) → 结账走 Stripe 测试环境，用 4242 4242 4242 4242 测试卡
-// 上线前替换为 pk_live_... 可发布密钥
-const STRIPE_PK = 'pk_test_51TuLprD4s1lPrw2iWjITJy5Sb78sooFAFKzX3iUfM5Oa1vHrGm8qWxYz';
-// 价格 ID — 在 Stripe Dashboard → 产品 中创建一次性价格后填入
-// EN 英文版: $3.99 USD | ZH 中文版: ¥2.99 CNY
-const PRICE_ID_EN = '';   // 例: price_xxxxxxxxxxxxxxxx （英文版 $3.99）
-const PRICE_ID_ZH = '';   // 例: price_yyyyyyyyyyyyyyyy （中文版 ¥2.99）
-// Stripe 实例（延迟初始化，DOMContentLoaded 后赋值）
-let stripe = null;
-/** 初始化 Stripe（幂等） */
-function initStripe() {
-  if (stripe) return stripe;
-  if (typeof Stripe === 'undefined') { console.warn('[twinstellar] Stripe.js not loaded'); return null; }
-  if (!STRIPE_PK) { console.warn('[twinstellar] STRIPE_PK not configured'); return null; }
-  try { stripe = Stripe(STRIPE_PK); } catch (e) { console.warn('[twinit]', e); return null; }
-  return stripe;
-}
-/** 返回当前语言的 Price ID */
-function currentPriceId() {
-  return LANG === 'zh' ? PRICE_ID_ZH : PRICE_ID_EN;
-}
+// ---- 单一礼物路径「核心解读·深度版」— 礼物经济双通道（国内收款码 + 海外加密货币） ----
+// 国内：个人微信 / 支付宝收款码（你已有的，零注册、零后端）
+// 海外：加密货币 USDT 钱包（无 KYC、全球可付、零后端）
+// 软闸门：用户扫码付款后点「我已完成礼物」即解锁，前端不校验支付真伪（礼物本就自愿）
+const GIFT = {
+  wechatQR: 'assets/wechat_qr.png',   // ← 放入你的微信收款码图片
+  alipayQR: 'assets/alipay_qr.png',   // ← 放入你的支付宝收款码图片
+  usdtQR:   'assets/usdt_qr.png',     // ← 放入你的 USDT 收款二维码图片
+  usdtAddr: '在此填入你的 USDT 钱包地址（建议 TRC20）', // ← 明文地址，便于复制
+  cnAmount: '¥2.99',
+  enAmount: '$3.99'
+};
 
 // ---- Referral: capture ?ref= and persist so invited friends can be credited ----
 function getRef() {
@@ -1096,7 +1130,7 @@ const I18N = {
     lbl_deep:'Your signature, in full',
     deep_sub:'The free reading is yours to keep. The Deep Edition weaves your element, zodiac, and sacred title into a fuller reading — a quiet ritual and a question to carry.',
     btn_deep:'◇ Unlock the Core Reading — Deep Edition ◇',
-    deep_note:'A one-time gift to yourself — $3.99, no subscription, no noise.',
+    deep_note:'A one-time gift to yourself — suggested $3.99 (WeChat · Alipay · USDT).',
     btn_save_sig:'◇ Save Your Signature ◇',
     save_sig_note:'Yours to keep — a quiet image of who you are.',
     lbl_deep_full:'Your Core Reading · Deep Edition',
@@ -1106,7 +1140,7 @@ const I18N = {
     daily_deep_sub:'The daily reading is a gift. The Deep Edition adds a personal ritual and a focus for your day.',
     btn_daily_deep:'◇ Unlock the Core Reading — Deep Edition ◇',
     lbl_daily_deep_full:'Your Daily Deep Guide',
-    daily_deep_note:'A one-time gift for your day — $3.99, no subscription, no noise.',
+    daily_deep_note:'A one-time gift for your day — suggested $3.99 (WeChat · Alipay · USDT).',
     result_wall:'◇ Browse the Cosmic Signature Wall ◇',
     footer_wall:'Explore all 60 cosmic signatures →',
     nav_compat:'Compat',
@@ -1178,7 +1212,7 @@ const I18N = {
     lbl_deep:'你的签名，全貌',
     deep_sub:'基础解读已属你，免费珍藏。深度版将你的元素、星座与神圣称号，织成一份更完整的宇宙解读——一段静谧仪式，一个可随身携带的叩问。',
     btn_deep:'◇ 解锁核心解读 · 深度版 ◇',
-    deep_note:'一次性的礼物予己——¥2.99，无订阅，无喧嚣。',
+    deep_note:'一次性的礼物予己——建议 ¥2.99（微信 · 支付宝 · USDT）。',
     btn_save_sig:'◇ 珍藏我的宇宙签名 ◇',
     save_sig_note:'送你珍藏——一幅安静映照你本真的图。',
     lbl_deep_full:'你的核心解读 · 深度版',
@@ -1215,7 +1249,7 @@ const I18N = {
     daily_deep_sub:'日运本是礼物。深度版另赠一段个人仪式，与一日专注之所。',
     btn_daily_deep:'◇ 解锁核心解读 · 深度版 ◇',
     lbl_daily_deep_full:'你的日运 · 深度指引',
-    daily_deep_note:'一次性的礼物予己——¥2.99，无订阅，无喧嚣。',
+    daily_deep_note:'一次性的礼物予己——建议 ¥2.99（微信 · 支付宝 · USDT）。',
     daily_card_btn:'◇ 下载日签卡片 ◇',
     daily_back_btn:'← 回到我的签名',
     daily_result_link:'◇ 今日运势日签 ◇',
@@ -1512,7 +1546,7 @@ function findCombo(element, zodiac) {
 // ---------- compatibility (P3 · L3 付费增值) ----------
 const ELEM_CYCLE = ['wood', 'fire', 'earth', 'metal', 'water'];
 const ZODIAC_CYCLE = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
-// Stripe Checkout: initStripe() + currentPriceId() + openPay() 见上方配置区
+// 礼物路径: openPay() + openGiftModal()/completeGift()/revealDeep() 见上方配置区
 
 // ---------- 核心解读·深度版 (single paid path) ----------
 const ELEMENT_DEEP = {
@@ -1616,30 +1650,77 @@ function deepCapture(combo) {
   } catch (_) {}
 }
 function openPay(source, combo) {
-  // 记录待解锁组合（success_url 回跳 ?paid=1 时用）
-  if (combo) {
-    try { localStorage.setItem('twin_pending_deep', JSON.stringify({ element: combo.element, zodiac: combo.zodiac })); } catch (_) {}
-  }
-  // 尝试 Stripe Checkout
-  const s = initStripe();
-  const priceId = currentPriceId();
-  if (s && priceId) {
-    const params = {
-      lineItems: [{ price: priceId, quantity: 1 }],
-      mode: 'payment',
-      successUrl: window.location.origin + '/?paid=1&source=' + (source || 'unknown') + (combo ? '&e=' + combo.element + '&z=' + combo.zodiac : ''),
-      cancelUrl: window.location.origin + '/',
-    };
-    return s.redirectToCheckout(params)
-      .then(function(result) {
-        if (result.error) { console.warn('[stripe] redirectToCheckout error:', result.error); return false; }
-        return true;
-      })
-      .catch(function(e) { console.warn('[stripe] exception:', e); return false; });
-  }
-  // 无 Stripe 配置 → fallback 预览解锁（软闸门）
-  console.info('[twinstellar] No Stripe config — preview mode');
+  // 记录待解锁组合（刷新/回跳 ?paid=1 时自动展示）
+  const pending = { source: source || 'result' };
+  if (combo) { pending.element = combo.element; pending.zodiac = combo.zodiac; }
+  try { localStorage.setItem('twin_pending_deep', JSON.stringify(pending)); } catch (_) {}
+  openGiftModal();
   return false;
+}
+
+/** 打开礼物弹窗，按当前语言填充金额与二维码 */
+function openGiftModal() {
+  const m = $('giftModal');
+  if (!m) return;
+  const isZh = (LANG === 'zh');
+  const amt = m.querySelector('[data-gift-amount]');
+  if (amt) amt.textContent = isZh ? GIFT.cnAmount : GIFT.enAmount;
+  const wx = m.querySelector('[data-qr="wechat"]');
+  const ali = m.querySelector('[data-qr="alipay"]');
+  const usdt = m.querySelector('[data-qr="usdt"]');
+  if (wx) wx.src = GIFT.wechatQR;
+  if (ali) ali.src = GIFT.alipayQR;
+  if (usdt) usdt.src = GIFT.usdtQR;
+  const addr = m.querySelector('[data-usdt-addr]');
+  if (addr) addr.textContent = GIFT.usdtAddr;
+  m.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGiftModal() {
+  const m = $('giftModal');
+  if (m) m.hidden = true;
+  document.body.style.overflow = '';
+}
+
+/** 展示深度解读（软闸门解锁后的渲染，供弹窗与回跳共用） */
+function revealDeep(pending) {
+  const combo = (pending.element && pending.zodiac) ? findCombo(pending.element, pending.zodiac) : null;
+  const source = pending.source || 'result';
+  if (combo) { lastResult = { combo }; deepCapture(combo); }
+  if (source === 'compat') {
+    const gated = $('compatGated'); if (gated) gated.hidden = false;
+    const ub = $('compatUnlockBtn');
+    if (ub) { ub.disabled = true; ub.textContent = LANG === 'zh' ? '已解锁 ✓' : 'Unlocked ✓'; }
+    if (lastCompat) renderCompat(lastCompat);
+  } else if (source === 'daily') {
+    if (combo) {
+      const dd = $('dailyDeepDetail'); if (dd) dd.innerHTML = deepReadingHTML(combo, LANG);
+      const db = $('dailyDeepBlock'); if (db) db.hidden = true;
+      const dr = $('dailyDeepReveal'); if (dr) dr.hidden = false;
+    }
+  } else {
+    if (combo) {
+      renderResult(combo);
+      const dd = $('deepDetail'); if (dd) dd.innerHTML = deepReadingHTML(combo, LANG);
+      const db = $('deepBlock'); if (db) db.hidden = true;
+      const dr = $('deepReveal'); if (dr) dr.hidden = false;
+    }
+  }
+}
+
+/** 用户点「我已完成礼物」→ 解锁并持久化（刷新仍可见） */
+function completeGift() {
+  let pending = null;
+  try { pending = JSON.parse(localStorage.getItem('twin_pending_deep') || 'null'); } catch (_) {}
+  closeGiftModal();
+  if (!pending) return;
+  revealDeep(pending);
+  try {
+    const combo = (pending.element && pending.zodiac) ? findCombo(pending.element, pending.zodiac) : null;
+    const q = '?paid=1' + (combo ? '&e=' + combo.element + '&z=' + combo.zodiac : '');
+    history.replaceState(null, '', location.pathname + q);
+  } catch (_) {}
 }
 
 function elemRelation(a, b) {
@@ -1817,7 +1898,7 @@ function copyLink(combo) {
   });
 }
 
-// subCapture (subscription mailto) removed — single paid path uses openPay() / Stripe Checkout
+// subCapture (subscription mailto) removed — single gift path uses openPay() / gift modal
 
 // ---------- flow ----------
 function renderDaily() {
@@ -2567,32 +2648,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 核心解读·深度版 — single paid path CTA (result page)
+  // 核心解读·深度版 — single gift path CTA (result page)
   const deepCta = $('deepCta');
   if (deepCta) {
     deepCta.addEventListener('click', (e) => {
       e.preventDefault();
-      if (openPay('result', lastResult && lastResult.combo)) return;
-      if (lastResult && lastResult.combo) {
-        deepCapture(lastResult.combo);
-        $('deepDetail').innerHTML = deepReadingHTML(lastResult.combo, LANG);
-        $('deepBlock').hidden = true;
-        $('deepReveal').hidden = false;
-      }
+      openPay('result', lastResult && lastResult.combo);
     });
   }
-  // 核心解读·深度版 — single paid path CTA (daily page)
+  // 核心解读·深度版 — single gift path CTA (daily page)
   const dailyDeepCta = $('dailyDeepCta');
   if (dailyDeepCta) {
     dailyDeepCta.addEventListener('click', (e) => {
       e.preventDefault();
-      if (openPay('daily', lastResult && lastResult.combo)) return;
-      if (lastResult && lastResult.combo) {
-        deepCapture(lastResult.combo);
-        $('dailyDeepDetail').innerHTML = deepReadingHTML(lastResult.combo, LANG);
-        $('dailyDeepBlock').hidden = true;
-        $('dailyDeepReveal').hidden = false;
-      }
+      openPay('daily', lastResult && lastResult.combo);
     });
   }
 
@@ -2619,34 +2688,30 @@ document.addEventListener('DOMContentLoaded', () => {
   if (ub) {
     ub.addEventListener('click', () => {
       const compatCombo = lastCompat ? { element: lastCompat.eA, zodiac: lastCompat.zA } : null;
-      if (openPay('compat', compatCombo)) return; // Stripe Checkout 已跳转
-      // 无 Stripe → fallback 预览解锁
-      $('compatGated').hidden = false;
-      ub.disabled = true;
-      ub.textContent = LANG === 'zh' ? '已解锁 ✓' : 'Unlocked ✓';
+      openPay('compat', compatCombo); // 打开礼物弹窗
     });
   }
 
-  // post-payment return: Stripe success_url is configured as ?paid=1 → reveal the deep reading for the pending combo
+  // 礼物弹窗控制
+  const giftClose = $('giftClose');
+  if (giftClose) giftClose.addEventListener('click', closeGiftModal);
+  const giftDone = $('giftDone');
+  if (giftDone) giftDone.addEventListener('click', completeGift);
+  const giftModal = $('giftModal');
+  if (giftModal) giftModal.addEventListener('click', (e) => { if (e.target === giftModal) closeGiftModal(); });
+
+  // post-return / refresh: ?paid=1 + 待解锁组合 → 自动展示深度解读（软闸门持久化）
   const params = new URLSearchParams(location.search);
   const paid = params.get('paid');
   if (paid && localStorage.getItem('twin_pending_deep')) {
     try {
       const pd = JSON.parse(localStorage.getItem('twin_pending_deep'));
-      const combo = findCombo(pd.element, pd.zodiac);
-      if (combo) {
-        lastResult = { combo };
-        renderResult(combo);
-        show('result');
-        deepCapture(combo);
-        const detail = $('deepDetail');
-        if (detail) detail.innerHTML = deepReadingHTML(combo, LANG);
-        const db = $('deepBlock'), dr = $('deepReveal');
-        if (db) db.hidden = true;
-        if (dr) { dr.hidden = false; dr.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-      }
+      revealDeep(pd);
+      if (pd.source === 'daily') show('daily');
+      else if (pd.source === 'compat') show('compat');
+      else show('result');
     } catch (_) {}
-    localStorage.removeItem('twin_pending_deep');
+    // 不移除 pending：保留设备上的解锁状态，刷新仍可见
   } else {
     // deep-link: ?e=&z= → show result directly
     const e = params.get('e'), z = params.get('z');
@@ -2699,5 +2764,37 @@ function initStars() {
 }
 
 </script>
+
+<!-- 礼物弹窗 · Gift modal（单一礼物路径：国内收款码 + 海外 USDT） -->
+<div class="gift-modal" id="giftModal" hidden>
+  <div class="gift-card">
+    <button class="gift-close" id="giftClose" aria-label="close">×</button>
+    <h3 class="gift-title">◇ 送出一份礼物 · A gift to yourself</h3>
+    <p class="gift-sub">解锁「核心解读·深度版」。随喜一份心意——国内微信 / 支付宝，海外 USDT。<br/>
+      Unlock the Deep Edition. A quiet gift — WeChat · Alipay in China, USDT overseas.</p>
+    <p class="gift-amount">建议心意 · Suggested: <strong data-gift-amount>$3.99</strong></p>
+    <div class="gift-channels">
+      <div class="gift-ch">
+        <p class="gift-ch-label">微信支付 · WeChat Pay</p>
+        <img class="gift-qr" data-qr="wechat" alt="WeChat QR" />
+        <p class="gift-ch-note">扫码后点下方按钮 · Tap the button below after scanning</p>
+      </div>
+      <div class="gift-ch">
+        <p class="gift-ch-label">支付宝 · Alipay</p>
+        <img class="gift-qr" data-qr="alipay" alt="Alipay QR" />
+        <p class="gift-ch-note">扫码后点下方按钮 · Tap the button below after scanning</p>
+      </div>
+      <div class="gift-ch">
+        <p class="gift-ch-label">加密货币 · USDT（海外 / Overseas）</p>
+        <img class="gift-qr" data-qr="usdt" alt="USDT QR" />
+        <p class="gift-ch-addr" data-usdt-addr></p>
+        <p class="gift-ch-note">复制地址或扫码 · Copy address or scan</p>
+      </div>
+    </div>
+    <button class="btn-primary gift-done" id="giftDone">我已完成礼物 · I've offered my gift</button>
+    <p class="gift-foot">礼物经济 · 自愿随喜，无强制校验 · Gift economy — voluntary, no enforced check</p>
+  </div>
+</div>
+
 </body>
 </html>
