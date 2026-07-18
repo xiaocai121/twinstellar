@@ -40,13 +40,13 @@ GitHub Pages 已配置 `cname: twinstellar.com` 且构建正常（API 确认 `st
 ## 变现（单一付费路径 · 需 Stripe Payment Link）
 全站**仅保留一条收费路径**：一次性「核心解读 · 深度版」。
 
-`index.html` 中的 `PAY_BASE` 留空时，结果页 / 日运页 / 合盘页的「解锁深度版」按钮走本地预览解锁（写入 `localStorage` 的 `twin_leads`，附 `ref` 推荐字段），便于设计评审与本地调试。
-接入 Stripe 后，把 `PAY_BASE` 改为对应的 **Payment Link** 即可转为真实一次性结账（全站三处 CTA 共用同一 `PAY_BASE`）。
+`index.html` 中的 `PAY_BASE_EN`（英文）与 `PAY_BASE_ZH`（中文）留空时，结果页 / 日运页 / 合盘页的「解锁深度版」按钮按当前语言走本地预览解锁（写入 `localStorage` 的 `twin_leads`，附 `ref` 推荐字段），便于设计评审与本地调试。
+接入 Stripe 后，分别把 `PAY_BASE_EN` 改为英文版 **$3.99 USD** 的 Payment Link、`PAY_BASE_ZH` 改为中文版 **¥2.99 CNY** 的 Payment Link，即可转为真实一次性结账（全站三处 CTA 按语言自动选用对应链接）。
 
 ### 接入步骤
-1. Stripe 后台 → **Payment Links** → 新建，建一个**一次性（非订阅）**产品「核心解读 · 深度版」，设好价格（如 $9）与币种；可按需开启「收集邮箱」。
+1. Stripe 后台 → **Payment Links** → 新建**两条一次性（非订阅）**产品「核心解读 · 深度版」：**英文版 $3.99 USD**、**中文版 ¥2.99 CNY**（各建一条 Payment Link）；可按需开启「收集邮箱」。
 2. 把该 Payment Link 的 **success_url** 设为站点回跳地址：`https://twinstellar.com/?paid=1`（上线后必须为 HTTPS 真实域名）。
-3. 复制 `https://buy.stripe.com/...` 链接，粘贴进 `index.html` 第 1010 行：`const PAY_BASE = 'https://buy.stripe.com/xxxx';`。
+3. 复制两条 `https://buy.stripe.com/...` 链接，分别粘贴进 `index.html`：`const PAY_BASE_EN = 'https://buy.stripe.com/xxxx-en';`（英文 $3.99）与 `const PAY_BASE_ZH = 'https://buy.stripe.com/xxxx-zh';`（中文 ¥2.99）。
 4. 提交并部署（`git push origin main`），GitHub Pages 约 1–2 分钟生效。
 
 > 工作机制：点击 CTA → `openPay()` 把待解锁组合写入 `localStorage('twin_pending_deep')` 并跳转到 Stripe；付款完成用户点「返回商户」回到 `?paid=1` → 页面读取待解锁组合并自动展开深度解读。
@@ -63,7 +63,7 @@ GitHub Pages 已配置 `cname: twinstellar.com` 且构建正常（API 确认 `st
 ## 自定义
 - **改价格/文案**：`index.html` 中英文案直改（搜索 `data-i18n` 键或常量即可定位）；变现阶梯逻辑见本文件「变现」一节。
 - **P1 免费内容引擎（已上线）**：运行 `python3 build_seo.py` 解析 `index.html` 常量，生成 `combo/<element>-<zodiac>.html`（60 页，含 `<title>`/meta/OG/Twitter/canonical/H1、五行×星座融合、真言、能量石、同元素+同星座内部链接、回主站 CTA 带 `?e=&z=`）、`combo/index.html`（60 张「宇宙签名墙」卡片）、`combo/combo.css`。产物提交进仓库，GitHub Pages 直接托管（见 `Twinstellar落地路径.md` §4.6 / §6.1）。
-- **P3 合盘报告（已上线）**：`index.html` 的 `#compat` 视图，输入两个生日 → `computeCompatibility()` 用 **五行 生克比和 + 星座共鸣** 算出 1–99 分、等级（天作之合/知音相惜/相成长/互补之美）、闪光点与边界。免费预览分数+等级+元素之契+星座共鸣+闪光点；**edges 与完整叙事为「核心解读 · 深度版」一次性解锁**（Stripe 落地后，当前 `PAY_BASE` 空时点击即解锁预览）。
+- **P3 合盘报告（已上线）**：`index.html` 的 `#compat` 视图，输入两个生日 → `computeCompatibility()` 用 **五行 生克比和 + 星座共鸣** 算出 1–99 分、等级（天作之合/知音相惜/相成长/互补之美）、闪光点与边界。免费预览分数+等级+元素之契+星座共鸣+闪光点；**edges 与完整叙事为「核心解读 · 深度版」一次性解锁**（Stripe 落地后，对应语言的 `PAY_BASE_EN` / `PAY_BASE_ZH` 空时点击即解锁预览）。
 - **病毒裂变**：结果页原生分享按钮（X / Facebook / Pinterest / WhatsApp / Reddit）+ 复制链接自带 `?ref=` 推荐参数；`?ref=` 在加载时捕获进 `localStorage`。
 
 ## 已验证

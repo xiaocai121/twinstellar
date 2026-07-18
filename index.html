@@ -750,7 +750,7 @@ header, section, footer { position: relative; z-index: 1; }
       <p class="deep-label" data-i18n="lbl_deep">Your signature, in full</p>
       <p class="product-sub" data-i18n="deep_sub">The free reading is yours to keep. The Deep Edition weaves your element, zodiac, and sacred title into a fuller reading — a quiet ritual and a question to carry.</p>
       <button class="btn-primary" id="deepCta" data-i18n="btn_deep">◇ Unlock the Core Reading — Deep Edition ◇</button>
-      <p class="deep-note" data-i18n="deep_note">A one-time gift to yourself. No subscription, no noise.</p>
+      <p class="deep-note" data-i18n="deep_note">A one-time gift to yourself — $3.99, no subscription, no noise.</p>
     </div>
     <div class="deep-block hero" id="deepReveal" hidden>
       <p class="deep-label" data-i18n="lbl_deep_full">Your Core Reading · Deep Edition</p>
@@ -900,6 +900,7 @@ header, section, footer { position: relative; z-index: 1; }
       <p class="deep-label" data-i18n="lbl_daily_deep">Go deeper</p>
       <p class="product-sub" data-i18n="daily_deep_sub">The daily reading is a gift. The Deep Edition adds a personal ritual and a focus for your day.</p>
       <button class="btn-primary" id="dailyDeepCta" data-i18n="btn_daily_deep">◇ Unlock the Core Reading — Deep Edition ◇</button>
+      <p class="deep-note" data-i18n="daily_deep_note">A one-time gift for your day — $3.99, no subscription, no noise.</p>
     </div>
     <div class="deep-block hero" id="dailyDeepReveal" hidden>
       <p class="deep-label" data-i18n="lbl_daily_deep_full">Your Daily Deep Guide</p>
@@ -1019,9 +1020,16 @@ const BOUNDARIES = [
   { m: 12, d: 22, z: 'capricorn' },
 ];
 
-// ---- PAY_BASE: drop in your Stripe Payment Link for the one-time "核心解读·深度版" ----
-// Leave as '' to use preview-unlock (local lead capture, content revealed in-session).
-const PAY_BASE = '';
+// ---- 单一付费路径「核心解读·深度版」，按语言分币种 ----
+// EN 英文版 → 一次性 $3.99 USD 的 Stripe Payment Link
+// ZH 中文版 → 一次性 ¥2.99 CNY 的 Stripe Payment Link
+// 两个都留空 '' 时，对应语言的「解锁」按钮走本地预览解锁（内容当次展示，不结账）
+const PAY_BASE_EN = '';   // 英文版 $3.99 USD
+const PAY_BASE_ZH = '';   // 中文版 ¥2.99 CNY
+// 按当前语言返回对应结账链接（LANG 在点击时才读取，无 TDZ 风险）
+function payUrl() {
+  return (LANG === 'zh' ? PAY_BASE_ZH : PAY_BASE_EN) || '';
+}
 
 // ---- Referral: capture ?ref= and persist so invited friends can be credited ----
 function getRef() {
@@ -1073,7 +1081,7 @@ const I18N = {
     lbl_deep:'Your signature, in full',
     deep_sub:'The free reading is yours to keep. The Deep Edition weaves your element, zodiac, and sacred title into a fuller reading — a quiet ritual and a question to carry.',
     btn_deep:'◇ Unlock the Core Reading — Deep Edition ◇',
-    deep_note:'A one-time gift to yourself. No subscription, no noise.',
+    deep_note:'A one-time gift to yourself — $3.99, no subscription, no noise.',
     btn_save_sig:'◇ Save Your Signature ◇',
     save_sig_note:'Yours to keep — a quiet image of who you are.',
     lbl_deep_full:'Your Core Reading · Deep Edition',
@@ -1083,6 +1091,7 @@ const I18N = {
     daily_deep_sub:'The daily reading is a gift. The Deep Edition adds a personal ritual and a focus for your day.',
     btn_daily_deep:'◇ Unlock the Core Reading — Deep Edition ◇',
     lbl_daily_deep_full:'Your Daily Deep Guide',
+    daily_deep_note:'A one-time gift for your day — $3.99, no subscription, no noise.',
     result_wall:'◇ Browse the Cosmic Signature Wall ◇',
     footer_wall:'Explore all 60 cosmic signatures →',
     nav_compat:'Compat',
@@ -1154,7 +1163,7 @@ const I18N = {
     lbl_deep:'你的签名，全貌',
     deep_sub:'基础解读已属你，免费珍藏。深度版将你的元素、星座与神圣称号，织成一份更完整的宇宙解读——一段静谧仪式，一个可随身携带的叩问。',
     btn_deep:'◇ 解锁核心解读 · 深度版 ◇',
-    deep_note:'一次性的礼物予己。无订阅，无喧嚣。',
+    deep_note:'一次性的礼物予己——¥2.99，无订阅，无喧嚣。',
     btn_save_sig:'◇ 珍藏我的宇宙签名 ◇',
     save_sig_note:'送你珍藏——一幅安静映照你本真的图。',
     lbl_deep_full:'你的核心解读 · 深度版',
@@ -1191,6 +1200,7 @@ const I18N = {
     daily_deep_sub:'日运本是礼物。深度版另赠一段个人仪式，与一日专注之所。',
     btn_daily_deep:'◇ 解锁核心解读 · 深度版 ◇',
     lbl_daily_deep_full:'你的日运 · 深度指引',
+    daily_deep_note:'一次性的礼物予己——¥2.99，无订阅，无喧嚣。',
     daily_card_btn:'◇ 下载日签卡片 ◇',
     daily_back_btn:'← 回到我的签名',
     daily_result_link:'◇ 今日运势日签 ◇',
@@ -1487,7 +1497,7 @@ function findCombo(element, zodiac) {
 // ---------- compatibility (P3 · L3 付费增值) ----------
 const ELEM_CYCLE = ['wood', 'fire', 'earth', 'metal', 'water'];
 const ZODIAC_CYCLE = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
-const PAY_URL = (typeof PAY_BASE !== 'undefined' && PAY_BASE) ? PAY_BASE : '';
+// payUrl() 见上方 PAY_BASE_EN / PAY_BASE_ZH 定义（按语言分币种返回结账链接）
 
 // ---------- 核心解读·深度版 (single paid path) ----------
 const ELEMENT_DEEP = {
@@ -1591,13 +1601,13 @@ function deepCapture(combo) {
   } catch (_) {}
 }
 function openPay(source, combo) {
-  if (!PAY_URL) return false;
+  if (!payUrl()) return false;
   // remember which combo the user intends to unlock, so the success_url return can reveal it
   if (combo) {
     try { localStorage.setItem('twin_pending_deep', JSON.stringify({ element: combo.element, zodiac: combo.zodiac })); } catch (_) {}
   }
   const q = `?source=${source}` + (combo ? `&e=${combo.element}&z=${combo.zodiac}` : '');
-  window.location.href = PAY_URL + q;
+  window.location.href = payUrl() + q;
   return true;
 }
 
@@ -1776,7 +1786,7 @@ function copyLink(combo) {
   });
 }
 
-// subCapture (subscription mailto) removed — single paid path uses PAY_BASE / openPay()
+// subCapture (subscription mailto) removed — single paid path uses payUrl() / openPay()
 
 // ---------- flow ----------
 function renderDaily() {
@@ -2577,10 +2587,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const ub = $('compatUnlockBtn');
   if (ub) {
     ub.addEventListener('click', () => {
-      if (PAY_URL) {
+      if (payUrl()) {
         if (lastCompat) { try { localStorage.setItem('twin_pending_deep', JSON.stringify({ element: lastCompat.eA, zodiac: lastCompat.zA })); } catch (_) {} }
         const q = lastCompat ? `?source=compat&e=${lastCompat.eA}&z=${lastCompat.zA}` : '?source=compat';
-        window.location.href = PAY_URL + q;
+        window.location.href = payUrl() + q;
         return;
       }
       $('compatGated').hidden = false;
