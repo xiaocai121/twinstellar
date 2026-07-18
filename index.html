@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@500;600&display=swap" rel="stylesheet" />
+  <!-- Stripe.js v3 — Checkout 结账（纯前端静态站点方案） -->
+  <script async src="https://js.stripe.com/v3/"></script>
   <style>
   [hidden] { display: none !important; }
 :root {
@@ -1020,15 +1022,28 @@ const BOUNDARIES = [
   { m: 12, d: 22, z: 'capricorn' },
 ];
 
-// ---- 单一付费路径「核心解读·深度版」，按语言分币种 ----
-// EN 英文版 → 一次性 $3.99 USD 的 Stripe Payment Link
-// ZH 中文版 → 一次性 ¥2.99 CNY 的 Stripe Payment Link
-// 两个都留空 '' 时，对应语言的「解锁」按钮走本地预览解锁（内容当次展示，不结账）
-const PAY_BASE_EN = '';   // 英文版 $3.99 USD
-const PAY_BASE_ZH = '';   // 中文版 ¥2.99 CNY
-// 按当前语言返回对应结账链接（LANG 在点击时才读取，无 TDZ 风险）
-function payUrl() {
-  return (LANG === 'zh' ? PAY_BASE_ZH : PAY_BASE_EN) || '';
+// ---- 单一付费路径「核心解读·深度版」— Stripe Checkout 集成 ----
+// 纯静态站点使用 Stripe.js redirectToCheckout（前端发起，Stripe 托管结账页）
+// 测试密钥 (pk_test) → 结账走 Stripe 测试环境，用 4242 4242 4242 4242 测试卡
+// 上线前替换为 pk_live_... 可发布密钥
+const STRIPE_PK = 'pk_test_51TuLprD4s1lPrw2iWjITJy5Sb78sooFAFKzX3iUfM5Oa1vHrGm8qWxYz';
+// 价格 ID — 在 Stripe Dashboard → 产品 中创建一次性价格后填入
+// EN 英文版: $3.99 USD | ZH 中文版: ¥2.99 CNY
+const PRICE_ID_EN = '';   // 例: price_xxxxxxxxxxxxxxxx （英文版 $3.99）
+const PRICE_ID_ZH = '';   // 例: price_yyyyyyyyyyyyyyyy （中文版 ¥2.99）
+// Stripe 实例（延迟初始化，DOMContentLoaded 后赋值）
+let stripe = null;
+/** 初始化 Stripe（幂等） */
+function initStripe() {
+  if (stripe) return stripe;
+  if (typeof Stripe === 'undefined') { console.warn('[twinstellar] Stripe.js not loaded'); return null; }
+  if (!STRIPE_PK) { console.warn('[twinstellar] STRIPE_PK not configured'); return null; }
+  try { stripe = Stripe(STRIPE_PK); } catch (e) { console.warn('[twinit]', e); return null; }
+  return stripe;
+}
+/** 返回当前语言的 Price ID */
+function currentPriceId() {
+  return LANG === 'zh' ? PRICE_ID_ZH : PRICE_ID_EN;
 }
 
 // ---- Referral: capture ?ref= and persist so invited friends can be credited ----
@@ -1497,7 +1512,7 @@ function findCombo(element, zodiac) {
 // ---------- compatibility (P3 · L3 付费增值) ----------
 const ELEM_CYCLE = ['wood', 'fire', 'earth', 'metal', 'water'];
 const ZODIAC_CYCLE = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
-// payUrl() 见上方 PAY_BASE_EN / PAY_BASE_ZH 定义（按语言分币种返回结账链接）
+// Stripe Checkout: initStripe() + currentPriceId() + openPay() 见上方配置区
 
 // ---------- 核心解读·深度版 (single paid path) ----------
 const ELEMENT_DEEP = {
@@ -1601,14 +1616,30 @@ function deepCapture(combo) {
   } catch (_) {}
 }
 function openPay(source, combo) {
-  if (!payUrl()) return false;
-  // remember which combo the user intends to unlock, so the success_url return can reveal it
+  // 记录待解锁组合（success_url 回跳 ?paid=1 时用）
   if (combo) {
     try { localStorage.setItem('twin_pending_deep', JSON.stringify({ element: combo.element, zodiac: combo.zodiac })); } catch (_) {}
   }
-  const q = `?source=${source}` + (combo ? `&e=${combo.element}&z=${combo.zodiac}` : '');
-  window.location.href = payUrl() + q;
-  return true;
+  // 尝试 Stripe Checkout
+  const s = initStripe();
+  const priceId = currentPriceId();
+  if (s && priceId) {
+    const params = {
+      lineItems: [{ price: priceId, quantity: 1 }],
+      mode: 'payment',
+      successUrl: window.location.origin + '/?paid=1&source=' + (source || 'unknown') + (combo ? '&e=' + combo.element + '&z=' + combo.zodiac : ''),
+      cancelUrl: window.location.origin + '/',
+    };
+    return s.redirectToCheckout(params)
+      .then(function(result) {
+        if (result.error) { console.warn('[stripe] redirectToCheckout error:', result.error); return false; }
+        return true;
+      })
+      .catch(function(e) { console.warn('[stripe] exception:', e); return false; });
+  }
+  // 无 Stripe 配置 → fallback 预览解锁（软闸门）
+  console.info('[twinstellar] No Stripe config — preview mode');
+  return false;
 }
 
 function elemRelation(a, b) {
@@ -1786,7 +1817,7 @@ function copyLink(combo) {
   });
 }
 
-// subCapture (subscription mailto) removed — single paid path uses payUrl() / openPay()
+// subCapture (subscription mailto) removed — single paid path uses openPay() / Stripe Checkout
 
 // ---------- flow ----------
 function renderDaily() {
@@ -2587,12 +2618,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const ub = $('compatUnlockBtn');
   if (ub) {
     ub.addEventListener('click', () => {
-      if (payUrl()) {
-        if (lastCompat) { try { localStorage.setItem('twin_pending_deep', JSON.stringify({ element: lastCompat.eA, zodiac: lastCompat.zA })); } catch (_) {} }
-        const q = lastCompat ? `?source=compat&e=${lastCompat.eA}&z=${lastCompat.zA}` : '?source=compat';
-        window.location.href = payUrl() + q;
-        return;
-      }
+      const compatCombo = lastCompat ? { element: lastCompat.eA, zodiac: lastCompat.zA } : null;
+      if (openPay('compat', compatCombo)) return; // Stripe Checkout 已跳转
+      // 无 Stripe → fallback 预览解锁
       $('compatGated').hidden = false;
       ub.disabled = true;
       ub.textContent = LANG === 'zh' ? '已解锁 ✓' : 'Unlocked ✓';
